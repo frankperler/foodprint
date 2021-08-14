@@ -15,8 +15,8 @@ export const Navbutton = styled.button`
     transform: rotate(-2deg);
     opacity: 0.9;
     background-color: #FFA69E;
-    border: solid 0.08rem #394141;
-    box-shadow: 0.03rem 0.03rem #394141;
+    border: solid 0.04rem #84DCC6;
+    box-shadow: 0.03rem 0.03rem lightgrey;
   }
 `
 
