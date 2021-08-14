@@ -2,16 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { MouseEvent } from 'react';
 import { TypeButton, Wrapper } from './registration-styled-components/ChooseUserType.style';
-
+import { ButtonGroup } from './ButtonGroup';
 
 export const ChooseUserType = (): JSX.Element => {
 
-  const [type, setType] = useState('');
-  const [clicked, setClicked] = useState(false)
-
-  const handleTypeClick = (e: MouseEvent) => {
-    setClicked(true);
-    setType('clicked');
+  const printButtonLabel = (e: MouseEvent) => {
+    console.log(e.currentTarget);
   }
 
   return (
@@ -19,9 +15,7 @@ export const ChooseUserType = (): JSX.Element => {
     <Wrapper>
     <section>
         <h1>I'm a...</h1>
-        <TypeButton onClick={handleTypeClick} className={ type == 'clicked' ? 'chosenOne' : 'normal'}>Food lover</TypeButton>
-        <TypeButton>Restaurant</TypeButton>
-        <TypeButton>Food Supplier</TypeButton>
+        <ButtonGroup buttons={["Food lover", "Restaurant", "Food supplier"]} doSomethingAfterClick={printButtonLabel}></ButtonGroup>
     </section>
     </Wrapper>
 
