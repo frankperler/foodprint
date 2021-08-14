@@ -9,7 +9,6 @@ export const Navbutton = styled.button`
   background-color: #FFA69E;
   opacity: 0.8;
 
-
   &:hover {
     transform: rotate(-1deg);
     opacity: 0.9;

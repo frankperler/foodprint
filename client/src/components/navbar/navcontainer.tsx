@@ -3,9 +3,12 @@ import styled from 'styled-components';
 export const Navcontainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: #A5FFd6;
+  background-color: white;
+  margin: auto;
   width: 100vw;
   height: 5rem;
 `
+
+// A5FFd6
