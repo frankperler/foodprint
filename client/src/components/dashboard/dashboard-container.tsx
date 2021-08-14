@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const Navcontainer = styled.div`
+export const DashboardContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: whitesmoke;
   margin: auto;
   width: 65vw;
   height: 4rem;

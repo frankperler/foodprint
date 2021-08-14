@@ -6,5 +6,3 @@ export const Title = styled.h1`
   color: #84DCC6;
   font-weight: normal;
 `
-
-//394141
