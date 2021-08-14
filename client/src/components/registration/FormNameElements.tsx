@@ -1,17 +1,16 @@
 import React from "react";
-import { RegisterNameInput, Label } from './FormRegister.style';
+import { RegisterNameInput, Label } from './registration-styled-components/FormRegister.style';
 
-function FormNameElements (): JSX.Element {
+export const FormNameElements = (): JSX.Element => {
 
 
   return (
     <div>
       <Label>First name</Label>
-      <RegisterNameInput placeholder="Enter your first name"></RegisterNameInput>
+      <RegisterNameInput></RegisterNameInput>
       <Label>Last name</Label>
-      <RegisterNameInput placeholder="Enter your last name"></RegisterNameInput>
+      <RegisterNameInput></RegisterNameInput>
     </div>
   )
 }
 
-export default FormNameElements;

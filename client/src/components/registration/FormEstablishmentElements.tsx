@@ -1,8 +1,8 @@
 import React from 'react';
-import { EstablishmentInput, Label } from './FormRegister.style';
+import { EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 
 
-function FormEstablishmentElements (): JSX.Element {
+export const FormEstablishmentElements = (): JSX.Element => {
 
 
 
@@ -10,14 +10,12 @@ function FormEstablishmentElements (): JSX.Element {
     <div>
       <div>
         <Label>Establishment name</Label>
-        <EstablishmentInput placeholder="Enter your business name..."></EstablishmentInput>
+        <EstablishmentInput></EstablishmentInput>
       </div>
       <div>
         <Label>Address</Label>
-        <EstablishmentInput placeholder="Enter an address..."></EstablishmentInput>
+        <EstablishmentInput></EstablishmentInput>
       </div>
     </div>
   )
 }
-
-export default FormEstablishmentElements

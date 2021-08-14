@@ -1,18 +1,15 @@
 import React from 'react';
-import { EstablishmentInput, Label } from './FormRegister.style';
+import { EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 
 
-function FormPhoneElement (): JSX.Element {
-
-
+export const FormPhoneElement = (): JSX.Element => {
 
   return (
     <div>
       <Label>Phone</Label>
-      <EstablishmentInput placeholder="Enter your phone..."></EstablishmentInput>
+      <EstablishmentInput></EstablishmentInput>
     </div>
   )
 }
 
 
-export default FormPhoneElement;

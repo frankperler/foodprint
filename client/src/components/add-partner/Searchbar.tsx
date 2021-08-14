@@ -1,16 +1,15 @@
 import React from 'react';
+import { SearchInput } from './add-partner-styled-components/Searchbar.style';
 
-function Searchbar (): JSX.Element {
+export const Searchbar = (): JSX.Element => {
 
 
 
   return (
     <form>
-      <input type="search" placeholder="Find your supplier...."></input>
+      <SearchInput placeholder="Search for your partner..."></SearchInput>
       <button type="submit"></button>
     </form>
   )
 }
 
-
-export default Searchbar;
