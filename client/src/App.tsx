@@ -1,8 +1,11 @@
 import React from 'react'
+import { Navbar } from './components/navbar/navbar'
 import './App.css'
 
-function App() {
-  return <div className="App">Yayyy!</div>
+export const App: React.FunctionComponent = () => {
+  return (
+    <Navbar />
+  )
 }
 
 export default App
