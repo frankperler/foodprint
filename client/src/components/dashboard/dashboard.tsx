@@ -1,10 +1,22 @@
 import React from 'react'
-import { Container } from '../navbar/navbar-styled-components/container'
+import { FilterArea } from './filters/filters-area'
+import { GridContainer } from './grid-container'
+import { Map } from './map/map'
+import { MapArea } from './map/map-area'
+import { EcoScore } from './filters/eco-score-filter'
 
 export const Dashboard: React.FunctionComponent = () => {
+
+
+
   return (
-    <Container inputColor="whitesmoke" containerHeight="6rem">
-      <div>Hello world!</div>
-    </Container>
+    <GridContainer>
+      <MapArea>
+        <Map />
+      </MapArea>
+      <FilterArea>
+        <EcoScore />
+      </FilterArea>
+    </GridContainer>
   )
 }

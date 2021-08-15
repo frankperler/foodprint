@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled("div") <{ inputColor?: string, containerHeight?: string }>`
+export const Container = styled("div") <{
+  inputColor?: string,
+  containerHeight?: string,
+  boxShadow?: string;
+}>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,4 +13,6 @@ export const Container = styled("div") <{ inputColor?: string, containerHeight?:
   margin: auto;
   width: 100vw;
   height: ${(props) => props.containerHeight};
+  box-shadow: ${(props) => props.boxShadow};
+
 `
