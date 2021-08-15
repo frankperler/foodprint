@@ -1,21 +1,20 @@
 import React from 'react';
-import { useState } from 'react';
 import { MouseEvent } from 'react';
-import { TypeButton, Wrapper } from './registration-styled-components/ChooseUserType.style';
+import { Wrapper } from './registration-styled-components/ChooseUserType.style';
 import { ButtonGroup } from './ButtonGroup';
 
 export const ChooseUserType = (): JSX.Element => {
 
-  // const printButtonLabel = (e: MouseEvent) => {
-  //   console.log(e.currentTarget);
-  // }
+  const printButtonLabel = (e: MouseEvent) => {
+    console.log(e.target);
+  }
 
   return (
 
     <Wrapper>
     <section>
         <h1>I'm a...</h1>
-      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]}></ButtonGroup>
+      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]} doAfterClick={printButtonLabel}></ButtonGroup>
     </section>
     </Wrapper>
 
