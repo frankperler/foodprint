@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-interface IProps {
-  isActive?: boolean;
+export interface IProps {
+  isActive?: boolean | undefined;
 }
 
 export const TypeButton = styled.button<IProps>`

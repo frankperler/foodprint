@@ -2,22 +2,27 @@ import React from 'react';
 import { useState, MouseEvent } from 'react';
 import { TypeButton } from './registration-styled-components/ChooseUserType.style';
 
+type Props = {
+  buttons: string[];
+}
 
 
-export const ButtonGroup = ({buttons, doAfterClick, isActive}) => {
+
+export const ButtonGroup = ({buttons}: Props): JSX.Element => {
 
 
   const [clickedId, setClickedId] = useState(-1)
 
-  const handleTypeClick = (e, id) => {
+
+
+  const handleTypeClick = (e: MouseEvent, id: number) => {
     setClickedId(id);
-    doAfterClick(e);
   }
 
 
   return (
     <div> 
-     {buttons.map((buttonLabel, i) =>
+     {buttons.map((buttonLabel: string, i: number) =>
       <TypeButton 
         key={i} 
         name={buttonLabel} 

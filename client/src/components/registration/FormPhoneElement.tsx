@@ -5,10 +5,10 @@ import { EstablishmentInput, Label } from './registration-styled-components/Form
 export const FormPhoneElement = (): JSX.Element => {
 
   return (
-    <div>
+    <>
       <Label>Phone</Label>
       <EstablishmentInput></EstablishmentInput>
-    </div>
+    </>
   )
 }
 

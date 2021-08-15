@@ -1,23 +1,17 @@
 import React from "react";
-import { RegisterCredentialInput, Label } from './registration-styled-components/FormRegister.style';
+import { CredentialInput, Label } from './registration-styled-components/FormRegister.style';
 
 export const FormCredentialElements = (): JSX.Element => {
 
 
   return (
-    <div>
-      <div>
+    <>
         <Label>Email</Label>
-        <RegisterCredentialInput></RegisterCredentialInput>
-      </div>
-      <div>
+        <CredentialInput></CredentialInput>
         <Label>Password</Label>
-        <RegisterCredentialInput type="password"></RegisterCredentialInput>
-      </div>
-      <div>
+        <CredentialInput type="password"></CredentialInput>
         <Label>Password confirmation</Label>
-        <RegisterCredentialInput type="password"></RegisterCredentialInput>
-     </div>
-    </div>
+        <CredentialInput type="password"></CredentialInput>
+    </>
   )
 }

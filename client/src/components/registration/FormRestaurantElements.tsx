@@ -2,18 +2,16 @@ import React from 'react';
 import { EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 
 
-export const FormEstablishmentElements = (): JSX.Element => {
-
-
+export const FormRestaurantElements = (): JSX.Element => {
 
   return (
     <div>
       <div>
-        <Label>Establishment name</Label>
+        <Label>Restaurant name</Label>
         <EstablishmentInput></EstablishmentInput>
       </div>
       <div>
-        <Label>Address</Label>
+        <Label>Resturant address</Label>
         <EstablishmentInput></EstablishmentInput>
       </div>
     </div>
