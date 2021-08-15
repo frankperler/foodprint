@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 
+
+
 export const RegisterButton = styled.button`
   padding: 0.2em 2em;
   width: 8rem;
