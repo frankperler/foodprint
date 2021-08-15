@@ -6,16 +6,16 @@ import { ButtonGroup } from './ButtonGroup';
 
 export const ChooseUserType = (): JSX.Element => {
 
-  const printButtonLabel = (e: MouseEvent) => {
-    console.log(e.currentTarget);
-  }
+  // const printButtonLabel = (e: MouseEvent) => {
+  //   console.log(e.currentTarget);
+  // }
 
   return (
 
     <Wrapper>
     <section>
         <h1>I'm a...</h1>
-        <ButtonGroup buttons={["Food lover", "Restaurant", "Food supplier"]} doSomethingAfterClick={printButtonLabel}></ButtonGroup>
+      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]}></ButtonGroup>
     </section>
     </Wrapper>
 
