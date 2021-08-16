@@ -12,8 +12,6 @@ type Props = {
 export const ChooseUserType = ({setUserType, clickedId, setClickedId}: Props): JSX.Element => {
 
 
-
-
   return (
 
     <Wrapper>
