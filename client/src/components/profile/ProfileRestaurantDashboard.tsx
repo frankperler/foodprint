@@ -1,10 +1,11 @@
 import React, { useReducer } from 'react'
 import { FilterArea } from '../dashboard/filters/filters-area'
-import { GridContainer } from '../dashboard/grid-container'
-import { EcoScoreSlider } from '../dashboard/filters/eco-score-slider'
+import { GridContainer } from './profile-styled-components/profile.style'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
-import { Photo } from './profile-styled-components/profile.style'
+import { Photo, ProfileDetails } from './profile-styled-components/profile.style'
+import { Description } from './Description'
+import { SuppliersList } from './SuppliersList'
 
 export const ProfileDashboard: React.FunctionComponent = () => {
 
@@ -15,9 +16,16 @@ export const ProfileDashboard: React.FunctionComponent = () => {
       <Photo></Photo>
       <filterContext.Provider value={{ state, dispatch }}>
         <FilterArea>
-          <EcoScoreSlider />
+          <div>Restaurant name</div>
+          <div>City</div>
+          <div>Restaurant Eco score</div>
+          <button>Edit profile</button>
         </FilterArea>
       </filterContext.Provider>
+      <ProfileDetails>
+        <Description></Description>
+        <SuppliersList></SuppliersList>
+      </ProfileDetails>
     </GridContainer>
   )
 }

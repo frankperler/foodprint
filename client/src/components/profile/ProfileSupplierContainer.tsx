@@ -3,10 +3,10 @@ import { Navbutton } from '../navbar/navbar-styled-components/navbutton'
 import { Title } from '../navbar/navbar-styled-components/title'
 import { Navcontainer } from '../navbar/navbar-styled-components/navcontainer'
 import { Container } from '../navbar/navbar-styled-components/container'
-import { UserName } from './profile-styled-components/profile.style';
-import { ProfileDashboard } from './ProfileRestaurantDashboard';
+import { Avatar, UserName } from './profile-styled-components/profile.style';
+import { ProfileSupplierDashboard } from './ProfileSupplierDashboard';
 
-export const ProfileFoodLoverContainer = (): JSX.Element => {
+export const ProfileSupplierContainer = (): JSX.Element => {
 
 
   return (
@@ -15,13 +15,13 @@ export const ProfileFoodLoverContainer = (): JSX.Element => {
     <Navcontainer>
       <Title><strong>food</strong>print.</Title>
       <div>
-        <UserName>User</UserName>
-        <Navbutton>Avatar</Navbutton>
+        <UserName>Supplier</UserName>
+        <Avatar></Avatar>
         <Navbutton>Log out</Navbutton>
       </div>
     </Navcontainer >
   </Container >
-  <ProfileDashboard></ProfileDashboard>
+  <ProfileSupplierDashboard></ProfileSupplierDashboard>
   </>
   )
 }
