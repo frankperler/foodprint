@@ -24,6 +24,12 @@ export const filterReducers = (state: filterTypes, action: filterAction): filter
   }
 
   if (action.type === 'restaurant-type-change') {
+    // let blabla;
+    // if (state.restaurantType.includes(action.payload)) {
+    //   blabla = state.restaurantType.filter((element) => element !== action.payload)
+    // } else {
+    //   blabla = [...state.restaurantType, action.payload]
+    // }
     return {
       ...state,
       restaurantType: action.payload
