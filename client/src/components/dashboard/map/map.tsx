@@ -5,8 +5,8 @@ import './map.css'
 export const Map: React.FunctionComponent = () => {
 
   const [viewport, setViewport] = useState({
-    width: "100%",
-    height: "100%",
+    width: "150%",
+    height: "150%",
     latitude: 52.518900,
     longitude: 13.409730,
     zoom: 11
