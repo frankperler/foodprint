@@ -9,7 +9,7 @@ import { FormRestaurant } from './components/registration/FormRestaurant'
 function App(): JSX.Element {
   return <div className="App">
     <ChooseUserType></ChooseUserType>
-    <FormFoodLover></FormFoodLover>
+    <FormRestaurant></FormRestaurant>
     </div>
 }
 
