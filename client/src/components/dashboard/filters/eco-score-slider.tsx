@@ -43,7 +43,7 @@ export const EcoScoreSlider: React.FunctionComponent = () => {
 
   const { state, dispatch } = useContext(filterContext)
 
-  const handleChange = (e: { target: { value: string; } }) => {
+  const handleChange = (e: { target: { value: string, } }) => {
     dispatch({ type: 'eco-score-change', payload: +e.target.value })
   }
 
