@@ -5,11 +5,11 @@ import { Searchbar } from './components/add-partner/Searchbar'
 import { FormLogIn } from './components/log-in/FormLogIn'
 import { FormSupplier } from './components/registration/FormSupplier'
 import { FormRestaurant } from './components/registration/FormRestaurant'
+import { RegistrationContainer } from './components/registration/RegistrationContainer'
 
 function App(): JSX.Element {
   return <div className="App">
-    <ChooseUserType></ChooseUserType>
-    <FormRestaurant></FormRestaurant>
+    <RegistrationContainer></RegistrationContainer>
     </div>
 }
 

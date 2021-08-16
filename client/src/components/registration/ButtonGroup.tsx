@@ -4,19 +4,28 @@ import { TypeButton } from './registration-styled-components/ChooseUserType.styl
 
 type Props = {
   buttons: string[];
+  setUserType: React.Dispatch<React.SetStateAction<string>>;
+  setClickedId: React.Dispatch<React.SetStateAction<number>>;
+  clickedId: number;
 }
 
-
-
-export const ButtonGroup = ({buttons}: Props): JSX.Element => {
-
-
-  const [clickedId, setClickedId] = useState(-1)
+export const ButtonGroup = ({buttons, setUserType, clickedId, setClickedId}: Props): JSX.Element => {
 
 
 
-  const handleTypeClick = (e: MouseEvent, id: number) => {
+
+   const handleUserType = (name: string)  => {
+    name === 'Food lover' ? setUserType('Food lover') 
+    : name === 'Restaurant' ? setUserType('Restaurant') 
+    : name === 'Supplier' ? setUserType('Supplier') 
+    : setUserType('');
+  }
+
+
+  const handleTypeClick = (name: string, id: number) => {
+    console.log(name);
     setClickedId(id);
+    handleUserType(name)
   }
 
 
@@ -26,7 +35,7 @@ export const ButtonGroup = ({buttons}: Props): JSX.Element => {
       <TypeButton 
         key={i} 
         name={buttonLabel} 
-        onClick={(e) => handleTypeClick(e, i)} 
+        onClick={({currentTarget: {name}}) => handleTypeClick(name, i)}
         isActive={i === clickedId ? true : false}>
           {buttonLabel}
         </TypeButton>

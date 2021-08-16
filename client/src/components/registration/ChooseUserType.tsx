@@ -1,20 +1,25 @@
 import React from 'react';
-import { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
 import { Wrapper, Header1 } from './registration-styled-components/ChooseUserType.style';
 import { ButtonGroup } from './ButtonGroup';
 
-export const ChooseUserType = (): JSX.Element => {
+type Props = {
+  setUserType: React.Dispatch<React.SetStateAction<string>>;
+  setClickedId: React.Dispatch<React.SetStateAction<number>>;
+  clickedId: number;
+}
 
-  // const printButtonLabel = (e: any) => {
-  //   console.log(e.target.name);
-  // }
+export const ChooseUserType = ({setUserType, clickedId, setClickedId}: Props): JSX.Element => {
+
+
+
 
   return (
 
     <Wrapper>
     <section>
         <Header1>I'm a...</Header1>
-      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]}></ButtonGroup>
+      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]} clickedId={clickedId} setUserType={setUserType} setClickedId={setClickedId}></ButtonGroup>
     </section>
     </Wrapper>
 
