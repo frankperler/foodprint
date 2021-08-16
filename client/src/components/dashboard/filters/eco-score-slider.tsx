@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { filterContext } from '../../../contexts/filters-contexts';
 import styled from 'styled-components';
 
-const Styles = styled.div`
+export const SliderStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,12 +12,14 @@ const Styles = styled.div`
 
   .value {
     font-size: 0.8rem;
+    text-align: left;
   }
 
   .slider {
     -webkit-appearance: none;
     width: 80%;
     height: 5px;
+    margin-top: 1rem;
     border-radius: 5px;
     background: #efefef;
     outline: none;
@@ -46,9 +48,9 @@ export const EcoScoreSlider: React.FunctionComponent = () => {
   }
 
   return (
-    <Styles>
+    <SliderStyles>
       <div className="value">Eco-Score: {state.ecoScore}</div>
       <input className="slider" type="range" min={0} max={5} step="0.1" value={state.ecoScore} onChange={handleChange} />
-    </Styles>
+    </SliderStyles>
   )
 }
