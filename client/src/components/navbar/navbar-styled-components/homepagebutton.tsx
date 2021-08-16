@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Navbutton = styled.button`
+export const HomePageButton = styled.button`
   width: 6rem;
   height: 2rem;
   margin-right: 1rem;

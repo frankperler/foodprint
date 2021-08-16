@@ -7,51 +7,15 @@ import styled from 'styled-components';
 const options = [
   {
     value: 1,
-    label: "Vegan"
+    label: "Breakfast"
   },
   {
     value: 2,
-    label: "Vegetarian"
+    label: "Lunch"
   },
   {
     value: 3,
-    label: "Bio"
-  },
-  {
-    value: 4,
-    label: "Asian"
-  },
-  {
-    value: 5,
-    label: "Mexican"
-  },
-  {
-    value: 6,
-    label: "Italian"
-  },
-  {
-    value: 7,
-    label: "Greek"
-  },
-  {
-    value: 8,
-    label: "Chinese"
-  },
-  {
-    value: 9,
-    label: "Japanese"
-  },
-  {
-    value: 10,
-    label: "Thai"
-  },
-  {
-    value: 11,
-    label: "Indian"
-  },
-  {
-    value: 12,
-    label: "Fast-Food"
+    label: "Dinner"
   },
 ]
 
@@ -61,13 +25,13 @@ export const DropdownStyles = styled.div`
   align-items: center;
   color: #888;
   margin-top: 1rem;
-  flex-shrink:1;
-  
+  flex-shrink: 1;
+
   .value {
     font-size: 0.8rem;
     text-align: left;
   }
-  
+
   .select {
     width: 80%;
     margin-top: 1rem;
@@ -75,9 +39,9 @@ export const DropdownStyles = styled.div`
   }
 `;
 
-export const RestaurantTypeSelect: React.FunctionComponent = () => {
+export const MealTypeSelect: React.FunctionComponent = () => {
 
-  const { dispatch } = useContext(filterContext)
+  const { state, dispatch } = useContext(filterContext)
   const [arrayLabel, setArrayLabel] = useState<number[]>([]);
 
   const handleChange = (e: dropdownType[]) => {
@@ -87,11 +51,12 @@ export const RestaurantTypeSelect: React.FunctionComponent = () => {
 
   return (
     <DropdownStyles>
-      <div className="value">Restaurant Types</div>
+      <div className="value">Meal Types</div>
       <Select
         className="select"
         isMulti
-        closeMenuOnSelect={true}
+        onSelectResetsInput={false}
+        closeMenuOnSelect={false}
         onChange={(e) => handleChange(e as dropdownType[])}
         options={options}
         value={options.filter((obj: dropdownType) => arrayLabel.includes(obj.value))}

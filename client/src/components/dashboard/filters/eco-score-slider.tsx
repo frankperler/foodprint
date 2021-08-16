@@ -8,7 +8,7 @@ export const SliderStyles = styled.div`
   align-items: center;
   color: #888;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  flex-shrink:1;
 
   .value {
     font-size: 0.8rem;
