@@ -41,7 +41,7 @@ export const DropdownStyles = styled.div`
 
 export const MealTypeSelect: React.FunctionComponent = () => {
 
-  const { state, dispatch } = useContext(filterContext)
+  const { dispatch } = useContext(filterContext)
   const [arrayLabel, setArrayLabel] = useState<number[]>([]);
 
   const handleChange = (e: dropdownType[]) => {

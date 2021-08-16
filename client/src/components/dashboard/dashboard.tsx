@@ -9,6 +9,7 @@ import { DistanceSlider } from './filters/distance-slider'
 import { RestaurantTypeSelect } from './filters/restaurant-type-select'
 import { MealTypeSelect } from './filters/meal-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
+import { ResultsArea } from './results/results-area'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
 
@@ -42,6 +43,9 @@ export const Dashboard: React.FunctionComponent = () => {
             </ HomePageButton>
           </ButtonStyles>
         </FilterArea>
+        <ResultsArea>
+
+        </ResultsArea>
       </GridContainer>
     </filterContext.Provider>
   )
