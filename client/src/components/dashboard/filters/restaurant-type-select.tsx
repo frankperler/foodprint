@@ -7,17 +7,27 @@ import { filterContext } from '../../../contexts/filters-contexts';
 const options = [
   {
     value: 1,
-    label: "Vegetarian"
+    label: "Vegan"
   },
   {
     value: 2,
-    label: "Italian"
+    label: "Vegetarian"
   },
   {
     value: 3,
     label: "Bio"
   },
+  {
+    value: 4,
+    label: "Asian"
+  },
+  {
+    value: 5,
+    label: "Mexican"
+  },
 ]
+
+// Vegan, Vegetarian, Asian, Bio, Mexican, Italian, Greek, Chinese, Japanese, Thai, Indian, Fast - Food
 
 export const RestaurantTypeSelect: React.FunctionComponent = () => {
 
