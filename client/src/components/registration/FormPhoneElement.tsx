@@ -7,7 +7,7 @@ export const FormPhoneElement = (): JSX.Element => {
   return (
     <>
       <Label>Phone</Label>
-      <EstablishmentInput></EstablishmentInput>
+      <EstablishmentInput type="text" name="phone"></EstablishmentInput>
     </>
   )
 }

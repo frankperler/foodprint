@@ -10,11 +10,11 @@ export const FormSupplierElements = (): JSX.Element => {
     <div>
       <div>
         <Label>Supplier name</Label>
-        <EstablishmentInput></EstablishmentInput>
+        <EstablishmentInput type="text" name="supplierName"></EstablishmentInput>
       </div>
       <div>
         <Label>Business address</Label>
-        <EstablishmentInput></EstablishmentInput>
+        <EstablishmentInput type="text" name="businessAddress"></EstablishmentInput>
       </div>
     </div>
   )
