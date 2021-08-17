@@ -3,7 +3,7 @@ import { Navbutton } from '../../navbar/navbar-styled-components/navbutton'
 import { Title } from '../../navbar/navbar-styled-components/title'
 import { Navcontainer } from '../../navbar/navbar-styled-components/navcontainer'
 import { Container } from '../../navbar/navbar-styled-components/container'
-import { Avatar, UserName } from '.././profile-styled-components/profile.style';
+import { Avatar, ProfileNav, UserName } from '.././profile-styled-components/profile.style';
 import { ProfileRestaurantDashboard } from './ProfileRestaurantDashboard';
 
 export const ProfileRestaurantContainer = (): JSX.Element => {
@@ -11,14 +11,13 @@ export const ProfileRestaurantContainer = (): JSX.Element => {
 
   return (
     <>
-  <Container containerHeight="4rem">
+  <Container containerHeight="auto">
     <Navcontainer>
       <Title><strong>food</strong>print.</Title>
-      <div>
-        <UserName>Restaurant</UserName>
+      <ProfileNav>
+        <UserName>Supplier</UserName>
         <Avatar></Avatar>
-        <Navbutton>Log out</Navbutton>
-      </div>
+      </ProfileNav>
     </Navcontainer >
   </Container >
   <ProfileRestaurantDashboard></ProfileRestaurantDashboard>

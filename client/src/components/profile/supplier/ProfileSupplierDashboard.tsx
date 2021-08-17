@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react'
-import { FilterArea } from '../../dashboard/filters/filters-area'
-import { GridContainer } from '../profile-styled-components/profile.style'
+import { InfoArea, InteriorArea } from '../profile-styled-components/profile.style';
+import { ButtonWrap, EcoLeaf, EditProfileButton, GridContainer } from '../profile-styled-components/profile.style'
 import { filterReducers, filterState } from '../../../reducers/filters-reducers'
 import { filterContext } from '../../../contexts/filters-contexts'
 import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
-import { Description } from '../Description'
-import { RestaurantList } from '../restaurant/RestaurantList'
+import { SupplierDescription } from './SupplierDescription'
+import { RestaurantList } from './RestaurantList'
+import { Technology } from './Technology'
+import { ProductsList } from './ProductsList'
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
@@ -13,18 +15,30 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
   return (
     <GridContainer>
-      <Photo></Photo>
+      <Photo>Photo</Photo>
       <filterContext.Provider value={{ state, dispatch }}>
-        <FilterArea>
+        <InfoArea>
+          <InteriorArea>
           <div>Supplier name</div>
           <div>City</div>
-          <div>Eco score</div>
+          <div>
+            <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
+            <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
+            <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
+            <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
+            <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
+          </div>
           <div>Tons of CO2 emissions/month</div>
-          <button>Edit profile</button>
-        </FilterArea>
+          </InteriorArea>
+        </InfoArea>
       </filterContext.Provider>
       <ProfileDetails>
-        <Description></Description>
+        <ButtonWrap>
+          <EditProfileButton>Edit profile</EditProfileButton>
+        </ButtonWrap>
+        <SupplierDescription></SupplierDescription>
+        <Technology></Technology>
+        <ProductsList></ProductsList>
         <RestaurantList></RestaurantList>
       </ProfileDetails>
     </GridContainer>
