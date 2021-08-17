@@ -15,7 +15,7 @@ export const Photo = styled.div`
 
 export const ProfileDetails = styled.section`
   grid-area: list;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `
 
 export const DescriptionCard = styled.div`
@@ -105,12 +105,19 @@ export const EditProfileButton = styled.button`
   margin-bottom: 2em;
   margin-right: 2em;
 `
+export const InfoHeader = styled.h4`
+
+`
 
 export const ProfileNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 10rem;
+`
+
+export const EcoLeafContainer = styled.div`
+  width: auto;
 `
 
 export const EcoLeaf = styled.img`

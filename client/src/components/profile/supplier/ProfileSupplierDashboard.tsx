@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { InfoArea, InteriorArea } from '../profile-styled-components/profile.style';
+import { EcoLeafContainer, InfoArea, InfoHeader, InteriorArea } from '../profile-styled-components/profile.style';
 import { ButtonWrap, EcoLeaf, EditProfileButton, GridContainer } from '../profile-styled-components/profile.style'
 import { filterReducers, filterState } from '../../../reducers/filters-reducers'
 import { filterContext } from '../../../contexts/filters-contexts'
@@ -8,10 +8,15 @@ import { SupplierDescription } from './SupplierDescription'
 import { RestaurantList } from './RestaurantList'
 import { Technology } from './Technology'
 import { ProductsList } from './ProductsList'
+import { Popup } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css'
+
+
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
   const [state, dispatch] = useReducer(filterReducers, filterState)
+
 
   return (
     <GridContainer>
@@ -19,16 +24,16 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       <filterContext.Provider value={{ state, dispatch }}>
         <InfoArea>
           <InteriorArea>
-          <div>Supplier name</div>
-          <div>City</div>
-          <div>
+          <InfoHeader>Supplier name</InfoHeader>
+          <InfoHeader>City</InfoHeader>
+          <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={          <EcoLeafContainer>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
-          </div>
-          <div>Tons of CO2 emissions/month</div>
+          </EcoLeafContainer>} />
+          <InfoHeader>Tons of CO2/mo</InfoHeader>
           </InteriorArea>
         </InfoArea>
       </filterContext.Provider>

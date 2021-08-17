@@ -7,7 +7,7 @@ export const RestaurantList = (): JSX.Element => {
 
   return (
     <SupplierContainer>
-      <h3>My Restaurants</h3>
+      <h3>Who I'm selling to...</h3>
       <ButtonWrap>
       <AddPartnerButton>Add restaurant</AddPartnerButton>
       </ButtonWrap>
