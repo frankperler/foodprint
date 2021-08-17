@@ -1,6 +1,17 @@
 'use strict';
 
+const db = require('../../models/index');
 
+exports.addUser = async (req, res) => {
+  try {
+    req.body = await db.Restaurant.create({
+      
+    });
+  }
+  catch (e) {
+    res.status = 500;
+  }
+} 
 
 
 

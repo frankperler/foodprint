@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const restaurant = sequelize.define('Restaurant', {
+  const Restaurant = sequelize.define('Restaurant', {
   
     place_id: {
       type: DataTypes.STRING,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       // defaultValue: ""
     },
-    rest_phone_number: { // mock
+    rest_phone_number: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     rest_meal_type: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
     },
     rest_rating: {
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     rest_description: { // mocked
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     rest_picture: { // mocked
@@ -67,6 +67,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     }
   })
+
+  Restaurant.associate = (models) => {
+    
+    Restaurant.belongsTo(models.User, {
+      foreignKey: 'UserId'
+    });
+
+    // association to suppliers
+  }
   
-  return restaurant;
+  return Restaurant;
 }

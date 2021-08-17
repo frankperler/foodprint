@@ -29,9 +29,9 @@ for (let file of files) {
   }
 }
 
-// for (const model in db) {
-//   if (db[model].associate) db[model].associate(db);
-// }
+for (const model in db) {
+  if (db[model].associate) db[model].associate(db);
+}
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

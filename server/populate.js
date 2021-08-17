@@ -1,6 +1,5 @@
 const fetch = require('cross-fetch');
 const { Restaurant } = require('./models/index');
-// const  = require('./models/restaurant');
 require('dotenv').config();
 const baseUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
 const baseUrlTwo = 'https://maps.googleapis.com/maps/api/place/details/json?';
@@ -9,14 +8,10 @@ const defaultLocation = 'Berlin';
 // eslint-disable-next-line no-undef
 const apiKey = process.env.API_KEY;
 
-// eslint-disable-next-line no-unused-vars
-
-
-
+//mock meal_types and types
 const mealTypes = ["Breakfast", "Lunch", "Dinner"];
 const foodTypes = ["Café", "Vegan", "Vegetarian", "Bio", "Fast-Food"]
 const foodNationalities = ["Asian", "Mexican", "Italian", "Greek", "Chinese", "Japanese", "Thai", "Indian" ];
-// const picUrl = "https://source.unsplashk.com/UhzsZdnV38I/1600x900";
 
 //mock pictures
 const veggie = ["IGfIGP5ONV0", "kPLccIMtS8E","HlNcigvUi4Q","J04BD4ysoh8"]; 
@@ -27,9 +22,8 @@ const mexican = ["JiRSy0GfqPA","Y0zbn9lPCEU","6WHl6T-fxU0","otQ6orzFTlk","NMBeU9
 const indian = ["eEWlcfydzQ4","WxePxgrIJbQ","g1qlhFbWPKg"];
 const fast_food = ["J9lD6FS6_cs","8l8Yl2ruUsg","3tL4vtrFqTQ"]; 
 
-//mock description 
+//mock descriptions 
 const description = ["Pop-up branch of Brammibal's appearing at the Potsdamer Platz from fall-2018. Features a daily assortment of freshly made donuts. Serves direct trade coffee and espresso drinks, and savory sandwiches with fillings like coconut-bacon, hummus, and pesto.", "The 2nd branch of Vedang opened 2019 in the mall Alexa. Serves a variety of plant-based burgers including the beyond burger, plus drinks like iced tea and sparkling water, sweets like soft serve ice cream, and sides like nuggets, fries, and chili cheese fries. Order at the counter, and enjoy your meal at the food court's shared seating. Note August 2021: Many places in Germany may now offer limited indoor dining and outdoor dining. Call ahead as availability, hours, and rules may vary.", "Delicious buffet restaurant serving 14 dishes cooked fresh each day, with approximately 90% being vegan. Buffet and salad - eat as much as you like for one price or single plates available. Desserts are made to order. Also offers freshly made juices, bio coffee, tea, fresh breads and focaccia. Located at a 3-minute walk from Sbahn-Beusselstrasse and U9-Bhf Birkenstrasse. Confirmed open, Jul 2021. Note August 2021: Many places in Germany may now offer limited indoor dining and outdoor dining. Call ahead as availability, hours, and rules may vary."]
-
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -49,10 +43,11 @@ const restaurants = [
   'El Amigo Taqueria'
 ];
 
+
 const populate = async () => {
   try {
 
-    for (let i = 3; i < 7; i++) {
+    for (let i = 0; i < restaurants.length; i++) {
       const mockRestaurant = {};
 
       // console.log('api key', apiKey)
@@ -76,7 +71,7 @@ const populate = async () => {
       
       // console.log(oneOrTwo)
       let mealTypesSet = new Set();
-      for(i = 0; i < 3; i++) {
+      for(let j = 0; j < 3; j++) {
         mealTypesSet.add(getRandomValue(mealTypes));
         }
     
@@ -103,7 +98,7 @@ const populate = async () => {
       }
       mockRestaurant.rest_name = restaurant.candidates[0].name
       mockRestaurant.rest_rating = restaurant.candidates[0].rating
-      mockRestaurant.rest_eco_score = Number(Math.random()*5).toFixed(2);
+      mockRestaurant.rest_eco_score = +(Math.random()*5).toFixed(2);
       mockRestaurant.rest_description = getRandomValue(description);
       
       
@@ -181,8 +176,8 @@ const populate = async () => {
       }
 
       console.log(mockRestaurant)
-      console.log('---------------------------')
-      // await Restaurant.create(mockRestaurant);
+      console.log('---------------------------', i)
+      await Restaurant.create(mockRestaurant);
     }
   }
   catch (err) {

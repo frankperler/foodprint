@@ -1,14 +1,12 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) => sequelize.define('Supplier', {
+module.exports = (sequelize, DataTypes) => {
+  const Supplier = sequelize.define('Supplier', {
+
     sup_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // sup_products: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING) , // *** careful with this
-    //   allowNull: false,
-    // },
     sup_address: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,30 +16,48 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Supplier', {
       allowNull: true,
     },
     sup_lat: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.FLOAT,
         allowNull: false,
     },
     sup_lng: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    // opening_hours: {
-    //   type: DataTypes.
-    // },
-    website: {
+    sup_website: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     sup_eco_score: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     sup_description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     sup_picture: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    sup_greenTech: {
+      type: DataTypes.ARRAY(DataTypes.STRING) ,
+      allowNull: true,
+    },
+    sup_energy: {
+      type: DataTypes.ARRAY(DataTypes.STRING) ,
+      allowNull: true,
+    },
+    sup_vehicles: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     }
   })
+
+  Supplier.associate = (models) => {
+    Supplier.hasMany(models.Product, {
+      foreignKey: 'ProductId'
+    });
+  }
+
+  return Supplier;
+}
