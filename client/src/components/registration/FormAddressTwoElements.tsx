@@ -2,6 +2,7 @@ import React from 'react'
 import { AddressTwoInput, Label, AddressTwoWrapper } from './registration-styled-components/FormRegister.style';
 
 
+
 export const FormAddressTwoElements = (): JSX.Element => {
 
 
@@ -9,11 +10,11 @@ export const FormAddressTwoElements = (): JSX.Element => {
     <AddressTwoWrapper>
       <div>
         <Label>City</Label>
-        <AddressTwoInput></AddressTwoInput>
+        <AddressTwoInput type="text" name="city"></AddressTwoInput>
       </div>
       <div>
         <Label>Zip code</Label>
-        <AddressTwoInput></AddressTwoInput>
+        <AddressTwoInput type="text" name="zip"></AddressTwoInput>
       </div>
     </AddressTwoWrapper>
   )

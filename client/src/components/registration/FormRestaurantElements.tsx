@@ -8,11 +8,11 @@ export const FormRestaurantElements = (): JSX.Element => {
     <div>
       <div>
         <Label>Restaurant name</Label>
-        <EstablishmentInput></EstablishmentInput>
+        <EstablishmentInput type="text" name="restaurantName"></EstablishmentInput>
       </div>
       <div>
-        <Label>Resturant address</Label>
-        <EstablishmentInput></EstablishmentInput>
+        <Label>Restaurant address</Label>
+        <EstablishmentInput type="text" name="restaurantAddress"></EstablishmentInput>
       </div>
     </div>
   )
