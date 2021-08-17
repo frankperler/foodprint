@@ -3,7 +3,7 @@ import { restaurantContext } from '../../../contexts/restaurants-contexts';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { ResultsCard } from './results-card';
 import { ListContainer } from './results-list-container';
-import { ListTitle } from './list-title';
+import { ListTitle } from './results-title';
 
 
 export const ResultsLists: React.FunctionComponent = () => {

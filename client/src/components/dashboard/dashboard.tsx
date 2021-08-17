@@ -11,6 +11,8 @@ import { MealTypeSelect } from './filters/meal-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
 import { ResultsArea } from './results/results-area'
 import { ResultsLists } from './results/results-list'
+import { TopArea } from './top-choices/top-area'
+import { TopList } from './top-choices/top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
 import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
@@ -51,6 +53,9 @@ export const Dashboard: React.FunctionComponent = () => {
           <ResultsArea>
             <ResultsLists />
           </ResultsArea>
+          <TopArea>
+            <TopList />
+          </TopArea>
         </GridContainer>
       </filterContext.Provider>
     </restaurantContext.Provider>
