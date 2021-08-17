@@ -9,7 +9,7 @@ export const RestaurantList = (): JSX.Element => {
   return (
     <SupplierContainer>
       <ButtonWrap>
-      <AddPartnerButton>Add restaurant</AddPartnerButton>
+        <AddPartnerButton>Add restaurant</AddPartnerButton>
       </ButtonWrap>
     </SupplierContainer>
   )

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbutton } from '../../navbar/navbar-styled-components/navbutton'
+import { HomePageButton } from '../../navbar/navbar-styled-components/homepagebutton';
 import { Title } from '../../navbar/navbar-styled-components/title'
 import { Navcontainer } from '../../navbar/navbar-styled-components/navcontainer'
 import { Container } from '../../navbar/navbar-styled-components/container'
@@ -11,17 +11,17 @@ export const ProfileRestaurantContainer = (): JSX.Element => {
 
   return (
     <>
-  <Container containerHeight="4rem">
-    <Navcontainer>
-      <Title><strong>food</strong>print.</Title>
-      <div>
-        <UserName>Restaurant</UserName>
-        <Avatar></Avatar>
-        <Navbutton>Log out</Navbutton>
-      </div>
-    </Navcontainer >
-  </Container >
-  <ProfileRestaurantDashboard></ProfileRestaurantDashboard>
-  </>
+      <Container containerHeight="4rem">
+        <Navcontainer>
+          <Title><strong>food</strong>print.</Title>
+          <div>
+            <UserName>Restaurant</UserName>
+            <Avatar></Avatar>
+            <HomePageButton>Log out</HomePageButton>
+          </div>
+        </Navcontainer >
+      </Container >
+      <ProfileRestaurantDashboard></ProfileRestaurantDashboard>
+    </>
   )
 }
