@@ -1,16 +1,27 @@
 'use strict';
 
-const Express = require('express');
-const app = Express();
+const express = require('express');
+const app = express();
+const cors = require('cors');
 
-const db = require('/models/index');
-const router = require ('/router.js');
+const router = require('./router');
+const PORT = process.env.PORT || 3001;
+const populate = require('./populate');
 
-app.use(router.routes());
+const db = require('./models/index');
+
+
+
+app.use(router);
 
 (async () => {
-  await db.sequelize.sync();
-  const port = 3000;
-  app.listen(port);
-  console.log(`Server listening on port ${port} 🚀`) // eslint-disable-line no-console
+  try {
+    await db.sequelize.sync();
+  }
+  catch (e) {
+    console.log('ERROR: ', e)
+  }
+  app.listen(PORT);
+  console.log(`Server listening on port ${PORT} 🚀`) // eslint-disable-line no-console
 })();
+
