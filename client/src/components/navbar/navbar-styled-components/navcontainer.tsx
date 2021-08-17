@@ -7,6 +7,6 @@ export const Navcontainer = styled.div`
   align-items: center;
   background-color: white;
   margin: auto;
-  width: 65vw;
+  width: 75vw;
   height: 4rem;
 `

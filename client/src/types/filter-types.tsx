@@ -1,4 +1,4 @@
-export type restaurantType = {
+export type dropdownType = {
   value: number
   label: string
 }
@@ -6,18 +6,13 @@ export type restaurantType = {
 export type filterTypes = {
   ecoScore: number,
   distance: number,
-  restaurantType: string[],
-  mealType: string[],
-  foodType: string[],
+  restaurantType?: string[],
+  mealType?: string[],
+  foodType?: string[],
 }
 
 export type filterActionArray = {
-  type: 'meal-type-change' | 'food-type-change',
-  payload: string[];
-}
-
-export type filterActionRestType = {
-  type: 'restaurant-type-change'
+  type: 'restaurant-type-change' | 'meal-type-change' | 'food-type-change',
   payload: string[];
 }
 
@@ -26,4 +21,4 @@ export type filterActionNumber = {
   payload: number;
 }
 
-export type filterAction = filterActionNumber | filterActionArray | filterActionRestType
+export type filterAction = filterActionNumber | filterActionArray
