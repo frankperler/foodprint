@@ -9,12 +9,12 @@ import { SuppliersList } from '../supplier/SuppliersList'
 
 export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
-  const [state, dispatch] = useReducer(filterReducers, filterState)
+  const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
   return (
     <GridContainer>
       <Photo></Photo>
-      <filterContext.Provider value={{ state, dispatch }}>
+      <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
         <FilterArea>
           <div>Restaurant name</div>
           <div>City</div>

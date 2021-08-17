@@ -8,7 +8,7 @@ export const SliderStyles = styled.div`
   align-items: center;
   color: #888;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  flex-shrink:1;
 
   .value {
     font-size: 0.8rem;
@@ -41,16 +41,16 @@ export const SliderStyles = styled.div`
 
 export const EcoScoreSlider: React.FunctionComponent = () => {
 
-  const { state, dispatch } = useContext(filterContext)
+  const { stateFilter, dispatchFilter } = useContext(filterContext)
 
   const handleChange = (e: { target: { value: string, } }) => {
-    dispatch({ type: 'eco-score-change', payload: +e.target.value })
+    dispatchFilter({ type: 'eco-score-change', payload: +e.target.value })
   }
 
   return (
     <SliderStyles>
-      <div className="value">Eco-Score: {state.ecoScore}</div>
-      <input className="slider" type="range" min={0} max={5} step="0.1" value={state.ecoScore} onChange={handleChange} />
+      <div className="value">Eco-Score: {stateFilter.ecoScore}</div>
+      <input className="slider" type="range" min={0} max={5} step="0.1" value={stateFilter.ecoScore} onChange={handleChange} />
     </SliderStyles>
   )
 }

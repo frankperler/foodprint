@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const MapArea = styled("div") <{ gridArea?: string }>`
+export const MapArea = styled("div")`
   grid-area: map;
-  height: 15rem;
-  width: 15rem;
+  justify-items: stretch;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   border-radius: 7px;
   box-sizing: border-box;
