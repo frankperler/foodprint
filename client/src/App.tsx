@@ -12,7 +12,7 @@ import ChooseUserType from './components/registration/ChooseUserType'
 export const App: React.FunctionComponent = () => {
   return (
     <div>
-      <RegistrationContainer></RegistrationContainer>
+      <ProfileSupplierContainer></ProfileSupplierContainer>
     </div>
   )
 }
