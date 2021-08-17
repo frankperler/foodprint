@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const ResultsArea = styled("div")`
   grid-area: list;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-items: stretch;
-  height: 55rem;
   overflow: hidden;
   flex-grow: 1;
   background-color: white;

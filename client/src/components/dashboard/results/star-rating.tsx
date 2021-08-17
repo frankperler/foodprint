@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { restaurantContext } from '../../../contexts/restaurants-contexts';
-
+import { restaurantTypes } from '../../../types/restaurant-types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,10 +14,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+interface Props {
+  restaurant: restaurantTypes
+}
 
-export const StarRating: React.FunctionComponent = ({ restaurant }) => {
+export const StarRating: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
   const classes = useStyles();
-  const { stateRestaurant, dispatchRestaurant } = useContext(restaurantContext)
 
   return (
     <div className={classes.root}>
