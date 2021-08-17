@@ -5,7 +5,7 @@ export const CardContainer = styled("div") <{
 }>`
   width: 14rem;
   height: 17rem;
-  margin: 3rem 1rem;
+  margin: 0.5rem 1.5rem;
   display: flex;
   flex-direction:column;
   align-items: flex-start;
