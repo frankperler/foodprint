@@ -71,11 +71,20 @@ const populate = async () => {
 
       mockRestaurant.place_id = restaurant.candidates[0].place_id
       mockRestaurant.rest_address = restaurant.candidates[0].formatted_address
-      mockRestaurant.rest_meal_type = getRandomValue(mealTypes);
+     
+      //mocked meal_type 
+      
+      // console.log(oneOrTwo)
+      let mealTypesSet = new Set();
+      for(i = 0; i < 3; i++) {
+        mealTypesSet.add(getRandomValue(mealTypes));
+        }
+    
+      mockRestaurant.rest_meal_type = Array.from(mealTypesSet);
+      console.log("-----meal_types: ", mockRestaurant.rest_meal_type)
 
       // mocked types array
-      const oneOrTwo = (Math.floor(Math.random() * 20));
-      // console.log(oneOrTwo)
+      const oneOrTwo = (Math.floor(Math.random() * 11));
       let typesArr = [];
       if(oneOrTwo % 2 == 0) {
         typesArr.push(getRandomValue(foodNationalities));
@@ -94,7 +103,7 @@ const populate = async () => {
       }
       mockRestaurant.rest_name = restaurant.candidates[0].name
       mockRestaurant.rest_rating = restaurant.candidates[0].rating
-      mockRestaurant.rest_eco_score = (Math.random()*5).toFixed(2);
+      mockRestaurant.rest_eco_score = Number(Math.random()*5).toFixed(2);
       mockRestaurant.rest_description = getRandomValue(description);
       
       

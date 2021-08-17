@@ -4,8 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const db = {};
+const user = process.env.USER;
+const password = process.env.PASSWORD;
 
-const sequelize = new Sequelize('foodprint_dev', 'andres', 'aolive95', {
+const sequelize = new Sequelize('foodprint_dev', `${user}`, `${password}`, {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,
