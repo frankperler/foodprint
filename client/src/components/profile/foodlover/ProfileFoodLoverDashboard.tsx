@@ -4,8 +4,7 @@ import { GridContainer } from '../profile-styled-components/profile.style'
 import { filterReducers, filterState } from '../../../reducers/filters-reducers'
 import { filterContext } from '../../../contexts/filters-contexts'
 import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
-import { Description } from '../Description'
-import { RestaurantList } from '../restaurant/RestaurantList'
+import { RestaurantList } from '../supplier/RestaurantList'
 
 export const ProfileFoodLoverDashboard: React.FunctionComponent = () => {
 
@@ -20,7 +19,6 @@ export const ProfileFoodLoverDashboard: React.FunctionComponent = () => {
         </FilterArea>
       </filterContext.Provider>
       <ProfileDetails>
-        <Description></Description>
         <RestaurantList></RestaurantList>
       </ProfileDetails>
     </GridContainer>

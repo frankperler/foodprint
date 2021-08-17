@@ -6,7 +6,7 @@ import { Searchbar } from './components/searchbar/searchbar'
 
 export const App: React.FunctionComponent = () => {
   return (
-    <div>
+  <div>
       <Navbar />
       <Searchbar />
       <Dashboard />
