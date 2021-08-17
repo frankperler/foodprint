@@ -1,21 +1,20 @@
 import { useContext } from 'react';
 import { restaurantContext } from '../../../contexts/restaurants-contexts';
 import { ResultsCardStyles } from './results-card-styles';
+import { StarRating } from './star-rating'
+import { CardContainer } from './results-card-container';
+import { restaurantTypes } from '../../../types/restaurant-types';
 
-export const ResultsCard: React.FunctionComponent = () => {
+export const ResultsCard: React.FunctionComponent = ({ restaurant: restaurantTypes }) => {
 
   const { stateRestaurant, dispatchRestaurant } = useContext(restaurantContext)
 
-  // const handleChange = (e: { target: { value: string; } }) => {
-  //   dispatchFilter({ type: 'distance-change', payload: +e.target.value })
-  // }
-
   return (
-    <ResultsCardStyles backgroundImg={stateRestaurant[0].rest_picture}>
-      <div className="name">{stateRestaurant[0].rest_name}</div>
-      <div className="foodtype">{stateRestaurant[0].rest_types[0]}</div>
-      <div className="price">{stateRestaurant[0].rest_price_level}</div>
-      <div className="eco-score">{stateRestaurant[0].rest_eco_score}</div>
-    </ResultsCardStyles >
+    <CardContainer>
+      <ResultsCardStyles backgroundImg={restaurant.rest_picture} />
+      <div className="name">{restaurant.rest_name}</div>
+      <div className="foodtype">{restaurant.rest_types[0]}</div>
+      <StarRating />
+    </CardContainer>
   )
 }

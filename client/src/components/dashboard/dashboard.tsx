@@ -49,9 +49,7 @@ export const Dashboard: React.FunctionComponent = () => {
             </ButtonStyles>
           </FilterArea>
           <ResultsArea>
-            <ResultsLists>
-
-            </ResultsLists>
+            <ResultsLists />
           </ResultsArea>
         </GridContainer>
       </filterContext.Provider>
