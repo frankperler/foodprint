@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ResultsArea = styled("div")`
   grid-area: list;
+  display: flex;
   justify-items: stretch;
   height: 55rem;
   overflow: hidden;

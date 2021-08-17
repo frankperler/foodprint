@@ -41,12 +41,12 @@ export const DropdownStyles = styled.div`
 
 export const MealTypeSelect: React.FunctionComponent = () => {
 
-  const { dispatch } = useContext(filterContext)
+  const { dispatchFilter } = useContext(filterContext)
   const [arrayLabel, setArrayLabel] = useState<number[]>([]);
 
   const handleChange = (e: dropdownType[]) => {
     setArrayLabel(Array.isArray(e) ? e.map(x => x.value) : []);
-    dispatch({ type: 'restaurant-type-change', payload: Array.isArray(e) ? e.map(x => x.label) : [] })
+    dispatchFilter({ type: 'restaurant-type-change', payload: Array.isArray(e) ? e.map(x => x.label) : [] })
   }
 
   return (

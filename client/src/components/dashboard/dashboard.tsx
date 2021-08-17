@@ -10,8 +10,11 @@ import { RestaurantTypeSelect } from './filters/restaurant-type-select'
 import { MealTypeSelect } from './filters/meal-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
 import { ResultsArea } from './results/results-area'
+import { ResultsLists } from './results/results-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
+import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
+import { restaurantContext } from '../../contexts/restaurants-contexts'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -24,29 +27,34 @@ export const ButtonStyles = styled.div`
 
 export const Dashboard: React.FunctionComponent = () => {
 
-  const [state, dispatch] = useReducer(filterReducers, filterState)
+  const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
+  const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
   return (
-    <filterContext.Provider value={{ state, dispatch }}>
-      <GridContainer>
-        <MapArea>
-          <Map />
-        </MapArea>
-        <FilterArea>
-          <EcoScoreSlider />
-          <DistanceSlider />
-          <RestaurantTypeSelect />
-          <MealTypeSelect />
-          <ButtonStyles>
-            <HomePageButton>
-              Search!
-            </ HomePageButton>
-          </ButtonStyles>
-        </FilterArea>
-        <ResultsArea>
+    <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
+      <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
+        <GridContainer>
+          <MapArea>
+            <Map />
+          </MapArea>
+          <FilterArea>
+            <EcoScoreSlider />
+            <DistanceSlider />
+            <RestaurantTypeSelect />
+            <MealTypeSelect />
+            <ButtonStyles>
+              <HomePageButton>
+                Search!
+              </ HomePageButton>
+            </ButtonStyles>
+          </FilterArea>
+          <ResultsArea>
+            <ResultsLists>
 
-        </ResultsArea>
-      </GridContainer>
-    </filterContext.Provider>
+            </ResultsLists>
+          </ResultsArea>
+        </GridContainer>
+      </filterContext.Provider>
+    </restaurantContext.Provider>
   )
 }
