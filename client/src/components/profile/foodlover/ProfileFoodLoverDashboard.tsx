@@ -13,11 +13,11 @@ export const ProfileFoodLoverDashboard: React.FunctionComponent = () => {
   return (
     <GridContainer>
       <Photo></Photo>
-      <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
+      {/* <filterContext.Provider value={{ stateFilter, dispatchFilter }}> */}
         <FilterArea>
           <button>Edit profile</button>
         </FilterArea>
-      </filterContext.Provider>
+      {/* </filterContext.Provider> */}
       <ProfileDetails>
         <RestaurantList></RestaurantList>
       </ProfileDetails>

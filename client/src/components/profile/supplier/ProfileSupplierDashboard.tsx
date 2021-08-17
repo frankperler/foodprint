@@ -21,7 +21,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
   return (
     <GridContainer>
       <Photo>Photo</Photo>
-      <filterContext.Provider value={{ state, dispatch }}>
+      {/* <filterContext.Provider value={{ state, dispatch }}> */}
         <InfoArea>
           <InteriorArea>
           <InfoHeader>Supplier name</InfoHeader>
@@ -36,7 +36,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
           <InfoHeader>Tons of CO2/mo</InfoHeader>
           </InteriorArea>
         </InfoArea>
-      </filterContext.Provider>
+      {/* </filterContext.Provider> */}
       <ProfileDetails>
         <ButtonWrap>
           <EditProfileButton>Edit profile</EditProfileButton>

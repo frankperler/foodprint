@@ -14,13 +14,13 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
   return (
     <GridContainer>
       <Photo></Photo>
-      <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
+      {/* <filterContext.Provider value={{ stateFilter, dispatchFilter }}> */}
         <FilterArea>
           <div>Restaurant name</div>
           <div>City</div>
           <div>Restaurant Eco score</div>
         </FilterArea>
-      </filterContext.Provider>
+      {/* </filterContext.Provider> */}
       <ProfileDetails>
         <ButtonWrap>
           <EditProfileButton>Edit profile</EditProfileButton>

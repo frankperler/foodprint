@@ -8,23 +8,8 @@ import { ProfileSupplierDashboard } from './ProfileSupplierDashboard';
 
 export const ProfileSupplierContainer = (): JSX.Element => {
 
-
   return (
     <>
-<<<<<<< HEAD
-      <Container containerHeight="4rem">
-        <Navcontainer>
-          <Title><strong>food</strong>print.</Title>
-          <div>
-            <UserName>Supplier</UserName>
-            <Avatar></Avatar>
-            <HomePageButton>Log out</HomePageButton>
-          </div>
-        </Navcontainer >
-      </Container >
-      <ProfileSupplierDashboard></ProfileSupplierDashboard>
-    </>
-=======
   <Container containerHeight="auto">
     <Navcontainer>
       <Title><strong>food</strong>print.</Title>
@@ -36,6 +21,5 @@ export const ProfileSupplierContainer = (): JSX.Element => {
   </Container >
   <ProfileSupplierDashboard></ProfileSupplierDashboard>
   </>
->>>>>>> profile
   )
 }
