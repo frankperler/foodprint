@@ -7,10 +7,16 @@ export const UserName = styled.h3`
 
 export const Photo = styled.div`
   display: block;
-  border: 1px solid black;
-  width: 16rem;
-  height: 16rem;
+  width: 28rem;
+  height: 24rem;
   grid-area: photo;
+`
+
+export const RestoCover = styled.img`
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
 `
 
 export const ProfileDetails = styled.section`
@@ -19,10 +25,17 @@ export const ProfileDetails = styled.section`
 `
 
 export const DescriptionCard = styled.div`
-  margin: 2rem auto;
-  border: 1px solid black;
+  margin: 0 auto 2rem auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 75%;
-  height: 4rem;
+  height: auto;
+  padding: 2rem;
+`
+
+export const DescriptionText = styled.div`
+  margin-top: 2rem;
+  font-size: 16px;
+  line-height: 1.6;
 `
 
 export const GridContainer = styled("div")`
@@ -36,19 +49,22 @@ export const GridContainer = styled("div")`
   ;
   height: 100vh;
   width: 65vw;
-  background-color: whitesmoke;
-  margin: auto;
+  background-color: white;
+  margin: 4rem auto 0 auto;
 `
 
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: filters;
-  height: 25rem;
-  width: 20rem;
+  height: auto;
+  width: 28rem;
   overflow: hidden;
   background-color: white;
   border-radius: 7px;
   box-sizing: border-box;
-`
+  `
+  export const InfoHeader = styled.h1`
+  
+  `
 
 export const InteriorArea = styled.div`
   padding: 4rem;
@@ -56,25 +72,16 @@ export const InteriorArea = styled.div`
 
 export const SupplierContainer = styled.div`
   margin: 2rem auto;
-  border: 1px solid black;
+  padding: 1.2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 75%;
   height: auto;
 `
 
-export const AddPartnerButton = styled.button`
-  display: block;
-  padding: 0.8em;
-  width: 14rem;
-  height: auto;
-  font-size: 18px;
-  border: 1px solid #84DCC6;
-  color: black;
-  background-color: white;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 0.8em;
-  margin-bottom: 1em;
+export const InteriorSupplierContainer = styled.div`
+  padding: 1.2rem;
 `
+
 
 export const Avatar = styled.div`
   border-radius: 100px;
@@ -90,24 +97,6 @@ export const ButtonWrap = styled.div`
   justify-content: flex-end;
 `
 
-export const EditProfileButton = styled.button`
-  display: block;
-  padding: 0.8em;
-  width: 14rem;
-  height: auto;
-  font-size: 18px;
-  border: 1px solid #84DCC6;
-  color: black;
-  background-color: white;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 0.8em;
-  margin-bottom: 2em;
-  margin-right: 2em;
-`
-export const InfoHeader = styled.h4`
-
-`
 
 export const ProfileNav = styled.div`
   display: flex;
@@ -132,6 +121,54 @@ export const RestoImg = styled.img`
   margin-top: 1.2rem;
 `
 
+export const SupplierContainerImg = styled.div`
+  height: 12rem;
+`
+
+export const SupplierImg = styled.img`
+  display: block;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+`
+
+export const SupplierCardGrid = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  margin: 0.6rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+`
+
+export const SupplierInfo = styled.div`
+
+`
+
+export const AddSupplier = styled.div`
+  vertical-align: middle;
+  cursor: pointer;
+`
+
+export const EditDescription = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+` 
+
+export const SupplierInfoInterior = styled.div`
+  padding: 1.2rem;
+`
+
+export const SupplierListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  margin: 4rem auto;
+`
+
 export const RestoListContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -139,16 +176,32 @@ export const RestoListContainer = styled.div`
   width: 95%;
 `
 
+export const TechnologyRibbons = styled.div`
+  display: flex;
+  justify-content: space-around;
+`
+
 export const TechnologyContainer = styled.div`
   margin: 2rem auto;
-  border: 1px solid black;
+  padding: 1.2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 75%;
-  height: 8rem;
+  height: auto;
+`
+
+export const EnergySourceGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const TechChoiceGrid = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
 
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
-  border: 1px solid black;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 75%;
   height: 8rem;
 `

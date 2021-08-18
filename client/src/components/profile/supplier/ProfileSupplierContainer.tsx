@@ -14,7 +14,7 @@ export const ProfileSupplierContainer = (): JSX.Element => {
     <Navcontainer>
       <Title><strong>food</strong>print.</Title>
       <ProfileNav>
-        <UserName>Supplier</UserName>
+        <UserName>Username</UserName>
         <Avatar></Avatar>
       </ProfileNav>
     </Navcontainer >
