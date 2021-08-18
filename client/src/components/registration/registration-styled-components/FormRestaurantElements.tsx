@@ -1,5 +1,5 @@
 import React from 'react';
-import { EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
+import { EstablishmentInput, Label } from './FormRegister.style';
 
 
 export const FormRestaurantElements = (): JSX.Element => {

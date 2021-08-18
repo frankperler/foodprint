@@ -1,16 +1,13 @@
 import React from 'react';
-import { MouseEvent, useState } from 'react';
 import { Wrapper, Header1 } from './registration-styled-components/ChooseUserType.style';
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup } from './registration-styled-components/ButtonGroup'
 
 type Props = {
   setUserType: React.Dispatch<React.SetStateAction<string>>;
   setClickedId: React.Dispatch<React.SetStateAction<number>>;
   clickedId: number;
 }
-
 export const ChooseUserType = ({ setUserType, clickedId, setClickedId }: Props): JSX.Element => {
-
 
   return (
 
