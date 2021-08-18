@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { HomePageButton } from '../../navbar/navbar-styled-components/homepagebutton';
 import { Title } from '../../navbar/navbar-styled-components/title'
 import { Navcontainer } from '../../navbar/navbar-styled-components/navcontainer'
 import { Container } from '../../navbar/navbar-styled-components/container'
@@ -7,6 +7,7 @@ import { Avatar, ProfileNav, UserName } from '../profile-styled-components/profi
 import { ProfileSupplierDashboard } from './ProfileSupplierDashboard';
 
 export const ProfileSupplierContainer = (): JSX.Element => {
+
 
   return (
     <>
