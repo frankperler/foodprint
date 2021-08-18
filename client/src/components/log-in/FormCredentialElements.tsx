@@ -3,7 +3,6 @@ import { LogInCredentialInput, Label } from './log-in-styled-components/FormLogI
 
 export const FormCredentialElements = (): JSX.Element => {
 
-
   return (
     <div>
       <div>
