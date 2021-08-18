@@ -4,6 +4,8 @@ import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper,
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Link } from 'react-router-dom';
+import { modalInterface } from './RegistrationContainer';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -32,16 +34,16 @@ type UserRegisterForm = {
   confirmPassword: string;
 };
 
-export const FormSupplier = (): JSX.Element => {
+export const FormSupplier = ({ onCloseRegistrationModal }: modalInterface) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),
   })
 
   const onSubmit = (data: UserRegisterForm) => {
-    // console.log(JSON.stringify(data, null, 2));
+    // will need to submit data on the database for registration
 
-
+    onCloseRegistrationModal()
     reset();
   };
 
@@ -85,7 +87,9 @@ export const FormSupplier = (): JSX.Element => {
         <Label>Password confirmation</Label>
         <CredentialInput type="password" {...register('confirmPassword')} />
         <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-        <RegisterButton type="submit">Register</RegisterButton>
+        <Link to="/supplier">
+          <RegisterButton type="submit">Register</RegisterButton>
+        </Link>
       </form>
     </FormWrapper>
   )

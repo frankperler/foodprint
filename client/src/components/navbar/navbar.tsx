@@ -26,8 +26,7 @@ export const Navbar: React.FunctionComponent = () => {
   const [openLogin, setOpenLogin] = useState<boolean>(false);
 
   const onOpenRegistrationModal = () => setOpenRegistration(true);
-  const onCloseRegistrationModal = () => setOpenRegistration(false);
-
+  function onCloseRegistrationModal() { setOpenRegistration(false); }
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
@@ -38,7 +37,7 @@ export const Navbar: React.FunctionComponent = () => {
         <div>
           <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>
           <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
-            <RegistrationContainer />
+            <RegistrationContainer onCloseRegistrationModal={onCloseRegistrationModal} />
           </Modal>
 
           <HomePageButton onClick={onOpenLoginModal}>Log In!</HomePageButton>

@@ -9,16 +9,16 @@ type Props = {
   clickedId: number;
 }
 
-export const ChooseUserType = ({setUserType, clickedId, setClickedId}: Props): JSX.Element => {
+export const ChooseUserType = ({ setUserType, clickedId, setClickedId }: Props): JSX.Element => {
 
 
   return (
 
     <Wrapper>
-    <section>
+      <section>
         <Header1>I'm a...</Header1>
-      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]} clickedId={clickedId} setUserType={setUserType} setClickedId={setClickedId}></ButtonGroup>
-    </section>
+        <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]} clickedId={clickedId} setUserType={setUserType} setClickedId={setClickedId}></ButtonGroup>
+      </section>
     </Wrapper>
 
   )
