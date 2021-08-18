@@ -5,7 +5,6 @@ import { AddressTwoInput, Label, AddressTwoWrapper } from './FormRegister.style'
 
 export const FormAddressTwoElements = (): JSX.Element => {
 
-
   return (
     <AddressTwoWrapper>
       <div>

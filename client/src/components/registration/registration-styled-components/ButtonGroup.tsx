@@ -1,15 +1,16 @@
-import React from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { TypeButton } from './ChooseUserType.style';
-
-
-type Props = {
-  buttons: string[];
-  setUserType: React.Dispatch<React.SetStateAction<string>>;
-  setClickedId: React.Dispatch<React.SetStateAction<number>>;
-  clickedId: number;
+import { useState } from 'react';
+interface Props {
+  userType: string,
+  setUserType: Dispatch<SetStateAction<string>>,
+  clickedId: number,
+  setClickedId: Dispatch<React.SetStateAction<number>>
 }
 
-export const ButtonGroup = ({ buttons, setUserType, clickedId, setClickedId }: Props): JSX.Element => {
+export const ButtonGroup = ({ setUserType, clickedId, setClickedId }: Props) => {
+
+  const [buttons, setButtons] = useState(["Food lover", "Restaurant", "Supplier"])
 
   const handleUserType = (name: string) => {
     name === 'Food lover' ? setUserType('Food lover')
@@ -18,13 +19,11 @@ export const ButtonGroup = ({ buttons, setUserType, clickedId, setClickedId }: P
           : setUserType('');
   }
 
-
   const handleTypeClick = (name: string, id: number) => {
     console.log(name);
     setClickedId(id);
     handleUserType(name)
   }
-
 
   return (
     <div>

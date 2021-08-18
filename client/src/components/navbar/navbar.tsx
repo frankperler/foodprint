@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, Dispatch, SetStateAction } from 'react'
 import { HomePageButton } from './navbar-styled-components/homepagebutton'
 import { Title } from './navbar-styled-components/title'
 import { Navcontainer } from './navbar-styled-components/navcontainer'
@@ -18,13 +18,19 @@ const customStyles = {
   },
 };
 
-export const Navbar: React.FunctionComponent = () => {
+interface Props {
+  userType: string,
+  setUserType: Dispatch<SetStateAction<string>>,
+  isAuth: boolean,
+  setIsAuth: Dispatch<SetStateAction<boolean>>,
+}
+
+export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
   Modal.setAppElement('#root');
 
   const [openRegistration, setOpenRegistration] = useState<boolean>(false);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
-  const [userType, setUserType] = useState<string>('');
 
   const onOpenRegistrationModal = () => setOpenRegistration(true);
   const onCloseRegistrationModal = () => setOpenRegistration(false);
@@ -38,12 +44,22 @@ export const Navbar: React.FunctionComponent = () => {
         <div>
           <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>
           <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
-            <RegistrationContainer userType={userType} setUserType={setUserType} onCloseRegistrationModal={onCloseRegistrationModal} />
+            <RegistrationContainer
+              userType={userType}
+              setUserType={setUserType}
+              onCloseRegistrationModal={onCloseRegistrationModal}
+              isAuth={isAuth}
+              setIsAuth={setIsAuth} />
           </Modal>
 
           <HomePageButton onClick={onOpenLoginModal}>Log In!</HomePageButton>
           <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
-            <FormLogIn onCloseLoginModal={onCloseLoginModal} />
+            <FormLogIn
+              userType={userType}
+              setUserType={setUserType}
+              onCloseLoginModal={onCloseLoginModal}
+              isAuth={isAuth}
+              setIsAuth={setIsAuth} />
           </Modal>
         </div>
       </Navcontainer >

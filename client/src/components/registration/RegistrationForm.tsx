@@ -1,10 +1,10 @@
+import { Dispatch, SetStateAction } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
 import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper, EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import { registrationInterface } from './RegistrationContainer';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -34,7 +34,15 @@ type UserRegisterForm = {
   confirmPassword: string;
 };
 
-export const RegistrationForm = ({ onCloseRegistrationModal, userType, setUserType }: registrationInterface) => {
+interface Props {
+  userType: string,
+  setUserType: Dispatch<SetStateAction<string>>,
+  isAuth: boolean,
+  setIsAuth: Dispatch<SetStateAction<boolean>>,
+  onCloseRegistrationModal: () => void,
+}
+
+export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth }: Props) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),
@@ -43,6 +51,7 @@ export const RegistrationForm = ({ onCloseRegistrationModal, userType, setUserTy
   const onSubmit = (data: UserRegisterForm) => {
     // will need to submit data on the database for registration
     console.log(data)
+    setIsAuth(true)
     onCloseRegistrationModal()
     reset();
   };
