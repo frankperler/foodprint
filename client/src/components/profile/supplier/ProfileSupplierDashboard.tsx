@@ -30,7 +30,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
           <InfoHeader>{suppliers[2].sup_name}</InfoHeader>
           <h3>{suppliers[2].sup_address}</h3>
           <h3>{suppliers[2].sup_phone_number}</h3>
-          <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={          <EcoLeafContainer>
+          <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={<EcoLeafContainer>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>

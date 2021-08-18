@@ -13,7 +13,7 @@ export const SuppliersList = (): JSX.Element => {
       <InteriorSupplierContainer>
         <ButtonWrap>
           <AddSupplier>
-            <Icon name="plus" size="big" /> Add supplier
+            <Icon name="plus" size="big" /> <h4>Add supplier</h4>
           </AddSupplier>
         </ButtonWrap>
         <h2>Who we get our food from...</h2>
