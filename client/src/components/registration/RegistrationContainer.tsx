@@ -4,11 +4,12 @@ import { FormFoodLover } from './FormFoodLover';
 import { FormRestaurant } from './FormRestaurant';
 import { FormSupplier } from './FormSupplier';
 
-export interface modalInterface {
+export interface registrationInterface {
   onCloseRegistrationModal: () => void
 }
 
-export const RegistrationContainer = ({ onCloseRegistrationModal }: modalInterface) => {
+
+export const RegistrationContainer = ({ onCloseRegistrationModal }: registrationInterface) => {
 
   const [clickedId, setClickedId] = useState(-1);
   const [userType, setUserType] = useState<string>('');

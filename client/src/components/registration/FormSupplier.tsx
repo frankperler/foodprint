@@ -5,7 +5,7 @@ import { RegisterButton } from './registration-styled-components/FormRegister.st
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import { modalInterface } from './RegistrationContainer';
+import { registrationInterface } from './RegistrationContainer';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -34,7 +34,7 @@ type UserRegisterForm = {
   confirmPassword: string;
 };
 
-export const FormSupplier = ({ onCloseRegistrationModal }: modalInterface) => {
+export const FormSupplier = ({ onCloseRegistrationModal }: registrationInterface) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),

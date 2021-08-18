@@ -3,13 +3,17 @@ import { FormWrapper } from '../registration/registration-styled-components/Form
 import { FormCredentialElements } from './FormCredentialElements';
 import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogIn.style';
 
-export const FormLogIn = (): JSX.Element => {
+export interface loginInterface {
+  onCloseLoginModal: () => void
+}
+
+export const FormLogIn = ({ onCloseLoginModal }: loginInterface): JSX.Element => {
 
   return (
     <FormWrapper>
-      <form>
+      <form onSubmit={onCloseLoginModal}>
         <FormCredentialElements></FormCredentialElements>
-        <LogInButton>Log in</LogInButton>
+        <LogInButton onClick={onCloseLoginModal}>Log in</LogInButton>
         <ForgotPassword>Forgot password?</ForgotPassword>
       </form>
     </FormWrapper>

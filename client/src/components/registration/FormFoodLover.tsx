@@ -3,7 +3,7 @@ import { RegisterButton, FormWrapper } from './registration-styled-components/Fo
 import { RegisterNameInput, CredentialInput, Label } from './registration-styled-components/FormRegister.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { modalInterface } from './RegistrationContainer';
+import { registrationInterface } from './RegistrationContainer';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
@@ -24,7 +24,7 @@ type UserRegisterForm = {
 };
 
 
-export const FormFoodLover = ({ onCloseRegistrationModal }: modalInterface) => {
+export const FormFoodLover = ({ onCloseRegistrationModal }: registrationInterface) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),

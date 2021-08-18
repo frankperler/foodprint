@@ -6,6 +6,7 @@ import { restaurantTypes } from '../../../types/restaurant-types';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      zIndex: 0,
       display: 'flex',
       flexDirection: 'column',
       '& > * + *': {
