@@ -11,8 +11,6 @@ import { ProductsList } from './ProductsList'
 import { Popup } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
-
-
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
@@ -22,11 +20,11 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
     <GridContainer>
       <Photo>Photo</Photo>
       {/* <filterContext.Provider value={{ state, dispatch }}> */}
-        <InfoArea>
-          <InteriorArea>
+      <InfoArea>
+        <InteriorArea>
           <InfoHeader>Supplier name</InfoHeader>
           <InfoHeader>City</InfoHeader>
-          <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={          <EcoLeafContainer>
+          <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={<EcoLeafContainer>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
@@ -34,8 +32,8 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
           </EcoLeafContainer>} />
           <InfoHeader>Tons of CO2/mo</InfoHeader>
-          </InteriorArea>
-        </InfoArea>
+        </InteriorArea>
+      </InfoArea>
       {/* </filterContext.Provider> */}
       <ProfileDetails>
         <ButtonWrap>

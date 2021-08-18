@@ -5,8 +5,6 @@ import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogI
 
 export const FormLogIn = (): JSX.Element => {
 
-  
-
   return (
     <FormWrapper>
       <form>
