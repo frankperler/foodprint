@@ -34,7 +34,7 @@ function getRandomValue(arr) {
 async function populateSuppliers () {
   try {
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 2; i++) {
         const mockSupplier = {};
   
         mockSupplier.sup_name = `${getRandomValue(lastNames)}${getRandomValue(farmType)}`;
@@ -66,7 +66,7 @@ async function populateSuppliers () {
   
         console.log(mockSupplier)
         console.log("-------------", i)
-        await Supplier.create(mockSupplier);
+        // await Supplier.create(mockSupplier);
     }
     
   }

@@ -13,6 +13,8 @@ const db = require('./models/index');
 
 
 
+
+app.use(express.json());
 app.use(router);
 
 (async () => {

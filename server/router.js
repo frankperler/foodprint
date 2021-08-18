@@ -4,17 +4,19 @@
 const express = require('express')
 const router = express.Router()
 
-const user = require('./controllers/user/user.js');
+const user = require('./controllers/register/register.js');
 const restaurant = require('./controllers/restaurant/restaurant.js');
 // const supplier = require('./controllers/supplier/supplier.js');
 // const production  = require('./controllers/production/production.js');
 
-// router.get('/users', user.getUser);
-router.post('/users', user.addUser);
+
+router.post('/register', user.addUser);
+router.post('/login', user.getUser);
+
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);
 
-router.get('/restaurants', restaurant.getAll);
+// router.get('/restaurants', restaurant.getAll);
 // router.get('/restaurants/:id', restaurant.getOne);
 // router.put('/restaurants/:id', restaurant.updateOne);
 // router.delete('/restaurants/:id', restaurant.deleteOne);

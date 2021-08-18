@@ -21,9 +21,9 @@ module.exports = (sequelize, DataTypes) => {
 })
 
 Login.associate = (models) => {
-  Login.belongsTo(models.User, {
-    foreignKey: 'UserId'
-  });
+  
+  Login.hasOne(models.User)
+
 }
 
   return Login;

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     rest_types: {
       type: DataTypes.ARRAY(DataTypes.STRING) , // *** careful with this
       allowNull: true,
-      // defaultValue: ['']
+      defaultValue: [''],
     },
     rest_address: {
       type: DataTypes.STRING,
@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     rest_phone_number: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "",
     },
     rest_lat: {
         type: DataTypes.FLOAT,
@@ -36,7 +37,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     opening_hours: { // 2nd request
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.STRING), // give it a default value
+      allowNull: true,
     },
     rest_price_level: {
       type: DataTypes.FLOAT,
