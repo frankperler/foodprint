@@ -1,26 +1,23 @@
-import React from 'react';
-import { MouseEvent, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Wrapper, Header1 } from './registration-styled-components/ChooseUserType.style';
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup } from './registration-styled-components/ButtonGroup'
 
-type Props = {
-  setUserType: React.Dispatch<React.SetStateAction<string>>;
-  setClickedId: React.Dispatch<React.SetStateAction<number>>;
-  clickedId: number;
+interface Props {
+  userType: string,
+  setUserType: Dispatch<SetStateAction<string>>,
+  clickedId: number,
+  setClickedId: Dispatch<React.SetStateAction<number>>
 }
 
-export const ChooseUserType = ({setUserType, clickedId, setClickedId}: Props): JSX.Element => {
-
+export const ChooseUserType = ({ clickedId, setClickedId, userType, setUserType }: Props) => {
 
   return (
-
     <Wrapper>
-    <section>
+      <section>
         <Header1>I'm a...</Header1>
-      <ButtonGroup buttons={["Food lover", "Restaurant", "Supplier"]} clickedId={clickedId} setUserType={setUserType} setClickedId={setClickedId}></ButtonGroup>
-    </section>
+        <ButtonGroup clickedId={clickedId} setClickedId={setClickedId} setUserType={setUserType} userType={userType} />
+      </section>
     </Wrapper>
-
   )
 }
 
