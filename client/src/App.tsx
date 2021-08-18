@@ -6,14 +6,14 @@ import { ProfileSupplierContainer } from './components/profile/supplier/ProfileS
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 import { FormSupplier } from './components/registration/FormSupplier'
 import ChooseUserType from './components/registration/ChooseUserType'
-
+import { ContainerFindExistingPartner } from './components/add-partner/ContainerFindExistingPartner'
+import { ContainerThirdPartyRequestPartner } from './components/add-partner/ContainerThirdPartyRequestPartner'
+import { ProfileRestaurantContainer } from './components/profile/restaurant/ProfileRestaurantContainer'
 
 
 export const App: React.FunctionComponent = () => {
   return (
-    <div>
-      <ProfileSupplierContainer></ProfileSupplierContainer>
-    </div>
+    <ProfileSupplierContainer></ProfileSupplierContainer>
   )
 }
 

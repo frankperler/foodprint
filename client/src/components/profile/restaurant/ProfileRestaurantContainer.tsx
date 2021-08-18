@@ -5,6 +5,7 @@ import { Navcontainer } from '../../navbar/navbar-styled-components/navcontainer
 import { Container } from '../../navbar/navbar-styled-components/container'
 import { Avatar, ProfileNav, UserName } from '.././profile-styled-components/profile.style';
 import { ProfileRestaurantDashboard } from './ProfileRestaurantDashboard';
+import 'semantic-ui-css/semantic.min.css'
 
 export const ProfileRestaurantContainer = (): JSX.Element => {
 
@@ -15,7 +16,7 @@ export const ProfileRestaurantContainer = (): JSX.Element => {
     <Navcontainer>
       <Title><strong>food</strong>print.</Title>
       <ProfileNav>
-        <UserName>Supplier</UserName>
+        <UserName>Username</UserName>
         <Avatar></Avatar>
       </ProfileNav>
     </Navcontainer >
