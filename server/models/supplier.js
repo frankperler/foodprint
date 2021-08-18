@@ -55,9 +55,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Supplier.associate = (models) => {
     Supplier.hasMany(models.Production);
-    // Supplier.hasMany(models.Product);
     Supplier.belongsTo(models.User);
-    // Supplier.belongsToMany ()
+    Supplier.belongsToMany(models.Restaurant, {
+      through: "Join_Res_Sups"
+    });
   }
 
   return Supplier;

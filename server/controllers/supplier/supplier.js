@@ -35,6 +35,8 @@ exports.addProduction = async (req, res) => {
 }
 
 
+
+
 // exports.findSuppliersByProduct = async (req, res) => {
 //     try {
 //         // extract product name from req.body &

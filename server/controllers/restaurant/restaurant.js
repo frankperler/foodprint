@@ -2,19 +2,46 @@
 
 const db = require('../../models/index');
 
-exports.getAll = async (req, res) => {
+exports.claimSupplier = async (req, res) => {
   try {
-    const newRestaurant = await db.Restaurant.create({
-      // place_id:
-      rest_address: req.body.rest_address,
-      // rest_lat: 
-      // rest_lng:
-      rest_name: req.body.rest_name,
-      rest_phone_number: req.body.rest_phone_number,
-    });
-    
+    // extract restaurant's id from req.body
+    // const restId = req.body.rest_id;
+
+    //Check if supplier exists in our DB (search by name?)
+    const supplier = await db.Supplier.findOne({
+      where: {
+        sup_name: req.body.sup_name
+      }
+    })
+    console.log("supplier:   ", supplier)
+    console.log('//////////////=======', supplier.dataValues)
+    console.log('=-----------=======', supplier.dataValues.id)
+    // SCENARIO 1 : Supplier already exists in our database
+    // check if relation exists
+    const relation = await db.Join_Res_Sup.findOne({
+      where: {
+        SupplierId: supplier.dataValues.id,
+        RestaurantId: req.body.rest_id
+      }
+    })
+
+    // create relation between restaurant and supplier if it doesnt already exist
+
+
+    if (!relation) {
+      const relation = await db.Join_Res_Sup.create({
+        SupplierId: supplier.dataValues.id,
+        RestaurantId: req.body.rest_id
+      })
+      res.send(relation)
+    }
+    else {
+      res.send('Error! You are already associated to this supplier.')
+    }
+
   }
   catch (e) {
+    console.log(e);
     res.status = 500;
   }
-} 
+}

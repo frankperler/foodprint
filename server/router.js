@@ -20,6 +20,9 @@ router.post('/login', auth.findUser);
 
 router.post('/suppliers/addProduction', supplier.addProduction);
 
+router.post('/restaurants/claimSupplier', restaurant.claimSupplier);
+
+
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);
 
@@ -27,7 +30,6 @@ router.post('/suppliers/addProduction', supplier.addProduction);
 // router.get('/restaurants/:id', restaurant.getOne);
 // router.put('/restaurants/:id', restaurant.updateOne);
 // router.delete('/restaurants/:id', restaurant.deleteOne);
-// router.post('/restaurants/supplier', restaurant.addSupplier);
 // router.delete('/restaurants/supplier', restaurant.deleteSupplier);
 
 // router.get('/suppliers', supplier.getAll);
