@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const CardContainer = styled("div")`
-  width: 14rem;
-  height: 17rem;
-  margin: 0.5rem 1.5rem;
+export const TopCardContainer = styled("div")`
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction:column;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: flex-start;
   overflow: hidden;
   box-shadow: 0.05rem 0.05rem lightgray;
   background-color: white;

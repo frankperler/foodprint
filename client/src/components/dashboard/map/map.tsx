@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import ReactMapGL from 'react-map-gl';
-import './map.css'
 
 export const Map: React.FunctionComponent = () => {
 
