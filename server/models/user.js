@@ -27,8 +27,8 @@ module.exports = (sequelize, DataTypes) => {
 User.associate = (models) => {
   
   User.belongsTo(models.Login);
-
   User.hasMany(models.Restaurant);
+  User.hasMany(models.Supplier);
 }
 
 return User;

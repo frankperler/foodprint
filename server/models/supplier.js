@@ -16,12 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     sup_lat: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
+      type: DataTypes.FLOAT,
+      allowNull: true,
     },
     sup_lng: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     sup_website: {
       type: DataTypes.STRING,
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     sup_picture: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     sup_greenTech: {
       type: DataTypes.ARRAY(DataTypes.STRING) ,
@@ -54,9 +54,10 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   Supplier.associate = (models) => {
-    Supplier.hasMany(models.Product, {
-      foreignKey: 'ProductId'
-    });
+    Supplier.hasMany(models.Production);
+    // Supplier.hasMany(models.Product);
+    Supplier.belongsTo(models.User);
+    // Supplier.belongsToMany ()
   }
 
   return Supplier;

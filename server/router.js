@@ -4,14 +4,21 @@
 const express = require('express')
 const router = express.Router()
 
-const user = require('./controllers/register/register.js');
+const register = require('./controllers/register/register.js');
+const auth = require('./controllers/authentication/authentication.js');
 const restaurant = require('./controllers/restaurant/restaurant.js');
+const supplier = require('./controllers/supplier/supplier.js')
 // const supplier = require('./controllers/supplier/supplier.js');
 // const production  = require('./controllers/production/production.js');
 
 
-router.post('/register', user.addUser);
-router.post('/login', user.getUser);
+router.post('/register/FoodLoverUser', register.addFoodLoverUser);
+router.post('/register/RestaurantUser', register.addRestaurantUser);
+router.post('/register/SupplierUser', register.addSupplierUser);
+
+router.post('/login', auth.findUser);
+
+router.post('/suppliers/addProduction', supplier.addProduction);
 
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);

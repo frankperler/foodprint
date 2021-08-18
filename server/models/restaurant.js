@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   
     place_id: {
       type: DataTypes.STRING,
-      allowNull: false,
-      // defaultValue: ""
+      allowNull: true,
+      defaultValue: "no id"
     },
     rest_name: {
       type: DataTypes.STRING,
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     rest_types: {
       type: DataTypes.ARRAY(DataTypes.STRING) , // *** careful with this
       allowNull: true,
-      defaultValue: [''],
+      defaultValue: [],
     },
     rest_address: {
       type: DataTypes.STRING,
@@ -72,9 +72,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Restaurant.associate = (models) => {
     
-    Restaurant.belongsTo(models.User, {
-      foreignKey: 'UserId'
-    });
+    Restaurant.belongsTo(models.User);
+    Restaurant.belongsToMany(models.Supplier, {
+      through: "Join_Res_Sup"
+    })
 
     // association to suppliers
   }

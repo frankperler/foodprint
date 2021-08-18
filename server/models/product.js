@@ -12,16 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 0,
     },
-    product_code: {
+    product_picture: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   });
 
   Product.associate = (models) => {
-    Product.hasMany(models.Production, {
-      foreignKey: 'ProductionId'
-    });
+    // Product.belongsTo(models.Supplier);
+    Product.hasMany(models.Production)
   }
 
   return Product;

@@ -177,7 +177,7 @@ const populate = async () => {
 
       console.log(mockRestaurant)
       console.log('---------------------------', i)
-      await Restaurant.create(mockRestaurant);
+      // await Restaurant.create(mockRestaurant);
     }
   }
   catch (err) {
