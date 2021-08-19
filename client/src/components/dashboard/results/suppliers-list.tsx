@@ -1,19 +1,19 @@
 import { useContext, useState } from 'react';
 import { supplierContext } from '../../../contexts/suppliers-contexts';
 import { supplierTypes } from '../../../types/supplier-types';
-import { SupplierCard } from '../../profile/restaurant/SupplierCard';
+import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-list-container';
 import { ListTitle } from './results-title';
 
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
-  const [typesArray, setTypesArray] = useState(['Vegetables', 'Fruits', 'Cheese'])
+  const [supplTypesArray, setSupplTypesArray] = useState(['Vegetables', 'Fruits', 'Cheese'])
 
   return (
     <>
       {stateSupplier.length > 0 &&
-        typesArray.map((value: string) => {
+        supplTypesArray.map((value: string) => {
           return (
             <div>
               <ListTitle>
@@ -34,3 +34,5 @@ export const SuppliersLists: React.FunctionComponent = () => {
     </>
   )
 }
+
+// 

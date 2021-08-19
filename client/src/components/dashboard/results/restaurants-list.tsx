@@ -8,12 +8,12 @@ import { ListTitle } from './results-title';
 export const RestaurantsLists: React.FunctionComponent = () => {
 
   const { stateRestaurant } = useContext(restaurantContext)
-  const [typesArray, setTypesArray] = useState(['Bio', 'Vegetarian', 'Chinese'])
+  const [restTypesArray, setRestTypesArray] = useState(['Bio', 'Vegetarian', 'Chinese'])
 
   return (
     <>
       {stateRestaurant.length > 0 &&
-        typesArray.map((value: string) => {
+        restTypesArray.map((value: string) => {
           return (
             <div>
               <ListTitle>
