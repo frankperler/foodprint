@@ -6,8 +6,6 @@ import { Icon } from 'semantic-ui-react';
 
 export const SuppliersList = (): JSX.Element => {
 
-
-
   return (
     <SupplierContainer>
       <InteriorSupplierContainer>
@@ -19,7 +17,7 @@ export const SuppliersList = (): JSX.Element => {
         <h2>Who we get our food from...</h2>
         <SupplierListContainer>
           {suppliers.map(supplier => {
-            return <SupplierCard key={supplier.sup_id} supplier={supplier}/>
+            return <SupplierCard key={supplier.sup_id} supplier={supplier} />
           })}
         </SupplierListContainer>
       </InteriorSupplierContainer>

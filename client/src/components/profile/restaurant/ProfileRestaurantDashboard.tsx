@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { GridContainer, RestoCover } from '../profile-styled-components/profile.style'
 import { filterReducers, filterState } from '../../../reducers/filters-reducers'
 import { filterContext } from '../../../contexts/filters-contexts'
@@ -8,24 +8,26 @@ import { SuppliersList } from './SuppliersList'
 import { EcoLeafContainer, InfoArea, InfoHeader, InteriorArea } from '../profile-styled-components/profile.style';
 import { EcoLeaf } from '../profile-styled-components/profile.style'
 import { Popup } from 'semantic-ui-react'
-
 import { restos } from '../../../mock'
 
 export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
+  const [restaurantItem, setRestaurantItem] = useState([]);
+
+  // getOneRestaurant() function based on ID params from route to create inside a useEffect on component mount
+  // getSuppliers() function based on restaurant ID from route (params) inside a useEffect
 
   return (
     <GridContainer>
       <Photo>
-        <RestoCover src={restos[2].rest_picture}/>
+        <RestoCover src={restos[2].rest_picture} />
       </Photo>
-      {/* <filterContext.Provider value={{ state, dispatch }}> */}
       <InfoArea>
-          <InteriorArea>
+        <InteriorArea>
           <InfoHeader>{restos[2].rest_name}</InfoHeader>
           <h4>{restos[2].rest_address}</h4>
-          <Popup content='Learn more about how your eco-score is calculated' trigger={          <EcoLeafContainer>
+          <Popup content='Learn more about how your eco-score is calculated' trigger={<EcoLeafContainer>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
@@ -33,9 +35,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
             <EcoLeaf src="/images/eco_leaf.svg"></EcoLeaf>
           </EcoLeafContainer>} />
           <h4>{restos[2].opening_hours}</h4>
-          </InteriorArea>
-        </InfoArea>
-      {/* </filterContext.Provider> */}
+        </InteriorArea>
+      </InfoArea>
       <ProfileDetails>
         <RestaurantDescription></RestaurantDescription>
         <SuppliersList></SuppliersList>

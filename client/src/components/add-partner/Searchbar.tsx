@@ -1,4 +1,3 @@
-import React from 'react';
 import { SearchInput, SearchForm, SearchButton } from './add-partner-styled-components/Searchbar.style';
 
 export const Searchbar = (): JSX.Element => {

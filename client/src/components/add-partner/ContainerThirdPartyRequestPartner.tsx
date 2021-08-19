@@ -5,7 +5,6 @@ import { Header } from './add-partner-styled-components/Searchbar.style';
 
 export const ContainerThirdPartyRequestPartner = (): JSX.Element => {
 
-
   return (
     <ContainerWrapper>
       <Header>Invite your partner to join!</Header>

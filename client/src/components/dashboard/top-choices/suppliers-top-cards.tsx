@@ -1,6 +1,6 @@
-import { TopCardStyles } from './top-card-styles';
+import { TopCardStyles } from './top-choices-styled-components/top-card-styles';
 import { SupplStarRating } from '../results/suppliers-star-rating';
-import { TopCardContainer } from './top-card-container';
+import { TopCardContainer } from './top-choices-styled-components/top-card-container';
 import { supplierTypes } from '../../../types/supplier-types';
 import { Link } from "react-router-dom";
 

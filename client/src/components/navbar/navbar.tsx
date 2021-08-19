@@ -6,6 +6,7 @@ import { Container } from './navbar-styled-components/container'
 import Modal from 'react-modal';
 import { RegistrationContainer } from '../registration/RegistrationContainer'
 import { FormLogIn } from '../log-in/FormLogIn'
+import { Link } from 'react-router-dom'
 
 const customStyles = {
   content: {
@@ -46,7 +47,9 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
   return (
     <Container containerHeight="4rem">
       <Navcontainer>
-        <Title><strong>food</strong>print.</Title>
+        <Link to='/' style={{ textDecoration: 'none' }}>
+          <Title><strong>food</strong>print.</Title>
+        </Link>
         {isAuth === false ?
           <div>
             <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>

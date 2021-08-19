@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { supplierContext } from '../../../contexts/suppliers-contexts';
 import { supplierTypes } from '../../../types/supplier-types';
-import { ListContainer } from '../results/results-list-container';
+import { ListContainer } from '../results/results-styled-components/results-list-container';
 import { SupplTopCard } from './suppliers-top-cards';
-import { TopTitle } from './top-title';
+import { TopTitle } from './top-choices-styled-components/top-title';
 
 export const SupplTopList: React.FunctionComponent = () => {
 

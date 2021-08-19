@@ -1,6 +1,6 @@
-import { ResultsCardStyles } from './results-card-styles';
+import { ResultsCardStyles } from './results-styled-components/results-card-styles';
 import { RestStarRating } from './restaurants-star-rating'
-import { CardContainer } from './results-card-container';
+import { CardContainer } from './results-styled-components/results-card-container';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { Link } from "react-router-dom";
 

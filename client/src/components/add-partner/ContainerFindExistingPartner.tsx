@@ -7,11 +7,11 @@ export const ContainerFindExistingPartner = (): JSX.Element => {
 
   return (
     <>
-    <Wrapper>
-      <Header>Search for your partner details below...</Header>
+      <Wrapper>
+        <Header>Search for your partner details below...</Header>
         <Searchbar></Searchbar>
         <MatchList></MatchList>
-    </Wrapper>
+      </Wrapper>
     </>
   )
 }

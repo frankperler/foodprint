@@ -1,6 +1,6 @@
-import { ResultsCardStyles } from './results-card-styles';
+import { ResultsCardStyles } from './results-styled-components/results-card-styles';
 import { SupplStarRating } from './suppliers-star-rating'
-import { CardContainer } from './results-card-container';
+import { CardContainer } from './results-styled-components/results-card-container';
 import { supplierTypes } from '../../../types/supplier-types';
 import { Link } from "react-router-dom";
 

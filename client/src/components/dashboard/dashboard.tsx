@@ -10,10 +10,10 @@ import { RestaurantTypeSelect } from './filters/restaurant-type-select'
 import { MealTypeSelect } from './filters/meal-type-select'
 import { FoodTypeSelect } from './filters/food-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
-import { ResultsArea } from './results/results-area'
+import { ResultsArea } from './results/results-styled-components/results-area'
 import { RestaurantsLists } from './results/restaurants-list'
 import { SuppliersLists } from './results/suppliers-list'
-import { TopArea } from './top-choices/top-area'
+import { TopArea } from './top-choices/top-choices-styled-components/top-area'
 import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
@@ -22,7 +22,6 @@ import { restaurantContext } from '../../contexts/restaurants-contexts'
 import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
 import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
-
 
 export const ButtonStyles = styled.div`
   display: flex;

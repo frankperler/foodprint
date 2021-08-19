@@ -4,8 +4,6 @@ import { NoMatches } from './NoMatches';
 
 export const MatchList = (): JSX.Element => {
 
-
-
   return (
     <MatchListContainer>
       <NoMatches></NoMatches>

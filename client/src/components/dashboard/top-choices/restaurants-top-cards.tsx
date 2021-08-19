@@ -1,6 +1,6 @@
-import { TopCardStyles } from './top-card-styles';
+import { TopCardStyles } from './top-choices-styled-components/top-card-styles';
 import { RestStarRating } from '../results/restaurants-star-rating'
-import { TopCardContainer } from './top-card-container';
+import { TopCardContainer } from './top-choices-styled-components/top-card-container';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { Link } from "react-router-dom";
 
