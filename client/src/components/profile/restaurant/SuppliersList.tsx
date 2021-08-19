@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddSupplier, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
+import { AddSupplier, AddHeader, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
 import { SupplierCard } from './SupplierCard';
 import { Icon } from 'semantic-ui-react';
@@ -13,7 +13,7 @@ export const SuppliersList = (): JSX.Element => {
       <InteriorSupplierContainer>
         <ButtonWrap>
           <AddSupplier>
-            <Icon name="plus" size="big" /> <h4>Add supplier</h4>
+            <Icon name="plus" size="big" /> <AddHeader>Add supplier</AddHeader>
           </AddSupplier>
         </ButtonWrap>
         <h2>Who we get our food from...</h2>

@@ -66,6 +66,21 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   
   `
 
+  export const AddHeader = styled.h4`
+    display: inline-block;
+  `
+
+  export const EditTextArea = styled.textarea`
+    padding: 0.8rem;
+    width: 100%;
+    height: 16rem;
+    outline: none;
+    line-height: 1.6;
+    overflow: hidden;
+    resize: none;
+
+  `
+
 export const InteriorArea = styled.div`
   padding: 4rem;
 `
