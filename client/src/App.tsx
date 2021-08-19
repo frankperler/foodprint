@@ -23,24 +23,18 @@ export const App: React.FunctionComponent = () => {
           <Searchbar />
           <Dashboard userType={userType} />
         </Route>
-        {/* 
-        <Route path='/supplier'>
-          <Navbar />
+
+        <Route path='/supplier/:id'>
+          {/* <Navbar />
           <Searchbar />
-          <Dashboard />
+          <Dashboard /> */}
         </Route>
 
-        <Route path='/restaurant'>
-          <Navbar />
+        <Route path='/restaurant/:id'>
+          {/* <Navbar />
           <Searchbar />
-          <Dashboard />
+          <Dashboard /> */}
         </Route>
-
-        <Route path='/user'>
-          <Navbar />
-          <Searchbar />
-          <Dashboard />
-        </Route> */}
 
       </Switch>
     </Router>
