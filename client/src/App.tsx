@@ -1,19 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from './components/navbar/navbar'
 import { Dashboard } from './components/dashboard/dashboard'
 import { Searchbar } from './components/searchbar/searchbar'
 import { ProfileSupplierContainer } from './components/profile/supplier/ProfileSupplierContainer'
-import { RegistrationContainer } from './components/registration/RegistrationContainer'
-import { FormSupplier } from './components/registration/FormSupplier'
-import ChooseUserType from './components/registration/ChooseUserType'
-import { ContainerFindExistingPartner } from './components/add-partner/ContainerFindExistingPartner'
-import { ContainerThirdPartyRequestPartner } from './components/add-partner/ContainerThirdPartyRequestPartner'
 import { ProfileRestaurantContainer } from './components/profile/restaurant/ProfileRestaurantContainer'
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const App: React.FunctionComponent = () => {
+
+  const [userType, setUserType] = useState("Food lover")
+  const [isAuth, setIsAuth] = useState(false)
+
   return (
-    <ProfileSupplierContainer></ProfileSupplierContainer>
+    <Router>
+      <Switch>
+        <Route path='/' exact>
+          <Navbar
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
+          <Searchbar />
+          <Dashboard userType={userType} />
+        </Route>
+
+        <Route path='/supplier/:id'>
+          <Navbar
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
+          <Searchbar />
+          <ProfileSupplierContainer />
+        </Route>
+
+        <Route path='/restaurant/:id'>
+          <Navbar
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
+          <Searchbar />
+          <ProfileRestaurantContainer />
+
+        </Route>
+
+      </Switch>
+    </Router>
   )
 }
 
