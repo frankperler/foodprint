@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Navbar } from './components/navbar/navbar'
 import { Dashboard } from './components/dashboard/dashboard'
 import { Searchbar } from './components/searchbar/searchbar'
+import { ProfileSupplierContainer } from './components/profile/supplier/ProfileSupplierContainer'
+import { ProfileRestaurantContainer } from './components/profile/restaurant/ProfileRestaurantContainer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const App: React.FunctionComponent = () => {
@@ -12,7 +14,6 @@ export const App: React.FunctionComponent = () => {
   return (
     <Router>
       <Switch>
-
         <Route path='/' exact>
           <Navbar
             userType={userType}
@@ -25,15 +26,26 @@ export const App: React.FunctionComponent = () => {
         </Route>
 
         <Route path='/supplier/:id'>
-          {/* <Navbar />
+          <Navbar
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
           <Searchbar />
-          <Dashboard /> */}
+          <ProfileSupplierContainer />
         </Route>
 
         <Route path='/restaurant/:id'>
-          {/* <Navbar />
+          <Navbar
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          />
           <Searchbar />
-          <Dashboard /> */}
+          <ProfileRestaurantContainer />
+
         </Route>
 
       </Switch>

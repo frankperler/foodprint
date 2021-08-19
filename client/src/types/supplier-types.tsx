@@ -3,6 +3,7 @@ export type supplierTypes = {
   sup_name: string,
   sup_food_type: string[],
   sup_address: string,
+  sup_city: string,
   sup_phone_number: string,
   sup_lat: number,
   sup_lng: number,
