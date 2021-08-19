@@ -79,7 +79,7 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   `
 
   export const EnergyTypeForm = styled.div`
-  
+    margin-top: 1em;
   `
 
   export const InnerForm = styled.div`
@@ -101,17 +101,31 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   `
 
 export const UpdateChangesButton = styled.button`
-    margin-top: 4em;
-    width: 22em;
+    margin-top: 1.6em;
+    width: 12em;
     padding: 0.8em 2em;
-    background-color: white;
+    background-color: #84DCC6;
     border: 2.5px solid #84DCC6;
-    color: #84DCC6;
+    color: white;
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
+`
+
+export const CancelButton = styled.button`
+    margin-top: 1em;
+    width: 8em;
+    padding: 0.4em 2em;
+    background-color: whitesmoke;
+    border: 2.5px solid #84DCC6;
+    color: #84DCC6;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
 `
 
 export const InteriorArea = styled.div`

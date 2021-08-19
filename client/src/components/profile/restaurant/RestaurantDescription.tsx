@@ -1,5 +1,5 @@
 import React from 'react';
-import { DescriptionCard, DescriptionText, EditDescription, EditTextArea } from '../profile-styled-components/profile.style';
+import { DescriptionCard, DescriptionText, EditDescription, EditTextArea, CancelButton, UpdateChangesButton } from '../profile-styled-components/profile.style';
 import { restos } from '../../../mock';
 import { Icon } from 'semantic-ui-react';
 import { useState } from 'react';
@@ -24,13 +24,17 @@ const handleUpdate = (e: MouseEvent ) => {
   return (
     <DescriptionCard>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+        { isEditing ? 
+        <CancelButton>Cancel</CancelButton>
+        :
         <Icon name='edit' size="large"/>
+        }
       </EditDescription>
       <h2>Description</h2>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{restos[2].rest_description}</EditTextArea>
-          <button type="submit">Update changes</button>
+          <UpdateChangesButton>Update changes</UpdateChangesButton>
         </form> : restos[2].rest_description}
       </DescriptionText>
     </DescriptionCard>

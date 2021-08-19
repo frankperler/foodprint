@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { DescriptionCard, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
+import { CancelButton, DescriptionCard, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
 import { Icon } from 'semantic-ui-react';
 import { suppliers } from '../../../mock';
 
@@ -23,7 +23,11 @@ const handleUpdate = (e: MouseEvent ) => {
   return (
     <DescriptionCard>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        <Icon name='edit' size="large"/>
+        {isEditing ? 
+          <CancelButton>Cancel</CancelButton>
+          :
+          <Icon name='edit' size="large"/>
+        }
       </EditDescription>
       <h2>Description</h2>
       <DescriptionText>

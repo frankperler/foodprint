@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { EditDescription, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm } from '../profile-styled-components/profile.style';
+import { EditDescription, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
 import { Checkbox, Icon } from 'semantic-ui-react'
 
@@ -12,7 +12,11 @@ export const Technology = (): JSX.Element => {
   return (
     <TechnologyContainer>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        <Icon name='edit' size="large"/>
+        { isEditing ? 
+          <CancelButton>Cancel</CancelButton>
+          :
+          <Icon name='edit' size="large"/>
+        }
       </EditDescription>
       <TechnologyRibbons>
       {suppliers[2].sup_greenTech.map(t => {
