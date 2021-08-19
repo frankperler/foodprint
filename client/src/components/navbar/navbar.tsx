@@ -37,7 +37,11 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
-  const clickLogOut = () => setIsAuth(false)
+  const clickLogOut = () => {
+    setIsAuth(false)
+    setUserType('Food lover') // food lover as default value
+  }
+
 
   return (
     <Container containerHeight="4rem">

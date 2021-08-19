@@ -13,6 +13,7 @@ export const restaurantState: restaurantTypes[] = [
   {
     place_id: 'ChIJjWSRFtBRqEcReqmdfCNIYQw',
     rest_address: 'Kronenstraße 70, 10117 Berlin, Deutschland',
+    rest_city: 'Berlin',
     rest_meal_type: ['Lunch'],
     rest_types: ['Chinese', 'Bio'],
     rest_lat: 52.51124,
@@ -38,6 +39,7 @@ export const restaurantState: restaurantTypes[] = [
   {
     place_id: 'ChIJpwXWitpRqEcRkrffi1t4SJ0',
     rest_address: 'Behrenstraße 42, 10117 Berlin, Deutschland',
+    rest_city: 'Berlin',
     rest_meal_type: ['Dinner'],
     rest_types: ['Vegetarian'],
     rest_lat: 52.5159315,
@@ -63,6 +65,7 @@ export const restaurantState: restaurantTypes[] = [
   {
     place_id: 'ChIJ21LM58VRqEcR08JXG7T-b6w',
     rest_address: 'Wilhelmstraße 77, 10117 Berlin, Deutschland',
+    rest_city: 'Berlin',
     rest_meal_type: ['Dinner'],
     rest_types: ['Italian', 'Café', 'Chinese', 'Bio', 'Vegetarian'],
     rest_lat: 52.514443,
@@ -88,6 +91,7 @@ export const restaurantState: restaurantTypes[] = [
   {
     place_id: 'ChIJYWKRX6BRqEcRfN6pR4NPwOA',
     rest_address: 'Grand Hyatt Berlin, Marlene-Dietrich-Platz 2, 10785 Berlin, Deutschland',
+    rest_city: 'Berlin',
     rest_meal_type: ['Breakfast'],
     rest_types: ['Café', 'Chinese', 'Bio'],
     rest_lat: 52.5082832,
