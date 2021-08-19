@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/frankperler/foodprint/issues"
   },
-  "homepage": "https://github.com/frankperler/foodprint#readme"
+  "homepage": "https://github.com/frankperler/foodprint#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2"
+  }
 }
