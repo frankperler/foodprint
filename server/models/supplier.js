@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     Supplier.hasMany(models.Production);
     Supplier.belongsTo(models.User);
     Supplier.belongsToMany(models.Restaurant, {
-      through: "Join_Res_Sups"
+      through: "Join_Res_Sups",
     });
   }
 

@@ -53,7 +53,9 @@ async function populateSuppliers () {
         for(let j = 0; j < 8; j++) {
           greenTechSet.add(getRandomValue(greenTech));
           }
-        mockSupplier.sup_greenTech = Array.from(greenTechSet);
+         const greenTechArr = Array.from(greenTechSet);
+      
+         mockSupplier.sup_greenTech = greenTechArr.map(tech => {tech: true})
   
         let energy = new Set();
         for(let j = 0; j < 2; j++) {

@@ -18,9 +18,12 @@ router.post('/register/SupplierUser', register.addSupplierUser);
 
 router.post('/login', auth.findUser);
 
+router.get('/suppliers/getAllSuppliers', supplier.getAllSuppliers);
 router.post('/suppliers/addProduction', supplier.addProduction);
 
+router.get('/restaurants/getAllRestaurants', restaurant.getAllRestaurants);
 router.post('/restaurants/claimSupplier', restaurant.claimSupplier);
+router.post('/restaurants/filterSuppliers', restaurant.filterSuppliers)
 
 
 // router.put('/users/:id', user.updateUser);

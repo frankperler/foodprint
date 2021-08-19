@@ -2,6 +2,18 @@
 
 const db = require('../../models/index');
 
+exports.getAllSuppliers = async (req, res) => {
+  try {
+    const supplier = await db.Supplier.findAll()
+    res.send(supplier)
+  }
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
+
 exports.addProduction = async (req, res) => {
   try {
     // extract name of product from req.body
