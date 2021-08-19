@@ -6,9 +6,6 @@ const db = require('../../models/index');
 
 exports.claimSupplier = async (req, res) => {
   try {
-    // extract restaurant's id from req.body
-    // const restId = req.body.rest_id;
-
     //Check if supplier exists in our DB (search by name?)
     const supplier = await db.Supplier.findOne({
       where: {
@@ -17,15 +14,11 @@ exports.claimSupplier = async (req, res) => {
       include: db.Restaurant
     })
 
-      // create relation between restaurant and supplier if it doesnt already exist
-
+    // create relation between restaurant and supplier if it doesnt already exist
     if (!supplier.Restaurants.find(restaurant => {
       return restaurant.id === req.body.rest_id
     })) {
-      // const relation = await db.Join_Res_Sup.create({
-      //   SupplierId: supplier.dataValues.id,
-      //   RestaurantId: req.body.rest_id
-      // })
+    
       const restaurant = await db.Restaurant.findOne({
         where: {
           id: req.body.rest_id

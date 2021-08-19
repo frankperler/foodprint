@@ -1,6 +1,8 @@
 'use strict';
 
 const db = require('../../models/index');
+const { Sequelize } = require('../../models/index');
+const Op = Sequelize.Op;
 
 exports.getAllSuppliers = async (req, res) => {
   try {
@@ -13,6 +15,30 @@ exports.getAllSuppliers = async (req, res) => {
     res.send(supplier)
   }
   catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
+exports.filterRestaurants = async (req, res) => {
+  try {
+    const { eco_score, type, meal_type } = req.body;
+
+    let where = {
+      rest_eco_score: {
+        [Op.gte]: eco_score,
+      }
+    }
+    
+    where["rest_types"] = {[Op.contains]: [...type]};
+    where["rest_meal_type"] = {[Op.contains]: [...meal_type]};
+
+    const restaurants = await db.Restaurant.findAll({
+      where,
+    })
+    res.send(restaurants);
+  }
+  catch(e) {
     console.log(e);
     res.status = 500;
   }
@@ -50,6 +76,10 @@ exports.addProduction = async (req, res) => {
     res.status = 500;
   }
 }
+
+// exports.claimRestaurant = async (req, res) => {
+
+// }
 
 
 
