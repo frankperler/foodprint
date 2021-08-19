@@ -95,7 +95,7 @@ exports.claimRestaurant = async (req, res) => {
           id: req.body.sup_id
         }
       })
-      // console.log("supplier--------- ", supplier)
+     
       await supplier.addRestaurant(restaurant)
       await restaurant.addSupplier(supplier)
 
@@ -104,9 +104,7 @@ exports.claimRestaurant = async (req, res) => {
           id: supplier.id
         },
         include: db.Restaurant
-
       })
-
       res.send(newSupplier);
     }
     else {

@@ -8,6 +8,7 @@ const register = require('./controllers/register/register.js');
 const auth = require('./controllers/authentication/authentication.js');
 const restaurant = require('./controllers/restaurant/restaurant.js');
 const supplier = require('./controllers/supplier/supplier.js')
+const search = require('./controllers/search/search');
 // const supplier = require('./controllers/supplier/supplier.js');
 // const production  = require('./controllers/production/production.js');
 
@@ -23,11 +24,17 @@ router.post('/suppliers/addProduction', supplier.addProduction);
 router.post('/suppliers/filterRestaurants', supplier.filterRestaurants);
 router.post('/suppliers/claimRestaurant', supplier.claimRestaurant);
 
+
 router.get('/restaurants/getAllRestaurants', restaurant.getAllRestaurants);
 router.post('/restaurants/claimSupplier', restaurant.claimSupplier);
-router.post('/restaurants/filterSuppliers', restaurant.filterSuppliers)
+router.post('/restaurants/filterSuppliers', restaurant.filterSuppliers);
+
 
 router.post('/users/filterRestaurants', supplier.filterRestaurants)
+
+
+router.post('/search/searchRestaurantsByCity', search.searchRestaurantsByCity);
+router.post('/search/searchSuppliersByCity', search.searchSuppliersByCity);
 
 
 // router.put('/users/:id', user.updateUser);

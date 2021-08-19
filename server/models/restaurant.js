@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       // defaultValue: ""
     },
+    rest_city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     rest_phone_number: {
       type: DataTypes.STRING,
       allowNull: true,
