@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { DescriptionCard, DescriptionText, EditDescription, EditTextArea } from '../profile-styled-components/profile.style';
+import { DescriptionCard, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
 import { Icon } from 'semantic-ui-react';
 import { suppliers } from '../../../mock';
 
@@ -29,7 +29,7 @@ const handleUpdate = (e: MouseEvent ) => {
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{suppliers[2].sup_description}</EditTextArea>
-          <button type="submit">Update changes</button>
+          <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
         </form> : suppliers[2].sup_description}
       </DescriptionText>
     </DescriptionCard>

@@ -1,44 +1,80 @@
 import React from 'react';
-import { EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons } from '../profile-styled-components/profile.style';
+import { useState } from 'react';
+import { EditDescription, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox, Icon } from 'semantic-ui-react'
 
 
 export const Technology = (): JSX.Element => {
 
-
+  const [ isEditing, setIsEditing ] = useState(false)
 
   return (
     <TechnologyContainer>
+      <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+        <Icon name='edit' size="large"/>
+      </EditDescription>
       <TechnologyRibbons>
       {suppliers[2].sup_greenTech.map(t => {
         return <div><h6>{t}</h6></div>
       })}
       </TechnologyRibbons>
-      <div>
         <TechChoiceGrid>
-        <div>
-        <h4>Main source of energy (choose up to 2)</h4>
-          <EnergySourceGrid>
-            <Checkbox label={{ children: 'Solar-powered'}}/>
-            <Checkbox label={{ children: 'Wind-powered'}}/>
-            <Checkbox label={{ children: 'Natural gas'}}/>
-            <Checkbox label={{ children: 'Electricity (renewable)'}}/>
-            <Checkbox label={{ children: 'Electricity (non-renewable)'}}/>
+        {isEditing ?
+        <EnergySourceGrid>
+          <CheckBoxForm>
+            <div>
+              <EnergyTypeForm>
+                <h4>Main source of energy (choose up to 2)</h4>
+                <InnerForm>
+                  <Checkbox label={{ children: 'Solar'}}/>
+                  <Checkbox label={{ children: 'Wind'}}/>
+                  <Checkbox label={{ children: 'Natural gas'}}/>
+                  <Checkbox label={{ children: 'Electricity (renewable)'}}/>
+                </InnerForm>
+              </EnergyTypeForm>
+              <VehicleTypeForm>
+                <h4>The majority of my vehicles are...</h4>
+                <InnerForm>
+                  <Checkbox label={{ children: 'Biofuel'}}/>
+                  <Checkbox label={{ children: 'Gasoline'}}/>
+                  <Checkbox label={{ children: 'Diesel'}}/>
+                  <Checkbox label={{ children: 'Electric'}}/>
+                  <Checkbox label={{ children: 'Hybrid'}}/>
+                </InnerForm>
+              </VehicleTypeForm>
+            </div>
+            <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
+          </CheckBoxForm>
+        </EnergySourceGrid>
+            :
+            <EnergySourceGrid>
+            <CheckBoxForm>
+              <div>
+                <EnergyTypeForm>
+                  <h4>Main source of energy (choose up to 2)</h4>
+                  <InnerForm>
+                    <Checkbox readOnly label={{ children: 'Solar'}}/>
+                    <Checkbox readOnly label={{ children: 'Wind'}}/>
+                    <Checkbox readOnly label={{ children: 'Natural gas'}}/>
+                    <Checkbox readOnly label={{ children: 'Electricity (renewable)'}}/>
+                  </InnerForm>
+                </EnergyTypeForm>
+                <VehicleTypeForm>
+                  <h4>The majority of my vehicles are...</h4>
+                  <InnerForm>
+                    <Checkbox readOnly label={{ children: 'Biofuel'}}/>
+                    <Checkbox readOnly label={{ children: 'Gasoline'}}/>
+                    <Checkbox readOnly label={{ children: 'Diesel'}}/>
+                    <Checkbox readOnly label={{ children: 'Electric'}}/>
+                    <Checkbox readOnly label={{ children: 'Hybrid'}}/>
+                  </InnerForm>
+                </VehicleTypeForm>
+              </div>
+            </CheckBoxForm>
           </EnergySourceGrid>
-        </div>
-        <div>
-          <h4>The majority of my vehicles are...</h4>
-          <EnergySourceGrid>
-            <Checkbox label={{ children: 'Biofuel'}}/>
-            <Checkbox label={{ children: 'Gasoline'}}/>
-            <Checkbox label={{ children: 'Diesel'}}/>
-            <Checkbox label={{ children: 'Electric'}}/>
-            <Checkbox label={{ children: 'Hybrid'}}/>
-          </EnergySourceGrid>
-        </div>
+        }
       </TechChoiceGrid>
-      </div>
     </TechnologyContainer>
   )
 }
