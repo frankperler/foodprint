@@ -13,7 +13,7 @@ import { ProfileRestaurantContainer } from './components/profile/restaurant/Prof
 
 export const App: React.FunctionComponent = () => {
   return (
-    <ProfileSupplierContainer></ProfileSupplierContainer>
+    <ProfileRestaurantContainer></ProfileRestaurantContainer>
   )
 }
 
