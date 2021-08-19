@@ -9,4 +9,5 @@ export const ResultsCardStyles = styled("div") <{
   background: ${props => `url(${props.backgroundImg}) no-repeat center`};
   background-size: cover;
   border-radius: 7px;
+
 `

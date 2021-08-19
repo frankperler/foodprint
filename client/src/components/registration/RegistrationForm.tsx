@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { StringMappingType } from 'typescript';
 
 const schema = yup.object().shape({
   firstName: yup.string().required('required'),
@@ -27,6 +28,7 @@ type UserRegisterForm = {
   businessName?: string;
   businessAddress?: string;
   city?: string;
+  country?: string;
   zip?: string;
   phone?: string;
   email: string;
@@ -86,6 +88,9 @@ export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth
                 <div className="invalid-feedback">{errors.zip?.message}</div>
               </div>
             </AddressTwoWrapper>
+            <Label>Country</Label>
+            <EstablishmentInput type="text" {...register('country')} />
+            <div className="invalid-feedback">{errors.country?.message}</div>
             <Label>Phone</Label>
             <EstablishmentInput type="text" {...register('phone')} />
             <div className="invalid-feedback">{errors.phone?.message}</div>
