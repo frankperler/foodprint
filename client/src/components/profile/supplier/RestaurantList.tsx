@@ -3,6 +3,7 @@ import { ButtonWrap, RestoListContainer, SupplierContainer, AddSupplier } from '
 import { restos } from '../../../mock';
 import { RestaurantCard } from './RestaurantCard';
 import { Icon } from 'semantic-ui-react';
+import { restaurantTypes } from '../../../types/restaurant-types';
 
 export const RestaurantList = (): JSX.Element => {
 
@@ -15,8 +16,8 @@ export const RestaurantList = (): JSX.Element => {
       </ButtonWrap>
       <h2>Who I'm selling to...</h2>
       <RestoListContainer>
-        {restos.map(resto => {
-          return <RestaurantCard key={resto.place_id} resto={resto}/>
+        {restos.map((resto: restaurantTypes) => {
+          return <RestaurantCard key={resto.place_id} resto={resto} />
         })}
       </RestoListContainer>
     </SupplierContainer>

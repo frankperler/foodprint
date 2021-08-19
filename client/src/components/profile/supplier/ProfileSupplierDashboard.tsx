@@ -12,7 +12,6 @@ import { Popup } from 'semantic-ui-react';
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
-
   return (
     <GridContainer>
       <Photo>
