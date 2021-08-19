@@ -4,7 +4,12 @@ const db = require('../../models/index');
 
 exports.getAllSuppliers = async (req, res) => {
   try {
-    const supplier = await db.Supplier.findAll()
+    const supplier = await db.Supplier.findAll({
+      include: {
+        model: db.Production,
+          include: db.Product
+      },
+    })
     res.send(supplier)
   }
   catch (e) {

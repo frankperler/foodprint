@@ -60,28 +60,33 @@ exports.getAllRestaurants = async (req, res) => {
 
 exports.filterSuppliers = async (req, res) => {
   try {
-
-    const { eco_score, bio } = req.body
-    // food_type 
-
+    const { eco_score, bio, food_types } = req.body;
+    
     let where = {
       sup_eco_score: {
         [Op.gte]: eco_score,
       },
-      // sup_green_tech: {
-      //   [Op.includes]: "Organic"
-      // },
     }
+
     if (bio) {
       where['sup_greenTech'] = { [Op.contains]: ["Organic"] }
     }
 
     const suppliers = await db.Supplier.findAll({
       where,
+      include: {
+        model: db.Production,
+        include: {
+          model: db.Product,
+           where: { product_name: [...food_types]
+          }
+        }
+      }
     })
     // eco score is a number btwn 1 and 5
     // bio is T/F
     // food type is an array of foods [potatoes, tomatoes, ...]
+  
     res.send(suppliers);
   }
   catch (e) {
