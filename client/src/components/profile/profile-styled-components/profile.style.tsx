@@ -66,6 +66,68 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   
   `
 
+  export const AddHeader = styled.h4`
+    display: inline-block;
+  `
+
+  export const CheckBoxForm = styled.form`
+  width: 32rem;
+
+  `
+  export const VehicleTypeForm = styled.div`
+    margin-top: 1.8em;
+  `
+
+  export const EnergyTypeForm = styled.div`
+    margin-top: 1em;
+  `
+
+  export const InnerForm = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+  `
+
+  export const EditTextArea = styled.textarea`
+    padding: 0.8rem;
+    width: 100%;
+    height: 21em;
+    outline: none;
+    line-height: 1.6;
+    overflow: hidden;
+    resize: none;
+
+  `
+
+export const UpdateChangesButton = styled.button`
+    margin-top: 1.6em;
+    width: 12em;
+    padding: 0.8em 2em;
+    background-color: #84DCC6;
+    border: 2.5px solid #84DCC6;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+`
+
+export const CancelButton = styled.button`
+    margin-top: 1em;
+    width: 8em;
+    padding: 0.4em 2em;
+    background-color: whitesmoke;
+    border: 2.5px solid #84DCC6;
+    color: #84DCC6;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+`
+
 export const InteriorArea = styled.div`
   padding: 4rem;
 `
@@ -196,7 +258,8 @@ export const EnergySourceGrid = styled.div`
 
 export const TechChoiceGrid = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  height: auto;
 `
 
 export const ProductsContainer = styled.div`
