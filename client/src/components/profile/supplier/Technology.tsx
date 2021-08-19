@@ -1,8 +1,16 @@
+
 import React from 'react';
 import { useState } from 'react';
 import { EditDescription, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
-import { Checkbox, Icon } from 'semantic-ui-react'
+import { makeStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 export const Technology = (): JSX.Element => {
@@ -15,7 +23,7 @@ export const Technology = (): JSX.Element => {
         { isEditing ? 
           <CancelButton>Cancel</CancelButton>
           :
-          <Icon name='edit' size="large"/>
+          <EditIcon></EditIcon>
         }
       </EditDescription>
       <TechnologyRibbons>
@@ -26,56 +34,69 @@ export const Technology = (): JSX.Element => {
         <TechChoiceGrid>
         {isEditing ?
         <EnergySourceGrid>
-          <CheckBoxForm>
+          <FormControl component="fieldset">
             <div>
               <EnergyTypeForm>
                 <h4>Main source of energy (choose up to 2)</h4>
-                <InnerForm>
-                  <Checkbox label={{ children: 'Solar'}}/>
-                  <Checkbox label={{ children: 'Wind'}}/>
-                  <Checkbox label={{ children: 'Natural gas'}}/>
-                  <Checkbox label={{ children: 'Electricity (renewable)'}}/>
-                </InnerForm>
+                <FormLabel component="legend">Pick two</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox name='Solar'/>} 
+                    label="Solar"
+                  />
+                  <FormControlLabel
+                    disabled control={<Checkbox name='Wind'/>} 
+                    label='Wind'
+                  />
+                  <FormControlLabel label="Natural gas"
+                    control={<Checkbox name='Natural gas'/>} 
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name='Electricity (renewable)'/>} 
+                    label="Electricity (renewable)"
+                  />
+                </FormGroup>
               </EnergyTypeForm>
               <VehicleTypeForm>
                 <h4>The majority of my vehicles are...</h4>
-                <InnerForm>
-                  <Checkbox label={{ children: 'Biofuel'}}/>
-                  <Checkbox label={{ children: 'Gasoline'}}/>
-                  <Checkbox label={{ children: 'Diesel'}}/>
-                  <Checkbox label={{ children: 'Electric'}}/>
-                  <Checkbox label={{ children: 'Hybrid'}}/>
-                </InnerForm>
+                <FormLabel component="legend">Pick two</FormLabel>
+                <FormGroup>
+                  <Checkbox name='Biofuel'/>
+                  <Checkbox name='Gasoline'/>
+                  <Checkbox name='Diesel'/>
+                  <Checkbox name='Electric'/>
+                  <Checkbox name='Hybrid'/>
+                </FormGroup>
               </VehicleTypeForm>
             </div>
             <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
-          </CheckBoxForm>
+          </FormControl>
         </EnergySourceGrid>
             :
             <EnergySourceGrid>
-            <CheckBoxForm>
+            <FormControl>
               <div>
                 <EnergyTypeForm>
                   <h4>Main source of energy (choose up to 2)</h4>
-                  <InnerForm>
-                    <Checkbox readOnly label={{ children: 'Solar'}}/>
-                    <Checkbox readOnly label={{ children: 'Wind'}}/>
-                    <Checkbox readOnly label={{ children: 'Natural gas'}}/>
-                    <Checkbox readOnly label={{ children: 'Electricity (renewable)'}}/>
-                  </InnerForm>
+                  <FormGroup>
+                    <Checkbox name={'Solar'}/>
+                    <Checkbox name={'Wind'}/>
+                    <Checkbox name={'Natural gas'}/>
+                    <Checkbox name={'Electricity (renewable)'}/>
+                  </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
                   <h4>The majority of my vehicles are...</h4>
-                  <InnerForm>
-                    <Checkbox readOnly label={{ children: 'Biofuel'}}/>
-                    <Checkbox readOnly label={{ children: 'Gasoline'}}/>
-                    <Checkbox readOnly label={{ children: 'Diesel'}}/>
-                    <Checkbox readOnly label={{ children: 'Electric'}}/>
-                    <Checkbox readOnly label={{ children: 'Hybrid'}}/>
-                  </InnerForm>
+                  <FormGroup>
+                    <Checkbox name={'Biofuel'}/>
+                    <Checkbox name={'Gasoline'}/>
+                    <Checkbox name={'Diesel'}/>
+                    <Checkbox name={'Electric'}/>
+                    <Checkbox name={'Hybrid'}/>
+                  </FormGroup>
                 </VehicleTypeForm>
               </div>
-            </CheckBoxForm>
+            </FormControl>
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

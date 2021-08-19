@@ -4,6 +4,7 @@ import { restos } from '../../../mock';
 import { Icon } from 'semantic-ui-react';
 import { useState } from 'react';
 import { MouseEvent } from 'react';
+import EditIcon from '@material-ui/icons/Edit';
 
 export const RestaurantDescription = (): JSX.Element => {
 
@@ -27,7 +28,7 @@ const handleUpdate = (e: MouseEvent ) => {
         { isEditing ? 
         <CancelButton>Cancel</CancelButton>
         :
-        <Icon name='edit' size="large"/>
+        <EditIcon></EditIcon>
         }
       </EditDescription>
       <h2>Description</h2>
