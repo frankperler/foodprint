@@ -78,7 +78,7 @@ exports.filterSuppliers = async (req, res) => {
         model: db.Production,
         include: {
           model: db.Product,
-           where: { product_name: [...food_types]
+           where: { product_name: { [Op.in]: [...food_types] }
           }
         }
       }
@@ -86,8 +86,10 @@ exports.filterSuppliers = async (req, res) => {
     // eco score is a number btwn 1 and 5
     // bio is T/F
     // food type is an array of foods [potatoes, tomatoes, ...]
-  
-    res.send(suppliers);
+    
+    const filteredSuppliers = suppliers.filter(supplier => supplier.Productions.length !== 0)
+
+    res.send(filteredSuppliers);
   }
   catch (e) {
     console.log(e);
