@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const App: React.FunctionComponent = () => {
 
-  const [userType, setUserType] = useState("")
+  const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
 
   return (

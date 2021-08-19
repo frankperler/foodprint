@@ -14,13 +14,14 @@ import { ResultsArea } from './results/results-area'
 import { RestaurantsLists } from './results/restaurants-list'
 import { SuppliersLists } from './results/suppliers-list'
 import { TopArea } from './top-choices/top-area'
-import { TopList } from './top-choices/top-list'
+import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
 import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
 import { restaurantContext } from '../../contexts/restaurants-contexts'
 import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
 import { supplierContext } from '../../contexts/suppliers-contexts'
+import { SupplTopList } from './top-choices/suppliers-top-list'
 
 
 export const ButtonStyles = styled.div`
@@ -53,7 +54,7 @@ export const Dashboard = ({ userType }: Props) => {
             <FilterArea>
               <EcoScoreSlider />
               <DistanceSlider />
-              {((userType === 'Food lover') || (userType === 'Supplier')) ?
+              {((userType === 'Food lover') || (userType === 'Supplier') || (userType === "")) ?
                 <div>
                   <RestaurantTypeSelect />
                   <MealTypeSelect />
@@ -74,7 +75,10 @@ export const Dashboard = ({ userType }: Props) => {
               }
             </ResultsArea>
             <TopArea>
-              <TopList />
+              {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                <RestTopList /> :
+                <SupplTopList />
+              }
             </TopArea>
           </GridContainer>
         </filterContext.Provider>

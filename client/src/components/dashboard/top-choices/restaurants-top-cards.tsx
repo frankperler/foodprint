@@ -7,7 +7,7 @@ interface Props {
   restaurant: restaurantTypes
 }
 
-export const TopCard: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
+export const RestTopCard: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
 
   // const { stateRestaurant, dispatchRestaurant } = useContext(restaurantContext)
 
