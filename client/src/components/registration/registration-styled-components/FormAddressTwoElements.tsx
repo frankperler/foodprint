@@ -1,10 +1,9 @@
 import React from 'react'
-import { AddressTwoInput, Label, AddressTwoWrapper } from './registration-styled-components/FormRegister.style';
+import { AddressTwoInput, Label, AddressTwoWrapper } from './FormRegister.style';
 
 
 
 export const FormAddressTwoElements = (): JSX.Element => {
-
 
   return (
     <AddressTwoWrapper>

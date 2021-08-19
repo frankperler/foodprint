@@ -1,5 +1,5 @@
 import React from "react";
-import { RegisterNameInput, Label } from './registration-styled-components/FormRegister.style';
+import { RegisterNameInput, Label } from './FormRegister.style';
 
 
 

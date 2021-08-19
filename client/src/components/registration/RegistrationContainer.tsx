@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import ChooseUserType from './ChooseUserType'
-import { FormFoodLover } from './FormFoodLover';
-import { FormRestaurant } from './FormRestaurant';
-import { FormSupplier } from './FormSupplier';
+import { RegistrationForm } from './RegistrationForm';
 
-export const RegistrationContainer = (): JSX.Element => {
+interface Props {
+  userType: string,
+  setUserType: Dispatch<SetStateAction<string>>,
+  isAuth: boolean,
+  setIsAuth: Dispatch<SetStateAction<boolean>>,
+  onCloseRegistrationModal: () => void,
+}
+
+export const RegistrationContainer = ({ onCloseRegistrationModal, userType, setUserType, isAuth, setIsAuth }: Props) => {
 
   const [clickedId, setClickedId] = useState(-1);
-  const [userType, setUserType] = useState('');
 
   return (
     <>
-      <ChooseUserType setUserType={setUserType} clickedId={clickedId} setClickedId={setClickedId}></ChooseUserType>
-      {userType === 'Food lover' ? <FormFoodLover></FormFoodLover>
-        : userType === 'Restaurant' ? <FormRestaurant></FormRestaurant>
-          : userType === 'Supplier' ? <FormSupplier></FormSupplier>
-            : null
-      }
+      <ChooseUserType userType={userType} setUserType={setUserType} clickedId={clickedId} setClickedId={setClickedId}></ChooseUserType>
+      <RegistrationForm userType={userType} setUserType={setUserType} onCloseRegistrationModal={onCloseRegistrationModal} isAuth={isAuth} setIsAuth={setIsAuth} />
     </>
   )
 }
