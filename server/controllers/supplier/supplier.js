@@ -77,9 +77,47 @@ exports.addProduction = async (req, res) => {
   }
 }
 
-// exports.claimRestaurant = async (req, res) => {
+exports.claimRestaurant = async (req, res) => {
+  try {
+    const restaurant = await db.Restaurant.findOne({
+      where: {
+        rest_name: req.body.rest_name
+      },
+      include: db.Supplier
+    })
 
-// }
+    if (!restaurant.Suppliers.find(supplier => {
+      return supplier.id === req.body.sup_id
+    })) {
+
+      const supplier = await db.Supplier.findOne({
+        where: {
+          id: req.body.sup_id
+        }
+      })
+      // console.log("supplier--------- ", supplier)
+      await supplier.addRestaurant(restaurant)
+      await restaurant.addSupplier(supplier)
+
+      const newSupplier = await db.Supplier.findOne({
+        where: {
+          id: supplier.id
+        },
+        include: db.Restaurant
+
+      })
+
+      res.send(newSupplier);
+    }
+    else {
+      res.send('Error! You are already associated to this restaurant.')
+    }
+  }
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
 
 
 

@@ -27,7 +27,14 @@ exports.claimSupplier = async (req, res) => {
       await supplier.addRestaurant(restaurant)
       await restaurant.addSupplier(supplier)
       
-      res.send(supplier)
+      const newRestaurant = await db.Restaurant.findOne({
+        where: {
+          id: restaurant.id
+        },
+        include: db.Supplier
+      })
+
+      res.send(newRestaurant);
     }
     else {
       res.send('Error! You are already associated to this supplier.')
