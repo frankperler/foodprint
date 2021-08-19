@@ -21,7 +21,7 @@ export const App: React.FunctionComponent = () => {
             setIsAuth={setIsAuth}
           />
           <Searchbar />
-          <Dashboard />
+          <Dashboard userType={userType} />
         </Route>
         {/* 
         <Route path='/supplier'>
