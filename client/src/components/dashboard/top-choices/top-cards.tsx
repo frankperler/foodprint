@@ -1,5 +1,5 @@
 import { TopCardStyles } from './top-card-styles';
-import { StarRating } from '../results/star-rating'
+import { RestStarRating } from '../results/restaurants-star-rating'
 import { TopCardContainer } from './top-card-container';
 import { restaurantTypes } from '../../../types/restaurant-types';
 
@@ -16,7 +16,7 @@ export const TopCard: React.FunctionComponent<Props> = ({ restaurant }: Props) =
       <TopCardStyles backgroundImg={restaurant.rest_picture} />
       <div className="name">{restaurant.rest_name}</div>
       <div className="foodtype">{restaurant.rest_types[0]}</div>
-      <StarRating restaurant={restaurant} />
+      <RestStarRating restaurant={restaurant} />
     </TopCardContainer>
   )
 }

@@ -8,15 +8,20 @@ import { EcoScoreSlider } from './filters/eco-score-slider'
 import { DistanceSlider } from './filters/distance-slider'
 import { RestaurantTypeSelect } from './filters/restaurant-type-select'
 import { MealTypeSelect } from './filters/meal-type-select'
+import { FoodTypeSelect } from './filters/food-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
 import { ResultsArea } from './results/results-area'
-import { ResultsLists } from './results/results-list'
+import { RestaurantsLists } from './results/restaurants-list'
+import { SuppliersLists } from './results/suppliers-list'
 import { TopArea } from './top-choices/top-area'
 import { TopList } from './top-choices/top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
 import { filterContext } from '../../contexts/filters-contexts'
 import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
 import { restaurantContext } from '../../contexts/restaurants-contexts'
+import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
+import { supplierContext } from '../../contexts/suppliers-contexts'
+
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -27,37 +32,53 @@ export const ButtonStyles = styled.div`
   padding-bottom:0.5rem;
 `;
 
-export const Dashboard: React.FunctionComponent = () => {
+interface Props {
+  userType: string,
+}
+
+export const Dashboard = ({ userType }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
+  const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
   return (
-    <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
-      <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
-        <GridContainer>
-          <MapArea>
-            <Map />
-          </MapArea>
-          <FilterArea>
-            <EcoScoreSlider />
-            <DistanceSlider />
-            <RestaurantTypeSelect />
-            <MealTypeSelect />
-            <ButtonStyles>
-              <HomePageButton>
-                Search!
-              </ HomePageButton>
-            </ButtonStyles>
-          </FilterArea>
-          <ResultsArea>
-            <ResultsLists />
-          </ResultsArea>
-          <TopArea>
-            <TopList />
-          </TopArea>
-        </GridContainer>
-      </filterContext.Provider>
-    </restaurantContext.Provider>
+    <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
+      <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
+        <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
+          <GridContainer>
+            <MapArea>
+              <Map />
+            </MapArea>
+            <FilterArea>
+              <EcoScoreSlider />
+              <DistanceSlider />
+              {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                <div>
+                  <RestaurantTypeSelect />
+                  <MealTypeSelect />
+                </div>
+                :
+                <FoodTypeSelect />
+              }
+              <ButtonStyles>
+                <HomePageButton>
+                  Search!
+                </ HomePageButton>
+              </ButtonStyles>
+            </FilterArea>
+            <ResultsArea>
+              {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                <RestaurantsLists /> :
+                <SuppliersLists />
+              }
+            </ResultsArea>
+            <TopArea>
+              <TopList />
+            </TopArea>
+          </GridContainer>
+        </filterContext.Provider>
+      </restaurantContext.Provider>
+    </supplierContext.Provider>
   )
 }

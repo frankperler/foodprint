@@ -37,31 +37,35 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
+  const clickLogOut = () => setIsAuth(false)
+
   return (
     <Container containerHeight="4rem">
       <Navcontainer>
         <Title><strong>food</strong>print.</Title>
-        <div>
-          <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>
-          <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
-            <RegistrationContainer
-              userType={userType}
-              setUserType={setUserType}
-              onCloseRegistrationModal={onCloseRegistrationModal}
-              isAuth={isAuth}
-              setIsAuth={setIsAuth} />
-          </Modal>
+        {isAuth === false ?
+          <div>
+            <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>
+            <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
+              <RegistrationContainer
+                userType={userType}
+                setUserType={setUserType}
+                onCloseRegistrationModal={onCloseRegistrationModal}
+                isAuth={isAuth}
+                setIsAuth={setIsAuth} />
+            </Modal>
 
-          <HomePageButton onClick={onOpenLoginModal}>Log In!</HomePageButton>
-          <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
-            <FormLogIn
-              userType={userType}
-              setUserType={setUserType}
-              onCloseLoginModal={onCloseLoginModal}
-              isAuth={isAuth}
-              setIsAuth={setIsAuth} />
-          </Modal>
-        </div>
+            <HomePageButton onClick={onOpenLoginModal}>Log In!</HomePageButton>
+            <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
+              <FormLogIn
+                userType={userType}
+                setUserType={setUserType}
+                onCloseLoginModal={onCloseLoginModal}
+                isAuth={isAuth}
+                setIsAuth={setIsAuth} />
+            </Modal>
+          </div> :
+          <HomePageButton onClick={clickLogOut}>Log out!</HomePageButton>}
       </Navcontainer >
     </Container >
   )
