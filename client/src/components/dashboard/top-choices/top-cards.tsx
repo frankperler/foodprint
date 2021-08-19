@@ -1,5 +1,5 @@
 import { TopCardStyles } from './top-card-styles';
-import { StarRating } from '../results/star-rating'
+import { StarRating } from '../results/restaurants-star-rating'
 import { TopCardContainer } from './top-card-container';
 import { restaurantTypes } from '../../../types/restaurant-types';
 

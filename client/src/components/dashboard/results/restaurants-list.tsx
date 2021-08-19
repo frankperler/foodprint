@@ -1,12 +1,11 @@
 import { useContext, useState } from 'react';
 import { restaurantContext } from '../../../contexts/restaurants-contexts';
 import { restaurantTypes } from '../../../types/restaurant-types';
-import { ResultsCard } from './results-card';
+import { RestaurantCard } from './restaurants-card';
 import { ListContainer } from './results-list-container';
 import { ListTitle } from './results-title';
 
-
-export const ResultsLists: React.FunctionComponent = () => {
+export const RestaurantsLists: React.FunctionComponent = () => {
 
   const { stateRestaurant } = useContext(restaurantContext)
   const [typesArray, setTypesArray] = useState(['Bio', 'Vegetarian', 'Chinese'])
@@ -23,7 +22,7 @@ export const ResultsLists: React.FunctionComponent = () => {
               <ListContainer>
                 {stateRestaurant.map((restaurant: restaurantTypes) => {
                   if (restaurant.rest_types.includes(value)) {
-                    return < ResultsCard restaurant={restaurant} key={restaurant.place_id} />
+                    return < RestaurantCard restaurant={restaurant} key={restaurant.place_id} />
                   }
                 }
                 )}
