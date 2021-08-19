@@ -1,13 +1,44 @@
 'use strict';
 
 const db = require('../../models/index');
+const { Sequelize } = require('../../models/index');
+const Op = Sequelize.Op;
 
 exports.getAllSuppliers = async (req, res) => {
   try {
-    const supplier = await db.Supplier.findAll()
+    const supplier = await db.Supplier.findAll({
+      include: {
+        model: db.Production,
+          include: db.Product
+      },
+    })
     res.send(supplier)
   }
   catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
+exports.filterRestaurants = async (req, res) => {
+  try {
+    const { eco_score, type, meal_type } = req.body;
+
+    let where = {
+      rest_eco_score: {
+        [Op.gte]: eco_score,
+      }
+    }
+    
+    where["rest_types"] = {[Op.contains]: [...type]};
+    where["rest_meal_type"] = {[Op.contains]: [...meal_type]};
+
+    const restaurants = await db.Restaurant.findAll({
+      where,
+    })
+    res.send(restaurants);
+  }
+  catch(e) {
     console.log(e);
     res.status = 500;
   }
@@ -40,6 +71,46 @@ exports.addProduction = async (req, res) => {
     res.send({product, production}); 
 }
 
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
+exports.claimRestaurant = async (req, res) => {
+  try {
+    const restaurant = await db.Restaurant.findOne({
+      where: {
+        rest_name: req.body.rest_name
+      },
+      include: db.Supplier
+    })
+
+    if (!restaurant.Suppliers.find(supplier => {
+      return supplier.id === req.body.sup_id
+    })) {
+
+      const supplier = await db.Supplier.findOne({
+        where: {
+          id: req.body.sup_id
+        }
+      })
+     
+      await supplier.addRestaurant(restaurant)
+      await restaurant.addSupplier(supplier)
+
+      const newSupplier = await db.Supplier.findOne({
+        where: {
+          id: supplier.id
+        },
+        include: db.Restaurant
+      })
+      res.send(newSupplier);
+    }
+    else {
+      res.send('Error! You are already associated to this restaurant.')
+    }
+  }
   catch (e) {
     console.log(e);
     res.status = 500;

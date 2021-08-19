@@ -45,6 +45,7 @@ exports.addRestaurantUser = async (req, res) => {
       // rest_lng:
       rest_name: req.body.rest_name,
       rest_phone_number: req.body.rest_phone_number,
+      rest_city: req.body.rest_city,
     });
 
     await login.setUser(user)
