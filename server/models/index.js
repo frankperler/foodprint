@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const db = {};
+require('dotenv').config();
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 

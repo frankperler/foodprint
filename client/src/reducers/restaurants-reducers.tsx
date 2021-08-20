@@ -1,16 +1,16 @@
 import { restaurantTypes } from "../types/restaurant-types"
 import { supplierTypes } from "../types";
-import { fetchAllAction } from '../actions/actions';
+import { restaurantAction } from '../actions/actions';
 
-export const restaurantReducers = (state: restaurantTypes[] | supplierTypes[], action: fetchAllAction): (restaurantTypes | supplierTypes)[] => {
-    switch (action.type) {
-      case 'FETCH_ALL': 
-        return [...restaurantState, ...action.payload]
-      default: return restaurantState;
-    }
+export const restaurantReducers = (state: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
+  switch (action.type) {
+    case 'FETCH_ALL_RESTAURANT':
+      return [...restaurantState, ...action.payload]
+    default: return restaurantState;
+  }
 }
 
-export const restaurantState: (restaurantTypes | supplierTypes)[]  = []
+export const restaurantState: restaurantTypes[] = []
 /*
   {
     place_id: 'ChIJjWSRFtBRqEcReqmdfCNIYQw',

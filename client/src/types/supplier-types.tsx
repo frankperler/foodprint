@@ -15,8 +15,3 @@ export type supplierTypes = {
   sup_energy: string[],
   sup_vehicles: string,
 }
-
-export type supplierAction = {
-  type: 'any-change',
-  payload: string[]
-}

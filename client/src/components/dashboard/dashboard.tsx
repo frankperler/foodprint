@@ -49,11 +49,9 @@ export const Dashboard = ({ userType }: Props) => {
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
   // let allRestaurants: restaurantTypes[] = [];
-
   useEffect(() => {
-   getAllRestaurants().then((restaurants) => dispatchRestaurant({type: 'FETCH_ALL', payload: restaurants}))
-   getAllSuppliers().then((suppliers) => dispatchSupplier({type: 'FETCH_ALL', payload: suppliers}))
-
+    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }))
+    // getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers }))
   }, [])
 
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { restaurantState } from "../reducers/restaurants-reducers";
-import { restaurantTypes, restaurantAction } from "../types/restaurant-types";
+import { restaurantTypes } from "../types/restaurant-types";
+import { restaurantAction } from "../actions/actions";
 
 export const restaurantContext = React.createContext<{
   stateRestaurant: restaurantTypes[];
