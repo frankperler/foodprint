@@ -63,7 +63,7 @@ export const Dashboard = ({ userType }: Props) => {
                 <MealTypeSelect />
                 <ButtonStyles>
                   <HomePageButton>
-                    Search!
+                    Search
                   </ HomePageButton>
                 </ButtonStyles>
               </FilterArea>
@@ -76,7 +76,7 @@ export const Dashboard = ({ userType }: Props) => {
                 <FoodTypeSelect />
                 <ButtonStyles>
                   <HomePageButton>
-                    Search!
+                    Search
                   </ HomePageButton>
                 </ButtonStyles>
               </FilterArea>

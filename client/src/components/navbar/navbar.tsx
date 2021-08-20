@@ -1,7 +1,8 @@
 import { useState, Dispatch, SetStateAction } from 'react'
-import { HomePageButton } from './navbar-styled-components/homepagebutton'
+import { HomePageButton, LogInButton } from './navbar-styled-components/homepagebutton'
 import { Title } from './navbar-styled-components/title'
 import { Navcontainer } from './navbar-styled-components/navcontainer'
+import { HomeButtonFlex } from './navbar-styled-components/homebuttonflex'
 import { Container } from './navbar-styled-components/container'
 import Modal from 'react-modal';
 import { RegistrationContainer } from '../registration/RegistrationContainer'
@@ -55,18 +56,9 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
           <Title><strong>food</strong>print.</Title>
         </Link>
         {isAuth === false ?
-          <div>
-            <HomePageButton onClick={onOpenRegistrationModal}>Sign up!</HomePageButton>
-            <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
-              <RegistrationContainer
-                userType={userType}
-                setUserType={setUserType}
-                onCloseRegistrationModal={onCloseRegistrationModal}
-                isAuth={isAuth}
-                setIsAuth={setIsAuth} />
-            </Modal>
-
-            <HomePageButton onClick={onOpenLoginModal}>Log In!</HomePageButton>
+          <HomeButtonFlex>
+            <div>
+            <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
             <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
               <FormLogIn
                 userType={userType}
@@ -75,7 +67,19 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
                 isAuth={isAuth}
                 setIsAuth={setIsAuth} />
             </Modal>
-          </div> :
+            </div>
+            <div>
+            <HomePageButton onClick={onOpenRegistrationModal}>Sign up</HomePageButton>
+            <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
+              <RegistrationContainer
+                userType={userType}
+                setUserType={setUserType}
+                onCloseRegistrationModal={onCloseRegistrationModal}
+                isAuth={isAuth}
+                setIsAuth={setIsAuth} />
+            </Modal>
+            </div>
+          </HomeButtonFlex> :
           <HomePageButton onClick={clickLogOut}>Log out!</HomePageButton>}
       </Navcontainer >
     </Container >
