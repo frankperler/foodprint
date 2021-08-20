@@ -6,14 +6,14 @@ const cors = require('cors');
 
 const router = require('./router');
 const PORT = process.env.PORT || 3001;
-// const populate = require('./populate');
-// const populateSuppliers = require('./mockTools')
+// const populate = require('./mock_data/populate');
+// const populateSuppliers = require('./mock_data/mockTools')
 
 const db = require('./models/index');
 
 
 
-
+app.use(cors());
 app.use(express.json());
 app.use(router);
 
@@ -28,4 +28,3 @@ app.use(router);
   app.listen(PORT);
   console.log(`Server listening on port ${PORT} 🚀`) // eslint-disable-line no-console
 })();
-

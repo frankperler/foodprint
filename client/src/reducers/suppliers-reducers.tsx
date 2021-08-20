@@ -1,15 +1,18 @@
-import { supplierTypes, supplierAction } from "../types/supplier-types"
+import { supplierTypes} from "../types/supplier-types";
+import { restaurantTypes} from "../types/restaurant-types";
+import { fetchAllAction } from '../actions/actions';
 
-export const supplierReducers = (state: supplierTypes[], action: supplierAction): supplierTypes[] => {
-  // if (action.type === 'any-change') {
-  //   return {
-  //     ...state,
-  //   }
-  // }
-  return state
+
+export const supplierReducers = (state: (supplierTypes | restaurantTypes)[], action: fetchAllAction): (restaurantTypes  |supplierTypes)[] => {
+  switch (action.type) {
+    case 'FETCH_ALL':
+      return [...supplierState, ...action.payload]
+    default: return supplierState
+  }
 }
 
-export const supplierState: supplierTypes[] = [
+export const supplierState: (supplierTypes|restaurantTypes)[] = []
+/*
   {
     sup_id: 1,
     sup_name: "Ugo's Garden",
@@ -86,3 +89,4 @@ export const supplierState: supplierTypes[] = [
     sup_vehicles: 'Diesel'
   },
 ]
+*/

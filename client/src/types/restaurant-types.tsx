@@ -1,3 +1,4 @@
+
 export type restaurantTypes = {
   place_id: string,
   rest_name: string,
