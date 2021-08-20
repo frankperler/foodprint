@@ -9,7 +9,7 @@ import { ListTitle } from './results-styled-components/results-title';
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
-  const [supplTypesArray, setSupplTypesArray] = useState(['Vegetables', 'Fruits', 'Cheese'])
+  const [supplTypesArray] = useState(['Vegetables', 'Fruits', 'Cheese'])
 
   return (
     <>

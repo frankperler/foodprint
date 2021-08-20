@@ -6,7 +6,7 @@ export interface IProps {
 
 export const TypeButton = styled.button<IProps>`
   background-color: white;
-  border: 2px solid #84DCC6;
+  border: 1px solid #84DCC6;
   width: 12rem;
   height: 3rem;
   font-size: 18px;

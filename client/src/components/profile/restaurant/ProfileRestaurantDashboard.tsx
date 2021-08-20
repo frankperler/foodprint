@@ -11,8 +11,8 @@ import { RestStarRating } from '../../dashboard/results/restaurants-star-rating'
 
 export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
-  const [restItem, setRestItem] = useState([])
-  const [suppliersArray, setSuppliersArray] = useState([])
+  // const [restItem, setRestItem] = useState([])
+  // const [suppliersArray, setSuppliersArray] = useState([])
 
   // getOneRestaurant() function based on ID params from route to create inside a useEffect on component mount
   // getSuppliers() function based on restaurant ID from route (params) inside a useEffect

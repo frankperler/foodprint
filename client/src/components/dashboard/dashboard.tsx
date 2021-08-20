@@ -38,7 +38,7 @@ interface Props {
   isAuth: boolean,
 }
 
-export const Dashboard = ({ userType, isAuth }: Props) => {
+export const Dashboard = ({ userType }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)

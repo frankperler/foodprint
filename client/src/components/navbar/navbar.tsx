@@ -15,11 +15,11 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    marginTop: "1%",
+    marginTop: "2%",
     height: "auto",
     transform: 'translate(-50%, -50%)',
     background: "whitesmoke",
-    borderRadius: "7px"
+    borderRadius: "7px",
   },
 };
 

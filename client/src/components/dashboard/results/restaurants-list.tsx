@@ -8,7 +8,7 @@ import { ListTitle } from './results-styled-components/results-title';
 export const RestaurantsLists: React.FunctionComponent = () => {
 
   const { stateRestaurant } = useContext(restaurantContext)
-  const [restTypesArray, setRestTypesArray] = useState(['Bio', 'Vegetarian', 'Chinese', 'Café'])
+  const [restTypesArray] = useState(['Bio', 'Vegetarian', 'Chinese', 'Café'])
 
   return (
     <>

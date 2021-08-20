@@ -13,20 +13,20 @@ export const RegisterButton = styled.button`
   cursor: pointer;
   text-align: center;
   margin-top: 0.8em;
-  margin-bottom: 14em;
+  margin-bottom: 2em
 `
 
 export const RegisterNameInput = styled.input`
   width: 31.8em;
   padding: 0.8em 0.8em;
-  border: 2px solid #FF686B;
+  border: 1px solid #FF686B;
 `
 
 
 export const CredentialInput = styled.input`
   width: 31.8em;
   padding: 0.8em 0.8em;
-  border: 2px solid #FF686B;
+  border: 1px solid #FF686B;
 `
 
 export const Label = styled.label`
@@ -38,7 +38,7 @@ export const Label = styled.label`
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 `
 
 export const AddressTwoWrapper = styled.div`
@@ -49,12 +49,16 @@ export const AddressTwoWrapper = styled.div`
 export const EstablishmentInput = styled.input`
   width: 31.8em;
   padding: 0.8em 0.8em;
-  border: 2px solid #FF686B;
+  border: 1px solid #FF686B;
 `
 
 
 export const AddressTwoInput = styled.input`
   width: 12em;
   padding: 0.8em 0.8em;
-  border: 2px solid #FF686B;
+  border: 1px solid #FF686B;
+`
+
+export const WrapperDiv = styled.div`
+  z-index: 100;
 `
