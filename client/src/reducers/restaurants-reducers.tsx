@@ -1,15 +1,17 @@
-import { restaurantTypes, restaurantAction } from "../types/restaurant-types"
+import { restaurantTypes } from "../types/restaurant-types"
+import { supplierTypes } from "../types";
+import { fetchAllAction } from '../actions/actions';
 
-export const restaurantReducers = (state: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
-  // if (action.type === 'any-change') {
-  //   return {
-  //     ...state,
-  //   }
-  // }
-  return state
+export const restaurantReducers = (state: restaurantTypes[] | supplierTypes[], action: fetchAllAction): (restaurantTypes | supplierTypes)[] => {
+    switch (action.type) {
+      case 'FETCH_ALL': 
+        return [...restaurantState, ...action.payload]
+      default: return restaurantState;
+    }
 }
 
-export const restaurantState: restaurantTypes[] = [
+export const restaurantState: (restaurantTypes | supplierTypes)[]  = []
+/*
   {
     place_id: 'ChIJjWSRFtBRqEcReqmdfCNIYQw',
     rest_address: 'Kronenstraße 70, 10117 Berlin, Deutschland',
@@ -115,3 +117,5 @@ export const restaurantState: restaurantTypes[] = [
     rest_website: 'https://www.lepetitchef.de/berlin'
   }
 ]
+
+*/

@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useEffect } from 'react'
 import styled from 'styled-components'
 import { FilterArea } from './filters/filters-area'
 import { GridContainer } from './grid-container'
@@ -7,6 +7,8 @@ import { MapArea } from './map/map-area'
 import { EcoScoreSlider } from './filters/eco-score-slider'
 import { DistanceSlider } from './filters/distance-slider'
 import { RestaurantTypeSelect } from './filters/restaurant-type-select'
+// import { restaurantTypes } from '../../types/restaurant-types'
+// import { supplierTypes } from '../../types/supplier-types'
 import { MealTypeSelect } from './filters/meal-type-select'
 import { FoodTypeSelect } from './filters/food-type-select'
 import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutton'
@@ -22,6 +24,8 @@ import { restaurantContext } from '../../contexts/restaurants-contexts'
 import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
 import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
+import { getAllRestaurants } from '../../services/RestaurantService';
+import { getAllSuppliers } from '../../services/SupplierService';
 
 
 export const ButtonStyles = styled.div`
@@ -42,6 +46,14 @@ export const Dashboard = ({ userType }: Props) => {
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
+
+  // let allRestaurants: restaurantTypes[] = [];
+
+  useEffect(() => {
+   getAllRestaurants().then((restaurants) => dispatchRestaurant({type: 'FETCH_ALL', payload: restaurants}))
+   getAllSuppliers().then((suppliers) => dispatchSupplier({type: 'FETCH_ALL', payload: suppliers}))
+
+  }, [])
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
