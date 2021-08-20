@@ -19,8 +19,13 @@ const customStyles = {
     marginTop: "2%",
     height: "auto",
     transform: 'translate(-50%, -50%)',
-    background: "whitesmoke",
+    background: "white",
     borderRadius: "7px",
+    paddingTop: "120px",
+    paddingBottom: "120px",
+    paddingLeft: "96px",
+    paddingRight: "96px",
+    zIndex: 999
   },
 };
 
@@ -38,8 +43,7 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
   const [openRegistration, setOpenRegistration] = useState<boolean>(false);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
 
-  const onOpenRegistrationModal = () => setOpenRegistration(true);
-  const onCloseRegistrationModal = () => setOpenRegistration(false);
+
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
@@ -60,6 +64,7 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
             <div>
             <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
             <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
+            <Title><strong>food</strong>print.</Title>
               <FormLogIn
                 userType={userType}
                 setUserType={setUserType}
@@ -69,18 +74,12 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
             </Modal>
             </div>
             <div>
-            <HomePageButton onClick={onOpenRegistrationModal}>Sign up</HomePageButton>
-            <Modal isOpen={openRegistration} style={customStyles} onRequestClose={onCloseRegistrationModal}>
-              <RegistrationContainer
-                userType={userType}
-                setUserType={setUserType}
-                onCloseRegistrationModal={onCloseRegistrationModal}
-                isAuth={isAuth}
-                setIsAuth={setIsAuth} />
-            </Modal>
+              <Link to={'/register'}>
+            <HomePageButton>Sign up</HomePageButton>
+            </Link>
             </div>
           </HomeButtonFlex> :
-          <HomePageButton onClick={clickLogOut}>Log out!</HomePageButton>}
+          <LogInButton onClick={clickLogOut}>Log out</LogInButton>}
       </Navcontainer >
     </Container >
   )

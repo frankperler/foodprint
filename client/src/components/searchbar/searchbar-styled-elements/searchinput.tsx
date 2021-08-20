@@ -6,7 +6,7 @@ export const SearchInput = styled.input`
   height: 3rem;
   padding-left: 2em;
   border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   border: solid 0.1rem white;
   background-color: white;
   text-indent: 1rem;

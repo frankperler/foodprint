@@ -8,10 +8,9 @@ interface Props {
   setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
-  onCloseRegistrationModal: () => void,
 }
 
-export const RegistrationContainer = ({ onCloseRegistrationModal, userType, setUserType, isAuth, setIsAuth }: Props) => {
+export const RegistrationContainer = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
   const [clickedId, setClickedId] = useState(-1);
 
@@ -19,7 +18,7 @@ export const RegistrationContainer = ({ onCloseRegistrationModal, userType, setU
     <>
       <WrapperDiv>
         <ChooseUserType userType={userType} setUserType={setUserType} clickedId={clickedId} setClickedId={setClickedId}></ChooseUserType>
-        <RegistrationForm userType={userType} setUserType={setUserType} onCloseRegistrationModal={onCloseRegistrationModal} isAuth={isAuth} setIsAuth={setIsAuth} />
+        <RegistrationForm userType={userType} setUserType={setUserType} isAuth={isAuth} setIsAuth={setIsAuth} />
       </WrapperDiv>
     </>
   )

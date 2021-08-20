@@ -6,8 +6,10 @@ import { Searchbar } from './components/searchbar/searchbar'
 import { ProfileSupplierDashboard } from './components/profile/supplier/ProfileSupplierDashboard'
 import { ProfileRestaurantDashboard } from './components/profile/restaurant/ProfileRestaurantDashboard'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { RegistrationContainer } from './components/registration/RegistrationContainer'
 
 export const App: React.FunctionComponent = () => {
+
 
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
@@ -27,6 +29,14 @@ export const App: React.FunctionComponent = () => {
             userType={userType}
             isAuth={isAuth}
           />
+        </Route>
+        <Route path='/register' exact>
+    <RegistrationContainer
+                  userType={userType}
+                  setUserType={setUserType}
+                  isAuth={isAuth}
+                  setIsAuth={setIsAuth}
+    ></RegistrationContainer>
         </Route>
 
         <Route path='/supplier/:id'>

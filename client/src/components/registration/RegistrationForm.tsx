@@ -40,10 +40,9 @@ interface Props {
   setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
-  onCloseRegistrationModal: () => void,
 }
 
-export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth }: Props) => {
+export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),
@@ -52,7 +51,6 @@ export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth
   const onSubmit = (data: UserRegisterForm) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
-    onCloseRegistrationModal()
     reset();
   };
 

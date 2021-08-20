@@ -10,6 +10,7 @@ export const TypeButton = styled.button<IProps>`
   width: 12rem;
   height: 3rem;
   font-size: 18px;
+  outline: none;
   &:hover {
     background-color: #84DCC6;
     opacity: 0.75;
