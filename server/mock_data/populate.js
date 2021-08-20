@@ -39,7 +39,7 @@ const restaurants = [
   'Sapa Sushi', 'Vedang', 'Samadhi', 'Nanoosh', 'Maloa Poke Bowl', 'Goodtime restaurant', 'La Via del Muro', 'Viale dei Tigli', 'Ristorante Marea', 'Restaurant Babami', 'Ki-Nova', 'Das Berliner Restaurant',
   'Osteria Caruso', 'Sushi Club', 'Ishin', 'China-City', 'GaYaYa Mitte in Mitte', 'momos-organic veggie dumplings', 'Quy Nguyen', 'Swing Kitchen', 'Veggie & Vega', 'Ryong', 'Good Morning Vietnam',
   'Haicoffee', 'Vincent Vegan', 'Chay Viet', 'Sunshine Vegan Restaurant Berlin', 'Ki-nova', 'Cat Tuong', 'Hum vegan cuisine', '1990 Vegan living', 'Francucci - Ristorante Dal 1962', 
-  'Ristorante Lungomare', 'Sagrantino', 'Ristorante Cinque', 'A Mano', 'Portofino', 'Ristorante Piazza Rossa', 'Il Punto', 'Maya', 'Lupita', 'Dos', 'Girasol Restaurant Cafe Bar', 'Santa Maria',
+  'Ristorante Lungomare', 'Sagrantino', 'Ristorante Cinque', 'Portofino', 'Ristorante Piazza Rossa', 'Il Punto', 'Maya', 'Lupita', 'Dos', 'Girasol Restaurant Cafe Bar', 'Santa Maria',
 ];
 
 

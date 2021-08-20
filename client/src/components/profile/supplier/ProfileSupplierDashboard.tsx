@@ -17,10 +17,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       <Photo>
         <RestoCover src={suppliers[2].sup_picture} />
       </Photo>
-<<<<<<< HEAD
-=======
-      {/* <filterContext.Provider value={{ state, dispatch }}> */}
->>>>>>> api_service
       <InfoArea>
         <InteriorArea>
           <InfoHeader>{suppliers[2].sup_name}</InfoHeader>
@@ -36,10 +32,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
           <h3>Tons of CO2/mo</h3>
         </InteriorArea>
       </InfoArea>
-<<<<<<< HEAD
-=======
-      {/* </filterContext.Provider> */}
->>>>>>> api_service
       <ProfileDetails>
         <SupplierDescription></SupplierDescription>
         <Technology></Technology>
