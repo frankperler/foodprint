@@ -52,7 +52,6 @@ export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth
 
   const onSubmit = (data: UserRegisterForm) => {
     // will need to submit data on the database for registration
-    console.log(data)
     setIsAuth(true)
     onCloseRegistrationModal()
     reset();

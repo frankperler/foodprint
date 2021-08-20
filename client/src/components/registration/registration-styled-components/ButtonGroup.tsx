@@ -20,7 +20,6 @@ export const ButtonGroup = ({ setUserType, clickedId, setClickedId }: Props) => 
   }
 
   const handleTypeClick = (name: string, id: number) => {
-    console.log(name);
     setClickedId(id);
     handleUserType(name)
   }

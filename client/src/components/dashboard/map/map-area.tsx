@@ -8,6 +8,8 @@ export const MapArea = styled("div")`
   overflow: hidden;
   border-radius: 7px;
   box-sizing: border-box;
+  position:sticky;
+  top: 13%;
 
   &:hover {
     transform: scale(1.01);
