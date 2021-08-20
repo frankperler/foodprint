@@ -105,7 +105,7 @@ export const RegistrationForm = ({ onCloseRegistrationModal, userType, setIsAuth
         <Label>Password confirmation</Label>
         <CredentialInput type="password" {...register('confirmPassword')} />
         <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <RegisterButton type="submit" onClick={handleSubmit(onSubmit)}>Register</RegisterButton>
         </Link>
       </form>

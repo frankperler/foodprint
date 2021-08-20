@@ -2,11 +2,12 @@ import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { restaurantTypes } from '../../../types/restaurant-types';
+import './star.css'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      zIndex: 0,
+      zIndex: -1,
       display: 'flex',
       flexDirection: 'column',
       '& > * + *': {
