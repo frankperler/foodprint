@@ -4,26 +4,25 @@ import styled from 'styled-components';
 
 export const BioStyles = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #888;
   margin-top: 1rem;
-  flex-shrink:1;
+  font-size: 0.8rem;
+  /* flex-shrink:1; */
 
-  .value {
-    font-size: 0.8rem;
-    text-align: left;
-  }
-
-  .formBtn {
+  .radioArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 1rem;
-    border-radius: 5px;
-    background: #efefef;
+    margin-right: 1rem;
+    font-size: 0.8rem;
   }
 
-  .radioBtn {
-    font-size: 0.2rem;
+  .radioTxt {
+    padding: 0rem 0.5rem;
   }
 `;
 
@@ -39,11 +38,13 @@ export const BioFilter: React.FunctionComponent = () => {
 
   return (
     <BioStyles>
-      <div className="value">Bio: {stateFilter.bio}</div>
-      <form>
-        <input className="radioBtn" type="radio" name="bool" value="true" checked={stateFilter.bio === true} onChange={handleChange} />Yes
-        <input className="radioBtn" type="radio" name="bool" value="false" checked={stateFilter.bio === false} onChange={handleChange} />No
-      </form>
+      <div className="value">Bio</div>
+      <div className="radioArea">
+        <input className="radioBtn" type="radio" name="bool" value="true" checked={stateFilter.bio === true} onChange={handleChange} />
+        <div className="radioTxt">Yes</div>
+        <input className="radioBtn" type="radio" name="bool" value="false" checked={stateFilter.bio === false} onChange={handleChange} />
+        <div className="radioTxt">No</div>
+      </div>
     </BioStyles>
   )
 }
