@@ -12,40 +12,7 @@ export const App: React.FunctionComponent = () => {
   const [isAuth, setIsAuth] = useState(false)
 
   return (
-    <Router>
-      <Switch>
-        <Route path='/' exact>
-          <Navbar
-            userType={userType}
-            setUserType={setUserType}
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-          />
-          <Searchbar />
-          <Dashboard userType={userType} />
-        </Route>
-
-        <Route path='/supplier/:id'>
-          <Navbar
-            userType={userType}
-            setUserType={setUserType}
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-          />
-          <ProfileSupplierDashboard />
-        </Route>
-
-        <Route path='/restaurant/:id'>
-          <Navbar
-            userType={userType}
-            setUserType={setUserType}
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-          />
-          <ProfileRestaurantDashboard />
-        </Route>
-      </Switch>
-    </Router>
+    <ProfileSupplierDashboard></ProfileSupplierDashboard>
   )
 }
 
