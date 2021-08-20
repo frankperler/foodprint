@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Container = styled("div") <{
   inputColor?: string,
   containerHeight?: string,
-  boxShadow?: string;
+  boxShadow?: string,
+  navPosition?: string,
+  topPosition?: string
 }>`
   display: flex;
   flex-direction: row;
@@ -14,4 +16,7 @@ export const Container = styled("div") <{
   width: 100vw;
   height: ${(props) => props.containerHeight};
   box-shadow: ${(props) => props.boxShadow};
+  position: ${(props) => props.navPosition};
+  top: ${(props) => props.topPosition};
+  z-index: 1;
 `

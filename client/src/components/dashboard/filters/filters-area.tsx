@@ -8,7 +8,8 @@ export const FilterArea = styled("div")`
   height: 30rem;
   margin-right: 3rem;
   justify-items: stretch;
-  /* width: 18.75rem; */
   background-color: white;
   border-radius: 7px;
+  position: sticky;
+  top: 47%;
 `

@@ -6,6 +6,7 @@ export const filterState: filterTypes = {
   restaurantType: [],
   mealType: [],
   foodType: [],
+  bio: false,
 }
 
 export const filterReducers = (state: filterTypes, action: filterAction): filterTypes => {
@@ -41,6 +42,13 @@ export const filterReducers = (state: filterTypes, action: filterAction): filter
     return {
       ...state,
       foodType: action.payload
+    }
+  }
+
+  if (action.type === 'bio-change') {
+    return {
+      ...state,
+      bio: action.payload
     }
   }
 

@@ -1,11 +1,12 @@
 import { restaurantTypes, restaurantAction } from "../types/restaurant-types"
 
 export const restaurantReducers = (state: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
-  // if (action.type === 'any-change') {
-  //   return {
-  //     ...state,
-  //   }
-  // }
+  if (action.type === 'update-all') {
+    return {
+      ...state,
+      //add action payload
+    }
+  }
   return state
 }
 

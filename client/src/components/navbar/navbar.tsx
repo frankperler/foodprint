@@ -15,7 +15,11 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    marginTop: "1%",
+    height: "auto",
     transform: 'translate(-50%, -50%)',
+    background: "whitesmoke",
+    borderRadius: "7px"
   },
 };
 
@@ -45,7 +49,7 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
 
   return (
-    <Container containerHeight="4rem">
+    <Container containerHeight="4rem" topPosition="0%" navPosition="sticky">
       <Navcontainer>
         <Link to='/' style={{ textDecoration: 'none' }}>
           <Title><strong>food</strong>print.</Title>

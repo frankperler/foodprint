@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const TopArea = styled("div")`
   grid-area: top;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-items:stretch;
   justify-content: flex-start;
@@ -13,4 +12,7 @@ export const TopArea = styled("div")`
   background-color: white;
   border-radius: 7px;
   box-sizing: border-box;
+  position: sticky;
+  height: 50rem;
+  top: 13%;
 `

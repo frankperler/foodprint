@@ -6,6 +6,7 @@ import { Map } from './map/map'
 import { MapArea } from './map/map-area'
 import { EcoScoreSlider } from './filters/eco-score-slider'
 import { DistanceSlider } from './filters/distance-slider'
+import { BioFilter } from './filters/bio-filter'
 import { RestaurantTypeSelect } from './filters/restaurant-type-select'
 import { MealTypeSelect } from './filters/meal-type-select'
 import { FoodTypeSelect } from './filters/food-type-select'
@@ -34,13 +35,16 @@ export const ButtonStyles = styled.div`
 
 interface Props {
   userType: string,
+  isAuth: boolean,
 }
 
-export const Dashboard = ({ userType }: Props) => {
+export const Dashboard = ({ userType, isAuth }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
+
+  // Get all restaurants/suppliers
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
@@ -50,23 +54,33 @@ export const Dashboard = ({ userType }: Props) => {
             <MapArea>
               <Map />
             </MapArea>
-            <FilterArea>
-              <EcoScoreSlider />
-              <DistanceSlider />
-              {((userType === 'Food lover') || (userType === 'Supplier') || (userType === "")) ?
-                <div>
-                  <RestaurantTypeSelect />
-                  <MealTypeSelect />
-                </div>
-                :
+
+            {((userType === 'Food lover') || (userType === 'Supplier')) ?
+              <FilterArea>
+                <EcoScoreSlider />
+                <DistanceSlider />
+                <RestaurantTypeSelect />
+                <MealTypeSelect />
+                <ButtonStyles>
+                  <HomePageButton>
+                    Search!
+                  </ HomePageButton>
+                </ButtonStyles>
+              </FilterArea>
+              :
+              // bio filter
+              <FilterArea>
+                <EcoScoreSlider />
+                <DistanceSlider />
+                <BioFilter />
                 <FoodTypeSelect />
-              }
-              <ButtonStyles>
-                <HomePageButton>
-                  Search!
-                </ HomePageButton>
-              </ButtonStyles>
-            </FilterArea>
+                <ButtonStyles>
+                  <HomePageButton>
+                    Search!
+                  </ HomePageButton>
+                </ButtonStyles>
+              </FilterArea>
+            }
             <ResultsArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
                 <RestaurantsLists /> :
@@ -82,6 +96,6 @@ export const Dashboard = ({ userType }: Props) => {
           </GridContainer>
         </filterContext.Provider>
       </restaurantContext.Provider>
-    </supplierContext.Provider>
+    </supplierContext.Provider >
   )
 }
