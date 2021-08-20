@@ -33,9 +33,10 @@ export const DescriptionCard = styled.div`
 `
 
 export const DescriptionText = styled.div`
-  margin-top: 2rem;
+  margin: 2rem auto;
   font-size: 16px;
   line-height: 1.6;
+  width: 80%;
 `
 
 export const GridContainer = styled("div")`
@@ -47,8 +48,8 @@ export const GridContainer = styled("div")`
     "filters list list"
     "filters list list"
   ;
-  height: 100vh;
-  width: 65vw;
+  height: auto;
+  width: 75%;
   background-color: white;
   margin: 4rem auto 0 auto;
 `
@@ -129,7 +130,8 @@ export const CancelButton = styled.button`
 `
 
 export const InteriorArea = styled.div`
-  padding: 4rem;
+  padding: 0 4rem 4rem 4rem;
+
 `
 
 export const SupplierContainer = styled.div`
@@ -209,7 +211,10 @@ export const SupplierInfo = styled.div`
 `
 
 export const AddSupplier = styled.div`
-  vertical-align: middle;
+  display: flex;
+  justify-content: space-evenly;
+  width: 10em;
+  align-items: center;
   cursor: pointer;
 `
 
@@ -235,12 +240,14 @@ export const RestoListContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
-  width: 95%;
+  width: 80%;
 `
 
 export const TechnologyRibbons = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 80%;
+  margin: 2em auto;
 `
 
 export const TechnologyContainer = styled.div`
@@ -249,6 +256,13 @@ export const TechnologyContainer = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 75%;
   height: auto;
+`
+
+export const ProfileHeader = styled.h1`
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2.6em;
+  font-size: 32px;
 `
 
 export const EnergySourceGrid = styled.div`

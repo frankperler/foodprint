@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { EditDescription, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
+import { EditDescription, ProfileHeader, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -38,10 +38,19 @@ export const Technology = (): JSX.Element => {
           <EditIcon></EditIcon>
         }
       </EditDescription>
+      <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
-        {suppliers[2].sup_greenTech.map(t => {
+        {/* {suppliers[2].sup_greenTech.map(t => {
           return <div><h6>{t}</h6></div>
-        })}
+        })} */}
+        <img src="/images/biodynamic_s.svg"/>
+        <img src="/images/savewater_s.svg"/>
+        <img src="/images/nopesticide_s.svg"/>
+        <img src="/images/noplastic_s.svg"/>
+        <img src="/images/biofuel_s.svg"/>
+        <img src="/images/nongmo_s.svg" />
+        <img src="/images/organic_s.svg"/>
+        <img src="/images/nogrowthhormone_s.svg"/>
       </TechnologyRibbons>
         <TechChoiceGrid>
         {isEditing ?
@@ -49,48 +58,47 @@ export const Technology = (): JSX.Element => {
           <FormControl component="fieldset">
             <div>
               <EnergyTypeForm>
-                <h4>Main source of energy (choose up to 2)</h4>
-                <FormLabel component="legend">Pick two</FormLabel>
-                <FormGroup>
+                <h4>Main source of energy</h4>
+                <FormLabel component="legend">Select up to two</FormLabel>
+                <FormGroup style={{display: 'flex', flexDirection: 'row'}}>
                   <FormControlLabel
                     control={<GreenCheckbox />} 
                     label="Solar"
                   />
                   <FormControlLabel
-                    control={<GreenCheckbox name='Wind'/>} 
+                    control={<GreenCheckbox />} 
                     label='Wind'
                   />
                   <FormControlLabel label="Natural gas"
-                    control={<GreenCheckbox name='Natural gas'/>} 
+                    control={<GreenCheckbox />} 
                   />
                   <FormControlLabel
-                    control={<GreenCheckbox name='Electricity (renewable)'/>} 
+                    control={<GreenCheckbox />} 
                     label="Electricity (renewable)"
                   />
                 </FormGroup>
               </EnergyTypeForm>
               <VehicleTypeForm>
                 <h4>The majority of my vehicles are...</h4>
-                <FormLabel component="legend">Pick two</FormLabel>
-                <FormGroup>
+                <FormGroup style={{display: 'flex', flexDirection: 'row'}}>
                 <FormControlLabel
-                  control={<GreenCheckbox name='Biofuel'/>} 
+                  control={<GreenCheckbox />} 
                   label="Biofuel"
                   />
                 <FormControlLabel
-                  control={<GreenCheckbox name='Gasoline'/>} 
+                  control={<GreenCheckbox />} 
                   label="Gasoline"
                   />
                 <FormControlLabel
-                  control={<GreenCheckbox name='Diesel'/>} 
+                  control={<GreenCheckbox />} 
                   label="Diesel"
                   />
                 <FormControlLabel
-                  control={<GreenCheckbox name='Electric'/>} 
+                  control={<GreenCheckbox />} 
                   label="Electric"
                   />
                 <FormControlLabel
-                  control={<GreenCheckbox name='Hybrid'/>} 
+                  control={<GreenCheckbox />} 
                   label="Hybrid"
                   />
                 </FormGroup>
@@ -104,46 +112,47 @@ export const Technology = (): JSX.Element => {
             <FormControl>
               <div>
                 <EnergyTypeForm>
-                  <h4>Main source of energy (choose up to 2)</h4>
-                  <FormGroup>
+                  <h4>Main source of energy</h4>
+                  <FormLabel component="legend">Select up to two</FormLabel>
+                  <FormGroup style={{display: 'flex', flexDirection: 'row'}}>
                   <FormControlLabel
-                    disabled control={<GreenCheckbox name='Solar'/>} 
+                    disabled control={<GreenCheckbox />} 
                     label="Solar"
                   />
                   <FormControlLabel
-                    disabled control={<GreenCheckbox name='Wind'/>} 
+                    disabled control={<GreenCheckbox />} 
                     label='Wind'
                   />
                   <FormControlLabel label="Natural gas"
-                    disabled control={<GreenCheckbox name='Natural gas'/>} 
+                    disabled control={<GreenCheckbox />} 
                   />
                   <FormControlLabel
-                    disabled control={<GreenCheckbox name='Electricity (renewable)'/>} 
+                    disabled control={<GreenCheckbox />} 
                     label="Electricity (renewable)"
                   />
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
                   <h4>The majority of my vehicles are...</h4>
-                  <FormGroup>
+                  <FormGroup style={{display: 'flex', flexDirection: 'row'}}>
                   <FormControlLabel
-                  disabled control={<GreenCheckbox name='Biofuel'/>} 
+                  disabled control={<GreenCheckbox />} 
                   label="Biofuel"
                   />
                 <FormControlLabel
-                  disabled control={<GreenCheckbox name='Gasoline'/>} 
+                  disabled control={<GreenCheckbox />} 
                   label="Gasoline"
                   />
                 <FormControlLabel
-                  disabled control={<GreenCheckbox name='Diesel'/>} 
+                  disabled control={<GreenCheckbox />} 
                   label="Diesel"
                   />
                 <FormControlLabel
-                  disabled control={<GreenCheckbox name='Electric'/>} 
+                  disabled control={<GreenCheckbox />} 
                   label="Electric"
                   />
                 <FormControlLabel
-                  disabled control={<GreenCheckbox name='Hybrid'/>} 
+                  disabled control={<GreenCheckbox />} 
                   label="Hybrid"
                   />
                   </FormGroup>

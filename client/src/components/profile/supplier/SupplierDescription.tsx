@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { CancelButton, DescriptionCard, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
+import { CancelButton, DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
 import { Icon } from 'semantic-ui-react';
 import { suppliers } from '../../../mock';
 
@@ -31,7 +31,7 @@ const handleUpdate = (e: MouseEvent ) => {
           <EditIcon></EditIcon>
         }
       </EditDescription>
-      <h2>Description</h2>
+      <ProfileHeader>Description</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{suppliers[2].sup_description}</EditTextArea>

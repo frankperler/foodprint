@@ -1,11 +1,15 @@
 import React from 'react';
-import { ProductsContainer } from '../profile-styled-components/profile.style';
+import { ProductsContainer, ProfileHeader } from '../profile-styled-components/profile.style';
 
 
 export const ProductsList = (): JSX.Element => {
 
 
   return (
-    <ProductsContainer>Product list component...</ProductsContainer>
+    <ProductsContainer>
+      <ProfileHeader>Our main products</ProfileHeader>
+      Product list component...
+
+    </ProductsContainer>
   )
 }

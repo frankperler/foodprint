@@ -1,9 +1,10 @@
 import React from 'react';
-import { ButtonWrap, RestoListContainer, SupplierContainer, AddSupplier } from '../profile-styled-components/profile.style';
+import { ButtonWrap, RestoListContainer, SupplierContainer, AddSupplier, ProfileHeader } from '../profile-styled-components/profile.style';
 import { restos } from '../../../mock';
 import { RestaurantCard } from './RestaurantCard';
-import { Icon } from 'semantic-ui-react';
 import { restaurantTypes } from '../../../types/restaurant-types';
+import AddIcon from '@material-ui/icons/Add';
+import { AddCircle } from '@material-ui/icons';
 
 export const RestaurantList = (): JSX.Element => {
 
@@ -11,10 +12,10 @@ export const RestaurantList = (): JSX.Element => {
     <SupplierContainer>
       <ButtonWrap>
         <AddSupplier>
-          <Icon name="plus" size="big" /> Add restaurant
+          <AddCircle fontSize="large" style={{display: 'inline-block'}}/> <h4 style={{display: 'inline-block'}}>Add restaurant</h4>
         </AddSupplier>
       </ButtonWrap>
-      <h2>Who I'm selling to...</h2>
+      <ProfileHeader>Who I'm selling to...</ProfileHeader>
       <RestoListContainer>
         {restos.map((resto: restaurantTypes) => {
           return <RestaurantCard key={resto.place_id} resto={resto} />

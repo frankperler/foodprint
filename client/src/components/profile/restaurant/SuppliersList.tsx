@@ -1,8 +1,8 @@
 import React from 'react';
-import { AddSupplier, AddHeader, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
+import { AddSupplier, ProfileHeader, AddHeader, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
 import { SupplierCard } from './SupplierCard';
-import { Icon } from 'semantic-ui-react';
+import { AddCircle } from '@material-ui/icons';
 
 export const SuppliersList = (): JSX.Element => {
 
@@ -11,10 +11,10 @@ export const SuppliersList = (): JSX.Element => {
       <InteriorSupplierContainer>
         <ButtonWrap>
           <AddSupplier>
-            <Icon name="plus" size="big" /> <AddHeader>Add supplier</AddHeader>
+          <AddCircle fontSize="large" style={{display: 'inline-block'}}/> <h4 style={{display: 'inline-block'}}>Add supplier</h4>
           </AddSupplier>
         </ButtonWrap>
-        <h2>Who we get our food from...</h2>
+        <ProfileHeader>Who we get our food from...</ProfileHeader>
         <SupplierListContainer>
           {suppliers.map(supplier => {
             return <SupplierCard key={supplier.sup_id} supplier={supplier} />

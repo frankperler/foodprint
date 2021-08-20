@@ -1,7 +1,6 @@
 import React from 'react';
-import { DescriptionCard, DescriptionText, EditDescription, EditTextArea, CancelButton, UpdateChangesButton } from '../profile-styled-components/profile.style';
+import { DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, CancelButton, UpdateChangesButton } from '../profile-styled-components/profile.style';
 import { restos } from '../../../mock';
-import { Icon } from 'semantic-ui-react';
 import { useState } from 'react';
 import { MouseEvent } from 'react';
 import EditIcon from '@material-ui/icons/Edit';
@@ -31,7 +30,7 @@ const handleUpdate = (e: MouseEvent ) => {
         <EditIcon></EditIcon>
         }
       </EditDescription>
-      <h2>Description</h2>
+        <ProfileHeader>Description</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{restos[2].rest_description}</EditTextArea>
