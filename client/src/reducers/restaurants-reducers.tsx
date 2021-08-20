@@ -98,7 +98,7 @@ export const restaurantState: restaurantTypes[] = [
     rest_lat: 52.5082832,
     rest_lng: 13.3726697,
     rest_price_level: 1,
-    rest_name: 'Le Petit Chef - Berlin',
+    rest_name: 'Le Moyen Chef - Berlin',
     rest_rating: 4.6,
     rest_eco_score: 2.93,
     rest_description: "The 2nd branch of Vedang opened 2019 in the mall Alexa. Serves a variety of plant-based burgers including the beyond burger, plus drinks like iced tea and sparkling water, sweets like soft serve ice cream, and sides like nuggets, fries, and chili cheese fries. Order at the counter, and enjoy your meal at the food court's shared seating. Note August 2021: Many places in Germany may now offer limited indoor dining and outdoor dining. Call ahead as availability, hours, and rules may vary.",
@@ -114,5 +114,31 @@ export const restaurantState: restaurantTypes[] = [
     ],
     rest_phone_number: '030 25531234',
     rest_website: 'https://www.lepetitchef.de/berlin'
-  }
+  },
+  {
+    place_id: 'ChIJYWKRX6BRqEcRfN6pR4NPwOA',
+    rest_address: 'Grand Hyatt Berlin, Marlene-Dietrich-Platz 2, 10785 Berlin, Deutschland',
+    rest_city: 'Berlin',
+    rest_meal_type: ['Breakfast'],
+    rest_types: ['Café', 'Chinese', 'Bio'],
+    rest_lat: 52.5082832,
+    rest_lng: 13.3726697,
+    rest_price_level: 1,
+    rest_name: 'Le Grand Chef - Berlin',
+    rest_rating: 4.6,
+    rest_eco_score: 2.93,
+    rest_description: "The 2nd branch of Vedang opened 2019 in the mall Alexa. Serves a variety of plant-based burgers including the beyond burger, plus drinks like iced tea and sparkling water, sweets like soft serve ice cream, and sides like nuggets, fries, and chili cheese fries. Order at the counter, and enjoy your meal at the food court's shared seating. Note August 2021: Many places in Germany may now offer limited indoor dining and outdoor dining. Call ahead as availability, hours, and rules may vary.",
+    rest_picture: 'https://source.unsplash.com/QaGDmf5tMiE/1600x900',
+    opening_hours: [
+      'Monday: 7:30 AM – 7:00 PM',
+      'Tuesday: 7:30 AM – 7:00 PM',
+      'Wednesday: 7:30 AM – 7:00 PM',
+      'Thursday: 7:30 AM – 7:00 PM',
+      'Friday: 7:30 AM – 7:00 PM',
+      'Saturday: 9:00 AM – 7:00 PM',
+      'Sunday: 10:00 AM – 6:00 PM'
+    ],
+    rest_phone_number: '030 25531234',
+    rest_website: 'https://www.lepetitchef.de/berlin'
+  },
 ]

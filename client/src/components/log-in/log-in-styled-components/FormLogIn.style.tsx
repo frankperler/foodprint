@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const LogInCredentialInput = styled.input`
   width: 31.8em;
   padding: 0.8em 0.8em;
-  border: 2px solid #FF686B;
+  border: 1px solid #FF686B;
 `
 
 export const Label = styled.label`

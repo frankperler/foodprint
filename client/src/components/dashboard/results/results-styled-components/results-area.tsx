@@ -7,6 +7,7 @@ export const ResultsArea = styled("div")`
   flex-wrap: wrap;
   justify-items: stretch;
   margin-right: 3rem;
+  height: auto;
   flex-grow: 1;
   background-color: white;
   border-radius: 7px;
