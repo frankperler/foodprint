@@ -18,7 +18,7 @@ export const SliderStyles = styled.div`
   .slider {
     -webkit-appearance: none;
     width: 80%;
-    height: 5px;
+    height: 0.2rem;
     margin-top: 1rem;
     border-radius: 5px;
     background: #efefef;

@@ -22,7 +22,10 @@ export const App: React.FunctionComponent = () => {
             setIsAuth={setIsAuth}
           />
           <Searchbar />
-          <Dashboard userType={userType} />
+          <Dashboard
+            userType={userType}
+            isAuth={isAuth}
+          />
         </Route>
 
         <Route path='/supplier/:id'>

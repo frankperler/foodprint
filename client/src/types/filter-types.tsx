@@ -9,6 +9,7 @@ export type filterTypes = {
   restaurantType?: string[],
   mealType?: string[],
   foodType?: string[],
+  bio?: boolean
 }
 
 export type filterActionArray = {
@@ -21,4 +22,9 @@ export type filterActionNumber = {
   payload: number;
 }
 
-export type filterAction = filterActionNumber | filterActionArray
+export type filterActionBool = {
+  type: 'bio-change'
+  payload: boolean;
+}
+
+export type filterAction = filterActionNumber | filterActionArray | filterActionBool

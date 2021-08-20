@@ -18,6 +18,6 @@ export type restaurantTypes = {
 }
 
 export type restaurantAction = {
-  type: 'any-change',
+  type: 'update-all',
   payload: string[];
 }
