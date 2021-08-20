@@ -1,6 +1,5 @@
 'use strict';
 
-// const Router = require('koa-router');
 const express = require('express')
 const router = express.Router()
 
@@ -24,14 +23,9 @@ router.post('/suppliers/addProduction', supplier.addProduction);
 router.post('/suppliers/filterRestaurants', supplier.filterRestaurants);
 router.post('/suppliers/claimRestaurant', supplier.claimRestaurant);
 
-
 router.get('/restaurants/getAllRestaurants', restaurant.getAllRestaurants);
 router.post('/restaurants/claimSupplier', restaurant.claimSupplier);
 router.post('/restaurants/filterSuppliers', restaurant.filterSuppliers);
-
-
-router.post('/users/filterRestaurants', supplier.filterRestaurants)
-
 
 router.post('/search/searchRestaurantsByCity', search.searchRestaurantsByCity);
 router.post('/search/searchSuppliersByCity', search.searchSuppliersByCity);
@@ -40,17 +34,14 @@ router.post('/search/searchSuppliersByCity', search.searchSuppliersByCity);
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);
 
-// router.get('/restaurants', restaurant.getAll);
 // router.get('/restaurants/:id', restaurant.getOne);
 // router.put('/restaurants/:id', restaurant.updateOne);
 // router.delete('/restaurants/:id', restaurant.deleteOne);
 // router.delete('/restaurants/supplier', restaurant.deleteSupplier);
 
-// router.get('/suppliers', supplier.getAll);
 // router.get('/suppliers/:id', supplier.getOne);
 // router.put('/suppliers/:id', supplier.getOne);
 // router.delete('/suppliers/:id', supplier.deleteOne);
-// router.post('/suppliers/restaurant', supplier.addRestaurant);
 // router.delete('/suppliers/restaurant', supplier.deleteRestaurant);
 
 // router.get('/productions/:supplier_id', production.getAll);

@@ -4,6 +4,17 @@ const { Sequelize } = require('../../models/index');
 const Op = Sequelize.Op;
 const db = require('../../models/index');
 
+exports.getAllRestaurants = async (req, res) => {
+  try {
+    const restaurants = await db.Restaurant.findAll()
+    res.send(restaurants)
+  }
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
 exports.claimSupplier = async (req, res) => {
   try {
     //Check if supplier exists in our DB (search by name?)
@@ -47,17 +58,6 @@ exports.claimSupplier = async (req, res) => {
   }
 }
 
-exports.getAllRestaurants = async (req, res) => {
-  try {
-    const restaurants = await db.Restaurant.findAll()
-    res.send(restaurants)
-  }
-  catch (e) {
-    console.log(e);
-    res.status = 500;
-  }
-}
-
 exports.filterSuppliers = async (req, res) => {
   try {
     const { eco_score, bio, food_types } = req.body;
@@ -82,11 +82,7 @@ exports.filterSuppliers = async (req, res) => {
           }
         }
       }
-    })
-    // eco score is a number btwn 1 and 5
-    // bio is T/F
-    // food type is an array of foods [potatoes, tomatoes, ...]
-    
+    }) 
     const filteredSuppliers = suppliers.filter(supplier => supplier.Productions.length !== 0)
 
     res.send(filteredSuppliers);

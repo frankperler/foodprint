@@ -11,27 +11,34 @@ exports.findUser = async (req, res) => {
         password: req.body.password,
       }
     })
-    const user = await login.getUser();
-    if (user.user_type === 'restaurant') {
-      const restaurants = await user.getRestaurants({
-        include: db.Supplier
-      });
-      res.send({ user, restaurants });
-    }
-    else if (user.user_type === 'supplier') {
-      const suppliers = await user.getSuppliers({
-        include: [
-          {model: db.Restaurant},
-          {model: db.Production,
-            include: db.Product
-          },
-        ]        
-
-      });
-      res.send({ user, suppliers });
+    if (login) {
+      const user = await login.getUser();
+      if (user.user_type === 'restaurant') {
+        const restaurants = await user.getRestaurants({
+          include: db.Supplier
+        });
+        res.send({ user, restaurants });
+      }
+      else if (user.user_type === 'supplier') {
+        const suppliers = await user.getSuppliers({
+          include: [
+            {model: db.Restaurant},
+            {model: db.Production,
+              include: db.Product
+            },
+          ]        
+  
+        });
+        console.log({ user, suppliers });
+        res.send({ user, suppliers });
+      }
+      else {
+        console.log(user);
+        res.send(user);
+      }
     }
     else {
-      res.send(user);
+      res.send('Error! Invalid credentials. Try again.')
     }
   }
   catch (e) {

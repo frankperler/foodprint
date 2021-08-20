@@ -44,39 +44,6 @@ exports.filterRestaurants = async (req, res) => {
   }
 }
 
-
-exports.addProduction = async (req, res) => {
-  try {
-    // extract name of product from req.body
-    // go to Products table and find one by name
-    const product = await db.Product.findOne({
-        where: {
-            product_name: req.body.product_name,
-        }
-    })
-    // extract co2 value corresponding to that product
-    const co2 = product.product_CO2;
-    // use that to make production co2 calculation (tons coming in the req.body)*c02 value *10
-    const productionAmount = req.body.production_amount;
-    const productionEmissionsKG = productionAmount*co2*10;
-
-    //create production instance in productions table
-    const production = await db.Production.create({
-        production_amount: productionAmount,
-        production_CO2 : productionEmissionsKG,
-        // and assign the supplier Id as foreign key in the Productions table
-        SupplierId : req.body.sup_id
-    })
-    await product.setProductions(production);
-    res.send({product, production}); 
-}
-
-  catch (e) {
-    console.log(e);
-    res.status = 500;
-  }
-}
-
 exports.claimRestaurant = async (req, res) => {
   try {
     const restaurant = await db.Restaurant.findOne({
@@ -116,6 +83,32 @@ exports.claimRestaurant = async (req, res) => {
     res.status = 500;
   }
 }
+
+exports.addProduction = async (req, res) => {
+  try {
+    const product = await db.Product.findOne({
+        where: {
+            product_name: req.body.product_name,
+        }
+    })
+    const co2 = product.product_CO2;
+      const productionAmount = req.body.production_amount;
+    const productionEmissionsKG = productionAmount*co2*10;
+    const production = await db.Production.create({
+        production_amount: productionAmount,
+        production_CO2 : productionEmissionsKG,
+        SupplierId : req.body.sup_id
+    })
+    await product.setProductions(production);
+    res.send({product, production}); 
+}
+
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
 
 
 

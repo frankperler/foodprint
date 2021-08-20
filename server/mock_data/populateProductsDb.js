@@ -1,4 +1,4 @@
-const { Product } = require('./models/index');
+const { Product } = require('../models/index');
 
 const name = ["Apples","Artichoke","Bananas","Beetroot","Bread","Broccoli","Carrot","Cheese","Mountain Cheese", "Blue Cheese", "Young Cheese", "Cherries","Chicken","Eggs","Garlic","Grapes","Lemons","Lettuce","Mangoes","Milk","Mushrooms","Oranges","Peaches","Squash","Strawberries","Tomatoes"]
 const co2 = [90,34,130,114,121,108,113,879,879,879,879,286,471,451,45,30,190,161,440,176,140,190,190,116,224,291]

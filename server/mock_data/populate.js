@@ -1,5 +1,5 @@
 const fetch = require('cross-fetch');
-const { Restaurant } = require('./models/index');
+const { Restaurant } = require('../models/index');
 require('dotenv').config();
 const baseUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
 const baseUrlTwo = 'https://maps.googleapis.com/maps/api/place/details/json?';
@@ -37,17 +37,16 @@ function getRandomValue(arr) {
 const restaurants = [
   'Le Petit Chef - Berlin', 'Restaurant Maximilians Berlin', 'Seaside - Fish & Seafood Bar', 'Izumi Restaurant-Sushi Bar & Lieferservice', 'Savory Chay', 'Gendarmerie', 'Alt-Berliner Wirtshaus',
   'Sapa Sushi', 'Vedang', 'Samadhi', 'Nanoosh', 'Maloa Poke Bowl', 'Goodtime restaurant', 'La Via del Muro', 'Viale dei Tigli', 'Ristorante Marea', 'Restaurant Babami', 'Ki-Nova', 'Das Berliner Restaurant',
-  'Osteria Caruso', 'Sushi Club', 'Ishin', 'China-City', 'GaYaYa Mitte in Mitte', 'momos-organic veggie dumplings', 'Quy Nguyen', 'Swing Kitchen', 'Veggie & Vega', 'Ryong', 'strEats', 'Good Morning Vietnam',
-  'Haicoffee', 'Vincent Vegan', 'Chay Viet', 'Sunshine Vegan Restaurant Berlin', 'Ki-nova', 'Cat Tuong', 'Hum vegan cuisine', '1990 Vegan living', 'Francucci - Ristorante Dal 1962', 'Dolcini', 
+  'Osteria Caruso', 'Sushi Club', 'Ishin', 'China-City', 'GaYaYa Mitte in Mitte', 'momos-organic veggie dumplings', 'Quy Nguyen', 'Swing Kitchen', 'Veggie & Vega', 'Ryong', 'Good Morning Vietnam',
+  'Haicoffee', 'Vincent Vegan', 'Chay Viet', 'Sunshine Vegan Restaurant Berlin', 'Ki-nova', 'Cat Tuong', 'Hum vegan cuisine', '1990 Vegan living', 'Francucci - Ristorante Dal 1962', 
   'Ristorante Lungomare', 'Sagrantino', 'Ristorante Cinque', 'A Mano', 'Portofino', 'Ristorante Piazza Rossa', 'Il Punto', 'Maya', 'Lupita', 'Dos', 'Girasol Restaurant Cafe Bar', 'Santa Maria',
-  'El Amigo Taqueria'
 ];
 
 
 const populate = async () => {
   try {
 
-    for (let i = 0; i < restaurants.length; i++) {
+    for (let i = 0; i < restaurants.length ; i++) {
       const mockRestaurant = {};
 
       // console.log('api key', apiKey)
@@ -175,9 +174,14 @@ const populate = async () => {
         mockRestaurant.rest_website = 'www.foodprint.com';
       }
 
+      mockRestaurant.rest_city = parsedRestaurantDetails.result.address_components[3].long_name;
+
+      
+      mockRestaurant.UserId = i+50
+
       console.log(mockRestaurant)
       console.log('---------------------------', i)
-      // await Restaurant.create(mockRestaurant);
+      await Restaurant.create(mockRestaurant);
     }
   }
   catch (err) {
