@@ -1,17 +1,16 @@
-import { supplierTypes} from "../types/supplier-types";
-import { restaurantTypes} from "../types/restaurant-types";
-import { fetchAllAction } from '../actions/actions';
+import { supplierTypes } from "../types/supplier-types";
+import { supplierAction } from '../actions/actions';
 
 
-export const supplierReducers = (state: (supplierTypes | restaurantTypes)[], action: fetchAllAction): (restaurantTypes  |supplierTypes)[] => {
+export const supplierReducers = (state: supplierTypes[], action: supplierAction): supplierTypes[] => {
   switch (action.type) {
-    case 'FETCH_ALL':
+    case 'FETCH_ALL_SUPPLIER':
       return [...supplierState, ...action.payload]
     default: return supplierState
   }
 }
 
-export const supplierState: (supplierTypes|restaurantTypes)[] = []
+export const supplierState: supplierTypes[] = []
 /*
   {
     sup_id: 1,

@@ -17,8 +17,3 @@ export type restaurantTypes = {
   rest_description: string,
   rest_picture: string
 }
-
-export type restaurantAction = {
-  type: 'update-all',
-  payload: string[];
-}
