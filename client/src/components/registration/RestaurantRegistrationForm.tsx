@@ -10,26 +10,27 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
   user_last_name: yup.string().required('required'),
-  businessName: yup.string(),
-  businessAddress: yup.string(),
-  city: yup.string(),
+  rest_name: yup.string(),
+  rest_address: yup.string(),
+  rest_city: yup.string(),
   country: yup.string(),
   zip: yup.string(),
-  phone: yup.string(),
+  rest_phone_number: yup.string(),
   email: yup.string().required('required'),
   password: yup.string().min(8).max(15).required(),
   confirmPassword: yup.string().oneOf([yup.ref("password"), null])
 })
 
-type UserRegisterForm = {
+type RestaurantRegisterForm = {
+  user_type: string;
   user_first_name: string;
   user_last_name: string;
-  businessName?: string;
-  businessAddress?: string;
-  city?: string;
+  rest_name?: string;
+  rest_address?: string;
+  rest_city?: string;
   country?: string;
   zip?: string;
-  phone?: string;
+  rest_phone_number?: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -42,15 +43,16 @@ interface Props {
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
+export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
 
-  const { register, handleSubmit, getValues, reset, formState: { errors } } = useForm<UserRegisterForm>({
+  const { register, handleSubmit, setValue, getValues, reset, formState: { errors } } = useForm<RestaurantRegisterForm>({
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = (data: UserRegisterForm) => {
+  const onSubmit = (data: RestaurantRegisterForm) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
+    setValue('user_type', 'restaurant')
     console.log(getValues());
     reset();
   };
@@ -64,20 +66,18 @@ export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
         <Label>Last name</Label>
         <RegisterNameInput type="text" {...register('user_last_name')} />
         <div className="invalid-feedback">{errors.user_last_name?.message}</div>
-
-        {((userType === 'Supplier') || (userType === 'Restaurant')) &&
-          (<div>
+          <div>
             <Label>Business name</Label>
-            <EstablishmentInput type="text" {...register('businessName')} />
-            <div className="invalid-feedback">{errors.businessName?.message}</div>
+            <EstablishmentInput type="text" {...register('rest_name')} />
+            <div className="invalid-feedback">{errors.rest_name?.message}</div>
             <Label>Business address</Label>
-            <EstablishmentInput type="text" {...register('businessAddress')} />
-            <div className="invalid-feedback">{errors.businessAddress?.message}</div>
+            <EstablishmentInput type="text" {...register('rest_address')} />
+            <div className="invalid-feedback">{errors.rest_address?.message}</div>
             <AddressTwoWrapper>
               <div>
                 <Label>City</Label>
-                <AddressTwoInput type="text" {...register('city')} />
-                <div className="invalid-feedback">{errors.city?.message}</div>
+                <AddressTwoInput type="text" {...register('rest_city')} />
+                <div className="invalid-feedback">{errors.rest_city?.message}</div>
               </div>
               <div>
                 <Label>Zip code</Label>
@@ -89,10 +89,9 @@ export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
             <EstablishmentInput type="text" {...register('country')} />
             <div className="invalid-feedback">{errors.country?.message}</div>
             <Label>Phone</Label>
-            <EstablishmentInput type="text" {...register('phone')} />
-            <div className="invalid-feedback">{errors.phone?.message}</div>
-          </div>)}
-
+            <EstablishmentInput type="text" {...register('rest_phone_number')} />
+            <div className="invalid-feedback">{errors.rest_phone_number?.message}</div>
+          </div>
         <Label>Email</Label>
         <CredentialInput type="text" {...register('email')} />
         <div className="invalid-feedback">{errors.email?.message}</div>

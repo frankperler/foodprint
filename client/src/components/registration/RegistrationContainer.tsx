@@ -7,6 +7,9 @@ import { Navbar } from '../navbar/navbar';
 import { RegistrationNavbar } from './RegistrationNavbar';
 
 import { RegistrationBackground } from './registration-styled-components/RegistrationContainer.style';
+import { FoodLoverRegistrationForm } from './FoodLoverRegistrationForm';
+import { SupplierRegistrationForm } from './SupplierRegistrationForm';
+import { RestaurantRegistrationForm } from './RestaurantRegistrationForm';
 
 
 interface Props {
@@ -25,7 +28,12 @@ export const RegistrationContainer = ({ userType, setUserType, isAuth, setIsAuth
       <RegistrationNavbar></RegistrationNavbar>
       <WrapperDiv>
         <ChooseUserType userType={userType} setUserType={setUserType} clickedId={clickedId} setClickedId={setClickedId}></ChooseUserType>
-        <RegistrationForm userType={userType} setUserType={setUserType} isAuth={isAuth} setIsAuth={setIsAuth} />
+        {userType === 'Food lover' ?  
+          <FoodLoverRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></FoodLoverRegistrationForm>
+                  : userType === 'Supplier' ? <SupplierRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></SupplierRegistrationForm>
+                  : userType === 'Restaurant' ? <RestaurantRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></RestaurantRegistrationForm>
+                  : null
+      }
       </WrapperDiv>
     </RegistrationBackground>
   )
