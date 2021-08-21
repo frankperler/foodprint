@@ -9,7 +9,7 @@ export const GridContainer = styled("div")`
     "filters list top"
     "filters list top"
   ;
-  height: 100vh;
+  height: 80vh;
   width: 75vw;
   background-color: whitesmoke;
   margin: auto;

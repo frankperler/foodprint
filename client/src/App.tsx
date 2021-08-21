@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { Navbar } from './components/navbar/navbar'
 import { Dashboard } from './components/dashboard/dashboard'
@@ -9,7 +8,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 
 export const App: React.FunctionComponent = () => {
-
 
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { EcoLeafContainer, InfoArea, InfoHeader, InteriorArea } from '../profile-styled-components/profile.style';
+import { EcoLeafContainer, InfoArea, InteriorArea } from '../profile-styled-components/profile.style';
 import { EcoLeaf, GridContainer, RestoCover } from '../profile-styled-components/profile.style'
 import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
 import { SupplierDescription } from './SupplierDescription'
@@ -19,7 +19,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       </Photo>
       <InfoArea>
         <InteriorArea>
-          <InfoHeader>{suppliers[2].sup_name}</InfoHeader>
+          <h1>{suppliers[2].sup_name}</h1>
           <h3>{suppliers[2].sup_address}</h3>
           <h3>{suppliers[2].sup_phone_number}</h3>
           <Popup content='Learn more about how to improve your eco-score by visiting our eco page' trigger={<EcoLeafContainer>

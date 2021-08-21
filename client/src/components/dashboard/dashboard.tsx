@@ -27,6 +27,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+import './dashboard.css'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -88,12 +89,15 @@ export const Dashboard = ({ userType }: Props) => {
                 </ButtonStyles>
               </FilterArea>
             }
-            <ResultsArea>
-              {((userType === 'Food lover') || (userType === 'Supplier')) ?
-                <RestaurantsLists /> :
-                <SuppliersLists />
-              }
-            </ResultsArea>
+            <div className="overflow">
+
+              <ResultsArea>
+                {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                  <RestaurantsLists /> :
+                  <SuppliersLists />
+                }
+              </ResultsArea>
+            </div>
             <TopArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
                 <RestTopList /> :

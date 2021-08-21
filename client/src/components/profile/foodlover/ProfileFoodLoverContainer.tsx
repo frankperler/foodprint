@@ -3,7 +3,6 @@ import { HomePageButton } from '../../navbar/navbar-styled-components/homepagebu
 import { Title } from '../../navbar/navbar-styled-components/title'
 import { Navcontainer } from '../../navbar/navbar-styled-components/navcontainer'
 import { Container } from '../../navbar/navbar-styled-components/container'
-import { UserName } from '../profile-styled-components/profile.style';
 import { ProfileFoodLoverDashboard } from './ProfileFoodLoverDashboard';
 
 export const ProfileFoodLoverContainer = (): JSX.Element => {
@@ -15,7 +14,7 @@ export const ProfileFoodLoverContainer = (): JSX.Element => {
         <Navcontainer>
           <Title><strong>food</strong>print.</Title>
           <div>
-            <UserName>User</UserName>
+            <h1>User</h1>
             <HomePageButton>Avatar</HomePageButton>
             <HomePageButton>Log out</HomePageButton>
           </div>

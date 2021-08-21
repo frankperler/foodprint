@@ -16,7 +16,7 @@ export async function getAllRestaurants(): Promise<restaurantTypes[]> {
 }
 
 
-export async function getRestaurantById(id: string): Promise<restaurantTypes[]> {
+export async function getRestaurantById(id: string): Promise<restaurantTypes> {
   try {
     const res = await fetch(`${url}/restaurants/${id}`);
     return await res.json()

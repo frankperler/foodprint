@@ -1,27 +1,23 @@
 import styled from "styled-components";
 
-export const UserName = styled.h3`
-  font-size: 24px;
-  display: inline-block;
-`
-
 export const Photo = styled.div`
+  grid-area: photo;
   display: block;
   width: 28rem;
-  height: 24rem;
-  grid-area: photo;
+  height: 23rem;
+  border-radius: 7px;
 `
 
 export const RestoCover = styled.img`
   object-fit: cover;
   border-radius: 7px;
   display: block;
-  width: 100%;
-  height: 100%;
+  padding: 1rem;
+  width: 90%;
+  height: 90%;
 `
-
 export const ProfileDetails = styled.section`
-  grid-area: list;
+  grid-area: suppliers;
   /* border: 1px solid black; */
 `
 
@@ -42,12 +38,11 @@ export const DescriptionText = styled.div`
 
 export const GridContainer = styled("div")`
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 25% 75%;
   grid-template-areas:
-    "photo list list"
-    "filters list list"
-    "filters list list"
+    "photo list"
+    "details suppliers"
   ;
   height: auto;
   width: 75%;
@@ -56,16 +51,13 @@ export const GridContainer = styled("div")`
 `
 
 export const InfoArea = styled("div") <{ gridArea?: string }>`
-  grid-area: filters;
+  grid-area: details;
   height: auto;
   width: 28rem;
   overflow: hidden;
   background-color: white;
   border-radius: 7px;
   box-sizing: border-box;
-  `
-export const InfoHeader = styled.h1`
-  
   `
 
 export const AddHeader = styled.h4`
@@ -132,7 +124,6 @@ export const CancelButton = styled.button`
 
 export const InteriorArea = styled.div`
   padding: 0 4rem 4rem 4rem;
-
 `
 
 export const SupplierContainer = styled.div`
