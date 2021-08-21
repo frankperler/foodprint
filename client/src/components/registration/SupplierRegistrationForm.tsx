@@ -25,12 +25,12 @@ type SupplierRegisterForm = {
   user_type: string;
   user_first_name: string;
   user_last_name: string;
-  sup_name?: string;
-  sup_address?: string;
-  sup_city?: string;
-  country?: string;
-  zip?: string;
-  sup_phone_number?: string;
+  sup_name: string;
+  sup_address: string;
+  sup_city: string;
+  country: string;
+  zip: string;
+  sup_phone_number: string;
   email: string;
   password: string;
   confirmPassword: string;

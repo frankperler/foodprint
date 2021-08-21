@@ -25,12 +25,12 @@ type RestaurantRegisterForm = {
   user_type: string;
   user_first_name: string;
   user_last_name: string;
-  rest_name?: string;
-  rest_address?: string;
-  rest_city?: string;
-  country?: string;
-  zip?: string;
-  rest_phone_number?: string;
+  rest_name: string;
+  rest_address: string;
+  rest_city: string;
+  country: string;
+  zip: string;
+  rest_phone_number: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -49,10 +49,12 @@ export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
     resolver: yupResolver(schema),
   })
 
+
   const onSubmit = (data: RestaurantRegisterForm) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
     setValue('user_type', 'restaurant')
+    setValue('rest_address', (data['rest_address'].concat(data['rest_city'], data['zip'], data['country'])))
     console.log(getValues());
     reset();
   };
@@ -71,7 +73,7 @@ export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
             <EstablishmentInput type="text" {...register('rest_name')} />
             <div className="invalid-feedback">{errors.rest_name?.message}</div>
             <Label>Business address</Label>
-            <EstablishmentInput type="text" {...register('rest_address')} />
+            <EstablishmentInput type="text" {...register('rest_address')}  />
             <div className="invalid-feedback">{errors.rest_address?.message}</div>
             <AddressTwoWrapper>
               <div>
