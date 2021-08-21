@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Wrapper, Header1 } from './registration-styled-components/ChooseUserType.style';
+import { Wrapper } from './registration-styled-components/ChooseUserType.style';
 import { ButtonGroup } from './registration-styled-components/ButtonGroup'
 
 interface Props {

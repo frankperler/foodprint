@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonWrap, RestoListContainer, SupplierContainer, AddSupplier, ProfileHeader } from '../profile-styled-components/profile.style';
 import { restos } from '../../../mock';
-import { RestaurantCard } from './RestaurantCard';
+import { RestaurantCard } from './profile-restaurant-card';
 import { AddCircle } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
 

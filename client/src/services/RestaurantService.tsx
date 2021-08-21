@@ -4,7 +4,6 @@ import { supplierTypes } from "../types/supplier-types";
 const url = 'http://localhost:3001';
 
 export async function getAllRestaurants(): Promise<restaurantTypes[]> {
-  // return await getAll('/restaurants/getAllRestaurants');
   try {
     const res = await fetch(`${url}/restaurants/getAllRestaurants`);
     return await res.json();

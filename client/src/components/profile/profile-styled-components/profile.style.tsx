@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Photo = styled.div`
-  grid-area: photo;
+
   display: block;
   width: 28rem;
   height: 23rem;
@@ -9,6 +9,7 @@ export const Photo = styled.div`
 `
 
 export const RestoCover = styled.img`
+  grid-area: photo;
   object-fit: cover;
   border-radius: 7px;
   display: block;
@@ -36,7 +37,7 @@ export const DescriptionText = styled.div`
   width: 80%;
 `
 
-export const GridContainer = styled("div")`
+export const ProfileGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 25% 75%;
