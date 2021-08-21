@@ -1,3 +1,6 @@
+import { restaurantTypes } from ".";
+import { productionTypes } from "./production-types";
+
 export type supplierTypes = {
   sup_id: number,
   sup_name: string,
@@ -14,4 +17,7 @@ export type supplierTypes = {
   sup_greenTech: string[],
   sup_energy: string[],
   sup_vehicles: string,
+  UserId: number,
+  Restaurants?: restaurantTypes[],
+  Productions?: productionTypes[]
 }

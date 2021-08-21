@@ -5,5 +5,5 @@ export type productionTypes = {
     production_CO2: number,
     ProductId: number,
     SupplierId: number,
-    Product: productionTypes,
+    Product: productTypes,
 }
