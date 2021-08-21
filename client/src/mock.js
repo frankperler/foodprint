@@ -115,6 +115,7 @@ export const suppliers = [
   {
     sup_id: 1,
     sup_name: "Ugo's Garden",
+    sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
     sup_city: 'Berlin',
     sup_phone_number: '0345 3216435',
@@ -139,6 +140,7 @@ export const suppliers = [
   {
     sup_id: 2,
     sup_name: "Ugo's Garden",
+    sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
     sup_city: 'Berlin',
     sup_phone_number: '0345 3216435',
@@ -163,6 +165,7 @@ export const suppliers = [
   {
     sup_id: 3,
     sup_name: "Ugo's Garden",
+    sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
     sup_city: 'Berlin',
     sup_phone_number: '0345 3216435',
@@ -187,6 +190,7 @@ export const suppliers = [
   {
     sup_id: 4,
     sup_name: "Ugo's Garden",
+    sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
     sup_city: 'Berlin',
     sup_phone_number: '0345 3216435',

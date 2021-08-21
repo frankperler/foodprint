@@ -4,7 +4,7 @@ import { Navbar } from './components/navbar/navbar'
 import { Dashboard } from './components/dashboard/dashboard'
 import { Searchbar } from './components/searchbar/searchbar'
 import { ProfileSupplierDashboard } from './components/profile/supplier/ProfileSupplierDashboard'
-import { ProfileRestaurantDashboard } from './components/profile/restaurant/ProfileRestaurantDashboard'
+import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 

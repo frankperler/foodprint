@@ -14,6 +14,7 @@ export const Photo = styled.div`
 
 export const RestoCover = styled.img`
   object-fit: cover;
+  border-radius: 7px;
   display: block;
   width: 100%;
   height: 100%;
@@ -63,34 +64,34 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   border-radius: 7px;
   box-sizing: border-box;
   `
-  export const InfoHeader = styled.h1`
+export const InfoHeader = styled.h1`
   
   `
 
-  export const AddHeader = styled.h4`
+export const AddHeader = styled.h4`
     display: inline-block;
   `
 
-  export const CheckBoxForm = styled.form`
+export const CheckBoxForm = styled.form`
   width: 32rem;
 
   `
-  export const VehicleTypeForm = styled.div`
+export const VehicleTypeForm = styled.div`
     margin-top: 1.8em;
   `
 
-  export const EnergyTypeForm = styled.div`
+export const EnergyTypeForm = styled.div`
     margin-top: 1em;
   `
 
-  export const InnerForm = styled.div`
+export const InnerForm = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
   `
 
-  export const EditTextArea = styled.textarea`
+export const EditTextArea = styled.textarea`
     padding: 0.8rem;
     width: 100%;
     height: 21em;
@@ -222,7 +223,7 @@ export const EditDescription = styled.div`
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
-` 
+`
 
 export const SupplierInfoInterior = styled.div`
   padding: 1.2rem;

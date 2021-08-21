@@ -1,7 +1,7 @@
 import React from 'react';
-import { AddSupplier, ProfileHeader, AddHeader, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
+import { AddSupplier, ProfileHeader, ButtonWrap, InteriorSupplierContainer, SupplierContainer, SupplierListContainer } from '../profile-styled-components/profile.style';
 import { suppliers } from '../../../mock';
-import { SupplierCard } from './SupplierCard';
+import { SupplierCard } from './profile-supplier-card';
 import { AddCircle } from '@material-ui/icons';
 
 export const SuppliersList = (): JSX.Element => {
@@ -11,7 +11,7 @@ export const SuppliersList = (): JSX.Element => {
       <InteriorSupplierContainer>
         <ButtonWrap>
           <AddSupplier>
-          <AddCircle fontSize="large" style={{display: 'inline-block'}}/> <h4 style={{display: 'inline-block'}}>Add supplier</h4>
+            <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4 style={{ display: 'inline-block' }}>Add supplier</h4>
           </AddSupplier>
         </ButtonWrap>
         <ProfileHeader>Who we get our food from...</ProfileHeader>
