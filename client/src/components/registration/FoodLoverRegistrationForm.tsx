@@ -41,7 +41,15 @@ export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
     setValue('user_type', 'food lover')
-    console.log(getValues());
+    const user_type = getValues('user_type')
+    const formData = {
+      user_type: user_type,
+      user_first_name: data['user_first_name'],
+      user_last_name: data['user_last_name'],
+      email: data['email'],
+      password: data['password'],
+    }
+    console.log(formData);
     reset();
   };
 
