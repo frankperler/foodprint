@@ -14,7 +14,7 @@ export const ChooseUserType = ({ clickedId, setClickedId, userType, setUserType 
   return (
     <Wrapper>
       <section>
-        <h2>I'm a...</h2>
+        <h1>I'm a...</h1>
         <ButtonGroup clickedId={clickedId} setClickedId={setClickedId} setUserType={setUserType} userType={userType} />
       </section>
     </Wrapper>
