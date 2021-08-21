@@ -27,6 +27,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+import { ListWrapper } from './results/results-styled-components/results-list-wrapper'
 
 export const ButtonStyles = styled.div`
   display: flex;

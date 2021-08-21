@@ -5,10 +5,11 @@ export const ResultsArea = styled("div")`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-items: stretch;
   margin-right: 3rem;
+  height: 100%;
   flex-grow: 1;
   background-color: white;
   border-radius: 7px;
+  overflow: visible;
   box-sizing: border-box;
 `

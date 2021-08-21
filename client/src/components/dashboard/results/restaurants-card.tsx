@@ -17,8 +17,8 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
       <Link to={`/restaurant/${restaurant.place_id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{restaurant.rest_name}</div>
         <div className="foodtype">{
-        restaurant.rest_types.length == 1 ? `${restaurant.rest_types[0]}`
-        : `${restaurant.rest_types[0]}, ${restaurant.rest_types[1]}`}</div>
+          restaurant.rest_types.length == 1 ? `${restaurant.rest_types[0]}`
+            : `${restaurant.rest_types[0]}, ${restaurant.rest_types[1]}`}</div>
         <RestStarRating restaurant={restaurant} />
       </Link>
     </CardContainer >

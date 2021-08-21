@@ -49,7 +49,7 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
 
   return (
-    <Container containerHeight="4rem" topPosition="0%" navPosition="sticky">
+    <Container containerHeight="4rem" topPosition="0" navPosition="sticky">
       <Navcontainer>
         <Link to='/' style={{ textDecoration: 'none' }}>
           <Title><strong>food</strong>print.</Title>
