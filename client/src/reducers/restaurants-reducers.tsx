@@ -2,7 +2,7 @@ import { restaurantTypes } from "../types/restaurant-types"
 import { supplierTypes } from "../types";
 import { restaurantAction } from '../actions/actions';
 
-export const restaurantReducers = (state: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
+export const restaurantReducers = (restaurantState: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
   switch (action.type) {
     case 'FETCH_ALL_RESTAURANT':
       return [...restaurantState, ...action.payload]

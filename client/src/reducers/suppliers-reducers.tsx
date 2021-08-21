@@ -2,7 +2,7 @@ import { supplierTypes } from "../types/supplier-types";
 import { supplierAction } from '../actions/actions';
 
 
-export const supplierReducers = (state: supplierTypes[], action: supplierAction): supplierTypes[] => {
+export const supplierReducers = (supplierState: supplierTypes[], action: supplierAction): supplierTypes[] => {
   switch (action.type) {
     case 'FETCH_ALL_SUPPLIER':
       return [...supplierState, ...action.payload]

@@ -4,7 +4,14 @@ import { restaurantTypes } from "../types/restaurant-types";
 const url = 'http://localhost:3001';
 
 export async function getAllSuppliers(): Promise<supplierTypes[]> {
-  return await getAll('suppliers/getAllSuppliers');
+  try {
+    const res = await fetch(`${url}/suppliers/getAllSuppliers`);
+    return await res.json();
+  }
+  catch (e) {
+    console.error(e);
+    return e;
+  }
 }
 
 export function searchSuppliersByCity(city: string) {
