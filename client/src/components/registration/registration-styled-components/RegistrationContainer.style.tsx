@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const RegistrationBackground = styled.section`
   /* background-color: whitesmoke; */
-  background-image: url('/images/back5.png');
+  background-image: url('/images/foodbackground.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
