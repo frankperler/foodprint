@@ -7,6 +7,17 @@ export async function getAllSuppliers(): Promise<supplierTypes[]> {
   return await getAll('suppliers/getAllSuppliers');
 }
 
+export async function getSupplierById(id: string): Promise<supplierTypes[]> {
+  try {
+    const res = await fetch(`${url}/suppliers/${id}`);
+    return await res.json()
+  }
+  catch (e) {
+    console.error(e);
+    return e;
+  }
+}
+
 export function searchSuppliersByCity(city: string) {
   searchByCity(city, '/search/searchSuppliersByCity')
 }

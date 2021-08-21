@@ -15,6 +15,20 @@ export async function getAllRestaurants(): Promise<restaurantTypes[]> {
   }
 }
 
+
+export async function getRestaurantById(id: string): Promise<restaurantTypes[]> {
+  try {
+    const res = await fetch(`${url}/restaurants/${id}`);
+    return await res.json()
+  }
+  catch (e) {
+    console.error(e);
+    return e;
+  }
+}
+
+
+
 export function searchRestaurantByCity(city: string) {
   searchByCity(city, '/search/searchRestaurantsByCity');
 }
