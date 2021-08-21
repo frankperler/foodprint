@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  firstName: yup.string().required('required'),
-  lastName: yup.string().required('required'),
+  user_first_name: yup.string().required('required'),
+  user_last_name: yup.string().required('required'),
   businessName: yup.string(),
   businessAddress: yup.string(),
   city: yup.string(),
@@ -22,8 +22,8 @@ const schema = yup.object().shape({
 })
 
 type UserRegisterForm = {
-  firstName: string;
-  lastName: string;
+  user_first_name: string;
+  user_last_name: string;
   businessName?: string;
   businessAddress?: string;
   city?: string;
@@ -44,13 +44,14 @@ interface Props {
 
 export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegisterForm>({
+  const { register, handleSubmit, getValues, reset, formState: { errors } } = useForm<UserRegisterForm>({
     resolver: yupResolver(schema),
   })
 
   const onSubmit = (data: UserRegisterForm) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
+    console.log(getValues());
     reset();
   };
 
@@ -58,11 +59,11 @@ export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
     <FormWrapper>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Label>First name</Label>
-        <RegisterNameInput type="text" {...register('firstName')} />
-        <div className="invalid-feedback">{errors.firstName?.message}</div>
+        <RegisterNameInput type="text" {...register('user_first_name')} />
+        <div className="invalid-feedback">{errors.user_first_name?.message}</div>
         <Label>Last name</Label>
-        <RegisterNameInput type="text" {...register('lastName')} />
-        <div className="invalid-feedback">{errors.lastName?.message}</div>
+        <RegisterNameInput type="text" {...register('user_last_name')} />
+        <div className="invalid-feedback">{errors.user_last_name?.message}</div>
 
         {((userType === 'Supplier') || (userType === 'Restaurant')) &&
           (<div>

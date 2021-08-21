@@ -13,6 +13,7 @@ export const RegisterButton = styled.button`
   cursor: pointer;
   text-align: center;
   margin-top: 0.8em;
+  border-radius: 2px;
 `
 
 export const RegisterNameInput = styled.input`
