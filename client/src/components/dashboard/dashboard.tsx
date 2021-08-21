@@ -60,7 +60,7 @@ export const Dashboard = ({ userType }: Props) => {
         <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
           <GridContainer>
             <MapArea>
-              <Map />
+              <Map userType={userType} />
             </MapArea>
 
             {((userType === 'Food lover') || (userType === 'Supplier')) ?
@@ -76,7 +76,6 @@ export const Dashboard = ({ userType }: Props) => {
                 </ButtonStyles>
               </FilterArea>
               :
-              // bio filter
               <FilterArea>
                 <EcoScoreSlider />
                 <DistanceSlider />

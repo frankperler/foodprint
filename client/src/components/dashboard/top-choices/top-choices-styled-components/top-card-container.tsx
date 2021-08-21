@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TopCardContainer = styled("div")`
-  width: 100%;
+  width: 90%;
   height: 100%;
   margin-bottom: 1.5rem;
   display: flex;
@@ -14,7 +14,7 @@ export const TopCardContainer = styled("div")`
   border-radius: 7px;
   
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
   
   .name {

@@ -5,7 +5,8 @@ export const Container = styled("div") <{
   containerHeight?: string,
   boxShadow?: string,
   navPosition?: string,
-  topPosition?: string
+  topPosition?: string,
+  viewWidth?: string,
 }>`
   display: flex;
   flex-direction: row;
@@ -13,7 +14,7 @@ export const Container = styled("div") <{
   align-items: center;
   background-color: ${(props) => props.inputColor || "white"};
   margin: auto;
-  width: 100vw;
+  width: ${(props) => props.viewWidth || "100vw"};;
   height: ${(props) => props.containerHeight};
   box-shadow: ${(props) => props.boxShadow};
   position: ${(props) => props.navPosition};

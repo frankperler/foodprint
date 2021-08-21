@@ -1,19 +1,17 @@
-import { ResultsCardStyles } from './results-styled-components/results-card-styles';
-import { RestStarRating } from './restaurants-star-rating'
-import { CardContainer } from './results-styled-components/results-card-container';
+import { ResultsCardStyles } from '../results/results-styled-components/results-card-styles';
+import { RestStarRating } from '../results/restaurants-star-rating';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { Link } from "react-router-dom";
+import { PinCardContainer } from './pin-card-container'
 
 interface Props {
   restaurant: restaurantTypes
 }
 
-export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
+export const PinRestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
 
   return (
-    <CardContainer>
-      <ResultsCardStyles backgroundImg={restaurant.rest_picture} >
-      </ResultsCardStyles>
+    <PinCardContainer>
       <Link to={`/restaurant/${restaurant.place_id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{restaurant.rest_name}</div>
         <div className="foodtype">{
@@ -21,6 +19,6 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
             : `${restaurant.rest_types[0]}, ${restaurant.rest_types[1]}`}</div>
         <RestStarRating restaurant={restaurant} />
       </Link>
-    </CardContainer >
+    </PinCardContainer >
   )
 }
