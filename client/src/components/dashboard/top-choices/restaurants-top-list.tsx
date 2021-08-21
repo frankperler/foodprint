@@ -17,7 +17,7 @@ export const RestTopList: React.FunctionComponent = () => {
             <b>Top Places</b>
           </TopTitle>
           <ListContainer>
-            {stateRestaurant.sort((a, b) => (b.rest_eco_score) - (a.rest_eco_score)).map((restaurant: restaurantTypes) => (
+            {stateRestaurant.sort((a, b) => (b.rest_eco_score) - (a.rest_eco_score)).slice(0, 3).map((restaurant: restaurantTypes) => (
               < RestTopCard restaurant={restaurant} key={restaurant.place_id} />
             )
             )}
