@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Navbar } from './components/navbar/navbar'
 import { Dashboard } from './components/dashboard/dashboard'
 import { Searchbar } from './components/searchbar/searchbar'
-import { ProfileSupplierDashboard } from './components/profile/supplier/ProfileSupplierDashboard'
-import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
+import { ProfileSupplierDashboard } from './components/profile/supplier/profile-supplier-dashboard'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
+import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
 
 export const App: React.FunctionComponent = () => {
 

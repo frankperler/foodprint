@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { GridContainer, RestoCover } from '../profile-styled-components/profile.style'
-import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
+import { ProfileGridContainer, RestoCover } from '../profile-styled-components/profile.style'
+import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
 import { InfoArea, InteriorArea } from '../profile-styled-components/profile.style';
-// import { restos } from '../../../mock'
 import { RestStarRating } from '../../dashboard/results/restaurants-star-rating'
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
@@ -23,10 +22,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <GridContainer>
-      <Photo>
-        <RestoCover src={restItem && restItem.rest_picture} />
-      </Photo>
+    <ProfileGridContainer>
+      <RestoCover src={restItem && restItem.rest_picture} />
       <InfoArea>
         <InteriorArea>
           <h1>{restItem && restItem.rest_name}</h1>
@@ -39,6 +36,6 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       <ProfileDetails>
         <SuppliersList />
       </ProfileDetails>
-    </GridContainer>
+    </ProfileGridContainer>
   )
 }

@@ -45,7 +45,8 @@ const restaurants = [
 
 const populate = async () => {
   try {
-
+    
+    // 
     for (let i = 0; i < restaurants.length; i++) {
       const mockRestaurant = {};
 
@@ -177,7 +178,7 @@ const populate = async () => {
       mockRestaurant.rest_city = parsedRestaurantDetails.result.address_components[3].long_name;
 
 
-      mockRestaurant.UserId = i + 50
+      mockRestaurant.UserId = i + 52
 
       console.log(mockRestaurant)
       console.log('---------------------------', i)

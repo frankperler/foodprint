@@ -10,7 +10,7 @@ export async function getAllSuppliers(): Promise<supplierTypes[]> {
   }
   catch (e) {
     console.error(e);
-    return e
+    return e;
   }
 }
 

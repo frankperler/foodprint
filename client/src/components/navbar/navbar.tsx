@@ -62,21 +62,21 @@ export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
         {isAuth === false ?
           <HomeButtonFlex>
             <div>
-            <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
-            <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
-            <Title><strong>food</strong>print.</Title>
-              <FormLogIn
-                userType={userType}
-                setUserType={setUserType}
-                onCloseLoginModal={onCloseLoginModal}
-                isAuth={isAuth}
-                setIsAuth={setIsAuth} />
-            </Modal>
+              <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
+              <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
+                <Title><strong>food</strong>print.</Title>
+                <FormLogIn
+                  userType={userType}
+                  setUserType={setUserType}
+                  onCloseLoginModal={onCloseLoginModal}
+                  isAuth={isAuth}
+                  setIsAuth={setIsAuth} />
+              </Modal>
             </div>
             <div>
               <Link to={'/register'}>
-            <HomePageButton>Sign up</HomePageButton>
-            </Link>
+                <HomePageButton>Sign up</HomePageButton>
+              </Link>
             </div>
           </HomeButtonFlex> :
           <LogInButton onClick={clickLogOut}>Log out</LogInButton>}

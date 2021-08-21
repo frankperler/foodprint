@@ -24,7 +24,8 @@ export const restos = [
       'Sunday: Closed'
     ],
     rest_phone_number: '030 20647692',
-    rest_website: 'http://savorychay.de/'
+    rest_website: 'http://savorychay.de/',
+    UserId: 5
   },
   {
     id: 2,
@@ -51,7 +52,8 @@ export const restos = [
       'Sunday: 12:00 PM – 12:00 AM'
     ],
     rest_phone_number: '030 76775270',
-    rest_website: 'https://restaurant-gendarmerie.de/'
+    rest_website: 'https://restaurant-gendarmerie.de/',
+    UserId: 5
   },
   {
     id: 3,
@@ -78,7 +80,8 @@ export const restos = [
       'Sunday: 12:00 – 11:00 PM'
     ],
     rest_phone_number: '030 22488205',
-    rest_website: 'http://www.altberliner-wirtshaus.de/'
+    rest_website: 'http://www.altberliner-wirtshaus.de/',
+    UserId: 5
   },
   {
     id: 4,
@@ -105,7 +108,8 @@ export const restos = [
       'Sunday: 10:00 AM – 6:00 PM'
     ],
     rest_phone_number: '030 25531234',
-    rest_website: 'https://www.lepetitchef.de/berlin'
+    rest_website: 'https://www.lepetitchef.de/berlin',
+    UserId: 5
   }
 ]
 
@@ -135,7 +139,8 @@ export const suppliers = [
       'Biofuels'
     ],
     sup_energy: ['Electricity (renewable)', 'Natural gas'],
-    sup_vehicles: 'Diesel'
+    sup_vehicles: 'Diesel',
+    UserId: 5
   },
   {
     sup_id: 2,
@@ -160,7 +165,8 @@ export const suppliers = [
       'Biofuels'
     ],
     sup_energy: ['Electricity (renewable)', 'Natural gas'],
-    sup_vehicles: 'Diesel'
+    sup_vehicles: 'Diesel',
+    UserId: 6
   },
   {
     sup_id: 3,
@@ -185,7 +191,8 @@ export const suppliers = [
       'Biofuels'
     ],
     sup_energy: ['Electricity (renewable)', 'Natural gas'],
-    sup_vehicles: 'Diesel'
+    sup_vehicles: 'Diesel',
+    UserId: 8
   },
   {
     sup_id: 4,
@@ -210,6 +217,7 @@ export const suppliers = [
       'Biofuels'
     ],
     sup_energy: ['Electricity (renewable)', 'Natural gas'],
-    sup_vehicles: 'Diesel'
+    sup_vehicles: 'Diesel',
+    UserId: 10
   }
 ]

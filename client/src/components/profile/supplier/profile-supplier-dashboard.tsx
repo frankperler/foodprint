@@ -1,9 +1,9 @@
 import React, { useReducer } from 'react'
 import { EcoLeafContainer, InfoArea, InteriorArea } from '../profile-styled-components/profile.style';
-import { EcoLeaf, GridContainer, RestoCover } from '../profile-styled-components/profile.style'
-import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
-import { SupplierDescription } from './SupplierDescription'
-import { RestaurantList } from './RestaurantList'
+import { EcoLeaf, ProfileGridContainer, RestoCover } from '../profile-styled-components/profile.style'
+import { ProfileDetails } from '../profile-styled-components/profile.style'
+import { SupplierDescription } from './supplier-description'
+import { RestaurantList } from './profile-restaurant-list'
 import { Technology } from './Technology'
 import { ProductsList } from './ProductsList'
 import { suppliers } from '../../../mock';
@@ -13,10 +13,8 @@ import { Popup } from 'semantic-ui-react';
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
   return (
-    <GridContainer>
-      <Photo>
-        <RestoCover src={suppliers[2].sup_picture} />
-      </Photo>
+    <ProfileGridContainer>
+      <RestoCover src={suppliers[2].sup_picture} />
       <InfoArea>
         <InteriorArea>
           <h1>{suppliers[2].sup_name}</h1>
@@ -38,6 +36,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
         <ProductsList></ProductsList>
         <RestaurantList></RestaurantList>
       </ProfileDetails>
-    </GridContainer>
+    </ProfileGridContainer>
   )
 }
