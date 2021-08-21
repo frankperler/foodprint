@@ -4,7 +4,7 @@ import { supplierTypes } from '../../../types/supplier-types';
 import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
-
+import { ListWrapper } from './results-styled-components/results-list-wrapper';
 
 export const SuppliersLists: React.FunctionComponent = () => {
 
@@ -15,20 +15,22 @@ export const SuppliersLists: React.FunctionComponent = () => {
     <>
       {stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {
+          let count = 0;
           return (
-            <div>
+            <ListWrapper>
               <ListTitle>
                 {value}
               </ListTitle>
               <ListContainer>
                 {stateSupplier.map((supplier: supplierTypes) => {
-                  if (supplier.sup_food_type.includes(value)) {
+                  if (supplier.sup_food_type.includes(value) && count < 6) {
+                    count++
                     return < SupplierCard supplier={supplier} key={supplier.sup_id} />
                   }
                 }
                 )}
               </ListContainer>
-            </div>
+            </ListWrapper>
           )
         }
         )}
