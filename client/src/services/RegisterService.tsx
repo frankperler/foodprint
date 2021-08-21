@@ -14,7 +14,7 @@ function registerFetch(route: string, user: userTypes) {
 }
 
 export async function register(user: userTypes) {
-  switch (user.user_type) {
+  switch (user.user.user_type) {
     case "food lover":
       return registerFetch('/register/FoodLoverUser', user);
     case "restaurant":
