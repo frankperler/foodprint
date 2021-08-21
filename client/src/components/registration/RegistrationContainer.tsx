@@ -21,7 +21,7 @@ interface Props {
 
 export const RegistrationContainer = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
-  const [clickedId, setClickedId] = useState(-1);
+  const [clickedId, setClickedId] = useState(0);
 
   return (
     <RegistrationBackground>
