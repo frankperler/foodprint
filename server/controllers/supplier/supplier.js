@@ -20,6 +20,27 @@ exports.getAllSuppliers = async (req, res) => {
   }
 }
 
+exports.getOne = async (req, res) => {
+  try {
+    const supplier = await db.Supplier.findOne({
+      
+      where: {
+        id: req.params.id
+      },
+      include: {
+        model: db.Restaurant
+      }
+    })
+
+    res.send(supplier)
+  }
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
+
 exports.filterRestaurants = async (req, res) => {
   try {
     const { eco_score, type, meal_type } = req.body;

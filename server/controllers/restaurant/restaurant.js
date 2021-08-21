@@ -92,3 +92,26 @@ exports.filterSuppliers = async (req, res) => {
     res.status = 500;
   }
 }
+
+
+exports.getOne = async (req, res) => {
+  try {
+    // console.log(req.params.id)
+    const restaurant = await db.Restaurant.findOne({
+      
+      where: {
+        id: req.params.id
+      },
+      include: {
+        model: db.Supplier
+      }
+    })
+    // console.log(restaurant)
+    res.send(restaurant)
+  }
+  catch (e) {
+    console.log(e);
+    res.status = 500;
+  }
+}
+
