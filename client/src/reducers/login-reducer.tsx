@@ -6,16 +6,23 @@ export const userReducers = (userState: userTypes, action: userLoginAction) : us
         case 'LOGIN': 
             return {...userState, 
                     user: action.payload.user,
-                    restaurants: action.payload.restaurants,
-                    suppliers: action.payload.suppliers,
+                    // optional chaining --- it will return undefined on the following properties
+                    // if they don't exist in the payload
+                    restaurants: action.payload?.restaurants || null,
+                    suppliers: action.payload?.suppliers || null,
                  }
     }
 }
 
 
 export const userState: userTypes = {
-    user: {} as simpleUser,
-    restaurants: [] as restaurantTypes[],
-    suppliers: [] as supplierTypes[],
+    user: {
+        user_type: "",
+        user_first_name: "",
+        user_last_name: "",
+        user_picture: "",
+    },
+    restaurants: null,
+    suppliers: null,
 }
     
