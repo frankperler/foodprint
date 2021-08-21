@@ -6,7 +6,7 @@ export type loginTypes = {
   password: string,
 }
 
-type simpleUser = {
+export type simpleUser = {
   user_type: string,
   user_first_name: string,
   user_last_name: string,
