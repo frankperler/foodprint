@@ -10,7 +10,7 @@ export const Searchbar: React.FunctionComponent = () => {
   }
 
   return (
-    <Container inputColor="whitesmoke" containerHeight="6rem" topPosition="4%" navPosition="sticky">
+    <Container inputColor="whitesmoke" containerHeight="6rem" topPosition="5%" navPosition="sticky">
       <SearchInput placeholder="Where are you?" type="text" value={inputValue} onChange={handleChange} />
     </Container>
   )

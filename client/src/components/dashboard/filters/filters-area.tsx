@@ -6,6 +6,7 @@ export const FilterArea = styled("div")`
   justify-content: space-between;
   flex-direction: column;
   height: 35rem;
+  margin-top: 1rem;
   margin-right: 3rem;
   justify-items: stretch;
   background-color: white;
