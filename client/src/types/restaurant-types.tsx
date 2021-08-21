@@ -1,4 +1,4 @@
-import { supplierTypes } from "./supplier-types"
+import { supplierTypes } from "./supplier-types";
 
 export type restaurantTypes = {
   id: number,
@@ -17,7 +17,8 @@ export type restaurantTypes = {
   rest_website: string,
   rest_eco_score: number,
   rest_description: string,
-  rest_picture: string,
+  rest_picture: string
+  UserId: number,
   Suppliers?: supplierTypes[]
 }
 

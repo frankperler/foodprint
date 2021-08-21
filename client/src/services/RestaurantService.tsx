@@ -1,6 +1,5 @@
-import { getAll, searchByCity, filter, claim } from "./RestSupService";
+import { searchByCity, filter, claim } from "./RestSupService";
 import { restaurantTypes } from "../types/restaurant-types";
-import { supplierTypes } from "../types/supplier-types";
 const url = 'http://localhost:3001';
 
 export async function getAllRestaurants(): Promise<restaurantTypes[]> {
