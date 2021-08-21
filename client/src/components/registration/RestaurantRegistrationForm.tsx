@@ -10,12 +10,12 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
   user_last_name: yup.string().required('required'),
-  rest_name: yup.string(),
-  rest_address: yup.string(),
-  rest_city: yup.string(),
-  country: yup.string(),
-  zip: yup.string(),
-  rest_phone_number: yup.string(),
+  rest_name: yup.string().required('required'),
+  rest_address: yup.string().required('required'),
+  rest_city: yup.string().required('required'),
+  country: yup.string().required('required'),
+  zip: yup.string().required('required'),
+  rest_phone_number: yup.string().required('required'),
   email: yup.string().required('required'),
   password: yup.string().min(8).max(15).required(),
   confirmPassword: yup.string().oneOf([yup.ref("password"), null])
@@ -77,45 +77,54 @@ export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Label>First name</Label>
         <RegisterNameInput type="text" {...register('user_first_name')} />
-        <div className="invalid-feedback">{errors.user_first_name?.message}</div>
+          <div className="invalid-feedback" style={{color: 'red'}}>{errors.user_first_name?.message}</div>
+
         <Label>Last name</Label>
         <RegisterNameInput type="text" {...register('user_last_name')} />
-        <div className="invalid-feedback">{errors.user_last_name?.message}</div>
+          <div className="invalid-feedback" style={{color: 'red'}}>{errors.user_last_name?.message}</div>
           <div>
             <Label>Business name</Label>
             <EstablishmentInput type="text" {...register('rest_name')} />
-            <div className="invalid-feedback">{errors.rest_name?.message}</div>
+              <div className="invalid-feedback" style={{color: 'red'}}>{errors.rest_name?.message}</div>
+
             <Label>Business address</Label>
             <EstablishmentInput type="text" {...register('rest_address')}  />
-            <div className="invalid-feedback">{errors.rest_address?.message}</div>
+              <div className="invalid-feedback" style={{color: 'red'}}>{errors.rest_address?.message}</div>
+
             <AddressTwoWrapper>
               <div>
                 <Label>City</Label>
                 <AddressTwoInput type="text" {...register('rest_city')} />
-                <div className="invalid-feedback">{errors.rest_city?.message}</div>
+                  <div className="invalid-feedback" style={{color: 'red'}}>{errors.rest_city?.message}</div>
               </div>
               <div>
                 <Label>Zip code</Label>
                 <AddressTwoInput type="text" {...register('zip')} />
-                <div className="invalid-feedback">{errors.zip?.message}</div>
+                <div className="invalid-feedback" style={{color: 'red'}}>{errors.zip?.message}</div>
               </div>
             </AddressTwoWrapper>
+
             <Label>Country</Label>
             <EstablishmentInput type="text" {...register('country')} />
-            <div className="invalid-feedback">{errors.country?.message}</div>
+              <div className="invalid-feedback" style={{color: 'red'}}>{errors.country?.message}</div>
+
             <Label>Phone</Label>
             <EstablishmentInput type="text" {...register('rest_phone_number')} />
-            <div className="invalid-feedback">{errors.rest_phone_number?.message}</div>
+              <div className="invalid-feedback" style={{color: 'red'}}>{errors.rest_phone_number?.message}</div>
           </div>
+
         <Label>Email</Label>
         <CredentialInput type="text" {...register('email')} />
-        <div className="invalid-feedback">{errors.email?.message}</div>
+          <div className="invalid-feedback" style={{color: 'red'}}> {errors.email?.message}</div>
+
         <Label>Password</Label>
         <CredentialInput type="password" {...register('password')} />
-        <div className="invalid-feedback">{errors.password?.message}</div>
+          <div className="invalid-feedback" style={{color: 'red'}}>{errors.password?.message}</div>
+
         <Label>Password confirmation</Label>
         <CredentialInput type="password" {...register('confirmPassword')} />
-        <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+          <div className="invalid-feedback" style={{color: 'red'}}>{errors.confirmPassword?.message}</div>
+
         <Link to="/" style={{ textDecoration: 'none' }}>
           <RegisterButton type="submit" onClick={handleSubmit(onSubmit)}>Register</RegisterButton>
         </Link>
