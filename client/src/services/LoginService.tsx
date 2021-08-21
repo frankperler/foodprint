@@ -1,9 +1,9 @@
 const url = 'http://localhost:3001';
 
-import { loginTypes } from '../types';
+import { loginTypes, userTypes } from '../types';
 import { fetchRequest } from './fetch';
 
-export function logIn (user: loginTypes) {
+export function logIn (user: loginTypes): Promise<userTypes> {
   return fetchRequest('/login', {
     method: 'POST',
     headers: {
