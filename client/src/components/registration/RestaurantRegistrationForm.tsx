@@ -54,7 +54,7 @@ export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
     setValue('user_type', 'restaurant')
-    setValue('rest_address', (data['rest_address'].concat(data['rest_city'], data['zip'], data['country'])))
+    setValue('rest_address', (data['rest_address'].concat(', ', data['rest_city'], ', ', data['zip'], ', ', data['country'])))
     console.log(getValues());
     reset();
   };

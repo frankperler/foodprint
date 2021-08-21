@@ -53,6 +53,7 @@ export const SupplierRegistrationForm = ({ userType, setIsAuth }: Props) => {
     // will need to submit data on the database for registration
     setIsAuth(true)
     setValue('user_type', 'supplier')
+    setValue('sup_address', (data['sup_address'].concat(', ', data['sup_city'], ', ', data['zip'], ', ', data['country'])))
     console.log(getValues());
     reset();
   };
