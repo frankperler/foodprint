@@ -17,7 +17,7 @@ export const SupplTopList: React.FunctionComponent = () => {
             <b>Top Suppliers</b>
           </TopTitle>
           <ListContainer>
-            {stateSupplier.sort((a, b) => (b.sup_eco_score) - (a.sup_eco_score)).map((supplier: supplierTypes) => (
+            {stateSupplier.sort((a, b) => (b.sup_eco_score) - (a.sup_eco_score)).slice(0, 3).map((supplier: supplierTypes) => (
               < SupplTopCard supplier={supplier} key={supplier.sup_id} />
             )
             )}
