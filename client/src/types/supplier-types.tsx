@@ -1,5 +1,5 @@
-import { restaurantTypes } from "./restaurant-types"
-
+import { restaurantTypes } from ".";
+import { productionTypes } from "./production-types";
 
 export type supplierTypes = {
   sup_id: number,
@@ -17,5 +17,7 @@ export type supplierTypes = {
   sup_greenTech: string[],
   sup_energy: string[],
   sup_vehicles: string,
-  Restaurants?: restaurantTypes[]
+  UserId: number,
+  Restaurants?: restaurantTypes[],
+  Productions?: productionTypes[]
 }

@@ -66,7 +66,7 @@ async function populateSuppliers() {
       mockSupplier.sup_energy = Array.from(energy);
 
       mockSupplier.sup_vehicles = getRandomValue(vehicleFuel);
-      mockSupplier.UserId = i + 101;
+      mockSupplier.UserId = i + 103;
 
       console.log(mockSupplier)
       console.log("-------------", i)
