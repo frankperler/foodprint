@@ -27,7 +27,6 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
-import { ListWrapper } from './results/results-styled-components/results-list-wrapper'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -61,7 +60,7 @@ export const Dashboard = ({ userType }: Props) => {
         <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
           <GridContainer>
             <MapArea>
-              <Map />
+              <Map userType={userType} />
             </MapArea>
 
             {((userType === 'Food lover') || (userType === 'Supplier')) ?
@@ -77,7 +76,6 @@ export const Dashboard = ({ userType }: Props) => {
                 </ButtonStyles>
               </FilterArea>
               :
-              // bio filter
               <FilterArea>
                 <EcoScoreSlider />
                 <DistanceSlider />
