@@ -11,5 +11,5 @@ export const RegistrationBackground = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 135vh;
 `
