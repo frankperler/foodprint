@@ -7,30 +7,28 @@ import EditIcon from '@material-ui/icons/Edit';
 
 export const RestaurantDescription = (): JSX.Element => {
 
-  const [ isEditing, setIsEditing ] = useState(false)
-  const [ descriptionValue, setDescriptionValue ] = useState<string>()
+  const [isEditing, setIsEditing] = useState(false)
+  const [descriptionValue, setDescriptionValue] = useState<string>()
 
-const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescriptionValue(e.target.value);
-}
+  }
 
-const handleUpdate = (e: MouseEvent ) => {
-  e.preventDefault();
-  setDescriptionValue(descriptionValue);
-}
-
-
+  const handleUpdate = (e: MouseEvent) => {
+    e.preventDefault();
+    setDescriptionValue(descriptionValue);
+  }
 
   return (
     <DescriptionCard>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        { isEditing ? 
-        <CancelButton>Cancel</CancelButton>
-        :
-        <EditIcon></EditIcon>
+        {isEditing ?
+          <CancelButton>Cancel</CancelButton>
+          :
+          <EditIcon></EditIcon>
         }
       </EditDescription>
-        <ProfileHeader>Description</ProfileHeader>
+      <ProfileHeader>Description</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{restos[2].rest_description}</EditTextArea>

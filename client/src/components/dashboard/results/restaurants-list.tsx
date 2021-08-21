@@ -26,7 +26,7 @@ export const RestaurantsLists: React.FunctionComponent = () => {
                   stateRestaurant.map((restaurant: restaurantTypes) => {
                     if (restaurant.rest_types.includes(value) && count < 6) {
                       count++
-                      return < RestaurantCard restaurant={restaurant} key={restaurant.place_id} />
+                      return < RestaurantCard restaurant={restaurant} key={restaurant.id} />
                     }
                   }
                   )}

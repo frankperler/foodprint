@@ -17,16 +17,16 @@ type Props = {
     sup_energy: string[];
     sup_vehicles: string;
   }
-} 
+}
 
-export const SupplierCard = ({supplier}: Props): JSX.Element => {
+export const SupplierCard = ({ supplier }: Props): JSX.Element => {
 
 
   return (
-    <SupplierCardGrid> 
+    <SupplierCardGrid>
       <SupplierContainerImg>
         <SupplierImg src={supplier.sup_picture}></SupplierImg>
-      </SupplierContainerImg>  
+      </SupplierContainerImg>
       <SupplierInfo>
         <SupplierInfoInterior>
           <h4>{supplier.sup_name}</h4>
@@ -34,6 +34,6 @@ export const SupplierCard = ({supplier}: Props): JSX.Element => {
           <h4>Eco Score: {supplier.sup_eco_score}</h4>
         </SupplierInfoInterior>
       </SupplierInfo>
-    </SupplierCardGrid> 
+    </SupplierCardGrid>
   )
 }

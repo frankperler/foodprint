@@ -6,7 +6,7 @@ interface Props {
   resto: restaurantTypes
 }
 
-export const RestaurantCard = ({ resto }: Props): JSX.Element => {
+export const RestaurantCard = ({ resto }: Props) => {
 
   return (
     <div>

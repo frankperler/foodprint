@@ -31,12 +31,12 @@ export const App: React.FunctionComponent = () => {
           />
         </Route>
         <Route path='/register' exact>
-    <RegistrationContainer
-                  userType={userType}
-                  setUserType={setUserType}
-                  isAuth={isAuth}
-                  setIsAuth={setIsAuth}
-    ></RegistrationContainer>
+          <RegistrationContainer
+            userType={userType}
+            setUserType={setUserType}
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+          ></RegistrationContainer>
         </Route>
 
         <Route path='/supplier/:id'>

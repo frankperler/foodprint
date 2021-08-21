@@ -15,7 +15,7 @@ export const RestTopCard: React.FunctionComponent<Props> = ({ restaurant }: Prop
   return (
     <TopCardContainer>
       <TopCardStyles backgroundImg={restaurant.rest_picture} />
-      <Link to={`/restaurant/${restaurant.place_id}`} style={{ textDecoration: 'none' }} >
+      <Link to={`/restaurant/${restaurant.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{restaurant.rest_name}</div>
         <div className="foodtype">{restaurant.rest_types[0]}</div>
         <RestStarRating restaurant={restaurant} />

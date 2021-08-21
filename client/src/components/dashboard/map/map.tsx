@@ -59,10 +59,10 @@ export const Map = ({ userType }: Props) => {
                     color: '#FFA69E',
                     cursor: 'pointer'
                   }}
-                    onClick={() => handlePopupClick(restaurant.place_id, restaurant.rest_lat, restaurant.rest_lng)}
+                    onClick={() => handlePopupClick(JSON.stringify(restaurant.id), restaurant.rest_lat, restaurant.rest_lng)}
                   />
                 </Marker>
-                {(restaurant.place_id === currentPinId) && (
+                {(JSON.stringify(restaurant.id) === currentPinId) && (
                   <Popup
                     latitude={+restaurant.rest_lat}
                     longitude={+restaurant.rest_lng}

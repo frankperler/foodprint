@@ -3,9 +3,7 @@ import { GridContainer, RestoCover } from '../profile-styled-components/profile.
 import { Photo, ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './RestaurantDescription'
 import { SuppliersList } from './SuppliersList'
-import { EcoLeafContainer, InfoArea, InfoHeader, InteriorArea } from '../profile-styled-components/profile.style';
-import { EcoLeaf } from '../profile-styled-components/profile.style'
-import { Popup } from 'semantic-ui-react'
+import { InfoArea, InfoHeader, InteriorArea } from '../profile-styled-components/profile.style';
 import { restos } from '../../../mock'
 import { RestStarRating } from '../../dashboard/results/restaurants-star-rating'
 
@@ -31,8 +29,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
         </InteriorArea>
       </InfoArea>
       <ProfileDetails>
-        <RestaurantDescription></RestaurantDescription>
-        <SuppliersList></SuppliersList>
+        <RestaurantDescription />
+        <SuppliersList />
       </ProfileDetails>
     </GridContainer>
   )

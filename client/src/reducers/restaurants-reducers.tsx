@@ -1,5 +1,4 @@
 import { restaurantTypes } from "../types/restaurant-types"
-import { supplierTypes } from "../types";
 import { restaurantAction } from '../actions/actions';
 
 export const restaurantReducers = (state: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {

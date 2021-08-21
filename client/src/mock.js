@@ -1,5 +1,6 @@
 export const restos = [
   {
+    id: 1,
     place_id: 'ChIJjWSRFtBRqEcReqmdfCNIYQw',
     rest_address: 'Kronenstraße 70, 10117 Berlin, Deutschland',
     rest_city: 'Berlin',
@@ -26,6 +27,7 @@ export const restos = [
     rest_website: 'http://savorychay.de/'
   },
   {
+    id: 2,
     place_id: 'ChIJpwXWitpRqEcRkrffi1t4SJ0',
     rest_address: 'Behrenstraße 42, 10117 Berlin, Deutschland',
     rest_city: 'Berlin',
@@ -52,6 +54,7 @@ export const restos = [
     rest_website: 'https://restaurant-gendarmerie.de/'
   },
   {
+    id: 3,
     place_id: 'ChIJ21LM58VRqEcR08JXG7T-b6w',
     rest_address: 'Wilhelmstraße 77, 10117 Berlin, Deutschland',
     rest_city: 'Berlin',
@@ -78,6 +81,7 @@ export const restos = [
     rest_website: 'http://www.altberliner-wirtshaus.de/'
   },
   {
+    id: 4,
     place_id: 'ChIJYWKRX6BRqEcRfN6pR4NPwOA',
     rest_address: 'Grand Hyatt Berlin, Marlene-Dietrich-Platz 2, 10785 Berlin, Deutschland',
     rest_city: 'Berlin',
@@ -103,7 +107,6 @@ export const restos = [
     rest_phone_number: '030 25531234',
     rest_website: 'https://www.lepetitchef.de/berlin'
   }
-
 ]
 
 

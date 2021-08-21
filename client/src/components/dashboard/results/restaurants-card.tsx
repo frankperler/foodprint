@@ -14,7 +14,7 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
     <CardContainer>
       <ResultsCardStyles backgroundImg={restaurant.rest_picture} >
       </ResultsCardStyles>
-      <Link to={`/restaurant/${restaurant.place_id}`} style={{ textDecoration: 'none' }} >
+      <Link to={`/restaurant/${restaurant.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{restaurant.rest_name}</div>
         <div className="foodtype">{
           restaurant.rest_types.length == 1 ? `${restaurant.rest_types[0]}`
