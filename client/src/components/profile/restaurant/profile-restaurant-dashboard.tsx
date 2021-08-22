@@ -3,7 +3,7 @@ import { ProfileGridContainer, RestoCover, ProfileName, Day } from '../profile-s
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
-import { InfoArea } from '../profile-styled-components/profile.style';
+import { InfoArea, Website } from '../profile-styled-components/profile.style';
 import { RestStarRating } from '../../dashboard/results/restaurants-star-rating'
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
@@ -49,11 +49,14 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       })
   }, [])
 
+  console.log(restItem)
+
   return (
     <ProfileGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
         <ProfileName>{restItem.rest_name}</ProfileName>
+        <Website href={restItem.rest_website}>Visit website</Website>
         <h4>{restItem.rest_address}</h4>
         <RestStarRating restaurant={restItem} />
         <h4>{restItem.opening_hours.map(day =>
@@ -63,8 +66,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       </InfoArea>
       <RestaurantDescription restaurant={restItem} />
       <ProfileDetails>
-        <SuppliersList />
+        <SuppliersList restaurant={restItem} />
       </ProfileDetails>
-    </ProfileGridContainer>
+    </ProfileGridContainer >
   )
 }
