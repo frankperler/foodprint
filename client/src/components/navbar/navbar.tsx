@@ -5,7 +5,6 @@ import { Navcontainer } from './navbar-styled-components/navcontainer'
 import { HomeButtonFlex } from './navbar-styled-components/homebuttonflex'
 import { Container } from './navbar-styled-components/container'
 import Modal from 'react-modal';
-import { RegistrationContainer } from '../registration/RegistrationContainer'
 import { FormLogIn } from '../log-in/FormLogIn'
 import { Link } from 'react-router-dom'
 
@@ -36,11 +35,11 @@ interface Props {
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-export const Navbar = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
+export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
 
   Modal.setAppElement('#root');
 
-  const [openRegistration, setOpenRegistration] = useState<boolean>(false);
+  // const [openRegistration, setOpenRegistration] = useState<boolean>(false);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
 
 

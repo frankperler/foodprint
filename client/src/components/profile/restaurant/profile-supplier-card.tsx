@@ -6,7 +6,7 @@ type Props = {
   supplier: supplierTypes
 }
 
-export const SupplierCard = ({ supplier }: Props): JSX.Element => {
+export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props): JSX.Element => {
 
   return (
     <SupplierCardGrid>

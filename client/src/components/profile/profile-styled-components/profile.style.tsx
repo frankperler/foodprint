@@ -1,17 +1,9 @@
 import styled from "styled-components";
 
-export const Photo = styled.div`
-
-  display: block;
-  width: 28rem;
-  height: 23rem;
-  border-radius: 7px;
-`
-
 export const RestoCover = styled.img`
   grid-area: photo;
   object-fit: cover;
-  border-radius: 7px;
+  border-radius: 30px;
   display: block;
   padding: 1rem;
   width: 90%;
@@ -21,22 +13,6 @@ export const ProfileDetails = styled.section`
   grid-area: suppliers;
   /* border: 1px solid black; */
 `
-
-export const DescriptionCard = styled.div`
-  margin: 0 auto 2rem auto;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 75%;
-  height: auto;
-  padding: 2rem;
-`
-
-export const DescriptionText = styled.div`
-  margin: 2rem auto;
-  font-size: 16px;
-  line-height: 1.6;
-  width: 80%;
-`
-
 export const ProfileGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -45,21 +21,46 @@ export const ProfileGridContainer = styled("div")`
     "photo list"
     "details suppliers"
   ;
-  height: auto;
+  height: 100vh;
   width: 75%;
   background-color: white;
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto;
 `
-
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
-  height: auto;
-  width: 28rem;
-  overflow: hidden;
-  background-color: white;
-  border-radius: 7px;
   box-sizing: border-box;
-  `
+  padding: 1rem;
+`
+
+export const ProfileName = styled.h2`
+  color: #FF686B;
+  font-size: 1.8rem;
+`
+
+export const Day = styled.span`
+  font-size: 0.8rem;
+  font-style: italic;
+`
+
+export const DescriptionCard = styled.div`
+  margin: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 90%;
+  height: 90%;
+  border-radius: 30px;
+`
+
+export const DescriptionText = styled.div`
+  margin: 2rem auto;
+  font-size: 1rem;
+  line-height: 1.8;
+  width: 80%;
+`
+export const ProfileHeader = styled.h1`
+  font-size: 1.5rem;
+  width: 80%;
+  margin: 1rem auto auto 5rem;
+`
 
 export const AddHeader = styled.h4`
     display: inline-block;
@@ -123,9 +124,7 @@ export const CancelButton = styled.button`
     cursor: pointer;
 `
 
-export const InteriorArea = styled.div`
-  padding: 0 4rem 4rem 4rem;
-`
+
 
 export const SupplierContainer = styled.div`
   margin: 2rem auto;
@@ -251,12 +250,7 @@ export const TechnologyContainer = styled.div`
   height: auto;
 `
 
-export const ProfileHeader = styled.h1`
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 2.6em;
-  font-size: 32px;
-`
+
 
 export const EnergySourceGrid = styled.div`
   display: flex;

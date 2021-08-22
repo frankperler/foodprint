@@ -4,7 +4,7 @@ import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogI
 import { LogInCredentialInput, Label } from './log-in-styled-components/FormLogIn.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 
@@ -56,16 +56,16 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Label>Email</Label>
-        <LogInCredentialInput type="text" {...register('email')}></LogInCredentialInput>
-        <div className="invalid-feedback" style={{color: 'red'}}>{errors.email?.message}</div>
-      </div>
-      <div>
-        <Label>Password</Label>
-        <LogInCredentialInput type="password" {...register('password')} ></LogInCredentialInput>
-        <div className="invalid-feedback" style={{color: 'red'}}>{errors.password?.message}</div>
-      </div>
+        <div>
+          <Label>Email</Label>
+          <LogInCredentialInput type="text" {...register('email')}></LogInCredentialInput>
+          <div className="invalid-feedback" style={{ color: 'red' }}>{errors.email?.message}</div>
+        </div>
+        <div>
+          <Label>Password</Label>
+          <LogInCredentialInput type="password" {...register('password')} ></LogInCredentialInput>
+          <div className="invalid-feedback" style={{ color: 'red' }}>{errors.password?.message}</div>
+        </div>
         <LogInButton type="submit">
           Log in
         </LogInButton>

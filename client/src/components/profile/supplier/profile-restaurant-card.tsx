@@ -6,7 +6,7 @@ interface Props {
   resto: restaurantTypes
 }
 
-export const RestaurantCard = ({ resto }: Props) => {
+export const RestaurantCard: React.FunctionComponent<Props> = ({ resto }: Props) => {
 
   return (
     <div>

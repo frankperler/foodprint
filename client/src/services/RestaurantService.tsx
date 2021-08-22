@@ -1,4 +1,4 @@
-import { searchByCity, filter, claim } from "./RestSupService";
+// import { searchByCity, filter, claim } from "./RestSupService";
 import { restaurantTypes } from "../types/restaurant-types";
 const url = 'http://localhost:3001';
 
@@ -13,7 +13,6 @@ export async function getAllRestaurants(): Promise<restaurantTypes[]> {
   }
 }
 
-
 export async function getRestaurantById(id: string): Promise<restaurantTypes> {
   try {
     const res = await fetch(`${url}/restaurants/${id}`);
@@ -27,14 +26,14 @@ export async function getRestaurantById(id: string): Promise<restaurantTypes> {
 
 
 
-export function searchRestaurantByCity(city: string) {
-  searchByCity(city, '/search/searchRestaurantsByCity');
-}
+// export function searchRestaurantByCity(city: string) {
+//   searchByCity(city, '/search/searchRestaurantsByCity');
+// }
 
-export function filterRestaurants(request: { eco_score: string; type: string[]; meal_type: string[] }) {
-  filter(request, '/suppliers/filterRestaurants');
-}
+// export function filterRestaurants(request: { eco_score: string; type: string[]; meal_type: string[] }) {
+//   filter(request, '/suppliers/filterRestaurants');
+// }
 
-export function claimSupplier(request: { sup_name: string, rest_id: number }) {
-  claim(request, '/restaurants/claimSupplier');
-}
+// export function claimSupplier(request: { sup_name: string, rest_id: number }) {
+//   claim(request, '/restaurants/claimSupplier');
+// }

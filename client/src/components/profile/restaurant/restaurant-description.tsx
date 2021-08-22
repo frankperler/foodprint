@@ -1,11 +1,15 @@
 import React from 'react';
 import { DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, CancelButton, UpdateChangesButton } from '../profile-styled-components/profile.style';
-import { restos } from '../../../mock';
 import { useState } from 'react';
 import { MouseEvent } from 'react';
+import { restaurantTypes } from '../../../types';
 import EditIcon from '@material-ui/icons/Edit';
 
-export const RestaurantDescription = (): JSX.Element => {
+interface Props {
+  restaurant: restaurantTypes
+}
+
+export const RestaurantDescription: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState<string>()
@@ -31,9 +35,9 @@ export const RestaurantDescription = (): JSX.Element => {
       <ProfileHeader>Description</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
-          <EditTextArea onChange={handleInputChange}>{restos[2].rest_description}</EditTextArea>
+          <EditTextArea onChange={handleInputChange}>{restaurant.rest_description}</EditTextArea>
           <UpdateChangesButton>Update changes</UpdateChangesButton>
-        </form> : restos[2].rest_description}
+        </form> : restaurant.rest_description}
       </DescriptionText>
     </DescriptionCard>
   )

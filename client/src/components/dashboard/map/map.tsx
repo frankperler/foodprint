@@ -12,7 +12,7 @@ interface Props {
   userType: string,
 }
 
-export const Map = ({ userType }: Props) => {
+export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
 
   const handlePopupClick = (id: string, lat: number, long: number) => {
     setCurrentPinId(id);
