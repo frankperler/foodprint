@@ -2,10 +2,9 @@
 
 import { registrationFormUserTypes, registeredUserTypes } from '../types/user-types';
 import { fetchRequest } from './fetch';
-import { googlePlacesFetch } from '../services/GooglePlacesService';
 
 
-function registerFetch(route: string, user: registrationFormUserTypes): Promise<registeredUserTypes>  {
+function registerFetch(route: string, user: registrationFormUserTypes): Promise<registeredUserTypes> {
   return fetchRequest(`${route}`, {
     method: 'POST',
     headers: {
@@ -16,7 +15,7 @@ function registerFetch(route: string, user: registrationFormUserTypes): Promise<
 }
 
 export async function registerUser(user: registrationFormUserTypes): Promise<registeredUserTypes> {
-  
+
   switch (user.user_type) {
     case "food lover":
       return await registerFetch('/register/FoodLoverUser', user);
