@@ -49,12 +49,12 @@ export const Dashboard = ({ userType }: Props) => {
 
   // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-      // getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
+      getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
       getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
   }, [])
 
-  // console.log(stateSupplier)
-  console.log(stateRestaurant)
+  console.log('STATESUPPLIER----------------', stateSupplier)
+  console.log('STATERESTAURANT------------------', stateRestaurant)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>

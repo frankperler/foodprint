@@ -1,9 +1,11 @@
-const url = 'http://localhost:3001';
+// const url = 'http://localhost:3001';
 
-import { userTypes } from '../types/user-types';
+import { registrationFormUserTypes, registeredUserTypes } from '../types/user-types';
 import { fetchRequest } from './fetch';
+import { googlePlacesFetch } from '../services/GooglePlacesService';
 
-function registerFetch(route: string, user: userTypes) {
+
+function registerFetch(route: string, user: registrationFormUserTypes): Promise<registeredUserTypes>  {
   return fetchRequest(`${route}`, {
     method: 'POST',
     headers: {
@@ -13,22 +15,25 @@ function registerFetch(route: string, user: userTypes) {
   })
 }
 
-export async function register(user: userTypes): Promise<userTypes> {
-  switch (user.user.user_type) {
+export async function registerUser(user: registrationFormUserTypes): Promise<registeredUserTypes> {
+  
+  switch (user.user_type) {
     case "food lover":
       return await registerFetch('/register/FoodLoverUser', user);
     case "restaurant":
       return await registerFetch('/register/RestaurantUser', user);
     case "supplier":
       return await registerFetch('/register/SupplierUser', user);
-    default: return {user: {
-                              user_type: "",
-                              user_first_name: "",
-                              user_last_name: "",
-                              user_picture: "",
-                            },
-                    restaurants: null,
-                    suppliers: null,} 
+    default: return {
+      user: {
+        user_type: "",
+        user_first_name: "",
+        user_last_name: "",
+        user_picture: "",
+      },
+      newRestaurant: null,
+      newSupplier: null
+    }
   }
 }
 

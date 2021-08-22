@@ -19,7 +19,7 @@ export const userLoginReducers = (state: userTypes, action: userLoginAction) : u
 
 export const userLoginState: userTypes = {
     user: {
-        user_type: "hello",
+        user_type: "",
         user_first_name: "",
         user_last_name: "",
         user_picture: "",

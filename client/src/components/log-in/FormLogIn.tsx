@@ -12,8 +12,6 @@ import { loginTypes, userTypes } from '../../types';
 import { useEffect } from 'react';
 
 
-
-
 export interface Props {
   onCloseLoginModal: () => void,
   userType: string,
@@ -50,9 +48,8 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
       .then((userData: userTypes) => {
       //STATE IS NOT BEING SYNCHRONOUSLY UPDATED ---- CANNOT SEE IT THE NEW STATE IS CORRECT!!!!! 
       console.log("new user local state", stateUserLogin )   
-        dispatchUserLogin({type: "LOGIN", payload: userData})
-      }
-      )
+        dispatchUserLogin({type: 'LOGIN', payload: userData})
+      })
     
     setIsAuth(true)
     const formData = {

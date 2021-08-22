@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useReducer } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
 import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper, EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { registerUser } from '../../services/RegisterService';
+import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
+import { registrationFormUserTypes, registeredUserTypes } from '../../types/user-types';
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -37,12 +40,16 @@ export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = (data: FoodLoverRegisterForm) => {
+  const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
+
+  const onSubmit = async (data: FoodLoverRegisterForm) => {
+
     // will need to submit data on the database for registration
     
     setIsAuth(true)
     setValue('user_type', 'food lover')
     const user_type = getValues('user_type')
+
     const formData = {
       user_type: user_type,
       user_first_name: data['user_first_name'],
@@ -50,7 +57,15 @@ export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
       email: data['email'],
       password: data['password'],
     }
-    console.log(formData);
+
+    await registerUser(formData)
+      .then((userData: registeredUserTypes) => {
+        dispatchRegistrationUser({type: 'REGISTER', payload: userData})
+        console.log('response data', userData)
+      })
+
+
+    console.log('request data', formData);
     reset();
   };
 
