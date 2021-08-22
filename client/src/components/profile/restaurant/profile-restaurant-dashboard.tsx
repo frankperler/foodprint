@@ -55,7 +55,7 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
     <ProfileGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
-        <ProfileName>{restItem.rest_name}</ProfileName>
+        <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
         <Website href={restItem.rest_website}>Visit website</Website>
         <h4>{restItem.rest_address}</h4>
         <RestStarRating restaurant={restItem} />

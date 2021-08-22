@@ -47,7 +47,7 @@ export async function searchByCity(city: string, route: string): Promise<supplie
 
 // export async function claim(request:
 //   { sup_name: string, rest_id: number } |
-//   { rest_name: string, sup_id: number },
+//   { rest_name: string, id: number },
 //   route: string) {
 //   try {
 //     const res = await fetch(`${url}${route}`, {

@@ -2,7 +2,7 @@ import { restaurantTypes } from ".";
 import { productionTypes } from "./production-types";
 
 export type supplierTypes = {
-  sup_id: number,
+  id: number,
   sup_name: string,
   sup_food_type: string[],
   sup_address: string,

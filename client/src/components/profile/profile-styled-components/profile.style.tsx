@@ -41,11 +41,12 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   padding: 1rem;
 `
 
-export const ProfileName = styled.h2`
-  color: #FF686B;
+export const ProfileName = styled("h2") <{ fontColor?: string }>`
+  color: ${(props) => props.fontColor};
   font-size: 1.8rem;
   text-decoration:none;
 `
+
 export const Website = styled.a`
   color:darkgray;
   font-weight:bold;
@@ -89,7 +90,7 @@ export const SupplierContainer = styled.div`
   margin: 2rem auto;
   border-radius: 7px;
   padding: 1.2rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow:  0px 0px 20px rgba(149, 157, 165, 0.2);
   width: 100%;
   height: 100vh;
 `
@@ -193,15 +194,11 @@ export const RestoImg = styled.img`
   margin-top: 1.2rem;
 `
 
-export const SupplierContainerImg = styled.div`
-  height: 12rem;
-`
-
 export const SupplierImg = styled.img`
-  display: block;
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  border-radius: 10px;
+  height: 12rem;
+  width: 30%;
 `
 
 export const SupplierCardGrid = styled.div`
@@ -209,8 +206,9 @@ export const SupplierCardGrid = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem;
+  padding: 1.2rem;
   margin: 0.6rem;
+  border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `
 
@@ -224,6 +222,7 @@ export const AddSupplier = styled.div`
 
 export const SupplierInfoInterior = styled.div`
   padding: 1.2rem;
+  width: 70%;
 `
 
 export const SupplierListContainer = styled.div`

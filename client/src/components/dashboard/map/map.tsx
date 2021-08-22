@@ -90,10 +90,10 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
                     color: '#FFA69E',
                     cursor: 'pointer'
                   }}
-                    onClick={() => handlePopupClick(JSON.stringify(supplier.sup_id), supplier.sup_lat, supplier.sup_lng)}
+                    onClick={() => handlePopupClick(JSON.stringify(supplier.id), supplier.sup_lat, supplier.sup_lng)}
                   />
                 </Marker>
-                {(JSON.stringify(supplier.sup_id) === currentPinId) && (
+                {(JSON.stringify(supplier.id) === currentPinId) && (
                   <Popup
                     latitude={+supplier.sup_lat}
                     longitude={+supplier.sup_lng}

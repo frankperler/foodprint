@@ -21,7 +21,7 @@ export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant }: Pr
       <ProfileHeader>Who we get our food from...</ProfileHeader>
       <SupplierListContainer>
         {restaurant.Suppliers && restaurant.Suppliers.map((supplier: supplierTypes) => {
-          return <SupplierCard key={supplier.sup_id} supplier={supplier} />
+          return <SupplierCard key={supplier.id} supplier={supplier} />
         })}
       </SupplierListContainer>
     </SupplierContainer>

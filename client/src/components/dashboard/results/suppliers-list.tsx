@@ -25,7 +25,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
                 {stateSupplier.map((supplier: supplierTypes) => {
                   if (supplier.sup_food_type.includes(value) && count < 6) {
                     count++
-                    return < SupplierCard supplier={supplier} key={supplier.sup_id} />
+                    return < SupplierCard supplier={supplier} key={supplier.id} />
                   }
                 }
                 )}
