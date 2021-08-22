@@ -1,0 +1,12 @@
+.overflow {
+  overflow-y: scroll;
+  /* height: 100vh; */
+  grid-area: list;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+
+}
+
+.overflow::-webkit-scrollbar {
+  display: none;  /* Firefox */
+}
