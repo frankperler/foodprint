@@ -6,7 +6,7 @@ export type loginTypes = {
   password: string,
 }
 
-type simpleUser = {
+export type simpleUser = {
   user_type: string,
   user_first_name: string,
   user_last_name: string,
@@ -15,6 +15,14 @@ type simpleUser = {
 
 export type userTypes = {
   user: simpleUser,
-  restaurants?: restaurantTypes[],
-  suppliers?: supplierTypes[],
+  restaurants?: restaurantTypes[] | null,
+  suppliers?: supplierTypes[] | null
 }
+
+// export type BaseUser = {
+//   user: simpleUser;
+// }
+
+// //extending base type to include restaurant or supplier
+// export type UserWithRestaurants = BaseUser & { restaurants: restaurantTypes[] }
+// export type UserWithSupplier = BaseUser & { supplier: supplierTypes[] }

@@ -35,6 +35,7 @@ export const LogInButton = styled.button`
   text-align: center;
   margin-top: 0.8em;
   margin-bottom: 1.8em;
+  border-radius: 2px;
 `
 
 export const FormWrapper = styled.div`

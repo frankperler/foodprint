@@ -14,7 +14,7 @@ export async function getAllSuppliers(): Promise<supplierTypes[]> {
   }
 }
 
-export async function getSupplierById(id: string): Promise<supplierTypes[]> {
+export async function getSupplierById(id: string): Promise<supplierTypes> {
   try {
     const res = await fetch(`${url}/suppliers/${id}`);
     return await res.json()

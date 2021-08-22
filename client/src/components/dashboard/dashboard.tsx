@@ -49,9 +49,12 @@ export const Dashboard = ({ userType }: Props) => {
 
   // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }))
-    // getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers }))
+      // getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
+      getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
   }, [])
+
+  // console.log(stateSupplier)
+  console.log(stateRestaurant)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
@@ -98,7 +101,7 @@ export const Dashboard = ({ userType }: Props) => {
             </div>
             <TopArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
-                <RestTopList /> :
+                <RestTopList /> : 
                 <SupplTopList />
               }
             </TopArea>
