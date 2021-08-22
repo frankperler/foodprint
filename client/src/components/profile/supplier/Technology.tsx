@@ -1,18 +1,14 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { EditDescription, ProfileHeader, CheckBoxForm, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, InnerForm, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
-import { suppliers } from '../../../mock';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { EditDescription, ProfileHeader, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import EditIcon from '@material-ui/icons/Edit';
-import { green } from '@material-ui/core/colors';
-
+import { withStyles } from '@material-ui/styles';
 
 const GreenCheckbox = withStyles({
   root: {

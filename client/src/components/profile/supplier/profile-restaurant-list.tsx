@@ -5,7 +5,7 @@ import { RestaurantCard } from './profile-restaurant-card';
 import { AddCircle } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
 
-export const RestaurantList = () => {
+export const RestaurantList: React.FunctionComponent = () => {
 
   return (
     <SupplierContainer>

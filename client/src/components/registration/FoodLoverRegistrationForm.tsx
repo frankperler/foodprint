@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useReducer } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
-import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper, EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
+import { RegisterNameInput, CredentialInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -34,7 +34,7 @@ interface Props {
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
+export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setIsAuth }: Props) => {
 
   const { register, handleSubmit, setValue, getValues, reset, formState: { errors } } = useForm<FoodLoverRegisterForm>({
     resolver: yupResolver(schema),
@@ -75,24 +75,24 @@ export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
 
         <Label>First name</Label>
         <RegisterNameInput type="text" {...register('user_first_name')} />
-          <div className="invalid-feedback" style={{color: 'red'}}>{errors.user_first_name?.message}</div>
+        <div className="invalid-feedback" style={{ color: 'red' }}>{errors.user_first_name?.message}</div>
 
         <Label>Last name</Label>
         <RegisterNameInput type="text" {...register('user_last_name')} />
-          <div className="invalid-feedback" style={{color: 'red'}}>{errors.user_last_name?.message}</div>
+        <div className="invalid-feedback" style={{ color: 'red' }}>{errors.user_last_name?.message}</div>
 
         <Label>Email</Label>
         <CredentialInput type="text" {...register('email')} />
-          <div className="invalid-feedback" style={{color: 'red'}}>{errors.email?.message}</div>
+        <div className="invalid-feedback" style={{ color: 'red' }}>{errors.email?.message}</div>
 
         <Label>Password</Label>
         <CredentialInput type="password" {...register('password')} />
-          <div className="invalid-feedback" style={{color: 'red'}}>{errors.password?.message}</div>
+        <div className="invalid-feedback" style={{ color: 'red' }}>{errors.password?.message}</div>
         <Label>Password confirmation</Label>
 
         <CredentialInput type="password" {...register('confirmPassword')} />
-          <div className="invalid-feedback"style={{color: 'red'}}>{errors.confirmPassword?.message}</div>
-          
+        <div className="invalid-feedback" style={{ color: 'red' }}>{errors.confirmPassword?.message}</div>
+
         <Link to="/" style={{ textDecoration: 'none' }}>
           <RegisterButton type="submit" onClick={handleSubmit(onSubmit)}>Register</RegisterButton>
         </Link>

@@ -13,7 +13,7 @@ export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props
   return (
     <CardContainer>
       <ResultsCardStyles backgroundImg={supplier.sup_picture} />
-      <Link to={`/supplier/${supplier.sup_id}`} style={{ textDecoration: 'none' }} >
+      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{supplier.sup_name}</div>
         <div className="foodtype">{
           supplier.sup_food_type.length == 1 ? `${supplier.sup_food_type[0]}`

@@ -1,25 +1,25 @@
 import React from 'react';
 import { supplierTypes } from '../../../types';
-import { SupplierCardGrid, SupplierContainerImg, SupplierImg, SupplierInfo, SupplierInfoInterior } from '../profile-styled-components/profile.style';
+import { ProfileName, SupplierCardGrid, SupplierImg, SupplierInfoInterior } from '../profile-styled-components/profile.style';
+import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating'
+import { Link } from "react-router-dom";
 
 type Props = {
   supplier: supplierTypes
 }
 
-export const SupplierCard = ({ supplier }: Props): JSX.Element => {
+export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   return (
-    <SupplierCardGrid>
-      <SupplierContainerImg>
+    <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
+      <SupplierCardGrid>
         <SupplierImg src={supplier.sup_picture}></SupplierImg>
-      </SupplierContainerImg>
-      <SupplierInfo>
         <SupplierInfoInterior>
-          <h4>{supplier.sup_name}</h4>
-          <h4>{supplier.sup_address}</h4>
-          <h4>Eco Score: {supplier.sup_eco_score}</h4>
+          <ProfileName fontColor="#FFA69E">{supplier.sup_name}</ProfileName>
+          <h4 style={{ color: 'black' }}>{supplier.sup_address}</h4>
+          <SupplStarRating supplier={supplier} />
         </SupplierInfoInterior>
-      </SupplierInfo>
-    </SupplierCardGrid>
+      </SupplierCardGrid>
+    </Link>
   )
 }
