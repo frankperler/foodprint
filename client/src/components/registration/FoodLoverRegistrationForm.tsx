@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { registerUser } from '../../services/RegisterService';
 import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
-import { registrationFormUserTypes, registeredUserTypes } from '../../types/user-types';
+import { registeredUserTypes } from '../../types/user-types';
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -45,7 +45,7 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
   const onSubmit = async (data: FoodLoverRegisterForm) => {
 
     // will need to submit data on the database for registration
-    
+
     setIsAuth(true)
     setValue('user_type', 'food lover')
     const user_type = getValues('user_type')
@@ -60,7 +60,7 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
 
     await registerUser(formData)
       .then((userData: registeredUserTypes) => {
-        dispatchRegistrationUser({type: 'REGISTER', payload: userData})
+        dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
         console.log('response data', userData)
       })
 
