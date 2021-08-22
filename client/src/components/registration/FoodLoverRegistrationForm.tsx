@@ -39,6 +39,7 @@ export const FoodLoverRegistrationForm = ({ userType, setIsAuth }: Props) => {
 
   const onSubmit = (data: FoodLoverRegisterForm) => {
     // will need to submit data on the database for registration
+    
     setIsAuth(true)
     setValue('user_type', 'food lover')
     const user_type = getValues('user_type')

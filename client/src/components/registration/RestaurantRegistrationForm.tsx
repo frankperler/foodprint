@@ -61,13 +61,14 @@ export const RestaurantRegistrationForm = ({ userType, setIsAuth }: Props) => {
       user_type: user_type,
       user_first_name: data['user_first_name'],
       user_last_name: data['user_last_name'],
-      sup_name: data['rest_name'],
-      sup_address: address,
-      sup_city: data['rest_city'],
-      sup_phone_number: data['rest_phone_number'],
+      rest_name: data['rest_name'],
+      rest_address: address,
+      rest_city: data['rest_city'],
+      rest_phone_number: data['rest_phone_number'],
       email: data['email'],
       password: data['password'],
     }
+    
     console.log(formData);
     reset();
   };

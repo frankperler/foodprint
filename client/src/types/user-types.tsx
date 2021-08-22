@@ -19,6 +19,12 @@ export type userTypes = {
   suppliers?: supplierTypes[] | null
 }
 
+export type registeredUserTypes = {
+  user: simpleUser,
+  newRestaurant?: restaurantTypes | null,
+  newSupplier?: supplierTypes | null
+}
+
 // export type BaseUser = {
 //   user: simpleUser;
 // }

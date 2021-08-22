@@ -1,6 +1,7 @@
 import { restaurantTypes } from '../types/restaurant-types';
 import { supplierTypes } from '../types/supplier-types';
 import { userTypes } from '../types';
+import { registeredUserTypes } from '../types/user-types';
 
 export type supplierAction = {
   type: 'FETCH_ALL_SUPPLIER',
@@ -17,3 +18,7 @@ export type userLoginAction = {
   payload: userTypes
 }
 
+export type registerAction = {
+  type: 'REGISTER',
+  payload: registeredUserTypes
+}
