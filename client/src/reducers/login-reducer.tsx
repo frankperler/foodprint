@@ -14,7 +14,6 @@ export const userReducers = (userState: userTypes, action: userLoginAction) : us
     }
 }
 
-
 export const userState: userTypes = {
     user: {
         user_type: "",
