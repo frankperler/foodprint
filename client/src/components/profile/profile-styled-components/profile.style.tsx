@@ -204,8 +204,8 @@ export const SupplierImg = styled.img`
 export const SupplierCardGrid = styled.div`
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
   padding: 1.2rem;
   margin: 0.6rem;
   border-radius: 5px;
@@ -221,8 +221,9 @@ export const AddSupplier = styled.div`
 `
 
 export const SupplierInfoInterior = styled.div`
-  padding: 1.2rem;
+  margin-left: 1.5rem;
   width: 70%;
+  text-decoration:none;
 `
 
 export const SupplierListContainer = styled.div`

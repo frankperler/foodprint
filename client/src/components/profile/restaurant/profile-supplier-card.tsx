@@ -11,16 +11,15 @@ type Props = {
 export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   return (
-    <SupplierCardGrid>
-      <SupplierImg src={supplier.sup_picture}></SupplierImg>
-      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
+    <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
+      <SupplierCardGrid>
+        <SupplierImg src={supplier.sup_picture}></SupplierImg>
         <SupplierInfoInterior>
           <ProfileName fontColor="#FFA69E">{supplier.sup_name}</ProfileName>
-          <h4>{supplier.sup_address}</h4>
+          <h4 style={{ color: 'black' }}>{supplier.sup_address}</h4>
           <SupplStarRating supplier={supplier} />
         </SupplierInfoInterior>
-
-      </Link>
-    </SupplierCardGrid>
+      </SupplierCardGrid>
+    </Link>
   )
 }
