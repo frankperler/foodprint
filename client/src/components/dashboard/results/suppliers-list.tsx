@@ -11,6 +11,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
   const { stateSupplier } = useContext(supplierContext)
   const [supplTypesArray] = useState(['Vegetables', 'Fruits', 'Dairy'])
 
+
   return (
     <>
       {stateSupplier.length > 0 &&
@@ -23,7 +24,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
               </ListTitle>
               <ListContainer>
                 {stateSupplier.map((supplier: supplierTypes) => {
-                  if (supplier.sup_food_type.includes(value) && count < 6) {
+                  if (supplier.Productions[0].Product.product_name.includes(value) && count < 6) {
                     count++
                     return < SupplierCard supplier={supplier} key={supplier.id} />
                   }

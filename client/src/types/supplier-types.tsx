@@ -4,7 +4,6 @@ import { productionTypes } from "./production-types";
 export type supplierTypes = {
   id: number,
   sup_name: string,
-  sup_food_type: string[],
   sup_address: string,
   sup_city: string,
   sup_phone_number: string,
@@ -19,5 +18,5 @@ export type supplierTypes = {
   sup_vehicles: string,
   UserId: number,
   Restaurants?: restaurantTypes[],
-  Productions?: productionTypes[]
+  Productions: productionTypes[]
 }

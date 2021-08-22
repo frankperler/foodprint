@@ -28,7 +28,11 @@ exports.getOne = async (req, res) => {
         id: req.params.id
       },
       include: {
-        model: db.Restaurant
+        model: db.Restaurant,
+        model: db.Production,
+        include: {
+          model: db.Product
+        } 
       }
     })
 
@@ -113,7 +117,7 @@ exports.addProduction = async (req, res) => {
         }
     })
     const co2 = product.product_CO2;
-      const productionAmount = req.body.production_amount;
+    const productionAmount = req.body.production_amount;
     const productionEmissionsKG = productionAmount*co2*10;
     const production = await db.Production.create({
         production_amount: productionAmount,
