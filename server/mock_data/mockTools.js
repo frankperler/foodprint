@@ -30,6 +30,9 @@ const greenTech = ["Plastic-Free", "Antibiotic-Free", "Organic", "Renewable Ener
 const energySources = ['Solar-powered', 'Wind-powered', 'Natural gas', 'Electricity (renewable)', 'Electricity (non-renewable)'];
 const vehicleFuel = ["Biofuel", "Gasoline", "Diesel", "Electric", "Hybrid"];
 
+// mock food types
+
+
 async function populateSuppliers() {
   try {
 
@@ -46,6 +49,7 @@ async function populateSuppliers() {
       mockSupplier.sup_description = getRandomValue(farmDescription)
       mockSupplier.sup_picture = `https://source.unsplash.com/${getRandomValue(supPics)}/1600x900`;
       mockSupplier.sup_city = getRandomValue(city);
+      mockSupplier.sup_food_type = [];
 
       let greenTechSet = new Set();
       for (let j = 0; j < 8; j++) {
@@ -67,6 +71,8 @@ async function populateSuppliers() {
 
       mockSupplier.sup_vehicles = getRandomValue(vehicleFuel);
       mockSupplier.UserId = i + 103;
+
+      
 
       console.log(mockSupplier)
       console.log("-------------", i)

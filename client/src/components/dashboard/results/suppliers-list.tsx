@@ -9,7 +9,7 @@ import { ListWrapper } from './results-styled-components/results-list-wrapper';
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
-  const [supplTypesArray] = useState(['Vegetables', 'Fruits', 'Cheese'])
+  const [supplTypesArray] = useState(['Vegetables', 'Fruits', 'Dairy'])
 
   return (
     <>

@@ -11,6 +11,7 @@ interface Props {
 export const RestTopCard: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
 
   // const { stateRestaurant, dispatchRestaurant } = useContext(restaurantContext)
+  
 
   return (
     <TopCardContainer>
