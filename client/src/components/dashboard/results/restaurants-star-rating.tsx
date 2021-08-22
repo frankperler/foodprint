@@ -25,7 +25,7 @@ export const RestStarRating: React.FunctionComponent<Props> = ({ restaurant }: P
 
   return (
     <div className={classes.root}>
-      <Rating name="star-rating-read" defaultValue={restaurant.rest_eco_score} precision={0.1} readOnly />
+      <Rating name="star-rating-read" value={restaurant.rest_eco_score} precision={0.1} readOnly />
     </div>
   );
 }

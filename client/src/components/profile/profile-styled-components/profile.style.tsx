@@ -37,7 +37,6 @@ export const ProfileGridContainer = styled("div")`
 `
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
-  box-sizing: border-box;
   padding: 1rem;
 `
 

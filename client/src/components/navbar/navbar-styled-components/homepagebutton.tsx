@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const LogInButton = styled.button`
     width: 8rem;
     height: 2rem;
+    margin-right: 1rem;
     /* padding: 0.6em 0.6em; */
     border-radius: 2px;
     border: 1.5px solid #FF686B;
@@ -17,6 +18,7 @@ export const HomePageButton = styled.button`
   width: 8rem;
   height: 2rem;
   /* padding: 0.6em 0.6em; */
+  margin-right: 1rem;
   border-radius: 2px;
   border: none;
   background-color: #FF686B;
