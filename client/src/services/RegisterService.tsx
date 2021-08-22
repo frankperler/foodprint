@@ -21,7 +21,14 @@ export async function register(user: userTypes): Promise<userTypes> {
       return await registerFetch('/register/RestaurantUser', user);
     case "supplier":
       return await registerFetch('/register/SupplierUser', user);
-    default: return {} as userTypes;
+    default: return {user: {
+                              user_type: "",
+                              user_first_name: "",
+                              user_last_name: "",
+                              user_picture: "",
+                            },
+                    restaurants: null,
+                    suppliers: null,} 
   }
 }
 
