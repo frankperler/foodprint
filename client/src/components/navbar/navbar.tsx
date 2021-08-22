@@ -63,7 +63,6 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
             <div>
               <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
               <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
-                <Title><strong>food</strong>print.</Title>
                 <FormLogIn
                   userType={userType}
                   setUserType={setUserType}

@@ -10,7 +10,6 @@ import { useParams } from 'react-router'
 import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
 
-
 export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
   const [restItem, setRestItem] = useState<restaurantTypes>(
@@ -49,16 +48,15 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       })
   }, [])
 
-  console.log(restItem)
 
   return (
     <ProfileGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
+        <RestStarRating restaurant={restItem} />
         <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
         <Website href={restItem.rest_website}>Visit website</Website>
         <h4>{restItem.rest_address}</h4>
-        <RestStarRating restaurant={restItem} />
         <h4>{restItem.opening_hours.map(day =>
           <Day>{day}<br /></Day>
         )}
