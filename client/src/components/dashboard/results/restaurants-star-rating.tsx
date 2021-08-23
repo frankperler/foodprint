@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& > * + *': {
         marginTop: theme.spacing(1),
       },
-    },
-  }),
+    }
+  }
+  ),
 );
 interface Props {
   restaurant: restaurantTypes
@@ -23,9 +24,10 @@ interface Props {
 export const RestStarRating: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
   const classes = useStyles();
 
+
   return (
     <div className={classes.root}>
-      <Rating name="star-rating-read" value={restaurant.rest_eco_score} precision={0.1} readOnly />
+      <Rating name="star-rating-read" size="small" value={restaurant.rest_rating} precision={0.1} readOnly />
     </div>
   );
 }

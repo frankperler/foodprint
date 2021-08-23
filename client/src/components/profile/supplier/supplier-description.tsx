@@ -1,11 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 import { CancelButton, DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
-import { suppliers } from '../../../mock';
 
 import EditIcon from '@material-ui/icons/Edit';
+import { supplierTypes } from '../../../types';
 
-export const SupplierDescription = (): JSX.Element => {
+interface Props {
+  supplier: supplierTypes
+}
+
+export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState<string>()
@@ -19,8 +23,6 @@ export const SupplierDescription = (): JSX.Element => {
     setDescriptionValue(descriptionValue);
   }
 
-
-
   return (
     <DescriptionCard>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
@@ -33,9 +35,9 @@ export const SupplierDescription = (): JSX.Element => {
       <ProfileHeader>Description</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
-          <EditTextArea onChange={handleInputChange}>{suppliers[2].sup_description}</EditTextArea>
+          <EditTextArea onChange={handleInputChange}>{supplier.sup_description}</EditTextArea>
           <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
-        </form> : suppliers[2].sup_description}
+        </form> : supplier.sup_description}
       </DescriptionText>
     </DescriptionCard>
   )

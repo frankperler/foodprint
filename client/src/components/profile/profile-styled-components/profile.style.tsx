@@ -22,7 +22,7 @@ export const ProfileDetails = styled.section`
   }  
 `
 
-export const ProfileGridContainer = styled("div")`
+export const ProfileRestaurantGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 25% 75%;
@@ -35,6 +35,21 @@ export const ProfileGridContainer = styled("div")`
   background-color: white;
   margin: 4rem auto;
 `
+
+export const ProfileSupplierGridContainer = styled("div")`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 25% 75%;
+  grid-template-areas:
+    "photo list"
+    "details suppliers"
+  ;
+  height: 100vh;
+  width: 75%;
+  background-color: white;
+  margin: 4rem auto;
+`
+
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
   padding: 1rem;
@@ -60,7 +75,7 @@ export const Day = styled.span`
 
 export const DescriptionCard = styled.div`
   margin: 1rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
   width: 90%;
   height: 90%;
   border-radius: 30px;
@@ -80,9 +95,12 @@ export const DescriptionText = styled.div`
 `
 
 export const ProfileHeader = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: darkgray;
+  font-weight: bold;
   width: 80%;
   margin-left: 2rem;
+
 `
 
 export const SupplierContainer = styled.div`
@@ -92,6 +110,29 @@ export const SupplierContainer = styled.div`
   box-shadow:  0px 0px 20px rgba(149, 157, 165, 0.2);
   width: 100%;
   height: 100vh;
+`
+export const TechnologyContainer = styled.div`
+  margin: 2rem auto;
+  border-radius: 7px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 12px;
+  width: 100%;
+  height: auto;
+`
+
+export const TechChoiceGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 9rem;
+  width: 80%;
+`
+
+export const EnergySourceGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: flex-start;
 `
 
 export const AddHeader = styled.h4`
@@ -103,11 +144,12 @@ export const CheckBoxForm = styled.form`
 
   `
 export const VehicleTypeForm = styled.div`
-    margin-top: 1.8em;
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
   `
 
 export const EnergyTypeForm = styled.div`
-    margin-top: 1em;
+    margin-top: 1rem;
   `
 
 export const InnerForm = styled.div`
@@ -125,12 +167,11 @@ export const EditTextArea = styled.textarea`
     line-height: 1.6;
     overflow: hidden;
     resize: none;
-
   `
-
 export const UpdateChangesButton = styled.button`
     width: 10rem;
-    padding: 0.2rem 0.5rem;
+    margin: 1rem 0rem;
+    padding: 0.3rem;
     background-color: #84DCC6;
     border: 2.5px solid #84DCC6;
     color: white;
@@ -186,10 +227,8 @@ export const EcoLeaf = styled.img`
 `
 
 export const RestoImg = styled.img`
-  display: block;
-  width: 12rem;
-  height: auto;
-  margin-bottom: 0.4rem;
+  width: 15rem;
+  height: 10rem;
   margin-top: 1.2rem;
 `
 
@@ -234,8 +273,11 @@ export const SupplierListContainer = styled.div`
 `
 
 export const RestoListContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0 auto;
   width: 80%;
 `
@@ -247,28 +289,13 @@ export const TechnologyRibbons = styled.div`
   margin: 2em auto;
 `
 
-export const TechnologyContainer = styled.div`
-  margin: 2rem auto;
-  padding: 1.2rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 75%;
-  height: auto;
-`
-
-export const EnergySourceGrid = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const TechChoiceGrid = styled.div`
-  display: flex;
-  justify-content: center;
-  height: auto;
-`
-
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 75%;
-  height: 8rem;
+  width: 100%;
+`
+
+export const TableHeader = styled.th`
+  margin: 2rem 1rem;
+  text-align:left;
+
 `

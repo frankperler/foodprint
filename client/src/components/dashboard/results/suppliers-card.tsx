@@ -6,18 +6,17 @@ import { Link } from "react-router-dom";
 
 interface Props {
   supplier: supplierTypes
+  value?: string
 }
 
-export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props) => {
+export const SupplierCard: React.FunctionComponent<Props> = ({ supplier, value }: Props) => {
 
   return (
     <CardContainer>
       <ResultsCardStyles backgroundImg={supplier.sup_picture} />
       <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{supplier.sup_name}</div>
-        <div className="foodtype">{
-          supplier.Productions.length == 1 ? `${supplier.Productions[0].Product.product_type}`
-            : `${supplier.Productions[0].Product.product_type[0]}, ${supplier.Productions[0].Product.product_type[1]}`}</div>
+        <div className="foodtype">{value}</div>
         <SupplStarRating supplier={supplier} />
       </Link>
     </CardContainer>

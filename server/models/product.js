@@ -16,15 +16,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    product_type: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    }
+    // product_type: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // }
   });
 
   Product.associate = (models) => {
     // Product.belongsTo(models.Supplier);
-    Product.hasMany(models.Production)
+    Product.hasMany(models.Production);
+    // Product.belongsTo(models.Production);
+    
   }
 
   return Product;

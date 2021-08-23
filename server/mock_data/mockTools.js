@@ -26,7 +26,7 @@ const farmDescription = ["For me, apples and pears are a family affair! Hence th
 const supPics = ["vGQ49l9I4EE", "IdrzXJQlw5w", "IJSs1KpXaqI", "O3TlS547j7k", "UOEB1ztsDMo", "7w7LzO9Vkvg", "KaK2jp8ie8s", "Twz3meoE_X8", "YNP2p8bAflo", "WZbJPdz42VM", "N3fWEx-2vow"]
 
 //mock greenTechnology
-const greenTech = ["Plastic-Free", "Antibiotic-Free", "Organic", "Renewable Energy", "Animal Rights", "Water Recycling", "Biofuels", "No Pesticides", "Biodynamic", "Bee Friendly", "Non-GMO"]
+const greenTech = ["Plastic_Free", "Organic", "Water_Recycling", "Biofuels", "No_Pesticides", "Biodynamic", "Non_GMO", "No_Growth_Hormones"];
 const energySources = ['Solar-powered', 'Wind-powered', 'Natural gas', 'Electricity (renewable)', 'Electricity (non-renewable)'];
 const vehicleFuel = ["Biofuel", "Gasoline", "Diesel", "Electric", "Hybrid"];
 
@@ -47,27 +47,26 @@ async function populateSuppliers() {
       mockSupplier.sup_picture = `https://source.unsplash.com/${getRandomValue(supPics)}/1600x900`;
       mockSupplier.sup_city = getRandomValue(city);
 
-      let greenTechSet = new Set();
-      for (let j = 0; j < 8; j++) {
-        greenTechSet.add(getRandomValue(greenTech));
-      }
-      const greenTechArr = Array.from(greenTechSet);
 
-      mockSupplier.sup_greenTech = greenTechArr.map(tech => {
-        let newObj = {};
-        newObj[tech] = true;
-        return JSON.stringify(newObj);
-      })
+      // const greenTechArr = Array.from(greenTechSet);
+      const reducedValue = greenTech.reduce((acc, value) => {
+        let binary = Math.round(Math.random());
+        if (binary) {
+          return { ...acc, [value]: true }
+        }
+        else {
+          return { ...acc, [value]: false }
+        }
+      }, {})
 
+      mockSupplier.sup_greenTech = [reducedValue]
       let energy = new Set();
       for (let j = 0; j < 2; j++) {
         energy.add(getRandomValue(energySources));
       }
       mockSupplier.sup_energy = Array.from(energy);
-
       mockSupplier.sup_vehicles = getRandomValue(vehicleFuel);
       mockSupplier.UserId = i + 103;
-
       console.log(mockSupplier)
       console.log("-------------", i)
       await Supplier.create(mockSupplier);
