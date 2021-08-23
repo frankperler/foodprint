@@ -62,22 +62,13 @@ async function populateSuppliers() {
 
       mockSupplier.sup_greenTech = [reducedValue]
 
-      // mockSupplier.sup_greenTech = greenTechArr.map(tech => {
-      //     let newObj = {};
-      //     newObj[tech] = true;
-      //     return JSON.stringify(newObj);
-      //   })
-        
-
       let energy = new Set();
       for (let j = 0; j < 2; j++) {
         energy.add(getRandomValue(energySources));
       }
       mockSupplier.sup_energy = Array.from(energy);
-
       mockSupplier.sup_vehicles = getRandomValue(vehicleFuel);
       mockSupplier.UserId = i + 103;
-
       console.log(mockSupplier)
       console.log("-------------", i)
       await Supplier.create(mockSupplier);

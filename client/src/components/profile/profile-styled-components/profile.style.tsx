@@ -260,10 +260,13 @@ export const SupplierListContainer = styled.div`
 `
 
 export const RestoListContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
 `
 
 export const TechnologyRibbons = styled.div`
@@ -272,8 +275,6 @@ export const TechnologyRibbons = styled.div`
   width: 80%;
   margin: 2em auto;
 `
-
-
 
 export const EnergySourceGrid = styled.div`
   display: flex;
