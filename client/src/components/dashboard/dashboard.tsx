@@ -26,6 +26,9 @@ import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
 
+import { css } from "@emotion/react";
+import PuffLoader from "react-spinners/PuffLoader";
+
 import './dashboard.css'
 
 export const ButtonStyles = styled.div`
@@ -40,9 +43,18 @@ export const ButtonStyles = styled.div`
 interface Props {
   userType: string,
   isAuth: boolean,
+  loading: boolean,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) => {
+const spinnerStyle = css`
+display: block;
+margin: 0 auto;
+color: #36D7B7;
+`;
+
+
+export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, setLoading }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
@@ -50,9 +62,10 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) =
 
   // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
-    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
+    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier)).then(() => setLoading(false));
+    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
+
 
   console.log('STATESUPPLIER----------------', stateSupplier)
   console.log('STATERESTAURANT------------------', stateRestaurant)
@@ -92,6 +105,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) =
               </FilterArea>
             }
             <div className="overflow">
+            {loading ? <PuffLoader css={spinnerStyle} size="200" color="#36D7B7"></PuffLoader> :
 
               <ResultsArea>
                 {((userType === 'Food lover') || (userType === 'Supplier')) ?
@@ -99,6 +113,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) =
                   <SuppliersLists />
                 }
               </ResultsArea>
+            }
             </div>
             <TopArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
