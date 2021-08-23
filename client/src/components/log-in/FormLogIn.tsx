@@ -1,14 +1,14 @@
-import { Dispatch, SetStateAction, useReducer } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { FormWrapper } from '../registration/registration-styled-components/FormRegister.style';
 import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogIn.style';
 import { LogInCredentialInput, Label } from './log-in-styled-components/FormLogIn.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { userLoginReducers, userLoginState } from '../../reducers/login-reducer';
 import { logIn } from '../../services/LoginService';
 import { loginTypes, userTypes } from '../../types';
+import { useEffect } from 'react';
+import { userContext } from '../../contexts/user-context';
 
 export interface Props {
   onCloseLoginModal: () => void,
@@ -18,35 +18,29 @@ export interface Props {
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-
 type LogInForm = {
   email: string;
   password: string;
-  // confirmPassword: string;
 };
 
 const schema = yup.object().shape({
   email: yup.string().required('required'),
   password: yup.string().required(),
-  // confirmPassword: yup.string().oneOf([yup.ref("password"), null])
 })
 
 
 export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element => {
 
-  const [stateUserLogin, dispatchUserLogin] = useReducer(userLoginReducers, userLoginState)
+  const { stateUser, dispatchUser } = useContext(userContext);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<LogInForm>({
     resolver: yupResolver(schema),
   })
 
-  // need handleSubmit, might need to setUserType on receiving back data from API hence why imported
-
   const onSubmit = (credentials: loginTypes) => {
     logIn(credentials)
       .then((userData: userTypes) => {
-        //STATE IS NOT BEING SYNCHRONOUSLY UPDATED ---- CANNOT SEE IT THE NEW STATE IS CORRECT!!!!! 
-        console.log("new user local state", stateUserLogin)
-        dispatchUserLogin({ type: 'LOGIN', payload: userData })
+        localStorage.setItem("token", userData.token);
+        return dispatchUser({ type: 'LOGIN', payload: userData })
       })
 
     setIsAuth(true)
@@ -54,7 +48,6 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
       email: credentials['email'],
       password: credentials['password'],
     }
-    console.log(formData);
     onCloseLoginModal()
     reset();
   };

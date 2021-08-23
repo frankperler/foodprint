@@ -25,6 +25,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+import { filterRerstaurantsByCategories } from '../../services/FilterService'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
