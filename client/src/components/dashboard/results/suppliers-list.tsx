@@ -24,7 +24,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
               </ListTitle>
               <ListContainer>
                 {stateSupplier.map((supplier: supplierTypes) => {
-                  if (supplier.Productions[0].Product.product_name.includes(value) && count < 6) {
+                  if (supplier.Productions.length && (supplier.Productions[0].Product.product_name.includes(value) && count < 6)) {
                     count++
                     return < SupplierCard supplier={supplier} key={supplier.id} />
                   }

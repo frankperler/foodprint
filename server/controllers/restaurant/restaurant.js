@@ -29,7 +29,7 @@ exports.claimSupplier = async (req, res) => {
     if (!supplier.Restaurants.find(restaurant => {
       return restaurant.id === req.body.rest_id
     })) {
-    
+
       const restaurant = await db.Restaurant.findOne({
         where: {
           id: req.body.rest_id
@@ -37,7 +37,7 @@ exports.claimSupplier = async (req, res) => {
       })
       await supplier.addRestaurant(restaurant)
       await restaurant.addSupplier(supplier)
-      
+
       const newRestaurant = await db.Restaurant.findOne({
         where: {
           id: restaurant.id
@@ -61,7 +61,7 @@ exports.claimSupplier = async (req, res) => {
 exports.filterSuppliers = async (req, res) => {
   try {
     const { eco_score, bio, food_types } = req.body;
-    
+
     let where = {
       sup_eco_score: {
         [Op.gte]: eco_score,
@@ -78,11 +78,12 @@ exports.filterSuppliers = async (req, res) => {
         model: db.Production,
         include: {
           model: db.Product,
-           where: { product_name: { [Op.in]: [...food_types] }
+          where: {
+            product_name: { [Op.in]: [...food_types] }
           }
         }
       }
-    }) 
+    })
     const filteredSuppliers = suppliers.filter(supplier => supplier.Productions.length !== 0)
 
     res.send(filteredSuppliers);
@@ -98,7 +99,7 @@ exports.getOne = async (req, res) => {
   try {
     // console.log(req.params.id)
     const restaurant = await db.Restaurant.findOne({
-      
+
       where: {
         id: req.params.id
       },
