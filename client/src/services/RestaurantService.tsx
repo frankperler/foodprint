@@ -1,4 +1,4 @@
-// import { searchByCity, filter, claim } from "./RestSupService";
+
 import { restaurantTypes } from "../types/restaurant-types";
 const url = 'http://localhost:3001';
 
