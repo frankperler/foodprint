@@ -47,11 +47,6 @@ async function populateSuppliers() {
       mockSupplier.sup_picture = `https://source.unsplash.com/${getRandomValue(supPics)}/1600x900`;
       mockSupplier.sup_city = getRandomValue(city);
 
-      let greenTechSet = new Set();
-      for (let j = 0; j < 8; j++) {
-        greenTechSet.add(getRandomValue(greenTech));
-      }
-
 
       // const greenTechArr = Array.from(greenTechSet);
       const reducedValue = greenTech.reduce((acc, value) => {
@@ -62,19 +57,9 @@ async function populateSuppliers() {
         else {
           return {...acc, [value]: false}
         }
-        // return {
-        //   ...acc, [value]: true
-        // }
-        // return result
       }, {})
 
       mockSupplier.sup_greenTech = [reducedValue]
-
-      // mockSupplier.sup_greenTech = greenTechArr.map(tech => {
-      //     let newObj = {};
-      //     newObj[tech] = true;
-      //     return JSON.stringify(newObj);
-      //   })
         
 
       let energy = new Set();
