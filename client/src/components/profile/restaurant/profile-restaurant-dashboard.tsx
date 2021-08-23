@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ProfileGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
+import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
@@ -50,12 +50,13 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
 
   return (
-    <ProfileGridContainer>
+    <ProfileRestaurantGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
         <RestStarRating restaurant={restItem} />
         <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
         <h4>{restItem.rest_address}</h4>
+        <h4>{restItem.rest_phone_number}</h4>
         <h4>{restItem.opening_hours.map(day =>
           <Day>{day}<br /></Day>
         )}
@@ -66,6 +67,6 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       <ProfileDetails>
         <SuppliersList restaurant={restItem} />
       </ProfileDetails>
-    </ProfileGridContainer >
+    </ProfileRestaurantGridContainer >
   )
 }

@@ -26,7 +26,7 @@ export const SupplStarRating: React.FunctionComponent<Props> = ({ supplier }: Pr
 
   return (
     <div className={classes.root}>
-      <Rating name="star-rating-read" defaultValue={supplier.sup_eco_score} precision={0.1} readOnly />
+      <Rating name="star-rating-read" value={supplier.sup_eco_score} precision={0.1} readOnly />
     </div>
   );
 }

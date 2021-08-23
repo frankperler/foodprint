@@ -22,7 +22,7 @@ export const ProfileDetails = styled.section`
   }  
 `
 
-export const ProfileGridContainer = styled("div")`
+export const ProfileRestaurantGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 25% 75%;
@@ -35,6 +35,21 @@ export const ProfileGridContainer = styled("div")`
   background-color: white;
   margin: 4rem auto;
 `
+
+export const ProfileSupplierGridContainer = styled("div")`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 25% 75%;
+  grid-template-areas:
+    "photo list"
+    "details suppliers"
+  ;
+  height: 100vh;
+  width: 75%;
+  background-color: white;
+  margin: 4rem auto;
+`
+
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
   padding: 1rem;
