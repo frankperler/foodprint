@@ -65,13 +65,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
 
-<<<<<<< HEAD
-  console.log('STATESUPPLIER----------------', stateSupplier)
-  console.log('STATERESTAURANT------------------', stateRestaurant)
-
-=======
-  console.log(filterRerstaurantsByCategories(0.5, ['Asian'], ['Lunch']))
->>>>>>> ad9fb2d9a33cb71f6702dc6b5dd421fc4100d80d
+  // console.log(filterRerstaurantsByCategories(0.5, ['Asian'], ['Lunch']))
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
