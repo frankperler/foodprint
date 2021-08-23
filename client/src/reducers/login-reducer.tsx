@@ -16,6 +16,7 @@ export const userLoginReducers = (state: userTypes, action: reducerAction): user
         suppliers: action.payload?.suppliers,
       }
     case 'LOGOUT':
+      console.log('logged out', state)
       return {
         ...state,
         user: userLoginState.user,

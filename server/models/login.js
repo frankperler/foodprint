@@ -1,11 +1,9 @@
 'use-strict';
+const bcrypt = require("bcrypt");
+
 
 module.exports = (sequelize, DataTypes) => {
   const Login = sequelize.define('Login', {
-    // login_id: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,14 +15,23 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-})
-
-Login.associate = (models) => {
-  
-  Login.hasOne(models.User)
-
-}
-
+    }
+  }, {
+    hooks: {
+      beforeCreate: (login) => {
+        const salt = bcrypt.genSaltSync(8); 
+        login.password = bcrypt.hashSync(login.password, salt);
+        console.log("beforeCreate hash", login.password)
+      }
+    }
+  }
+)
+ 
+  Login.prototype.validatePassword = (plaintextPassword, fetchedPassword) => 
+     bcrypt.compareSync(plaintextPassword, fetchedPassword);
+  Login.associate = (models) => {
+    Login.hasOne(models.User)
+  }
   return Login;
 }
+  

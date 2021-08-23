@@ -58,7 +58,7 @@ export const RegistrationForm = ({ userType, setIsAuth }: Props) => {
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Label>First name</Label>
+        <Label>First name Hello </Label>
         <RegisterNameInput type="text" {...register('user_first_name')} />
         <div className="invalid-feedback">{errors.user_first_name?.message}</div>
         <Label>Last name</Label>
