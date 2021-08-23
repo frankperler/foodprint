@@ -113,11 +113,26 @@ export const SupplierContainer = styled.div`
 `
 export const TechnologyContainer = styled.div`
   margin: 2rem auto;
-  padding: 1.2rem;
   border-radius: 7px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 12px;
   width: 100%;
   height: auto;
+`
+
+export const TechChoiceGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 9rem;
+  width: 80%;
+`
+
+export const EnergySourceGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: flex-start;
 `
 
 export const AddHeader = styled.h4`
@@ -129,11 +144,12 @@ export const CheckBoxForm = styled.form`
 
   `
 export const VehicleTypeForm = styled.div`
-    margin-top: 1.8em;
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
   `
 
 export const EnergyTypeForm = styled.div`
-    margin-top: 1em;
+    margin-top: 1rem;
   `
 
 export const InnerForm = styled.div`
@@ -151,12 +167,11 @@ export const EditTextArea = styled.textarea`
     line-height: 1.6;
     overflow: hidden;
     resize: none;
-
   `
-
 export const UpdateChangesButton = styled.button`
     width: 10rem;
-    padding: 0.2rem 0.5rem;
+    margin: 1rem 0rem;
+    padding: 0.3rem;
     background-color: #84DCC6;
     border: 2.5px solid #84DCC6;
     color: white;
@@ -212,10 +227,8 @@ export const EcoLeaf = styled.img`
 `
 
 export const RestoImg = styled.img`
-  display: block;
-  width: 12rem;
-  height: auto;
-  margin-bottom: 0.4rem;
+  width: 15rem;
+  height: 10rem;
   margin-top: 1.2rem;
 `
 
@@ -260,8 +273,11 @@ export const SupplierListContainer = styled.div`
 `
 
 export const RestoListContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0 auto;
   width: 80%;
 `
@@ -273,20 +289,13 @@ export const TechnologyRibbons = styled.div`
   margin: 2em auto;
 `
 
-
-
-export const EnergySourceGrid = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const TechChoiceGrid = styled.div`
-  display: flex;
-  justify-content: center;
-  height: auto;
-`
-
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
   width: 100%;
+`
+
+export const TableHeader = styled.th`
+  margin: 2rem 1rem;
+  text-align:left;
+
 `

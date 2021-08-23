@@ -9,7 +9,6 @@ import { ProductsList } from './supplier-production-list'
 import { supplierTypes } from '../../../types';
 import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
-import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating';
 import { EcoLeaf } from '../profile-styled-components/profile.style';
 
 
@@ -56,11 +55,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />
       <InfoArea>
-        <SupplStarRating supplier={supplierItem} />
-        <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
-        <h4>{supplierItem.sup_address}</h4>
-        <h4>{supplierItem.sup_phone_number}</h4>
-
         {(
           () => {
             switch (roundedEcoScore) {
@@ -89,11 +83,12 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
             }
           })
           ()}
-
-        <h3>Tons of CO2/mo</h3>
+        <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
         <Website>Visit website</Website>
+        <h4>{supplierItem.sup_address}</h4>
+        <h4>{supplierItem.sup_phone_number}</h4>
       </InfoArea>
-      <SupplierDescription />
+      <SupplierDescription supplier={supplierItem} />
       <ProfileDetails>
         <Technology supplier={supplierItem} />
         <ProductsList supplier={supplierItem} />

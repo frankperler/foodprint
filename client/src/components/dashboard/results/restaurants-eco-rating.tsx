@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
       '& > * + *': {
         marginTop: theme.spacing(1),
       },
-      marginTop: "0.8em"
+      marginTop: "0.8rem",
     },
   }),
 );
