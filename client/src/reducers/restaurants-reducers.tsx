@@ -2,7 +2,6 @@ import { restaurantTypes } from "../types/restaurant-types"
 import { restaurantAction } from '../actions/actions';
 
 export const restaurantReducers = (restaurantState: restaurantTypes[], action: restaurantAction): restaurantTypes[] => {
-  console.log("inside restaurant reducer")
   switch (action.type) {
     case 'FETCH_ALL_RESTAURANT':
       return [...restaurantState, ...action.payload]

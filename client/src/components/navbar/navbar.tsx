@@ -84,7 +84,7 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
             </div>
           </HomeButtonFlex> :
             <div>
-            <LogInButton onClick={clickLogOut}>Log out</LogInButton>
+            <LogInButton onClick={clickLogOut}>Log out {stateUser.user.user_type}</LogInButton>
             </div>}
       </Navcontainer >
     </Container >
