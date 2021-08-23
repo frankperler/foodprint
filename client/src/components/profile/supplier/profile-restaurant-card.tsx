@@ -1,7 +1,6 @@
 import React from 'react';
 import { RestoImg } from '../profile-styled-components/profile.style';
 import { restaurantTypes } from '../../../types/restaurant-types';
-
 interface Props {
   resto: restaurantTypes
 }

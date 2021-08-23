@@ -1,15 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { EcoLeafContainer, InfoArea } from '../profile-styled-components/profile.style';
 import { EcoLeaf, ProfileGridContainer, RestoCover } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { SupplierDescription } from './supplier-description'
 import { RestaurantList } from './profile-restaurant-list'
 import { Technology } from './Technology'
-import { ProductsList } from './ProductsList'
+import { ProductsList } from './supplier-production-list'
 import { suppliers } from '../../../mock';
 import { Popup } from 'semantic-ui-react';
+import { supplierTypes } from '../../../types';
+import { useParams } from 'react-router';
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
+
+  const [supplierItem, setSupplierItem] = useState<supplierTypes>(
+    {
+      id: 0,
+      sup_name: "",
+      sup_address: "",
+      sup_city: "",
+      sup_phone_number: "",
+      sup_lat: 0,
+      sup_lng: 0,
+      sup_website: "",
+      sup_eco_score: 0,
+      sup_description: "",
+      sup_picture: "",
+      sup_greenTech: [],
+      sup_energy: [],
+      sup_vehicles: "",
+      UserId: 0,
+      Restaurants: [],
+      Productions: []
+    }
+  )
+
+  const params: { id: string } = useParams()
+
+  // useEffect(() => {
+  //   getRestaurantById(params.id)
+  //     .then((restaurant) => {
+  //       setRestItem(restaurant)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }, [])
+
 
   return (
     <ProfileGridContainer>
