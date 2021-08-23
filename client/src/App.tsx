@@ -12,7 +12,7 @@ export const App: React.FunctionComponent = () => {
 
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
-  const [loading, setLoading] =useState(true);
+  const [loading, setLoading] = useState(true);
 
   return (
     <Router>
@@ -30,7 +30,6 @@ export const App: React.FunctionComponent = () => {
             isAuth={isAuth}
             loading={loading}
             setLoading={setLoading}
-
           />
         </Route>
         <Route path='/register' exact>

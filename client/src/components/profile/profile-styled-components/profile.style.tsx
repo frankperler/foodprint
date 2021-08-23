@@ -288,7 +288,5 @@ export const TechChoiceGrid = styled.div`
 
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
-  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   width: 100%;
-  /* height: 8rem; */
 `

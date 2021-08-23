@@ -53,75 +53,70 @@ margin: 0 auto;
 color: #36D7B7;
 `;
 
-
 export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, setLoading }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
-  // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier)).then(() => setLoading(false));
+    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
-
-
-  console.log('STATESUPPLIER----------------', stateSupplier)
-  console.log('STATERESTAURANT------------------', stateRestaurant)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
         <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
-          <GridContainer>
-            <MapArea>
-              <Map userType={userType} />
-            </MapArea>
+          {loading ? <PuffLoader css={spinnerStyle} size="200" color="#36D7B7"></PuffLoader> :
+            <GridContainer>
+              <MapArea>
+                <Map userType={userType} />
+              </MapArea>
 
-            {((userType === 'Food lover') || (userType === 'Supplier')) ?
-              <FilterArea>
-                <EcoScoreSlider />
-                <DistanceSlider />
-                <RestaurantTypeSelect />
-                <MealTypeSelect />
-                <ButtonStyles>
-                  <HomePageButton>
-                    Search
-                  </ HomePageButton>
-                </ButtonStyles>
-              </FilterArea>
-              :
-              <FilterArea>
-                <EcoScoreSlider />
-                <DistanceSlider />
-                <BioFilter />
-                <FoodTypeSelect />
-                <ButtonStyles>
-                  <HomePageButton>
-                    Search
-                  </ HomePageButton>
-                </ButtonStyles>
-              </FilterArea>
-            }
-            <div className="overflow">
-            {loading ? <PuffLoader css={spinnerStyle} size="200" color="#36D7B7"></PuffLoader> :
-
-              <ResultsArea>
-                {((userType === 'Food lover') || (userType === 'Supplier')) ?
-                  <RestaurantsLists /> :
-                  <SuppliersLists />
-                }
-              </ResultsArea>
-            }
-            </div>
-            <TopArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
-                <RestTopList /> :
-                <SupplTopList />
+                <FilterArea>
+                  <EcoScoreSlider />
+                  <DistanceSlider />
+                  <RestaurantTypeSelect />
+                  <MealTypeSelect />
+                  <ButtonStyles>
+                    <HomePageButton>
+                      Search
+                    </ HomePageButton>
+                  </ButtonStyles>
+                </FilterArea>
+                :
+                <FilterArea>
+                  <EcoScoreSlider />
+                  <DistanceSlider />
+                  <BioFilter />
+                  <FoodTypeSelect />
+                  <ButtonStyles>
+                    <HomePageButton>
+                      Search
+                    </ HomePageButton>
+                  </ButtonStyles>
+                </FilterArea>
               }
-            </TopArea>
-          </GridContainer>
+              <div className="overflow">
+
+                <ResultsArea>
+                  {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                    <RestaurantsLists /> :
+                    <SuppliersLists />
+                  }
+                </ResultsArea>
+
+              </div>
+              <TopArea>
+                {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                  <RestTopList /> :
+                  <SupplTopList />
+                }
+              </TopArea>
+            </GridContainer>
+          }
         </filterContext.Provider>
       </restaurantContext.Provider>
     </supplierContext.Provider >
