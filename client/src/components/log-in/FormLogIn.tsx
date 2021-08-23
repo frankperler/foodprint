@@ -45,7 +45,7 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
     logIn(credentials)
       .then((userData: userTypes) => {
         //STATE IS NOT BEING SYNCHRONOUSLY UPDATED ---- CANNOT SEE IT THE NEW STATE IS CORRECT!!!!! 
-        console.log("new user local state", stateUserLogin)
+        console.log("new user's state", userLoginState)
         dispatchUserLogin({ type: 'LOGIN', payload: userData })
       })
 
