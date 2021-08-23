@@ -50,12 +50,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) =
 
   // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
+    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers }));
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
   }, [])
-
-  console.log('STATESUPPLIER----------------', stateSupplier)
-  console.log('STATERESTAURANT------------------', stateRestaurant)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>

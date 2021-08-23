@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { InfoArea, ProfileName } from '../profile-styled-components/profile.style';
+import { InfoArea, ProfileName, SupplierCardGrid } from '../profile-styled-components/profile.style';
 import { Website, ProfileSupplierGridContainer, RestoCover } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { SupplierDescription } from './supplier-description'
 import { RestaurantList } from './profile-restaurant-list'
-import { Technology } from './Technology'
+import { Technology } from './supplier-technology'
 import { ProductsList } from './supplier-production-list'
 import { supplierTypes } from '../../../types';
 import { useParams } from 'react-router';
@@ -47,6 +47,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       })
   }, [])
 
+  console.log(supplierItem.sup_greenTech[1])
 
   return (
     <ProfileSupplierGridContainer>
@@ -57,13 +58,13 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
         <h4>{supplierItem.sup_address}</h4>
         <h4>{supplierItem.sup_phone_number}</h4>
         <h3>Tons of CO2/mo</h3>
-        <Website href={supplierItem.sup_website}>Visit website</Website>
+        <Website>Visit website</Website>
       </InfoArea>
+      <SupplierDescription />
       <ProfileDetails>
-        <SupplierDescription></SupplierDescription>
-        <Technology></Technology>
-        <ProductsList></ProductsList>
-        <RestaurantList></RestaurantList>
+        <Technology supplier={supplierItem} />
+        <ProductsList />
+        <RestaurantList />
       </ProfileDetails>
     </ProfileSupplierGridContainer>
   )

@@ -9,6 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import EditIcon from '@material-ui/icons/Edit';
 import { withStyles } from '@material-ui/styles';
+import { supplierTypes } from '../../../types';
 
 const GreenCheckbox = withStyles({
   root: {
@@ -21,7 +22,11 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 
-export const Technology = (): JSX.Element => {
+interface Props {
+  supplier: supplierTypes
+}
+
+export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -36,9 +41,6 @@ export const Technology = (): JSX.Element => {
       </EditDescription>
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
-        {/* {suppliers[2].sup_greenTech.map(t => {
-          return <div><h6>{t}</h6></div>
-        })} */}
         <img src="/images/biodynamic_s.svg" />
         <img src="/images/savewater_s.svg" />
         <img src="/images/nopesticide_s.svg" />

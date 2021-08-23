@@ -111,6 +111,14 @@ export const SupplierContainer = styled.div`
   width: 100%;
   height: 100vh;
 `
+export const TechnologyContainer = styled.div`
+  margin: 2rem auto;
+  padding: 1.2rem;
+  border-radius: 7px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+  width: 100%;
+  height: auto;
+`
 
 export const AddHeader = styled.h4`
     display: inline-block;
@@ -265,13 +273,7 @@ export const TechnologyRibbons = styled.div`
   margin: 2em auto;
 `
 
-export const TechnologyContainer = styled.div`
-  margin: 2rem auto;
-  padding: 1.2rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
-  width: 75%;
-  height: auto;
-`
+
 
 export const EnergySourceGrid = styled.div`
   display: flex;
