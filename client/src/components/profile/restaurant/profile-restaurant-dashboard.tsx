@@ -55,12 +55,12 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
       <InfoArea>
         <RestStarRating restaurant={restItem} />
         <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
-        <Website href={restItem.rest_website}>Visit website</Website>
         <h4>{restItem.rest_address}</h4>
         <h4>{restItem.opening_hours.map(day =>
           <Day>{day}<br /></Day>
         )}
         </h4>
+        <Website href={restItem.rest_website}>Visit website</Website>
       </InfoArea>
       <RestaurantDescription restaurant={restItem} />
       <ProfileDetails>

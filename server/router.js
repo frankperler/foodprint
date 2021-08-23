@@ -32,7 +32,6 @@ router.get('/restaurants/:id', restaurant.getOne);
 router.post('/search/searchRestaurantsByCity', search.searchRestaurantsByCity);
 router.post('/search/searchSuppliersByCity', search.searchSuppliersByCity);
 
-
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);
 

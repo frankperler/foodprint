@@ -4,6 +4,8 @@ const db = require('../../models/index');
 const { Sequelize } = require('../../models/index');
 const Op = Sequelize.Op;
 
+
+
 exports.getAllSuppliers = async (req, res) => {
   try {
     const supplier = await db.Supplier.findAll({
@@ -122,7 +124,8 @@ exports.addProduction = async (req, res) => {
     const production = await db.Production.create({
         production_amount: productionAmount,
         production_CO2 : productionEmissionsKG,
-        SupplierId : req.body.sup_id
+        SupplierId : req.body.sup_id,
+        ProductId: product.id,
     })
     await product.setProductions(production);
     res.send({product, production}); 
