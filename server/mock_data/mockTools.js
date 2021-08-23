@@ -26,7 +26,7 @@ const farmDescription = ["For me, apples and pears are a family affair! Hence th
 const supPics = ["vGQ49l9I4EE", "IdrzXJQlw5w", "IJSs1KpXaqI", "O3TlS547j7k", "UOEB1ztsDMo", "7w7LzO9Vkvg", "KaK2jp8ie8s", "Twz3meoE_X8", "YNP2p8bAflo", "WZbJPdz42VM", "N3fWEx-2vow"]
 
 //mock greenTechnology
-const greenTech = ["Plastic-Free", "Antibiotic-Free", "Organic", "Renewable Energy", "Animal Rights", "Water Recycling", "Biofuels", "No Pesticides", "Biodynamic", "Bee Friendly", "Non-GMO"]
+const greenTech = ["Plastic_Free", "Antibiotic_Free", "Organic", "Renewable_Energy", "Animal_Rights", "Water_Recycling", "Biofuels", "No_Pesticides", "Biodynamic", "Bee_Friendly", "Non_GMO"]
 const energySources = ['Solar-powered', 'Wind-powered', 'Natural gas', 'Electricity (renewable)', 'Electricity (non-renewable)'];
 const vehicleFuel = ["Biofuel", "Gasoline", "Diesel", "Electric", "Hybrid"];
 
@@ -51,13 +51,23 @@ async function populateSuppliers() {
       for (let j = 0; j < 8; j++) {
         greenTechSet.add(getRandomValue(greenTech));
       }
-      const greenTechArr = Array.from(greenTechSet);
 
-      mockSupplier.sup_greenTech = greenTechArr.map(tech => {
-        let newObj = {};
-        newObj[tech] = true;
-        return JSON.stringify(newObj);
-      })
+
+      const greenTechArr = Array.from(greenTechSet);
+      const reducedValue = greenTechArr.reduce((acc, value) => {
+        return {
+          ...acc, [value]: true
+        }
+      }, {})
+
+      mockSupplier.sup_greenTech = [reducedValue]
+
+      // mockSupplier.sup_greenTech = greenTechArr.map(tech => {
+      //     let newObj = {};
+      //     newObj[tech] = true;
+      //     return JSON.stringify(newObj);
+      //   })
+        
 
       let energy = new Set();
       for (let j = 0; j < 2; j++) {

@@ -29,13 +29,22 @@ exports.getOne = async (req, res) => {
       where: {
         id: req.params.id
       },
-      include: {
-        model: db.Restaurant,
-        model: db.Production,
-        include: {
-          model: db.Product
-        } 
-      }
+      include: [
+        {
+          model: db.Production,
+          include: {
+            model: db.Product
+          }
+        },
+        {
+          model: db.Restaurant
+        },
+      ]
+      
+      // include: {
+      //   model: db.Product
+      // } 
+      
     })
 
     res.send(supplier)
@@ -135,7 +144,6 @@ exports.addProduction = async (req, res) => {
         SupplierId : req.body.sup_id,
         ProductId: product.id,
     })
-    // await product.setProductions(production);
     res.send({product, production}); 
 }
 
