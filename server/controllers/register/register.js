@@ -1,7 +1,9 @@
 'use strict';
 
+const { hash } = require('bcrypt');
 const fetch = require('cross-fetch');
 const db = require('../../models/index');
+
 
 const baseUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
 const followUpUrl = 'inputtype=textquery&fields=place_id,name,formatted_address,geometry,price_level,rating,types'

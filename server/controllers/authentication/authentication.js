@@ -4,15 +4,22 @@ const db = require('../../models/index');
 
 // login controller
 exports.findUser = async (req, res) => {
-  try {
-    const login = await db.Login.findOne({
+  try {    
+    const userCredentials = await db.Login.findOne({
       where: {
         email: req.body.email,
-        password: req.body.password,
       }
     })
-    if (login) {
-      const user = await login.getUser();
+    if (!userCredentials) {
+      res.send("the entered credentials are incorrect.")
+    }
+    else if (!userCredentials.validatePassword(req.body.password, userCredentials.password)) {
+      console.log("password is incorrect")
+      res.send("the entered credentials are incorrect.")
+    }
+    else {
+      console.log("password is correct")
+      const user = await userCredentials.getUser();
       if (user.user_type === 'restaurant') {
         const restaurants = await user.getRestaurants({
           include: db.Supplier
@@ -37,12 +44,14 @@ exports.findUser = async (req, res) => {
         res.send(user);
       }
     }
-    else {
-      res.send('Error! Invalid credentials. Try again.')
-    }
   }
   catch (e) {
     console.log(e);
     res.status = 500;
   }
 }
+  
+
+
+
+
