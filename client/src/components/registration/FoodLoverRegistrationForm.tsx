@@ -4,7 +4,7 @@ import { RegisterNameInput, CredentialInput, Label } from './registration-styled
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { registerUser } from '../../services/RegisterService';
 import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
@@ -41,15 +41,12 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
+  const history = useHistory()
 
   const onSubmit = async (data: FoodLoverRegisterForm) => {
-
-    // will need to submit data on the database for registration
-
     setIsAuth(true)
     setValue('user_type', 'food lover')
     const user_type = getValues('user_type')
-
     const formData = {
       user_type: user_type,
       user_first_name: data['user_first_name'],
@@ -57,16 +54,13 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
       email: data['email'],
       password: data['password'],
     }
-
     await registerUser(formData)
       .then((userData: registeredUserTypes) => {
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
-        console.log('response data', userData)
       })
-
-
-    console.log('request data', formData);
     reset();
+    history.push("/");
+
   };
 
   return (
@@ -93,10 +87,12 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
         <CredentialInput type="password" {...register('confirmPassword')} />
         <div className="invalid-feedback" style={{ color: 'red' }}>{errors.confirmPassword?.message}</div>
 
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <RegisterButton type="submit" onClick={handleSubmit(onSubmit)}>Register</RegisterButton>
-        </Link>
+        {/* <Link to='/' style={{ textDecoration: 'none' }}> */}
+          <RegisterButton type="submit" onClick={handleSubmit(onSubmit)} >Register</RegisterButton>
+        {/* </Link> */}
       </form>
     </FormWrapper>
   )
 }
+
+// 
