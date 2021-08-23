@@ -19,7 +19,7 @@ const Production = sequelize.define('Production', {
 Production.associate = (models) => {
   Production.belongsTo(models.Supplier);
   Production.belongsTo(models.Product);
-
+  // Production.hasMany(models.Product);
 }
 
 return Production;
