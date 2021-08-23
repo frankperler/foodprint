@@ -64,6 +64,10 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
 
+  console.log('STATESUPPLIER----------------', stateSupplier)
+  console.log('STATERESTAURANT------------------', stateRestaurant)
+  console.log("userType in dashboard", userType)
+
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>

@@ -10,7 +10,7 @@ export const RestaurantsLists: React.FunctionComponent = () => {
 
   const { stateRestaurant } = useContext(restaurantContext)
   const [restTypesArray] = useState(['Bio', 'Vegetarian', 'Café'])
-
+  console.log("stateRestaunt in list", stateRestaurant)
   return (
     <>
       {stateRestaurant.length > 0 &&
@@ -26,7 +26,8 @@ export const RestaurantsLists: React.FunctionComponent = () => {
                   stateRestaurant.map((restaurant: restaurantTypes) => {
                     if (restaurant.rest_types.includes(value) && count < 6) {
                       count++
-                      return <RestaurantCard restaurant={restaurant} key={Math.random() * restaurant.id} />
+                      
+                      return < RestaurantCard restaurant={restaurant} key={restaurant.id} />
                     }
                   }
                   )}
