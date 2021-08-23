@@ -11,6 +11,7 @@ import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating';
 import { EcoLeaf } from '../profile-styled-components/profile.style';
+import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
@@ -55,42 +56,16 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />
       <InfoArea>
-        <SupplStarRating supplier={supplierItem} />
         <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
+        <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
         <h4>{supplierItem.sup_address}</h4>
         <h4>{supplierItem.sup_phone_number}</h4>
 
-        {(
-          () => {
-            switch (roundedEcoScore) {
-              case 0.5:
-                return <div><EcoLeaf src="/images/eco_half_leaf.svg"><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></EcoLeaf></div>
-              case 1.0:
-                return <div><EcoLeaf src="/images/eco_half_leaf.svg"><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></EcoLeaf></div>
-              case 1.5:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_half_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-              case 2.0:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-              case 2.5:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_half_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-              case 3.0:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-              case 3.5:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_half_leaf.svg"></EcoLeaf></div>
-              case 4.0:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-              case 4.5:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_half_leaf.svg"></EcoLeaf></div>
-              case 5.0:
-                return <div><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf><EcoLeaf src="/images/eco_full_leaf.svg"></EcoLeaf></div>
-              default:
-                return <div><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf><EcoLeaf src="/images/eco_unfilled.svg"></EcoLeaf></div>
-            }
-          })
-          ()}
+       
 
         <h3>Tons of CO2/mo</h3>
         <Website>Visit website</Website>
+        <SupplStarRating supplier={supplierItem} />
       </InfoArea>
       <SupplierDescription supplier={supplierItem} />
       <ProfileDetails>
