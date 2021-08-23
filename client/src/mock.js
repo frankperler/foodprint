@@ -178,7 +178,7 @@ export const suppliers = [
     sup_lat: 53.611483,
     sup_lng: 12.835054,
     sup_website: 'www.kleintsalzwede.com',
-    sup_eco_score: 5,
+    sup_eco_score: 2.3,
     sup_description: 'Since I was a kid I have always worked in the production and trading of fruit and vegetables, at the beginning dealing only with conventional methods and products. In 2011, after a trip to Germany where I came into contact with various organic fruit and vegetables producers, I realized the potential and the countless positive aspects linked to this method of production, therefore I decided to found Bioplus. The name embodies the very heart of the term organic (which in italian translates to “biologico”), combined with the desire to guarantee the consumer something extra, a plus. That extra something is the guarantee of a 100% natural product and the maximum commitment we put into protecting the environment. The company is located in Canicattì, a village in Sicily, which is exactly the land of origin of the Italia grape. It includes 25 hectares of vineyards, also located in neighbouring villages, some close to other plantations, some others with a seaview.',
     sup_picture: 'https://source.unsplash.com/KaK2jp8ie8s/1600x900',
     sup_greenTech: [
