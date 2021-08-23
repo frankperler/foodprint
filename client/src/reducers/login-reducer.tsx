@@ -1,26 +1,36 @@
 import { restaurantTypes, supplierTypes, userTypes, simpleUser } from "../types/index";
-import { userLoginAction } from "../actions/actions";
+import { userLoginAction, userLogoutAction } from "../actions/actions";
 
-export const userLoginReducers = (state: userTypes, action: userLoginAction): userTypes => {
-  switch (action.type) {
+
+
+export const userLoginReducers = (state: userTypes, action: userLoginAction | userLogoutAction): userTypes => {
+    console.log("state inside reducer", state);
+    console.log("action inside reducer", action);
+    switch (action.type) {
     case 'LOGIN':
-      console.log("user landed in reducer", action.payload.user)
+      console.log("user landed in reducer")
       return {
         ...state,
         user: action.payload.user,
-        // optional chaining --- it will return undefined on the following properties
-        // if they don't exist in the payload
-        restaurants: action.payload?.restaurants || null,
-        suppliers: action.payload?.suppliers || null,
+        // optional chaining --- it will return undefined on the following properties (if they don't exist in the payload)
+        restaurants: action.payload?.restaurants,
+        suppliers: action.payload?.suppliers,
+      }
+    case 'LOGOUT':
+      return {
+        ...state,
+        user: userLoginState.user,
+        restaurants: null,
+        suppliers: null,
       }
     default:
-      return state;
+      return userLoginState;
   }
 }
 
 export const userLoginState: userTypes = {
   user: {
-    user_type: "",
+    user_type: "food lover",
     user_first_name: "",
     user_last_name: "",
     user_picture: "",

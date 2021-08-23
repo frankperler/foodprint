@@ -40,7 +40,6 @@ export type registrationFormUserTypes = {
 }
 
 
-
 export type registeredUserTypes = {
   user: simpleUser,
   newRestaurant?: restaurantTypes | null,

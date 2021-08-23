@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from 'react'
+import { useState, Dispatch, SetStateAction, useContext } from 'react'
 import { HomePageButton, LogInButton } from './navbar-styled-components/homepagebutton'
 import { Title } from './navbar-styled-components/title'
 import { Navcontainer } from './navbar-styled-components/navcontainer'
@@ -7,6 +7,9 @@ import { Container } from './navbar-styled-components/container'
 import Modal from 'react-modal';
 import { FormLogIn } from '../log-in/FormLogIn'
 import { Link } from 'react-router-dom'
+import { userContext } from '../../contexts/user-context'
+
+
 
 const customStyles = {
   content: {
@@ -36,7 +39,7 @@ interface Props {
 }
 
 export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
-
+  const { stateUser } = useContext(userContext);
   Modal.setAppElement('#root');
 
   // const [openRegistration, setOpenRegistration] = useState<boolean>(false);
@@ -48,9 +51,10 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
 
   const clickLogOut = () => {
     setIsAuth(false)
-    setUserType('Food lover') // food lover as default value
+    setUserType(stateUser.user.user_type) 
   }
 
+  
 
   return (
     <Container containerHeight="4rem" topPosition="0" navPosition="sticky">
@@ -77,7 +81,10 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
               </Link>
             </div>
           </HomeButtonFlex> :
-          <LogInButton onClick={clickLogOut}>Log out</LogInButton>}
+            <div>
+            <LogInButton onClick={clickLogOut}>Log out</LogInButton>
+            {/* <div>{stateUser.user.user_first_name}</div> */}
+            </div>}
       </Navcontainer >
     </Container >
   )

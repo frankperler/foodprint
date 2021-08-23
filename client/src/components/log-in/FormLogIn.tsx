@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useReducer } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { FormWrapper } from '../registration/registration-styled-components/FormRegister.style';
 import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogIn.style';
 import { LogInCredentialInput, Label } from './log-in-styled-components/FormLogIn.style';
@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { userLoginReducers, userLoginState } from '../../reducers/login-reducer';
 import { logIn } from '../../services/LoginService';
 import { loginTypes, userTypes } from '../../types';
+import { useEffect } from 'react';
+import { userContext } from '../../contexts/user-context';
 
 export interface Props {
   onCloseLoginModal: () => void,
@@ -18,11 +19,9 @@ export interface Props {
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-
 type LogInForm = {
   email: string;
   password: string;
-  // confirmPassword: string;
 };
 
 const schema = yup.object().shape({
@@ -34,20 +33,22 @@ const schema = yup.object().shape({
 
 export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element => {
 
-  const [stateUserLogin, dispatchUserLogin] = useReducer(userLoginReducers, userLoginState)
+  const { stateUser, dispatchUser } = useContext(userContext);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<LogInForm>({
     resolver: yupResolver(schema),
   })
 
   // need handleSubmit, might need to setUserType on receiving back data from API hence why imported
 
+
+//   useEffect( () =>  {logIn({email: "astudart1q@cafepress.com", password: "8FvCKgxX"})
+//           .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
+// }, []);
+
+
   const onSubmit = (credentials: loginTypes) => {
     logIn(credentials)
-      .then((userData: userTypes) => {
-        //STATE IS NOT BEING SYNCHRONOUSLY UPDATED ---- CANNOT SEE IT THE NEW STATE IS CORRECT!!!!! 
-        console.log("new user's state", userLoginState)
-        dispatchUserLogin({ type: 'LOGIN', payload: userData })
-      })
+      .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
 
     setIsAuth(true)
     const formData = {
