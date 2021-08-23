@@ -25,7 +25,6 @@ export const ProductsList: React.FunctionComponent<Props> = ({ supplier }: Props
           </tr>
         })}
       </table>
-
     </ProductsContainer>
   )
 }
