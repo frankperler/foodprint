@@ -30,7 +30,7 @@ export const userLoginReducers = (state: userTypes, action: reducerAction): user
 
 export const userLoginState: userTypes = {
   user: {
-    user_type: "food lover",
+    user_type: "Food lover",
     user_first_name: "",
     user_last_name: "",
     user_picture: "",

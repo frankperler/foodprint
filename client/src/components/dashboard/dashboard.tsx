@@ -56,6 +56,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) =
 
   console.log('STATESUPPLIER----------------', stateSupplier)
   console.log('STATERESTAURANT------------------', stateRestaurant)
+  console.log("userType in dashboard", userType)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>

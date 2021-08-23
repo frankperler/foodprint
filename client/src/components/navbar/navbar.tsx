@@ -51,7 +51,7 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
 
   const clickLogOut = () => {
     setIsAuth(false);
-    setUserType('food lover');
+    setUserType('Food lover');
     dispatchUser({type: 'LOGOUT'})
 
   }
