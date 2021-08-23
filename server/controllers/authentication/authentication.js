@@ -1,5 +1,5 @@
 'use strict';
-// const JWT = require('jsonwebtoken');
+const JWT = require('jsonwebtoken');
 const db = require('../../models/index');
 
 // login controller
@@ -11,14 +11,16 @@ exports.findUser = async (req, res) => {
       }
     })
     if (!userCredentials) {
-      res.send("the entered credentials are incorrect.")
+      res.send("The entered credentials are incorrect.")
     }
     else if (!userCredentials.validatePassword(req.body.password, userCredentials.password)) {
-      res.send("the entered credentials are incorrect.")
+      res.send("The entered credentials are incorrect.")
     }
     else {
       console.log("password is correct")
       const user = await userCredentials.getUser();
+      const token = JWT.sign({id: user.id}, process.env.TOKEN_SECRET);
+      console.log("token", token)
       if (user.user_type === 'restaurant') {
         const restaurants = await user.getRestaurants({
           include: db.Supplier
