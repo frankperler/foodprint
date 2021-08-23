@@ -26,7 +26,7 @@ const farmDescription = ["For me, apples and pears are a family affair! Hence th
 const supPics = ["vGQ49l9I4EE", "IdrzXJQlw5w", "IJSs1KpXaqI", "O3TlS547j7k", "UOEB1ztsDMo", "7w7LzO9Vkvg", "KaK2jp8ie8s", "Twz3meoE_X8", "YNP2p8bAflo", "WZbJPdz42VM", "N3fWEx-2vow"]
 
 //mock greenTechnology
-const greenTech = ["Plastic_Free", "Antibiotic_Free", "Organic", "Renewable_Energy", "Animal_Rights", "Water_Recycling", "Biofuels", "No_Pesticides", "Biodynamic", "Bee_Friendly", "Non_GMO"]
+const greenTech = ["Plastic_Free", "Organic", "Water_Recycling", "Biofuels", "No_Pesticides", "Biodynamic", "Non_GMO", "No_Growth_Hormones"];
 const energySources = ['Solar-powered', 'Wind-powered', 'Natural gas', 'Electricity (renewable)', 'Electricity (non-renewable)'];
 const vehicleFuel = ["Biofuel", "Gasoline", "Diesel", "Electric", "Hybrid"];
 
@@ -53,11 +53,19 @@ async function populateSuppliers() {
       }
 
 
-      const greenTechArr = Array.from(greenTechSet);
-      const reducedValue = greenTechArr.reduce((acc, value) => {
-        return {
-          ...acc, [value]: true
+      // const greenTechArr = Array.from(greenTechSet);
+      const reducedValue = greenTech.reduce((acc, value) => {
+        let binary = Math.round(Math.random());
+        if (binary) {
+          return {...acc, [value]: true}
         }
+        else {
+          return {...acc, [value]: false}
+        }
+        // return {
+        //   ...acc, [value]: true
+        // }
+        // return result
       }, {})
 
       mockSupplier.sup_greenTech = [reducedValue]
