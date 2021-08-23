@@ -25,6 +25,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+import { filterRerstaurantsByCategories } from '../../services/FilterService'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
@@ -63,6 +64,8 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
+
+  console.log(filterRerstaurantsByCategories(0.5, ['Asian'], ['Lunch']))
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
