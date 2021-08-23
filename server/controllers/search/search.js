@@ -31,3 +31,4 @@ exports.searchSuppliersByCity = async (req, res) => {
     res.status = 500;
   }
 }
+

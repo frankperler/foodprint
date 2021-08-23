@@ -24,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Product.associate = (models) => {
     // Product.belongsTo(models.Supplier);
-    Product.hasMany(models.Production)
+    Product.hasMany(models.Production);
+    // Product.belongsTo(models.Production);
+    
   }
 
   return Product;

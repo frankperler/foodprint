@@ -22,7 +22,7 @@ export const ProfileDetails = styled.section`
   }  
 `
 
-export const ProfileGridContainer = styled("div")`
+export const ProfileRestaurantGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 25% 75%;
@@ -35,6 +35,21 @@ export const ProfileGridContainer = styled("div")`
   background-color: white;
   margin: 4rem auto;
 `
+
+export const ProfileSupplierGridContainer = styled("div")`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 25% 75%;
+  grid-template-areas:
+    "photo list"
+    "details suppliers"
+  ;
+  height: 100vh;
+  width: 75%;
+  background-color: white;
+  margin: 4rem auto;
+`
+
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
   padding: 1rem;
@@ -60,7 +75,7 @@ export const Day = styled.span`
 
 export const DescriptionCard = styled.div`
   margin: 1rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
   width: 90%;
   height: 90%;
   border-radius: 30px;
@@ -80,9 +95,12 @@ export const DescriptionText = styled.div`
 `
 
 export const ProfileHeader = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: darkgray;
+  font-weight: bold;
   width: 80%;
   margin-left: 2rem;
+
 `
 
 export const SupplierContainer = styled.div`
@@ -250,7 +268,7 @@ export const TechnologyRibbons = styled.div`
 export const TechnologyContainer = styled.div`
   margin: 2rem auto;
   padding: 1.2rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
   width: 75%;
   height: auto;
 `

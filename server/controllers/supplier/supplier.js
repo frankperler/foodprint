@@ -4,6 +4,8 @@ const db = require('../../models/index');
 const { Sequelize } = require('../../models/index');
 const Op = Sequelize.Op;
 
+
+
 exports.getAllSuppliers = async (req, res) => {
   try {
     const supplier = await db.Supplier.findAll({
@@ -113,18 +115,27 @@ exports.addProduction = async (req, res) => {
   try {
     const product = await db.Product.findOne({
         where: {
-            product_name: req.body.product_name,
+            product_name: req.body.prod_name,
         }
     })
+
+    // if (req.body.) {
+
+    // }
+    // else {
+
+    // }
+
     const co2 = product.product_CO2;
     const productionAmount = req.body.production_amount;
     const productionEmissionsKG = productionAmount*co2*10;
     const production = await db.Production.create({
         production_amount: productionAmount,
         production_CO2 : productionEmissionsKG,
-        SupplierId : req.body.sup_id
+        SupplierId : req.body.sup_id,
+        ProductId: product.id,
     })
-    await product.setProductions(production);
+    // await product.setProductions(production);
     res.send({product, production}); 
 }
 
