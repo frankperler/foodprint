@@ -38,7 +38,10 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
 
   const onSubmit = (credentials: loginTypes) => {
     logIn(credentials)
-      .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
+      .then((userData: userTypes) => {
+        localStorage.setItem("token", userData.token);
+        return dispatchUser({ type: 'LOGIN', payload: userData })
+      })
 
     setIsAuth(true)
     const formData = {

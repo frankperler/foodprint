@@ -11,10 +11,10 @@ exports.findUser = async (req, res) => {
       }
     })
     if (!userCredentials) {
-      res.send("The entered credentials are incorrect.")
+      res.send("The entered credentials-email are incorrect.")
     }
     else if (!userCredentials.validatePassword(req.body.password, userCredentials.password)) {
-      res.send("The entered credentials are incorrect.")
+      res.send("The entered credentials-pswd are incorrect.")
     }
     else {
       console.log("password is correct")
@@ -25,7 +25,7 @@ exports.findUser = async (req, res) => {
         const restaurants = await user.getRestaurants({
           include: db.Supplier
         });
-        res.send({ user, restaurants });
+        res.send({ user, restaurants, token });
       }
       else if (user.user_type === 'supplier') {
         const suppliers = await user.getSuppliers({
@@ -38,11 +38,11 @@ exports.findUser = async (req, res) => {
   
         });
         console.log({ user, suppliers });
-        res.send({ user, suppliers });
+        res.send({ user, suppliers, token  });
       }
       else {
         console.log(user);
-        res.send(user);
+        res.send({user, token});
       }
 
     }

@@ -35,6 +35,7 @@ export const userLoginState: userTypes = {
     user_last_name: "",
     user_picture: "",
   },
+  token: "",
   restaurants: null,
   suppliers: null,
 }

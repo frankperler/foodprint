@@ -15,6 +15,7 @@ export type simpleUser = {
 
 export type userTypes = {
   user: simpleUser,
+  token: string,
   restaurants?: restaurantTypes[] | null,
   suppliers?: supplierTypes[] | null
 }
