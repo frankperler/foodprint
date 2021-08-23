@@ -19,7 +19,7 @@ exports.findUser = async (req, res) => {
     else {
       console.log("password is correct")
       const user = await userCredentials.getUser();
-      const token = JWT.sign({id: user.id}, process.env.TOKEN_SECRET);
+      const token = JWT.sign({id: user.id}, process.env.ACCESS_TOKEN_SECRET);
       console.log("token", token)
       if (user.user_type === 'restaurant') {
         const restaurants = await user.getRestaurants({
