@@ -13,7 +13,7 @@ export const supplierReducers = (supplierState: supplierTypes[], action: supplie
 export const supplierState: supplierTypes[] = []
 /*
   {
-    sup_id: 1,
+    id: 1,
     sup_name: "Ugo's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
@@ -38,7 +38,7 @@ export const supplierState: supplierTypes[] = []
     sup_vehicles: 'Diesel'
   },
   {
-    sup_id: 2,
+    id: 2,
     sup_name: "Arnold's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
@@ -63,7 +63,7 @@ export const supplierState: supplierTypes[] = []
     sup_vehicles: 'Diesel'
   },
   {
-    sup_id: 3,
+    id: 3,
     sup_name: "Fred's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',

@@ -8,9 +8,9 @@ interface Props {
   setClickedId: Dispatch<React.SetStateAction<number>>
 }
 
-export const ButtonGroup = ({ setUserType, clickedId, setClickedId }: Props) => {
+export const ButtonGroup: React.FunctionComponent<Props> = ({ setUserType, clickedId, setClickedId }: Props) => {
 
-  const [buttons, setButtons] = useState(["Food lover", "Restaurant", "Supplier"])
+  const [buttons] = useState(["Food lover", "Restaurant", "Supplier"])
 
   const handleUserType = (name: string) => {
     name === 'Food lover' ? setUserType('Food lover')

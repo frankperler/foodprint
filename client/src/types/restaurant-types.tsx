@@ -21,4 +21,3 @@ export type restaurantTypes = {
   UserId: number,
   Suppliers?: supplierTypes[]
 }
-

@@ -3,7 +3,7 @@ const url = 'http://localhost:3001';
 import { loginTypes, userTypes } from '../types';
 import { fetchRequest } from './fetch';
 
-export function logIn (user: loginTypes): Promise<userTypes> {
+export function logIn(user: loginTypes): Promise<userTypes> {
   return fetchRequest('/login', {
     method: 'POST',
     headers: {

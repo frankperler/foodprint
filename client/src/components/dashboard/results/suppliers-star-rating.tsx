@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
 interface Props {
   supplier: supplierTypes
 }

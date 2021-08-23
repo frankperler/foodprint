@@ -25,6 +25,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+
 import './dashboard.css'
 
 export const ButtonStyles = styled.div`
@@ -41,7 +42,7 @@ interface Props {
   isAuth: boolean,
 }
 
-export const Dashboard = ({ userType }: Props) => {
+export const Dashboard: React.FunctionComponent<Props> = ({ userType }: Props) => {
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
@@ -49,12 +50,12 @@ export const Dashboard = ({ userType }: Props) => {
 
   // let allRestaurants: restaurantTypes[] = [];
   useEffect(() => {
-      // getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
-      getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
+    getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => console.log(stateSupplier));
+    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants }));
   }, [])
 
-  // console.log(stateSupplier)
-  console.log(stateRestaurant)
+  console.log('STATESUPPLIER----------------', stateSupplier)
+  console.log('STATERESTAURANT------------------', stateRestaurant)
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
@@ -101,7 +102,7 @@ export const Dashboard = ({ userType }: Props) => {
             </div>
             <TopArea>
               {((userType === 'Food lover') || (userType === 'Supplier')) ?
-                <RestTopList /> : 
+                <RestTopList /> :
                 <SupplTopList />
               }
             </TopArea>

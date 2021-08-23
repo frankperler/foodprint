@@ -9,7 +9,7 @@ interface Props {
   setClickedId: Dispatch<React.SetStateAction<number>>
 }
 
-export const ChooseUserType = ({ clickedId, setClickedId, userType, setUserType }: Props) => {
+export const ChooseUserType: React.FunctionComponent<Props> = ({ clickedId, setClickedId, userType, setUserType }: Props) => {
 
   return (
     <Wrapper>

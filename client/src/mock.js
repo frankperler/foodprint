@@ -117,7 +117,7 @@ export const restos = [
 
 export const suppliers = [
   {
-    sup_id: 1,
+    id: 1,
     sup_name: "Ugo's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
@@ -143,7 +143,7 @@ export const suppliers = [
     UserId: 5
   },
   {
-    sup_id: 2,
+    id: 2,
     sup_name: "Ugo's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
@@ -169,7 +169,7 @@ export const suppliers = [
     UserId: 6
   },
   {
-    sup_id: 3,
+    id: 3,
     sup_name: "Ugo's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
@@ -195,7 +195,7 @@ export const suppliers = [
     UserId: 8
   },
   {
-    sup_id: 4,
+    id: 4,
     sup_name: "Ugo's Garden",
     sup_food_type: ['Vegetables', 'Fruits', 'Meat', 'Cheese', 'Bread'],
     sup_address: 'Kopenhagener Straße 95, 10757 Wolfsburg, Deutschland',
