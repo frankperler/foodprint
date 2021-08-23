@@ -9,7 +9,6 @@ import { ProductsList } from './supplier-production-list'
 import { supplierTypes } from '../../../types';
 import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
-import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating';
 import { EcoLeaf } from '../profile-styled-components/profile.style';
 
 
@@ -51,8 +50,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
         console.log(error)
       })
   }, [])
-
-  console.log(supplierItem)
 
   return (
     <ProfileSupplierGridContainer>

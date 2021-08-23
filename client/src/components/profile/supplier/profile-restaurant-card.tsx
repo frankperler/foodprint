@@ -12,8 +12,8 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
     <div>
       <Link to={`/restaurant/${restaurant.id}`} style={{ textDecoration: 'none' }}>
         <RestoImg src={restaurant.rest_picture} />
+        <h4 style={{ color: "#FFA69E" }}>{restaurant.rest_name}</h4>
       </Link>
-      {restaurant.rest_name}
     </div>
   )
 }

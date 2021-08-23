@@ -2,7 +2,6 @@ import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { restaurantTypes } from '../../../types/restaurant-types';
-import { EcoLeaf } from '../../profile/profile-styled-components/profile.style';
 import './star.css'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
         marginTop: theme.spacing(1),
       },
     }
-    }
+  }
   ),
 );
 interface Props {

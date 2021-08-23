@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { CancelButton, DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
-import { suppliers } from '../../../mock';
 
 import EditIcon from '@material-ui/icons/Edit';
 import { supplierTypes } from '../../../types';

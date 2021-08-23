@@ -30,6 +30,30 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
 
   const [isEditing, setIsEditing] = useState(false)
 
+  // function loopGreenTech(obj: {
+  //   "Plastic_Free": boolean,
+  //   "Biodynamic": boolean,
+  //   "Biofuels": boolean,
+  //   "No_Growth_Hormones": boolean,
+  //   "No_Pesticides": boolean,
+  //   "Non_GMO": boolean,
+  //   "Organic": boolean,
+  //   "Water_Recycling": boolean,
+  // }) {
+  //   for (const key in obj) {
+  //     console.log(`${key}: ${obj[key]}`);
+  // if (key === "Plastic_Free" && obj[key] === true) return <img src="/images/noplastic_s.svg" />
+  // else if (key === "Biodynamic" && obj[key] === true) return <img src="/images/biodynamic_s.svg" />
+  // else if (key === "Biofuels" && obj[key] === true) return <img src="/images/biofuel_s.svg" />
+  // else if (key === "No_Growth_Hormones" && obj[key] === true) return <img src="/images/nogrowthhormone_s.svg" />
+  // else if (key === "No_Pesticides" && obj[key] === true) return <img src="/images/nopesticide_s.svg" />
+  // else if (key === "Non_GMO" && obj[key] === true) return <img src="/images/nongmo_s.svg" />
+  // else if (key === "Organic" && obj[key] === true) return <img src="/images/organic_s.svg" />
+  // else if (key === "Water_Recycling" && obj[key] === true) return <img src="/images/savewater_s.svg" />
+  // else return
+  //   }
+  // }
+
   return (
     <TechnologyContainer>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
@@ -41,14 +65,15 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
       </EditDescription>
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
-        <img src="/images/biodynamic_s.svg" />
-        <img src="/images/savewater_s.svg" />
-        <img src="/images/nopesticide_s.svg" />
         <img src="/images/noplastic_s.svg" />
+        <img src="/images/biodynamic_s.svg" />
         <img src="/images/biofuel_s.svg" />
+        <img src="/images/nogrowthhormone_s.svg" />
+        <img src="/images/nopesticide_s.svg" />
         <img src="/images/nongmo_s.svg" />
         <img src="/images/organic_s.svg" />
-        <img src="/images/nogrowthhormone_s.svg" />
+        <img src="/images/savewater_s.svg" />
+        {/* {loopGreenTech(JSON.parse(supplier.sup_greenTech[0]))} */}
       </TechnologyRibbons>
       <TechChoiceGrid>
         {isEditing ?
