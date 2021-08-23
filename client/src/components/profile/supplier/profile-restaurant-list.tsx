@@ -1,11 +1,15 @@
 import React from 'react';
 import { ButtonWrap, RestoListContainer, SupplierContainer, AddSupplier, ProfileHeader } from '../profile-styled-components/profile.style';
-import { restos } from '../../../mock';
 import { RestaurantCard } from './profile-restaurant-card';
 import { AddCircle } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
+import { supplierTypes } from '../../../types';
 
-export const RestaurantList: React.FunctionComponent = () => {
+interface Props {
+  supplier: supplierTypes
+}
+
+export const RestaurantList: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   return (
     <SupplierContainer>
@@ -16,8 +20,8 @@ export const RestaurantList: React.FunctionComponent = () => {
       </ButtonWrap>
       <ProfileHeader>Who I'm selling to...</ProfileHeader>
       <RestoListContainer>
-        {restos.map((resto: restaurantTypes) => {
-          return <RestaurantCard key={resto.id} resto={resto} />
+        {supplier.Restaurants && supplier.Restaurants.map((restaurant: restaurantTypes) => {
+          return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
         })}
       </RestoListContainer>
     </SupplierContainer>
