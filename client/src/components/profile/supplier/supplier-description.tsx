@@ -19,8 +19,6 @@ export const SupplierDescription = (): JSX.Element => {
     setDescriptionValue(descriptionValue);
   }
 
-
-
   return (
     <DescriptionCard>
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>

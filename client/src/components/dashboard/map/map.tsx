@@ -49,7 +49,7 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
         {
           ((userType === 'Food lover') || (userType === 'Supplier')) ?
             stateRestaurant && stateRestaurant.map((restaurant: restaurantTypes) => (
-              <>
+              <div key={restaurant.id}>
                 <Marker
                   latitude={+restaurant.rest_lat}
                   longitude={+restaurant.rest_lng}
@@ -76,11 +76,11 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
                     </div>
                   </Popup>
                 )}
-              </>
+              </div>
             ))
             :
             stateSupplier && stateSupplier.map((supplier: supplierTypes) => (
-              <>
+              <div key={supplier.id}>
                 <Marker
                   latitude={+supplier.sup_lat}
                   longitude={+supplier.sup_lng}
@@ -107,7 +107,7 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
                     </div>
                   </Popup>
                 )}
-              </>
+              </div>
             ))}
       </ReactMapGL>
     </>

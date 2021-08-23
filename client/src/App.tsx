@@ -17,6 +17,7 @@ export const App: React.FunctionComponent = () => {
   const [stateUser, dispatchUser] = useReducer(userLoginReducers, userLoginState)
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
+  const [loading, setLoading] = useState(true);
 
   return (
     <userContext.Provider value={{stateUser, dispatchUser}} >
@@ -33,6 +34,8 @@ export const App: React.FunctionComponent = () => {
           <Dashboard
             userType={userType}
             isAuth={isAuth}
+            loading={loading}
+            setLoading={setLoading}
           />
         </Route>
         <Route path='/register' exact>

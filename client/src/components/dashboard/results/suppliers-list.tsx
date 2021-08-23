@@ -9,27 +9,35 @@ import { ListWrapper } from './results-styled-components/results-list-wrapper';
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
-  const [supplTypesArray] = useState(['Vegetables', 'Fruits', 'Dairy'])
+  const [supplTypesArray] = useState(['Fruits', 'Vegetables', 'Dairy'])
 
+  function supplierLoop(value: string, suppliers: supplierTypes[]): any {
+    // let count = 0;
+    return suppliers.map((supplier) => {
+      if (supplier.Productions.length) {
+        return supplier.Productions.map((production) => {
+          let count = 0;
+          if (production.Product.product_type === value && count < 1) {
+            count++
+            return <SupplierCard supplier={supplier} key={Math.random() * +supplier.id} value={value} />
+          }
+        })
+      }
+    }).slice(0, 6)
+  }
 
   return (
     <>
       {stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {
-          let count = 0;
+          console.log('-------', value)
           return (
-            <ListWrapper>
+            <ListWrapper key={value}>
               <ListTitle>
                 {value}
               </ListTitle>
               <ListContainer>
-                {stateSupplier.map((supplier: supplierTypes) => {
-                  if (supplier.Productions.length && (supplier.Productions[0].Product.product_name.includes(value) && count < 6)) {
-                    count++
-                    return < SupplierCard supplier={supplier} key={supplier.id} />
-                  }
-                }
-                )}
+                {supplierLoop(value, stateSupplier)}
               </ListContainer>
             </ListWrapper>
           )

@@ -17,7 +17,7 @@ export const RestaurantsLists: React.FunctionComponent = () => {
         restTypesArray.map((value: string) => {
           let count = 0;
           return (
-            <ListWrapper>
+            <ListWrapper key={value}>
               <ListTitle>
                 {value}
               </ListTitle>
@@ -26,7 +26,7 @@ export const RestaurantsLists: React.FunctionComponent = () => {
                   stateRestaurant.map((restaurant: restaurantTypes) => {
                     if (restaurant.rest_types.includes(value) && count < 6) {
                       count++
-                      return < RestaurantCard restaurant={restaurant} key={restaurant.id} />
+                      return <RestaurantCard restaurant={restaurant} key={Math.random() * restaurant.id} />
                     }
                   }
                   )}

@@ -7,7 +7,7 @@ require('dotenv').config();
 const router = require('./router');
 const PORT = process.env.PORT || 3001;
 // const populate = require('./mock_data/populate');
-// const populateSuppliers = require('./mock_data/mockTools')
+const populateSuppliers = require('./mock_data/mockTools')
 
 const db = require('./models/index');
 
