@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
+import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
 
 export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
@@ -53,8 +54,9 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
     <ProfileGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
-        <RestStarRating restaurant={restItem} />
+        <RestEcoRating restaurant={restItem}></RestEcoRating>
         <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
+        <RestStarRating restaurant={restItem} />
         <Website href={restItem.rest_website}>Visit website</Website>
         <h4>{restItem.rest_address}</h4>
         <h4>{restItem.opening_hours.map(day =>
