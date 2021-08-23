@@ -1,14 +1,13 @@
-import { restaurantTypes, supplierTypes, userTypes, simpleUser } from "../types/index";
+import { userTypes } from "../types/index";
 import { userLoginAction, userLogoutAction } from "../actions/actions";
 
+export type reducerAction = userLoginAction | userLogoutAction;
 
-
-export const userLoginReducers = (state: userTypes, action: userLoginAction | userLogoutAction): userTypes => {
+export const userLoginReducers = (state: userTypes, action: reducerAction): userTypes => {
     console.log("state inside reducer", state);
     console.log("action inside reducer", action);
     switch (action.type) {
     case 'LOGIN':
-      console.log("user landed in reducer")
       return {
         ...state,
         user: action.payload.user,

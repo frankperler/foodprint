@@ -39,7 +39,7 @@ interface Props {
 }
 
 export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
-  const { stateUser } = useContext(userContext);
+  const { stateUser, dispatchUser } = useContext(userContext);
   Modal.setAppElement('#root');
 
   // const [openRegistration, setOpenRegistration] = useState<boolean>(false);
@@ -50,8 +50,10 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
   const onCloseLoginModal = () => setOpenLogin(false);
 
   const clickLogOut = () => {
-    setIsAuth(false)
-    setUserType(stateUser.user.user_type) 
+    setIsAuth(false);
+    setUserType('food lover');
+    dispatchUser({type: 'LOGOUT'})
+
   }
 
   
@@ -83,7 +85,6 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
           </HomeButtonFlex> :
             <div>
             <LogInButton onClick={clickLogOut}>Log out</LogInButton>
-            {/* <div>{stateUser.user.user_first_name}</div> */}
             </div>}
       </Navcontainer >
     </Container >

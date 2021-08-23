@@ -4,7 +4,6 @@ import { ForgotPassword, LogInButton } from './log-in-styled-components/FormLogI
 import { LogInCredentialInput, Label } from './log-in-styled-components/FormLogIn.style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { logIn } from '../../services/LoginService';
 import { loginTypes, userTypes } from '../../types';
@@ -27,7 +26,6 @@ type LogInForm = {
 const schema = yup.object().shape({
   email: yup.string().required('required'),
   password: yup.string().required(),
-  // confirmPassword: yup.string().oneOf([yup.ref("password"), null])
 })
 
 
@@ -38,14 +36,6 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
     resolver: yupResolver(schema),
   })
 
-  // need handleSubmit, might need to setUserType on receiving back data from API hence why imported
-
-
-//   useEffect( () =>  {logIn({email: "astudart1q@cafepress.com", password: "8FvCKgxX"})
-//           .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
-// }, []);
-
-
   const onSubmit = (credentials: loginTypes) => {
     logIn(credentials)
       .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
@@ -55,7 +45,6 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
       email: credentials['email'],
       password: credentials['password'],
     }
-    console.log(formData);
     onCloseLoginModal()
     reset();
   };
