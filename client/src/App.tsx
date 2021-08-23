@@ -7,10 +7,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
 
+
 export const App: React.FunctionComponent = () => {
 
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
+  const [loading, setLoading] = useState(true);
 
   return (
     <Router>
@@ -26,6 +28,8 @@ export const App: React.FunctionComponent = () => {
           <Dashboard
             userType={userType}
             isAuth={isAuth}
+            loading={loading}
+            setLoading={setLoading}
           />
         </Route>
         <Route path='/register' exact>
