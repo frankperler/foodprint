@@ -47,8 +47,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       })
   }, [])
 
-  console.log(supplierItem.sup_greenTech[1])
-
   return (
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />
@@ -63,8 +61,8 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       <SupplierDescription />
       <ProfileDetails>
         <Technology supplier={supplierItem} />
-        <ProductsList />
-        <RestaurantList />
+        <ProductsList supplier={supplierItem} />
+        <RestaurantList supplier={supplierItem} />
       </ProfileDetails>
     </ProfileSupplierGridContainer>
   )
