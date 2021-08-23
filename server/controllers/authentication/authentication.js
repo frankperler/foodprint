@@ -1,10 +1,10 @@
 'use strict';
-
+// const JWT = require('jsonwebtoken');
 const db = require('../../models/index');
 
 // login controller
 exports.findUser = async (req, res) => {
-  try {    
+  try {   
     const userCredentials = await db.Login.findOne({
       where: {
         email: req.body.email,
@@ -14,7 +14,6 @@ exports.findUser = async (req, res) => {
       res.send("the entered credentials are incorrect.")
     }
     else if (!userCredentials.validatePassword(req.body.password, userCredentials.password)) {
-      console.log("password is incorrect")
       res.send("the entered credentials are incorrect.")
     }
     else {
@@ -43,6 +42,7 @@ exports.findUser = async (req, res) => {
         console.log(user);
         res.send(user);
       }
+
     }
   }
   catch (e) {
