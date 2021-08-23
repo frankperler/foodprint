@@ -21,3 +21,4 @@ insert into "Products" (id, product_name, "product_CO2", product_picture, produc
 insert into "Products" (id, product_name, "product_CO2", product_picture, product_type, "createdAt", "updatedAt") values (24, 'Squash', 116, 'AgYB1Fn259A',	'2021-08-20 16:37:21.264+02', 'Vegetables',	'2021-08-20 16:37:21.264+02');
 insert into "Products" (id, product_name, "product_CO2", product_picture, product_type, "createdAt", "updatedAt") values (25, 'Strawberries', 224, 'IeEFsajuORc',	'2021-08-20 16:37:21.264+02', 'Fruits',	'2021-08-20 16:37:21.264+02');
 insert into "Products" (id, product_name, "product_CO2", product_picture, product_type, "createdAt", "updatedAt") values (26, 'Tomatoes', 291, 'jF62cuCoGWQ',	'2021-08-20 16:37:21.264+02',	'Vegetables', '2021-08-20 16:37:21.264+02');
+
