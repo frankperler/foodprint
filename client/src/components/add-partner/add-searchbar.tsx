@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { restaurantTypes, supplierTypes, userTypes } from '../../types';
 import { SearchInput, SearchForm, SearchButton } from './add-partner-styled-components/add-functionality-styles';
+import { findRestaurantsByName, findSuppliersByName } from '../../services/SearchService'
 
 interface Props {
   stateUser: userTypes
@@ -13,13 +14,16 @@ export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, searchRes
 
   const [searchValue, setSearchValue] = useState<string>("")
 
-  const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault()
+  const handleSubmit = async () => {
     try {
       if (stateUser.user.user_type === 'restaurant') {
-        //call function and set value to results array
+        await findSuppliersByName(searchValue)
+          .then((suppliers) => { setSearchResults(suppliers) })
+      } else if (stateUser.user.user_type === 'supplier') {
+        await findRestaurantsByName(searchValue)
+          .then((restaurants) => setSearchResults(restaurants))
       } else {
-        // call second function for suppliers and set results
+        console.log("You are not a restaurant or a supplier")
       }
     } catch (error) {
       console.log(error)
@@ -31,7 +35,10 @@ export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, searchRes
   }
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
+    <SearchForm onSubmit={(e) => {
+      e.preventDefault()
+      handleSubmit()
+    }}>
       <SearchInput type='text' value={searchValue} onChange={handleChange} placeholder="Search for your partner..."></SearchInput>
       <SearchButton type="submit">Find my partners</SearchButton>
     </SearchForm>

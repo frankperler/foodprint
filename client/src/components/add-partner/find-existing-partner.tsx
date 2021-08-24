@@ -5,6 +5,7 @@ import { Searchbar } from './add-searchbar';
 import { InviteButton, MatchListContainer } from './add-partner-styled-components/add-functionality-styles';
 import { Link } from 'react-router-dom';
 import { restaurantTypes, supplierTypes } from '../../types';
+import { PartnerList } from './add-partner-list';
 
 export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Element => {
 
@@ -20,14 +21,18 @@ export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Ele
           searchResults={searchResults}
           setSearchResults={setSearchResults}
         />
-        <MatchListContainer>
-          <div>
-            <p>We're sorry your search did not match any results...</p>
+        {searchResults.length === 0 ?
+          <MatchListContainer>
+            <h2>We're sorry your search did not match any results...</h2>
             <Link to="/invite" style={{ textDecoration: 'none' }}>
               <InviteButton>Send them an invite</InviteButton>
             </Link>
-          </div>
-        </MatchListContainer>
+          </MatchListContainer>
+          :
+          <MatchListContainer>
+            <PartnerList searchResults={searchResults} />
+          </MatchListContainer>
+        }
       </Wrapper>
     </>
   )

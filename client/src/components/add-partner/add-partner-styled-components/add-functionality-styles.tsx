@@ -38,10 +38,13 @@ export const SearchForm = styled.form`
 `
 
 export const MatchListContainer = styled.section`
-  width: 56rem;
-  height: 38rem;
-  border: 2px solid #FF686B;
-  margin: 2.8rem auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
 `
 
 export const AddRequestButton = styled.button`
