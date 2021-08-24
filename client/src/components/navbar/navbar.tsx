@@ -32,31 +32,24 @@ const customStyles = {
 };
 
 interface Props {
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
 
-export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, isAuth, setIsAuth }: Props) => {
+export const Navbar: React.FunctionComponent<Props> = ({ isAuth, setIsAuth }: Props) => {
   const { stateUser, dispatchUser } = useContext(userContext);
   Modal.setAppElement('#root');
 
   // const [openRegistration, setOpenRegistration] = useState<boolean>(false);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
 
-
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
   const clickLogOut = () => {
     setIsAuth(false);
-    setUserType('Food lover');
-    dispatchUser({type: 'LOGOUT'})
-
+    dispatchUser({ type: 'LOGOUT' })
   }
-
-  
 
   return (
     <Container containerHeight="4rem" topPosition="0" navPosition="sticky">
@@ -69,9 +62,8 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
             <div>
               <LogInButton onClick={onOpenLoginModal}>Log in</LogInButton>
               <Modal isOpen={openLogin} style={customStyles} onRequestClose={onCloseLoginModal}>
+              <Title><strong>food</strong>print.</Title>
                 <FormLogIn
-                  userType={userType}
-                  setUserType={setUserType}
                   onCloseLoginModal={onCloseLoginModal}
                   isAuth={isAuth}
                   setIsAuth={setIsAuth} />
@@ -83,9 +75,10 @@ export const Navbar: React.FunctionComponent<Props> = ({ userType, setUserType, 
               </Link>
             </div>
           </HomeButtonFlex> :
-            <div>
+          <div>
+            <p>{stateUser.user.user_first_name}</p>
             <LogInButton onClick={clickLogOut}>Log out</LogInButton>
-            </div>}
+          </div>}
       </Navcontainer >
     </Container >
   )
