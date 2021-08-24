@@ -11,7 +11,6 @@ import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 
-
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
 
