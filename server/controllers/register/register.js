@@ -10,7 +10,7 @@ const followUpUrl = 'inputtype=textquery&fields=place_id,name,formatted_address,
 const apiKey = process.env.API_KEY;
 
 // Google API call
-async function callApi (address) {
+async function callApi(address) {
   const res = await fetch(`${baseUrl}input=${address}&${followUpUrl}&key=${apiKey}`, {
     headers: {
       "Content-Type": "application/json",
@@ -24,10 +24,10 @@ async function callApi (address) {
 
 // helper functions
 const createLogin = (req) => {
-    return db.Login.create({
-      email: req.body.email,
-      password: req.body.password,
-    });
+  return db.Login.create({
+    email: req.body.email,
+    password: req.body.password,
+  });
 };
 
 const createUser = (req, login) => {

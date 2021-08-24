@@ -12,8 +12,6 @@ import { userContext } from '../../contexts/user-context';
 
 export interface Props {
   onCloseLoginModal: () => void,
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }

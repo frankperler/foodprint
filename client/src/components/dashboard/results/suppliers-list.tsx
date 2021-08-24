@@ -12,7 +12,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
   const [supplTypesArray] = useState(['Fruits', 'Vegetables', 'Dairy'])
 
   function supplierLoop(value: string, suppliers: supplierTypes[]): any {
-    // let count = 0;
     return suppliers.map((supplier) => {
       if (supplier.Productions.length) {
         return supplier.Productions.map((production) => {
@@ -30,7 +29,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
     <>
       {stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {
-          console.log('-------', value)
           return (
             <ListWrapper key={value}>
               <ListTitle>
