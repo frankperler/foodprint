@@ -6,7 +6,7 @@ import { ProfileSupplierDashboard } from './components/profile/supplier/profile-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
-import { userTypes } from './types'
+import { ContainerThirdPartyRequestPartner } from './components/add-partner/ContainerThirdPartyRequestPartner'
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
 
@@ -39,7 +39,11 @@ export const App: React.FunctionComponent = () => {
               setUserType={setUserType}
               isAuth={isAuth}
               setIsAuth={setIsAuth}
-            ></RegistrationContainer>
+            />
+          </Route>
+
+          <Route path='/add' exact>
+            <ContainerThirdPartyRequestPartner />
           </Route>
 
           <Route path='/supplier/:id'>

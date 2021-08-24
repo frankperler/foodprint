@@ -3,7 +3,7 @@ import { Wrapper, Header } from './add-partner-styled-components/Searchbar.style
 import { MatchList } from './MatchList';
 import { Searchbar } from './Searchbar';
 
-export const ContainerFindExistingPartner = (): JSX.Element => {
+export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <>
