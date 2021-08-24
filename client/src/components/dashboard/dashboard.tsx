@@ -139,10 +139,12 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               }
               <div className="overflow">
                 <ResultsArea>
+
                   {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                     <RestaurantsLists /> :
                     <SuppliersLists />
                   }
+                  
                 </ResultsArea>
               </div>
               <TopArea>
