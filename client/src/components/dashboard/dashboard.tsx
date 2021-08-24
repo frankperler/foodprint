@@ -71,7 +71,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
         <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
-          {loading ? <PuffLoader css={spinnerStyle} size="200" color="#36D7B7"></PuffLoader> :
+          {loading ? <PuffLoader css={spinnerStyle} size="200px" color="#36D7B7"></PuffLoader> :
             <GridContainer>
               <MapArea>
                 <Map userType={userType} />
@@ -110,7 +110,6 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                     <SuppliersLists />
                   }
                 </ResultsArea>
-
               </div>
               <TopArea>
                 {((userType === 'Food lover') || (userType === 'Supplier')) ?
