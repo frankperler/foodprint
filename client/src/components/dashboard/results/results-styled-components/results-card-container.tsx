@@ -19,7 +19,7 @@ export const CardContainer = styled("div")`
   }
 
   .name {
-    font-size: large;
+    font-size: 20px;
     padding: 0.25rem;
     color: #FF686B;
     font-weight: bold;
@@ -27,9 +27,15 @@ export const CardContainer = styled("div")`
   }
 
   .foodtype {
-    padding: 0.25rem;
     font-weight: bold;
     color: #FFA69E;
     cursor: pointer;
+  }
+
+  .bottom-card-section {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #bfbfbf;
   }
 `

@@ -6,18 +6,22 @@ import { Link } from "react-router-dom";
 
 interface Props {
   supplier: supplierTypes
-  value?: string
+  product?: string
+  distance?: number
 }
 
-export const SupplierCard: React.FunctionComponent<Props> = ({ supplier, value }: Props) => {
+export const SupplierCard: React.FunctionComponent<Props> = ({ ...Props }: Props) => {
 
   return (
     <CardContainer>
-      <ResultsCardStyles backgroundImg={supplier.sup_picture} />
-      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
-        <div className="name">{supplier.sup_name}</div>
-        <div className="foodtype">{value}</div>
-        <SupplStarRating supplier={supplier} />
+      <ResultsCardStyles backgroundImg={Props.supplier.sup_picture} />
+      <Link to={`/supplier/${Props.supplier.id}`} style={{ textDecoration: 'none' }} >
+        <div className="name">{Props.supplier.sup_name}</div>
+        <SupplStarRating supplier={Props.supplier} />
+        <div className="bottom-card-section">
+          <div className="foodtype">{Props.product}</div>
+          <div className="distance">{`${Math.round((Props.distance)!/1000)} km away`}</div>
+        </div>
       </Link>
     </CardContainer>
   )

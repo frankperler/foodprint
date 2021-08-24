@@ -6,23 +6,31 @@ import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
+import { getDistance } from 'geolib';
 
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
   const { stateUser } = useContext(userContext)
   const [supplTypesArray] = useState(['Fruits', 'Vegetables', 'Dairy'])
-  console.log("stateSupplier", stateSupplier)
+  // console.log("stateSupplier", stateSupplier)
 
+  
   function supplierLoop(value: string, suppliers: supplierTypes[]): any {
     return suppliers.map((supplier) => {
+      //calculate distance
+      const distanceInMeters = getDistance(
+        { latitude: stateUser.restaurants![0].rest_lat, longitude: stateUser.restaurants![0].rest_lng },
+        { latitude: supplier.sup_lat, longitude: supplier.sup_lng}
+      );
+  
       if (supplier.Productions.length) {
         return supplier.Productions.map((production) => {
           let count = 0;
           if (production.Product.product_type === value && count < 1) {
             count++
             console.log("checking sup name inside loop ---", supplier.sup_name);
-            return <SupplierCard supplier={supplier} key={Math.random() * +supplier.id} value={value} />
+            return <SupplierCard supplier={supplier} distance={distanceInMeters} key={Math.random() * +supplier.id} product={production.Product.product_name} />
           }
         })
       }
@@ -40,7 +48,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
       <ListContainer>
         {
           stateUser.restaurants[0].Suppliers.map((supplier: supplierTypes) => 
-             < SupplierCard supplier={supplier} key={supplier.id} />
+             < SupplierCard supplier={supplier} key={supplier.id}  product={supplier.Productions[0].Product.product_name}/>
           )}
       </ListContainer>
     </ListWrapper>
@@ -53,7 +61,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
                 {value}
               </ListTitle>
               <ListContainer>
-                {stateSupplier[0].sup_name}
                 {supplierLoop(value, stateSupplier)}
               </ListContainer>
             </ListWrapper>
