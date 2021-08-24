@@ -14,6 +14,7 @@ import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutto
 import { ResultsArea } from './results/results-styled-components/results-area'
 import { RestaurantsLists } from './results/restaurants-list'
 import { SuppliersLists } from './results/suppliers-list'
+import { FilteredResults } from './results/filtered-results'
 import { TopArea } from './top-choices/top-choices-styled-components/top-area'
 import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
@@ -140,12 +141,15 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               }
               <div className="overflow">
                 <ResultsArea>
-
-                  {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
-                    <RestaurantsLists /> :
-                    <SuppliersLists />
+                  {filterClicked ? 
+                    <FilteredResults>
+                      This is the list of the filtered results.....
+                    </FilteredResults>
+                  : 
+                    ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
+                      <RestaurantsLists /> :
+                      <SuppliersLists />
                   }
-                  
                 </ResultsArea>
               </div>
               <TopArea>
