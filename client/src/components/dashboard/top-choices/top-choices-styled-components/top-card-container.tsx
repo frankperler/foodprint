@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TopCardContainer = styled("div")`
-  width: 90%;
+  width: 80%;
   height: 100%;
   margin-bottom: 1.5rem;
   display: flex;

@@ -55,6 +55,7 @@ const spinnerStyle = css`
 display: block;
 margin: 0 auto;
 color: #36D7B7;
+transform: translateY(20%);
 `;
 
 export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading }: Props) => {
@@ -97,7 +98,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
         <filterContext.Provider value={{ stateFilter, dispatchFilter }}>
-          {loading ? <PuffLoader css={spinnerStyle} size="200px" color="#36D7B7"></PuffLoader> :
+          {loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
             <GridContainer>
               <MapArea>
                 <Map />
