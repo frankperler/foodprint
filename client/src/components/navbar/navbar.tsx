@@ -8,6 +8,9 @@ import Modal from 'react-modal';
 import { FormLogIn } from '../log-in/FormLogIn'
 import { Link } from 'react-router-dom'
 import { userContext } from '../../contexts/user-context'
+import MenuListComposition from './togglemenu'
+import { MenuList } from '@material-ui/core'
+import CustomizedMenus from './togglemenu'
 
 
 
@@ -76,7 +79,10 @@ export const Navbar: React.FunctionComponent<Props> = ({ isAuth, setIsAuth }: Pr
             </div>
           </HomeButtonFlex> :
           <div>
-            <LogInButton onClick={clickLogOut}>Log out</LogInButton>
+            <CustomizedMenus
+              stateUser={stateUser}
+              clickLogOut={clickLogOut}
+            ></CustomizedMenus>
           </div>}
       </Navcontainer >
     </Container >
