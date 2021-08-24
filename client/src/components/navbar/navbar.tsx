@@ -76,7 +76,6 @@ export const Navbar: React.FunctionComponent<Props> = ({ isAuth, setIsAuth }: Pr
             </div>
           </HomeButtonFlex> :
           <div>
-            <p>{stateUser.user.user_first_name}</p>
             <LogInButton onClick={clickLogOut}>Log out</LogInButton>
           </div>}
       </Navcontainer >
