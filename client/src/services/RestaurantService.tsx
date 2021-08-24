@@ -25,6 +25,28 @@ export async function getRestaurantById(id: string): Promise<restaurantTypes> {
 }
 
 
+export async function claimSupplier(sup_name: string, rest_id: number): Promise<restaurantTypes>  {
+  try {
+    const res = await fetch(`${url}/restaurants/claimSupplier`, {
+      method: 'POST',
+      body: JSON.stringify({
+        sup_name,
+        rest_id
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return await res.json()
+  }
+  catch (e) {
+    console.error(e);
+    return e;
+  }
+}
+
+
+
 
 // export function searchRestaurantByCity(city: string) {
 //   searchByCity(city, '/search/searchRestaurantsByCity');
@@ -32,8 +54,4 @@ export async function getRestaurantById(id: string): Promise<restaurantTypes> {
 
 // export function filterRestaurants(request: { eco_score: string; type: string[]; meal_type: string[] }) {
 //   filter(request, '/suppliers/filterRestaurants');
-// }
-
-// export function claimSupplier(request: { sup_name: string, rest_id: number }) {
-//   claim(request, '/restaurants/claimSupplier');
 // }

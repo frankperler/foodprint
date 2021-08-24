@@ -139,7 +139,6 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                       <RestaurantsLists /> :
                       <SuppliersLists />
                   }
-
                 </ResultsArea>
               </div>
               <TopArea>
