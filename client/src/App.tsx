@@ -10,6 +10,7 @@ import { ContainerFindExistingPartner } from './components/add-partner/find-exis
 import { ContainerThirdPartyRequestPartner } from './components/add-partner/third-party-request'
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
+import { ThankYouPage } from './components/add-partner/thank-you-page'
 import { useEffect } from 'react'
 
 export const App: React.FunctionComponent = () => {
@@ -21,7 +22,7 @@ export const App: React.FunctionComponent = () => {
 
   //to persist state on refresh
   useEffect(() => {
-    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!)});
+    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!) });
     setIsAuth(JSON.parse(window.localStorage.getItem('is-auth')!))
   }, []);
 
@@ -61,6 +62,10 @@ export const App: React.FunctionComponent = () => {
 
           <Route path='/invite' exact>
             <ContainerThirdPartyRequestPartner />
+          </Route>
+
+          <Route path='/thankyou' exact>
+            <ThankYouPage />
           </Route>
 
           <Route path='/supplier/:id'>

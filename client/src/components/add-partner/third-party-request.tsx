@@ -3,11 +3,11 @@ import { ContainerWrapper } from './add-partner-styled-components/add-functional
 import { Header } from './add-partner-styled-components/add-functionality-styles';
 import { FormAddressTwoElements } from "../registration/registration-styled-components/FormAddressTwoElements";
 import { FormPhoneElement } from "../registration/registration-styled-components/FormPhoneElement";
-import { FormRestaurantElements } from "../registration/registration-styled-components/FormRestaurantElements";
+import { FormPartnerElements } from "../registration/registration-styled-components/FormPartnersElements";
 import { FormWrapper } from "../registration/registration-styled-components/FormRegister.style";
 import { AddRequestButton } from './add-partner-styled-components/add-functionality-styles';
 import { CredentialInput, Label } from '../registration/registration-styled-components/FormRegister.style';
-
+import { Link } from 'react-router-dom';
 
 export const ContainerThirdPartyRequestPartner = (): JSX.Element => {
 
@@ -16,12 +16,15 @@ export const ContainerThirdPartyRequestPartner = (): JSX.Element => {
       <Header>Invite your partner to join!</Header>
       <FormWrapper>
         <form>
-          <FormRestaurantElements></FormRestaurantElements>
-          <FormAddressTwoElements></FormAddressTwoElements>
-          <FormPhoneElement></FormPhoneElement>
+          <FormPartnerElements />
+          <FormAddressTwoElements />
+          <FormPhoneElement />
           <Label>Email</Label>
-          <CredentialInput></CredentialInput>
-          <AddRequestButton>Send invite</AddRequestButton>
+          <CredentialInput />
+          <Link to='/thankyou' style={{ textDecoration: 'none' }}>
+            <AddRequestButton>Send invite</AddRequestButton>
+
+          </Link>
         </form>
       </FormWrapper>
     </ContainerWrapper>
