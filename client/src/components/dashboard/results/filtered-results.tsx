@@ -10,18 +10,25 @@ import { List } from '@material-ui/core';
 
 export const FilteredResults: React.FunctionComponent = () => {
 
+  const { stateRestaurant } = useContext(restaurantContext)
   const { stateFilter } = useContext(filterContext)
+
   console.log(filterContext)
 
   return (
     <>
       <ListWrapper key={'theFilteredList'}>
         <ListTitle>
-          The title should be the a string of the filters you selected
+          {`Eco: ${stateFilter?.ecoScore}+`}
+        </ListTitle>
+        <ListTitle>
+          {`${stateFilter?.restaurantType?.join(', ')}, ${stateFilter?.mealType?.join(', ')}`}
         </ListTitle>
         <ListContainer>
           {
-            stateFilter.map()
+            stateRestaurant.map((restaurant: restaurantTypes) => {
+              return <RestaurantCard restaurant={restaurant} key={restaurant.id} />
+            })
           }
         </ListContainer>
 

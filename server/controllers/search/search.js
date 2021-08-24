@@ -63,6 +63,12 @@ exports.searchSuppliersByName = async (req, res) => {
         sup_name: {
           [Op.like]: `%${req.body.sup_name}%`
         }
+      },
+      include: {
+        model: db.Production,
+        include: {
+          model: db.Product
+        }
       }
     })
     res.send(suppliers); 
