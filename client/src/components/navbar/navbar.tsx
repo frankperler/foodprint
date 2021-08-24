@@ -9,8 +9,6 @@ import { FormLogIn } from '../log-in/FormLogIn'
 import { Link } from 'react-router-dom'
 import { userContext } from '../../contexts/user-context'
 
-
-
 const customStyles = {
   content: {
     top: '50%',

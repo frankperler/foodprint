@@ -26,14 +26,12 @@ import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
 import { filterRestaurantsByCategories } from '../../services/FilterService'
-
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
-
-import './dashboard.css'
 import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes } from '../../types'
+import './dashboard.css'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -65,26 +63,18 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
 
-  async function clickToFilter (state: filterTypes) { 
-    console.log('STATE', state)
+  async function clickToFilter(state: filterTypes) {
     const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
-    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result});
+    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result });
     setFilterClicked(true)
   }
 
-  async function clickToRemoveFilters (stateFilter: filterTypes, stateRestaurant: restaurantTypes[]) {
+  async function clickToRemoveFilters(stateFilter: filterTypes, stateRestaurant: restaurantTypes[]) {
     setLoading(true);
-
-    console.log('RESTAURANT STATE BEFORE: --->', stateRestaurant)
-    console.log('FILTER STATE BEFORE: --->', stateFilter)
-    
     // you also have to re-set the stateFilter to the default value (everything empty)
-    dispatchFilter({type: 'reset-to-default'})
+    dispatchFilter({ type: 'reset-to-default' })
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
     setFilterClicked(false)
-
-    console.log('RESTAURANT STATE AFTER: --->', stateRestaurant)
-    console.log('FILTER STATE AFTER: --->', stateFilter)
   }
 
   useEffect(() => {
@@ -112,9 +102,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                     <HomePageButton onClick={() => clickToFilter(stateFilter)}>
                       Filter Results
                     </HomePageButton>
-                    {filterClicked && 
+                    {filterClicked &&
                       <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
-                          Remove Filters
+                        Remove Filters
                       </HomePageButton>
                     }
                   </ButtonStyles>
@@ -129,9 +119,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                     < HomePageButton>
                       Filter Results
                     </ HomePageButton>
-                    {filterClicked && 
+                    {filterClicked &&
                       <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
-                          Remove Filters
+                        Remove Filters
                       </HomePageButton>
                     }
                   </ButtonStyles>

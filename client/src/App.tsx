@@ -6,7 +6,8 @@ import { ProfileSupplierDashboard } from './components/profile/supplier/profile-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegistrationContainer } from './components/registration/RegistrationContainer'
 import { ProfileRestaurantDashboard } from './components/profile/restaurant/profile-restaurant-dashboard'
-import { ContainerThirdPartyRequestPartner } from './components/add-partner/ContainerThirdPartyRequestPartner'
+import { ContainerFindExistingPartner } from './components/add-partner/find-existing-partner'
+import { ContainerThirdPartyRequestPartner } from './components/add-partner/third-party-request'
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
 
@@ -43,6 +44,10 @@ export const App: React.FunctionComponent = () => {
           </Route>
 
           <Route path='/add' exact>
+            <ContainerFindExistingPartner />
+          </Route>
+
+          <Route path='/invite' exact>
             <ContainerThirdPartyRequestPartner />
           </Route>
 
