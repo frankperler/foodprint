@@ -10,7 +10,7 @@ interface Props {
   setSearchResults: Dispatch<SetStateAction<restaurantTypes[] | supplierTypes[]>>,
 }
 
-export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, searchResults, setSearchResults }: Props): JSX.Element => {
+export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, setSearchResults }: Props): JSX.Element => {
 
   const [searchValue, setSearchValue] = useState<string>("")
 

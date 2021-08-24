@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { userContext } from '../../contexts/user-context';
 import { supplierTypes } from '../../types';
 import { AddCardContainer } from './add-partner-styled-components/add-functionality-styles';

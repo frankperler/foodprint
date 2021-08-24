@@ -7,7 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { logIn } from '../../services/LoginService';
 import { loginTypes, userTypes } from '../../types';
-import { useEffect } from 'react';
 import { userContext } from '../../contexts/user-context';
 
 export interface Props {
@@ -29,7 +28,7 @@ const schema = yup.object().shape({
 
 export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element => {
 
-  const { stateUser, dispatchUser } = useContext(userContext);
+  const { dispatchUser } = useContext(userContext);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<LogInForm>({
     resolver: yupResolver(schema),
   })
@@ -42,10 +41,6 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
       })
 
     setIsAuth(true)
-    const formData = {
-      email: credentials['email'],
-      password: credentials['password'],
-    }
     onCloseLoginModal()
     reset();
   };

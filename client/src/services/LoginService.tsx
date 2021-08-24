@@ -1,5 +1,3 @@
-const url = 'http://localhost:3001';
-
 import { loginTypes, userTypes } from '../types';
 import { fetchRequest } from './fetch';
 
