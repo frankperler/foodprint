@@ -1,7 +1,7 @@
 import React from 'react';
 import { supplierTypes } from '../../../types';
 import { ProfileName, SupplierCardGrid, SupplierImg, SupplierInfoInterior } from '../profile-styled-components/profile.style';
-import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating'
+import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -17,7 +17,7 @@ export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props
         <SupplierInfoInterior>
           <ProfileName fontColor="#FFA69E">{supplier.sup_name}</ProfileName>
           <h4 style={{ color: 'black' }}>{supplier.sup_address}</h4>
-          <SupplStarRating supplier={supplier} />
+          <SupplierEcoRating supplier={supplier}></SupplierEcoRating>
         </SupplierInfoInterior>
       </SupplierCardGrid>
     </Link>

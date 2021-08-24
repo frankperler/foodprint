@@ -51,6 +51,9 @@ export const filterReducers = (state: filterTypes, action: filterAction): filter
       bio: action.payload
     }
   }
+  if (action.type === 'reset-to-default') {
+    return filterState 
+  }
 
   return state
 }

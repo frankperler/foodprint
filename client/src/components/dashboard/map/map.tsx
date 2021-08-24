@@ -6,13 +6,10 @@ import { Room } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { supplierTypes } from '../../../types';
 import { PinRestaurantCard } from './pin-restaurants-card';
-import { SupplierCard } from '../results/suppliers-card';
+import { PinSupplierCard } from './pin-suppliers-card'
+import { userContext } from '../../../contexts/user-context'
 
-interface Props {
-  userType: string,
-}
-
-export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
+export const Map: React.FunctionComponent = () => {
 
   const handlePopupClick = (id: string, lat: number, long: number) => {
     setCurrentPinId(id);
@@ -22,6 +19,7 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
   const [currentPinId, setCurrentPinId] = useState("");
   const { stateSupplier } = useContext(supplierContext)
   const { stateRestaurant } = useContext(restaurantContext)
+  const { stateUser } = useContext(userContext)
 
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -47,7 +45,7 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
         mapStyle={process.env.REACT_APP_MAPSTYLES}
       >
         {
-          ((userType === 'Food lover') || (userType === 'Supplier')) ?
+          ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
             stateRestaurant && stateRestaurant.map((restaurant: restaurantTypes) => (
               <div key={restaurant.id}>
                 <Marker
@@ -103,7 +101,7 @@ export const Map: React.FunctionComponent<Props> = ({ userType }: Props) => {
                     onClose={() => setCurrentPinId("")}
                   >
                     <div className='popup'>
-                      <SupplierCard supplier={supplier} />
+                      <PinSupplierCard supplier={supplier} />
                     </div>
                   </Popup>
                 )}

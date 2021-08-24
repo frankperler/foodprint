@@ -2,7 +2,6 @@ import { useState, Dispatch, SetStateAction } from 'react';
 import ChooseUserType from './ChooseUserType'
 import { WrapperDiv } from './registration-styled-components/FormRegister.style'
 import { RegistrationNavbar } from './RegistrationNavbar';
-
 import { RegistrationBackground } from './registration-styled-components/RegistrationContainer.style';
 import { FoodLoverRegistrationForm } from './FoodLoverRegistrationForm';
 import { SupplierRegistrationForm } from './SupplierRegistrationForm';
@@ -26,9 +25,9 @@ export const RegistrationContainer: React.FunctionComponent<Props> = ({ userType
       <WrapperDiv>
         <ChooseUserType userType={userType} setUserType={setUserType} clickedId={clickedId} setClickedId={setClickedId}></ChooseUserType>
         {userType === 'Food lover' ?
-          <FoodLoverRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></FoodLoverRegistrationForm>
-          : userType === 'Supplier' ? <SupplierRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></SupplierRegistrationForm>
-            : userType === 'Restaurant' ? <RestaurantRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} userType={userType} setUserType={setUserType}></RestaurantRegistrationForm>
+          <FoodLoverRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} ></FoodLoverRegistrationForm>
+          : userType === 'Supplier' ? <SupplierRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} ></SupplierRegistrationForm>
+            : userType === 'Restaurant' ? <RestaurantRegistrationForm isAuth={isAuth} setIsAuth={setIsAuth} ></RestaurantRegistrationForm>
               : null
         }
       </WrapperDiv>

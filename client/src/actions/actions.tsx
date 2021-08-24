@@ -4,12 +4,12 @@ import { userTypes } from '../types';
 import { registeredUserTypes } from '../types/user-types';
 
 export type supplierAction = {
-  type: 'FETCH_ALL_SUPPLIER',
+  type: 'FETCH_ALL_SUPPLIER' | 'FETCH_FILTERED_SUPPLIER',
   payload: supplierTypes[]
 }
 
 export type restaurantAction = {
-  type: 'FETCH_ALL_RESTAURANT',
+  type: 'FETCH_ALL_RESTAURANT' | 'FETCH_FILTERED_RESTAURANT',
   payload: restaurantTypes[]
 }
 

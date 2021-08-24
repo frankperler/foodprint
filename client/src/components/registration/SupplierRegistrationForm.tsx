@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useReducer } from 'react';
+import { Dispatch, SetStateAction, useReducer, useContext } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
 import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper, EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
@@ -9,6 +9,11 @@ import * as yup from 'yup';
 import { registerUser } from '../../services/RegisterService';
 import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
 import { registrationFormUserTypes, registeredUserTypes } from '../../types/user-types';
+import { useHistory } from 'react-router-dom';
+import { logIn } from '../../services/LoginService';
+import { userContext } from '../../contexts/user-context';
+import { userTypes } from '../../types';
+
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -40,8 +45,6 @@ type SupplierRegisterForm = {
 };
 
 interface Props {
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
@@ -53,12 +56,13 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
+  const { stateUser, dispatchUser } = useContext(userContext);
+  const history = useHistory()
 
 
   const onSubmit = async (data: SupplierRegisterForm) => {
 
     // will need to submit data on the database for registration
-    setIsAuth(true)
     setValue('user_type', 'supplier')
     const user_type = getValues('user_type')
     setValue('sup_address', (data['sup_address'].concat(', ', data['sup_city'], ', ', data['zip'], ', ', data['country'])))
@@ -77,13 +81,14 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
     }
 
     await registerUser(formData)
-      .then((userData: registeredUserTypes) => {
-        dispatchRegistrationUser({type: 'REGISTER', payload: userData})
-        console.log('response data', userData)
+      .then(async (userData: registeredUserTypes) => {
+        setIsAuth(true)
+        dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
+        await logIn({ email: formData.email, password: formData.password })
+          .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
       })
-
-    console.log('request data', formData);
     reset();
+    history.push("/");
   };
 
   return (

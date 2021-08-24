@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TopCardContainer = styled("div")`
-  width: 90%;
+  width: 80%;
   height: 100%;
   margin-bottom: 1.5rem;
   display: flex;
@@ -26,9 +26,23 @@ export const TopCardContainer = styled("div")`
   }
 
   .foodtype {
-    padding: 0.25rem;
     font-weight: bold;
     color: #FFA69E;
     cursor: pointer;
+  }
+  
+  .bottom-card-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    font-weight: 600;
+    color: #bfbfbf;
+    margin-bottom: 0.3rem;
+  }
+
+  .distance {
+    flex-grow: 0;
+    margin-right: 0.25rem;
   }
 `

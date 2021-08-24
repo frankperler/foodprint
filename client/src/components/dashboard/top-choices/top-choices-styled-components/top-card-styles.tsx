@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TopCardStyles = styled("div") <{
   backgroundImg?: string,
 }>`
-  width: 90%;
+  width: 100%;
   height: 12rem;
   overflow: hidden;
   background: ${props => `url(${props.backgroundImg}) no-repeat center`};

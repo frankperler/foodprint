@@ -46,7 +46,7 @@ export const MealTypeSelect: React.FunctionComponent = () => {
 
   const handleChange = (e: dropdownType[]) => {
     setArrayLabel(Array.isArray(e) ? e.map(x => x.value) : []);
-    dispatchFilter({ type: 'restaurant-type-change', payload: Array.isArray(e) ? e.map(x => x.label) : [] })
+    dispatchFilter({ type: 'meal-type-change', payload: Array.isArray(e) ? e.map(x => x.label) : [] })
   }
 
   return (

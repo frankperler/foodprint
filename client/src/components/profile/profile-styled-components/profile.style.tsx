@@ -292,10 +292,13 @@ export const TechnologyRibbons = styled.div`
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
   width: 100%;
+<<<<<<< HEAD
+=======
 `
 
 export const TableHeader = styled.th`
   margin: 2rem 1rem;
   text-align:left;
 
+>>>>>>> 626698d3ac5ffa4940add51c47fbe716f6c3899d
 `
