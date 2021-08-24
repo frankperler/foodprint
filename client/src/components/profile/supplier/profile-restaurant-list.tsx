@@ -15,13 +15,15 @@ export const RestaurantList: React.FunctionComponent<Props> = ({ supplier }: Pro
     <SupplierContainer>
       <ButtonWrap>
         <AddSupplier>
-          <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4 style={{ display: 'inline-block' }}>Add restaurant</h4>
+          <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4>Add restaurant</h4>
         </AddSupplier>
       </ButtonWrap>
       <ProfileHeader>Who I'm selling to...</ProfileHeader>
       <RestoListContainer>
         {supplier.Restaurants && supplier.Restaurants.map((restaurant: restaurantTypes) => {
-          return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          return (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          )
         })}
       </RestoListContainer>
     </SupplierContainer>
