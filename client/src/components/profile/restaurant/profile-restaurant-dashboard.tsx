@@ -18,7 +18,7 @@ type Props = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ProfileRestaurantDashboard = ({loading, setLoading}: Props): JSX.Element => {
+export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
 
   const [restItem, setRestItem] = useState<restaurantTypes>(
     {
@@ -60,28 +60,27 @@ export const ProfileRestaurantDashboard = ({loading, setLoading}: Props): JSX.El
 
   return (
     <div>
-    { loading ? <LoadSpinner></LoadSpinner> :
-    <ProfileRestaurantGridContainer>
-      <RestoCover src={restItem.rest_picture} />
-      <InfoArea>
-        <RestEcoRating restaurant={restItem}></RestEcoRating>
-        <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
-        <RestStarRating restaurant={restItem} />
-        <Website href={restItem.rest_website}>Visit website</Website>
-        <h4>{restItem.rest_address}</h4>
-        <h4>{restItem.rest_phone_number}</h4>
-        <h4>{restItem.opening_hours.map(day =>
-          <Day>{day}<br /></Day>
-        )}
-        </h4>
-      </InfoArea>
-      <RestaurantDescription restaurant={restItem} />
-      <ProfileDetails>
-        <SuppliersList restaurant={restItem} />
-      </ProfileDetails>
-    </ProfileRestaurantGridContainer >
-    
-    }
-  </div>
+      {loading ? <LoadSpinner></LoadSpinner> :
+        <ProfileRestaurantGridContainer>
+          <RestoCover src={restItem.rest_picture} />
+          <InfoArea>
+            <RestEcoRating restaurant={restItem}></RestEcoRating>
+            <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
+            <RestStarRating restaurant={restItem} />
+            <Website href={restItem.rest_website}>Visit website</Website>
+            <h4>{restItem.rest_address}</h4>
+            <h4>{restItem.rest_phone_number}</h4>
+            <h4>{restItem.opening_hours.map(day =>
+              <Day>{day}<br /></Day>
+            )}
+            </h4>
+          </InfoArea>
+          <RestaurantDescription restaurant={restItem} />
+          <ProfileDetails>
+            <SuppliersList restaurant={restItem} />
+          </ProfileDetails>
+        </ProfileRestaurantGridContainer >
+      }
+    </div>
   )
 }

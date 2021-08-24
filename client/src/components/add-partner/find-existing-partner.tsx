@@ -6,6 +6,7 @@ import { InviteButton, MatchListContainer } from './add-partner-styled-component
 import { Link } from 'react-router-dom';
 import { restaurantTypes, supplierTypes } from '../../types';
 import { PartnerList } from './add-partner-list';
+import { PartnerListWrapper } from './add-partner-styled-components/add-functionality-styles';
 
 export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Element => {
 
@@ -29,9 +30,9 @@ export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Ele
             </Link>
           </MatchListContainer>
           :
-          <MatchListContainer>
+          <PartnerListWrapper>
             <PartnerList searchResults={searchResults} />
-          </MatchListContainer>
+          </PartnerListWrapper>
         }
       </Wrapper>
     </>

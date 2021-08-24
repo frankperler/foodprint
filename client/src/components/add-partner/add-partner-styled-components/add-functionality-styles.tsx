@@ -47,6 +47,18 @@ export const MatchListContainer = styled.section`
   margin: 3rem auto;
 `
 
+export const PartnerListWrapper = styled.div`
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin: 3rem auto;
+`
+
 export const AddRequestButton = styled.button`
   display: block;
   padding: 0.8em;
@@ -81,4 +93,46 @@ export const ContainerWrapper = styled.section`
   display: flex;
   justify-content: center;
   flex-direction: column;
+`
+
+export const AddCardContainer = styled("div")`
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start;
+  margin: 2rem;
+  justify-content: space-between;
+  overflow: hidden;
+  /* box-shadow: 0.05rem 0.05rem lightgray; */
+  background-color: white;
+  border-radius: 7px;
+
+  .img {
+    opacity: 0.6;
+    height: 8rem;
+    width: 15rem;
+  }
+
+  .name {
+    font-size: large;
+    padding: 0.1rem;
+    color: #FF686B;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .foodtype {
+    font-size: medium;
+    padding: 0.1rem;
+    font-weight: bold;
+    color: #FFA69E;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .addBtn {
+    width: 15rem;
+  }
 `
