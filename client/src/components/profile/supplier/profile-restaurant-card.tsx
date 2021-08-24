@@ -1,10 +1,7 @@
 import React from 'react';
 import { RestoImg } from '../profile-styled-components/profile.style';
 import { restaurantTypes } from '../../../types/restaurant-types';
-import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating';
-import { RestStarRating } from '../../dashboard/results/restaurants-star-rating';
-
-
+import { Link } from 'react-router-dom'
 interface Props {
   restaurant: restaurantTypes
 }
@@ -13,11 +10,10 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
 
   return (
     <div>
-      <RestoImg src={restaurant.rest_picture}></RestoImg>
-      {restaurant.rest_name}
-      <RestEcoRating restaurant={restaurant}></RestEcoRating>
-      <RestStarRating restaurant={restaurant}></RestStarRating>
-
+      <Link to={`/restaurant/${restaurant.id}`} style={{ textDecoration: 'none' }}>
+        <RestoImg src={restaurant.rest_picture} />
+        <h4 style={{ color: "#FFA69E" }}>{restaurant.rest_name}</h4>
+      </Link>
     </div>
   )
 }

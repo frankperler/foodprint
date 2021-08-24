@@ -1,17 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 import { CancelButton, DescriptionCard, ProfileHeader, DescriptionText, EditDescription, EditTextArea, UpdateChangesButton } from '../profile-styled-components/profile.style';
-import { supplierTypes } from '../../../types';
 
 import EditIcon from '@material-ui/icons/Edit';
-
+import { supplierTypes } from '../../../types';
 
 interface Props {
   supplier: supplierTypes
 }
 
-
-export const SupplierDescription = ({supplier}: Props): JSX.Element => {
+export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState<string>()

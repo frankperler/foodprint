@@ -25,6 +25,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
+import { filterRerstaurantsByCategories } from '../../services/FilterService'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
@@ -64,6 +65,8 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
 
+  // on submit
+
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>
@@ -83,7 +86,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                   <ButtonStyles>
                     <HomePageButton>
                       Search
-                    </ HomePageButton>
+                    </HomePageButton>
                   </ButtonStyles>
                 </FilterArea>
                 :
@@ -93,7 +96,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                   <BioFilter />
                   <FoodTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton>
+                    < HomePageButton>
                       Search
                     </ HomePageButton>
                   </ButtonStyles>

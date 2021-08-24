@@ -18,13 +18,19 @@ export const RestaurantCard: React.FunctionComponent<Props> = ({ restaurant }: P
       <Link to={`/restaurant/${restaurant.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{restaurant.rest_name}</div>
         <div className="foodtype">{
-          restaurant.rest_types.length == 1 ? <div> <span style={{paddingRight: "0.6em"}}>{restaurant.rest_types[0]}</span> <span style={{display: "inline-block", verticalAlign: "middle"}}><RestStarRating restaurant={restaurant}/></span> </div>
-            : <div>
-              <span style={{paddingRight: "0.6em"}}>{restaurant.rest_types[0]}, {restaurant.rest_types[1]}</span>
-             <span style={{display: "inline-block", verticalAlign: "middle"}}><RestStarRating restaurant={restaurant}/></span>
-              </div>
-              }
+          restaurant.rest_types.length == 1 ?
+            <div>
+              <span style={{ paddingRight: "0.6em" }}>{restaurant.rest_types[0]}</span>
+              <span style={{ display: "inline-block", verticalAlign: "middle" }}>
+                <RestStarRating restaurant={restaurant} /></span>
             </div>
+            : <div>
+              <span style={{ paddingRight: "0.6em" }}>{restaurant.rest_types[0]}, {restaurant.rest_types[1]}</span>
+              <span style={{ display: "inline-block", verticalAlign: "middle" }}>
+                <RestStarRating restaurant={restaurant} /></span>
+            </div>
+        }
+        </div>
         <RestEcoRating restaurant={restaurant}></RestEcoRating>
       </Link>
     </CardContainer >

@@ -18,7 +18,12 @@ export type userLoginAction = {
   payload: userTypes
 }
 
+export type userLogoutAction = {
+  type: 'LOGOUT'
+}
+
 export type registerAction = {
   type: 'REGISTER',
   payload: registeredUserTypes
 }
+

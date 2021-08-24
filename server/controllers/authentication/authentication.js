@@ -1,23 +1,31 @@
 'use strict';
-
+const JWT = require('jsonwebtoken');
 const db = require('../../models/index');
 
 // login controller
 exports.findUser = async (req, res) => {
-  try {
-    const login = await db.Login.findOne({
+  try {   
+    const userCredentials = await db.Login.findOne({
       where: {
         email: req.body.email,
-        password: req.body.password,
       }
     })
-    if (login) {
-      const user = await login.getUser();
+    if (!userCredentials) {
+      res.send("The entered credentials-email are incorrect.")
+    }
+    else if (!userCredentials.validatePassword(req.body.password, userCredentials.password)) {
+      res.send("The entered credentials-pswd are incorrect.")
+    }
+    else {
+      console.log("password is correct")
+      const user = await userCredentials.getUser();
+      const token = JWT.sign({id: user.id}, process.env.ACCESS_TOKEN_SECRET);
+      console.log("token", token)
       if (user.user_type === 'restaurant') {
         const restaurants = await user.getRestaurants({
           include: db.Supplier
         });
-        res.send({ user, restaurants });
+        res.send({ user, restaurants, token });
       }
       else if (user.user_type === 'supplier') {
         const suppliers = await user.getSuppliers({
@@ -30,15 +38,13 @@ exports.findUser = async (req, res) => {
   
         });
         console.log({ user, suppliers });
-        res.send({ user, suppliers });
+        res.send({ user, suppliers, token  });
       }
       else {
         console.log(user);
-        res.send(user);
+        res.send({user, token});
       }
-    }
-    else {
-      res.send('Error! Invalid credentials. Try again.')
+
     }
   }
   catch (e) {
@@ -46,3 +52,8 @@ exports.findUser = async (req, res) => {
     res.status = 500;
   }
 }
+  
+
+
+
+

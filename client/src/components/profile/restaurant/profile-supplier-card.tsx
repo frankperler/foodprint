@@ -19,7 +19,6 @@ export const SupplierCard: React.FunctionComponent<Props> = ({ supplier }: Props
           <ProfileName fontColor="#FFA69E">{supplier.sup_name}</ProfileName>
           <h4 style={{ color: 'black' }}>{supplier.sup_address}</h4>
           <SupplierEcoRating supplier={supplier}></SupplierEcoRating>
-          <SupplStarRating supplier={supplier} />
         </SupplierInfoInterior>
       </SupplierCardGrid>
     </Link>
