@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState, useContext } from 'react'
+import { useReducer, useEffect, useState, useContext, SetStateAction } from 'react'
 import styled from 'styled-components'
 import { FilterArea } from './filters/filters-area'
 import { GridContainer } from './grid-container'
@@ -65,29 +65,20 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
-
-  async function clickToFilterRestaurants (state: filterTypes) { 
-    const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
-    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result});
+  const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
+ 
+  async function clickToFilter (state: filterTypes) { 
+    const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType) 
+    setFilteredElements(result)
     setFilterClicked(true);
   }
-
-  async function clickToFilterSuppliers (state: filterTypes) {
-    const result = await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType);
-    dispatchSupplier({type: 'FETCH_FILTERED_SUPPLIER', payload: result});
-    setFilterClicked(true);
-  }
-
 
   async function clickToRemoveFilters () {
     setLoading(true);
-    dispatchFilter({type: 'reset-to-default'})
-    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
-    getAllSuppliers().then((suppliers) => dispatchSupplier({type: 'FETCH_ALL_SUPPLIER', payload: suppliers})).then(() => setLoading(false));
+    setFilteredElements([])
     setFilterClicked(false);
+    setLoading(false);
   }
-
-  
 
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
@@ -111,7 +102,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <RestaurantTypeSelect />
                   <MealTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton onClick={() => clickToFilterRestaurants(stateFilter)}>
+                    <HomePageButton onClick={() => clickToFilter(stateFilter)}>
                       Filter Results
                     </HomePageButton>
                     {filterClicked && 
@@ -128,7 +119,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <BioFilter />
                   <FoodTypeSelect />
                   <ButtonStyles>
-                    < HomePageButton onClick={() => clickToFilterSuppliers(stateFilter)}>
+                    < HomePageButton onClick={() => clickToFilter(stateFilter)}>
                       Filter Results
                     </ HomePageButton >
                     {filterClicked && 
@@ -142,8 +133,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               <div className="overflow">
                 <ResultsArea>
                   {filterClicked ? 
-                    <FilteredResults>
-                      This is the list of the filtered results.....
+                    <FilteredResults 
+                      filteredElements={filteredElements}
+                    >
                     </FilteredResults>
                   : 
                     ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
