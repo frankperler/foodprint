@@ -6,7 +6,7 @@ import { Room } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { supplierTypes } from '../../../types';
 import { PinRestaurantCard } from './pin-restaurants-card';
-import { SupplierCard } from '../results/suppliers-card';
+import { PinSupplierCard } from './pin-suppliers-card'
 import { userContext } from '../../../contexts/user-context'
 
 export const Map: React.FunctionComponent = () => {
@@ -101,7 +101,7 @@ export const Map: React.FunctionComponent = () => {
                     onClose={() => setCurrentPinId("")}
                   >
                     <div className='popup'>
-                      <SupplierCard supplier={supplier} />
+                      <PinSupplierCard supplier={supplier} />
                     </div>
                   </Popup>
                 )}

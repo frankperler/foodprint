@@ -14,7 +14,7 @@ export const RestaurantList: React.FunctionComponent<Props> = ({ supplier }: Pro
   return (
     <SupplierContainer>
       <ButtonWrap>
-        <Link to="/add">
+        <Link to="/add" style={{ textDecoration: 'none' }}>
           <AddSupplier>
             <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4>Add restaurant</h4>
           </AddSupplier>

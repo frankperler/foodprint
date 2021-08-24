@@ -1,7 +1,6 @@
 import React from 'react';
 import { supplierTypes } from '../../../types';
 import { ProfileName, SupplierCardGrid, SupplierImg, SupplierInfoInterior } from '../profile-styled-components/profile.style';
-import { SupplStarRating } from '../../dashboard/results/suppliers-star-rating'
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 import { Link } from "react-router-dom";
 

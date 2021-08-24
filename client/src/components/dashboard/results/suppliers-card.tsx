@@ -1,5 +1,5 @@
 import { ResultsCardStyles } from './results-styled-components/results-card-styles';
-import { SupplStarRating } from './suppliers-star-rating'
+import { SupplierEcoRating } from './suppliers-eco-rating';
 import { CardContainer } from './results-styled-components/results-card-container';
 import { supplierTypes } from '../../../types/supplier-types';
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export const SupplierCard: React.FunctionComponent<Props> = ({ supplier, value }
       <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none' }} >
         <div className="name">{supplier.sup_name}</div>
         <div className="foodtype">{value}</div>
-        <SupplStarRating supplier={supplier} />
+        <SupplierEcoRating supplier={supplier} />
       </Link>
     </CardContainer>
   )
