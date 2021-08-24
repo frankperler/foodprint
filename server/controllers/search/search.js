@@ -12,6 +12,9 @@ exports.searchRestaurantsByCity = async (req, res) => {
         rest_city: {
           [Op.like]: `%${req.body.rest_city}%`
         }
+      },
+      include: {
+        model: db.Supplier
       }
     })
     res.send(restaurants); 
@@ -29,6 +32,9 @@ exports.searchRestaurantsByName = async (req, res) => {
         rest_name: {
           [Op.like]: `%${req.body.rest_name}%`
         }
+      },
+      include: {
+        model: db.Supplier
       }
     })
     res.send(restaurants); 
@@ -45,6 +51,12 @@ exports.searchSuppliersByCity = async (req, res) => {
       where: {
         sup_city: {
           [Op.like]: `%${req.body.sup_city}%`
+        }
+      },
+      include: {
+        model: db.Production,
+        include: {
+          model: db.Product
         }
       }
     })
