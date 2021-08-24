@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useContext } from 'react'
+import { useReducer, useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { FilterArea } from './filters/filters-area'
 import { GridContainer } from './grid-container'
@@ -14,6 +14,7 @@ import { HomePageButton } from '../navbar/navbar-styled-components/homepagebutto
 import { ResultsArea } from './results/results-styled-components/results-area'
 import { RestaurantsLists } from './results/restaurants-list'
 import { SuppliersLists } from './results/suppliers-list'
+import { FilteredResults } from './results/filtered-results'
 import { TopArea } from './top-choices/top-choices-styled-components/top-area'
 import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
@@ -33,6 +34,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import './dashboard.css'
 import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
+import { restaurantTypes } from '../../types'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -62,10 +64,28 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
+  const [filterClicked, setFilterClicked] = useState(false)
 
-  async function logme(state: filterTypes) {
+  async function clickToFilter (state: filterTypes) { 
+    console.log('STATE', state)
     const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
-    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result });
+    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result});
+    setFilterClicked(true)
+  }
+
+  async function clickToRemoveFilters (stateFilter: filterTypes, stateRestaurant: restaurantTypes[]) {
+    setLoading(true);
+
+    console.log('RESTAURANT STATE BEFORE: --->', stateRestaurant)
+    console.log('FILTER STATE BEFORE: --->', stateFilter)
+    
+    // you also have to re-set the stateFilter to the default value (everything empty)
+    dispatchFilter({type: 'reset-to-default'})
+    getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
+    setFilterClicked(false)
+
+    console.log('RESTAURANT STATE AFTER: --->', stateRestaurant)
+    console.log('FILTER STATE AFTER: --->', stateFilter)
   }
 
   useEffect(() => {
@@ -90,9 +110,14 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <RestaurantTypeSelect />
                   <MealTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton onClick={() => logme(stateFilter)}>
-                      Search
+                    <HomePageButton onClick={() => clickToFilter(stateFilter)}>
+                      Filter Results
                     </HomePageButton>
+                    {filterClicked && 
+                      <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
+                          Remove Filters
+                      </HomePageButton>
+                    }
                   </ButtonStyles>
                 </FilterArea>
                 :
@@ -103,18 +128,28 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <FoodTypeSelect />
                   <ButtonStyles>
                     < HomePageButton>
-                      Search
+                      Filter Results
                     </ HomePageButton>
+                    {filterClicked && 
+                      <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
+                          Remove Filters
+                      </HomePageButton>
+                    }
                   </ButtonStyles>
                 </FilterArea>
               }
               <div className="overflow">
-
                 <ResultsArea>
-                  {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
-                    <RestaurantsLists /> :
-                    <SuppliersLists />
+                  {filterClicked ? 
+                    <FilteredResults>
+                      This is the list of the filtered results.....
+                    </FilteredResults>
+                  : 
+                    ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
+                      <RestaurantsLists /> :
+                      <SuppliersLists />
                   }
+                  
                 </ResultsArea>
               </div>
               <TopArea>

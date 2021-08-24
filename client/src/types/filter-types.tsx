@@ -13,8 +13,8 @@ export type filterTypes = {
 }
 
 export type filterActionArray = {
-  type: 'restaurant-type-change' | 'meal-type-change' | 'food-type-change',
-  payload: string[];
+  type: 'restaurant-type-change' | 'meal-type-change' | 'food-type-change' | 'reset-to-default';
+  payload?: string[];
 }
 
 export type filterActionNumber = {

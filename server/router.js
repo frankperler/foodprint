@@ -30,7 +30,9 @@ router.post('/restaurants/filterSuppliers', restaurant.filterSuppliers);
 router.get('/restaurants/:id', restaurant.getOne);
 
 router.post('/search/searchRestaurantsByCity', search.searchRestaurantsByCity);
+router.post('/search/searchRestaurantsByName', search.searchRestaurantsByName);
 router.post('/search/searchSuppliersByCity', search.searchSuppliersByCity);
+router.post('/search/searchSuppliersByName', search.searchSuppliersByName);
 
 // router.put('/users/:id', user.updateUser);
 // router.delete('/users/:id', user.deleteUser);

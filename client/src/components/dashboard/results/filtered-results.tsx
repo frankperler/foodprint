@@ -6,7 +6,7 @@ import { ListContainer } from './results-styled-components/results-list-containe
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
 
-export const FilteredRestaurantsLists: React.FunctionComponent = () => {
+export const FilteredResults: React.FunctionComponent = () => {
 
   return <></>
 
