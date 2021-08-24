@@ -60,6 +60,7 @@ exports.filterRestaurants = async (req, res) => {
   try {
     const { eco_score, type, meal_type } = req.body;
     console.log('this workssssss', eco_score, type, meal_type)
+    console.log('req.body', req.body)
 
     let where = {
       rest_eco_score: {
