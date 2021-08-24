@@ -63,8 +63,12 @@ export const App: React.FunctionComponent = () => {
             setUserType={setUserType}
             isAuth={isAuth}
             setIsAuth={setIsAuth}
+            
           />
-          <ProfileRestaurantDashboard />
+          <ProfileRestaurantDashboard
+            loading={loading}
+            setLoading={setLoading}
+          />
         </Route>
       </Switch>
     </Router>
