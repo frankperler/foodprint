@@ -15,7 +15,7 @@ export const SupplierCard: React.FunctionComponent<Props> = ({ ...Props }: Props
   return (
     <CardContainer>
       <ResultsCardStyles backgroundImg={Props.supplier.sup_picture} />
-      <Link to={`/supplier/${Props.supplier.id}`} style={{ textDecoration: 'none' }} >
+      <Link to={`/supplier/${Props.supplier.id}`} style={{ textDecoration: 'none', width: '100%' }} >
         <div className="name">{Props.supplier.sup_name}</div>
         <SupplStarRating supplier={Props.supplier} />
         <div className="bottom-card-section">

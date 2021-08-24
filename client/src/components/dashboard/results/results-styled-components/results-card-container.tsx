@@ -30,12 +30,21 @@ export const CardContainer = styled("div")`
     font-weight: bold;
     color: #FFA69E;
     cursor: pointer;
+    flex-grow: 0;
   }
 
   .bottom-card-section {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    flex-grow: 1;
     font-weight: 600;
     color: #bfbfbf;
+    margin-bottom: 0.3rem;
+  }
+
+  .distance {
+    flex-grow: 0;
+    margin-right: 0.25rem;
   }
 `
