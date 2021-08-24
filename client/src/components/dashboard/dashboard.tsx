@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState, useContext, SetStateAction } from 'react'
+import { useReducer, useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { FilterArea } from './filters/filters-area'
 import { GridContainer } from './grid-container'
@@ -27,12 +27,12 @@ import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
 import { filterRestaurantsByCategories, filterSuppliersByCategories } from '../../services/FilterService'
-
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
+import './dashboard.css'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -65,14 +65,14 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
   const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
- 
-  async function clickToFilter (state: filterTypes) { 
-    const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType) 
+
+  async function clickToFilter(state: filterTypes) {
+    const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
     setFilteredElements(result)
     setFilterClicked(true);
   }
 
-  async function clickToRemoveFilters () {
+  async function clickToRemoveFilters() {
     setLoading(true);
     setFilteredElements([])
     setFilterClicked(false);
@@ -104,9 +104,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                     <HomePageButton onClick={() => clickToFilter(stateFilter)}>
                       Filter Results
                     </HomePageButton>
-                    {filterClicked && 
+                    {filterClicked &&
                       <HomePageButton onClick={() => clickToRemoveFilters()}>
-                          Remove Filters
+                        Remove Filters
                       </HomePageButton>
                     }
                   </ButtonStyles>
@@ -121,9 +121,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                     < HomePageButton onClick={() => clickToFilter(stateFilter)}>
                       Filter Results
                     </ HomePageButton >
-                    {filterClicked && 
+                    {filterClicked &&
                       <HomePageButton onClick={() => clickToRemoveFilters()}>
-                          Remove Filters
+                        Remove Filters
                       </HomePageButton>
                     }
                   </ButtonStyles>
@@ -131,8 +131,8 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               }
               <div className="overflow">
                 <ResultsArea>
-                  {filterClicked ? 
-                    <FilteredResults 
+                  {filterClicked ?
+                    <FilteredResults
                       filteredElements={filteredElements}
                     >
                     </FilteredResults>

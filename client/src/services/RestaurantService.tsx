@@ -25,7 +25,7 @@ export async function getRestaurantById(id: string): Promise<restaurantTypes> {
 }
 
 
-export async function claimSupplier(sup_name: string, rest_id: number): Promise<restaurantTypes>  {
+export async function claimSupplier(sup_name: string, rest_id: number): Promise<restaurantTypes> {
   try {
     const res = await fetch(`${url}/restaurants/claimSupplier`, {
       method: 'POST',
