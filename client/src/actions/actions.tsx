@@ -9,7 +9,7 @@ export type supplierAction = {
 }
 
 export type restaurantAction = {
-  type: 'FETCH_ALL_RESTAURANT',
+  type: 'FETCH_ALL_RESTAURANT' | 'FETCH_FILTERED_RESTAURANT',
   payload: restaurantTypes[]
 }
 
