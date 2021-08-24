@@ -59,6 +59,7 @@ exports.getOne = async (req, res) => {
 exports.filterRestaurants = async (req, res) => {
   try {
     const { eco_score, type, meal_type } = req.body;
+    console.log('this workssssss', eco_score, type, meal_type)
 
     let where = {
       rest_eco_score: {
@@ -137,10 +138,10 @@ exports.addProduction = async (req, res) => {
 
     const co2 = product.product_CO2;
     const productionAmount = req.body.production_amount;
-    const productionEmissionsKG = productionAmount*co2*10;
+    const productionEmissionsKG = productionAmount*co2*10; 
     const production = await db.Production.create({
-        production_amount: productionAmount,
-        production_CO2 : productionEmissionsKG,
+        production_amount: productionAmount, // metric tonnes (1 metric tonne = 1000 kg)
+        production_CO2 : productionEmissionsKG, // kg CO2e
         SupplierId : req.body.sup_id,
         ProductId: product.id,
     })

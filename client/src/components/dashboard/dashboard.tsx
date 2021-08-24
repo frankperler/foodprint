@@ -25,13 +25,14 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
-import { filterRerstaurantsByCategories } from '../../services/FilterService'
+import { filterRestaurantsByCategories } from '../../services/FilterService'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
 
 import './dashboard.css'
 import { userContext } from '../../contexts/user-context'
+import { filterTypes } from '../../types/filter-types'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -62,6 +63,11 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
+  async function logme(state: filterTypes) {
+    const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
+    dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result });
+  }
+
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
@@ -86,7 +92,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <RestaurantTypeSelect />
                   <MealTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton>
+                    <HomePageButton onClick={() => logme(stateFilter)}>
                       Search
                     </HomePageButton>
                   </ButtonStyles>

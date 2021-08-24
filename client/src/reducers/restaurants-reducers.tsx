@@ -5,6 +5,10 @@ export const restaurantReducers = (restaurantState: restaurantTypes[], action: r
   switch (action.type) {
     case 'FETCH_ALL_RESTAURANT':
       return [...restaurantState, ...action.payload]
+      break;
+    case 'FETCH_FILTERED_RESTAURANT':
+      return action.payload
+      break;
     default: return restaurantState;
   }
 }
