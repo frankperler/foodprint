@@ -12,8 +12,6 @@ import { userContext } from '../../contexts/user-context';
 
 export interface Props {
   onCloseLoginModal: () => void,
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
@@ -32,6 +30,7 @@ const schema = yup.object().shape({
 export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element => {
 
   const { stateUser, dispatchUser } = useContext(userContext);
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm<LogInForm>({
     resolver: yupResolver(schema),
   })
@@ -40,6 +39,7 @@ export const FormLogIn = ({ onCloseLoginModal, setIsAuth }: Props): JSX.Element 
     logIn(credentials)
       .then((userData: userTypes) => {
         localStorage.setItem("token", userData.token);
+        setIsAuth(true)
         return dispatchUser({ type: 'LOGIN', payload: userData })
       })
 

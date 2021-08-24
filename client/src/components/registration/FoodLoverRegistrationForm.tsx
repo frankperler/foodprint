@@ -28,8 +28,6 @@ type FoodLoverRegisterForm = {
 };
 
 interface Props {
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
@@ -44,7 +42,6 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
   const history = useHistory()
 
   const onSubmit = async (data: FoodLoverRegisterForm) => {
-    setIsAuth(true)
     setValue('user_type', 'food lover')
     const user_type = getValues('user_type')
     const formData = {
@@ -56,11 +53,11 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
     }
     await registerUser(formData)
       .then((userData: registeredUserTypes) => {
+        setIsAuth(true)
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
       })
     reset();
     history.push("/");
-
   };
 
   return (
@@ -87,9 +84,7 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
         <CredentialInput type="password" {...register('confirmPassword')} />
         <div className="invalid-feedback" style={{ color: 'red' }}>{errors.confirmPassword?.message}</div>
 
-        {/* <Link to='/' style={{ textDecoration: 'none' }}> */}
-          <RegisterButton type="submit" onClick={handleSubmit(onSubmit)} >Register</RegisterButton>
-        {/* </Link> */}
+        <RegisterButton type="submit" onClick={handleSubmit(onSubmit)} >Register</RegisterButton>
       </form>
     </FormWrapper>
   )

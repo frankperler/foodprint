@@ -40,8 +40,6 @@ type RestaurantRegisterForm = {
 };
 
 interface Props {
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
@@ -57,13 +55,12 @@ export const RestaurantRegistrationForm: React.FunctionComponent<Props> = ({ set
   const onSubmit = async (data: RestaurantRegisterForm) => {
 
     // will need to submit data on the database for registration
-    setIsAuth(true)
     setValue('user_type', 'restaurant')
     const user_type = getValues('user_type');
     setValue('rest_address', (data['rest_address'].concat(', ', data['rest_city'], ', ', data['zip'], ', ', data['country'])))
     const address = getValues('rest_address');
-  
-    const formData : registrationFormUserTypes = {
+
+    const formData: registrationFormUserTypes = {
       user_type: user_type,
       user_first_name: data['user_first_name'],
       user_last_name: data['user_last_name'],
@@ -74,14 +71,13 @@ export const RestaurantRegistrationForm: React.FunctionComponent<Props> = ({ set
       email: data['email'],
       password: data['password'],
     }
-    
+
     await registerUser(formData)
       .then((userData: registeredUserTypes) => {
-        dispatchRegistrationUser({type: 'REGISTER', payload: userData})
-        console.log('response data', userData)
+        setIsAuth(true)
+        dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
       })
 
-    console.log('request data', formData);
     reset();
   };
 

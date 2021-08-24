@@ -40,8 +40,6 @@ type SupplierRegisterForm = {
 };
 
 interface Props {
-  userType: string,
-  setUserType: Dispatch<SetStateAction<string>>,
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 }
@@ -58,7 +56,6 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
   const onSubmit = async (data: SupplierRegisterForm) => {
 
     // will need to submit data on the database for registration
-    setIsAuth(true)
     setValue('user_type', 'supplier')
     const user_type = getValues('user_type')
     setValue('sup_address', (data['sup_address'].concat(', ', data['sup_city'], ', ', data['zip'], ', ', data['country'])))
@@ -78,11 +75,10 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
 
     await registerUser(formData)
       .then((userData: registeredUserTypes) => {
-        dispatchRegistrationUser({type: 'REGISTER', payload: userData})
-        console.log('response data', userData)
+        setIsAuth(true)
+        dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
       })
 
-    console.log('request data', formData);
     reset();
   };
 

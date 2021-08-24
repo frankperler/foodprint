@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react'
+import { useReducer, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { FilterArea } from './filters/filters-area'
 import { GridContainer } from './grid-container'
@@ -31,6 +31,7 @@ import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
 
 import './dashboard.css'
+import { userContext } from '../../contexts/user-context'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -42,7 +43,6 @@ export const ButtonStyles = styled.div`
 `;
 
 interface Props {
-  userType: string,
   isAuth: boolean,
   loading: boolean,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -54,7 +54,9 @@ margin: 0 auto;
 color: #36D7B7;
 `;
 
-export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, setLoading }: Props) => {
+export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading }: Props) => {
+
+  const { stateUser } = useContext(userContext)
 
   const [stateRestaurant, dispatchRestaurant] = useReducer(restaurantReducers, restaurantState)
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
@@ -74,10 +76,10 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
           {loading ? <PuffLoader css={spinnerStyle} size="200px" color="#36D7B7"></PuffLoader> :
             <GridContainer>
               <MapArea>
-                <Map userType={userType} />
+                <Map />
               </MapArea>
 
-              {((userType === 'Food lover') || (userType === 'Supplier')) ?
+              {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                 <FilterArea>
                   <EcoScoreSlider />
                   <DistanceSlider />
@@ -105,14 +107,14 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
               <div className="overflow">
 
                 <ResultsArea>
-                  {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                  {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                     <RestaurantsLists /> :
                     <SuppliersLists />
                   }
                 </ResultsArea>
               </div>
               <TopArea>
-                {((userType === 'Food lover') || (userType === 'Supplier')) ?
+                {((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                   <RestTopList /> :
                   <SupplTopList />
                 }
