@@ -52,25 +52,21 @@ async function populateSuppliers() {
       const reducedValue = greenTech.reduce((acc, value) => {
         let binary = Math.round(Math.random());
         if (binary) {
-          return {...acc, [value]: true}
+          return { ...acc, [value]: true }
         }
         else {
-          return {...acc, [value]: false}
+          return { ...acc, [value]: false }
         }
       }, {})
 
       mockSupplier.sup_greenTech = [reducedValue]
-        
-
       let energy = new Set();
       for (let j = 0; j < 2; j++) {
         energy.add(getRandomValue(energySources));
       }
       mockSupplier.sup_energy = Array.from(energy);
-
       mockSupplier.sup_vehicles = getRandomValue(vehicleFuel);
       mockSupplier.UserId = i + 103;
-
       console.log(mockSupplier)
       console.log("-------------", i)
       await Supplier.create(mockSupplier);

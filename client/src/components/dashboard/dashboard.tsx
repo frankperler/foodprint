@@ -70,8 +70,8 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
-  
-  
+
+  // on submit
 
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
@@ -92,7 +92,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                   <ButtonStyles>
                     <HomePageButton onClick={() => logme(stateFilter)}>
                       Search
-                    </ HomePageButton>
+                    </HomePageButton>
                   </ButtonStyles>
                 </FilterArea>
                 :
@@ -102,7 +102,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                   <BioFilter />
                   <FoodTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton>
+                    < HomePageButton>
                       Search
                     </ HomePageButton>
                   </ButtonStyles>
