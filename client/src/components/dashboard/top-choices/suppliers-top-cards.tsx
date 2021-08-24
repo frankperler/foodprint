@@ -13,7 +13,7 @@ export const SupplTopCard: React.FunctionComponent<Props> = ({ supplier, distanc
 
   return (
     <TopCardContainer>
-      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none', width: '100%' }} >
+      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none', width: '100%' }} />
       <TopCardStyles backgroundImg={supplier.sup_picture} />
       <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none', width: '100%'}} >
         <div className="name">{supplier.sup_name}</div>
@@ -23,6 +23,6 @@ export const SupplTopCard: React.FunctionComponent<Props> = ({ supplier, distanc
           <div className="distance">{`${Math.round((distance)!/1000)} km away`}</div>
         </div>
       </Link>
-    </TopCardContainer>
+      </TopCardContainer>
   )
 }
