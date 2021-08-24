@@ -26,7 +26,7 @@ import { supplierContext } from '../../contexts/suppliers-contexts'
 import { SupplTopList } from './top-choices/suppliers-top-list'
 import { getAllRestaurants } from '../../services/RestaurantService';
 import { getAllSuppliers } from '../../services/SupplierService';
-import { filterRestaurantsByCategories } from '../../services/FilterService'
+import { filterRestaurantsByCategories, filterSuppliersByCategories } from '../../services/FilterService'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
@@ -34,7 +34,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import './dashboard.css'
 import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
-import { restaurantTypes } from '../../types'
+import { restaurantTypes, supplierTypes } from '../../types'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -66,27 +66,28 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
 
-  async function clickToFilter (state: filterTypes) { 
-    console.log('STATE', state)
+  async function clickToFilterRestaurants (state: filterTypes) { 
     const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
     dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result});
-    setFilterClicked(true)
+    setFilterClicked(true);
   }
 
-  async function clickToRemoveFilters (stateFilter: filterTypes, stateRestaurant: restaurantTypes[]) {
-    setLoading(true);
+  async function clickToFilterSuppliers (state: filterTypes) {
+    const result = await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType);
+    dispatchSupplier({type: 'FETCH_FILTERED_SUPPLIER', payload: result});
+    setFilterClicked(true);
+  }
 
-    console.log('RESTAURANT STATE BEFORE: --->', stateRestaurant)
-    console.log('FILTER STATE BEFORE: --->', stateFilter)
-    
-    // you also have to re-set the stateFilter to the default value (everything empty)
+
+  async function clickToRemoveFilters () {
+    setLoading(true);
     dispatchFilter({type: 'reset-to-default'})
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
-    setFilterClicked(false)
-
-    console.log('RESTAURANT STATE AFTER: --->', stateRestaurant)
-    console.log('FILTER STATE AFTER: --->', stateFilter)
+    getAllSuppliers().then((suppliers) => dispatchSupplier({type: 'FETCH_ALL_SUPPLIER', payload: suppliers})).then(() => setLoading(false));
+    setFilterClicked(false);
   }
+
+  
 
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
@@ -110,11 +111,11 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <RestaurantTypeSelect />
                   <MealTypeSelect />
                   <ButtonStyles>
-                    <HomePageButton onClick={() => clickToFilter(stateFilter)}>
+                    <HomePageButton onClick={() => clickToFilterRestaurants(stateFilter)}>
                       Filter Results
                     </HomePageButton>
                     {filterClicked && 
-                      <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
+                      <HomePageButton onClick={() => clickToRemoveFilters()}>
                           Remove Filters
                       </HomePageButton>
                     }
@@ -127,11 +128,11 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                   <BioFilter />
                   <FoodTypeSelect />
                   <ButtonStyles>
-                    < HomePageButton>
+                    < HomePageButton onClick={() => clickToFilterSuppliers(stateFilter)}>
                       Filter Results
-                    </ HomePageButton>
+                    </ HomePageButton >
                     {filterClicked && 
-                      <HomePageButton onClick={() => clickToRemoveFilters(stateFilter, stateRestaurant)}>
+                      <HomePageButton onClick={() => clickToRemoveFilters()}>
                           Remove Filters
                       </HomePageButton>
                     }
