@@ -12,7 +12,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
   const { stateSupplier } = useContext(supplierContext)
   const { stateUser } = useContext(userContext)
   const [supplTypesArray] = useState(['Fruits', 'Vegetables', 'Dairy'])
-  console.log("stateSupplier", stateSupplier)
 
   function supplierLoop(value: string, suppliers: supplierTypes[]): any {
     return suppliers.map((supplier) => {
@@ -21,7 +20,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
           let count = 0;
           if (production.Product.product_type === value && count < 1) {
             count++
-            console.log("checking sup name inside loop ---", supplier.sup_name);
             return <SupplierCard supplier={supplier} key={Math.random() * +supplier.id} value={value} />
           }
         })
@@ -31,20 +29,20 @@ export const SuppliersLists: React.FunctionComponent = () => {
 
   return (
     <>
-    {stateUser.user.user_type =="restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers
-      && stateUser.restaurants[0].Suppliers.length?
-      <ListWrapper key={"myList"}>
-      <ListTitle>
-        My Suppliers
-      </ListTitle>
-      <ListContainer>
-        {
-          stateUser.restaurants[0].Suppliers.map((supplier: supplierTypes) => 
-             < SupplierCard supplier={supplier} key={supplier.id} />
-          )}
-      </ListContainer>
-    </ListWrapper>
-      : null}
+      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers
+        && stateUser.restaurants[0].Suppliers.length ?
+        <ListWrapper key={"myList"}>
+          <ListTitle>
+            My Suppliers
+          </ListTitle>
+          <ListContainer>
+            {
+              stateUser.restaurants[0].Suppliers.map((supplier: supplierTypes) =>
+                < SupplierCard supplier={supplier} key={supplier.id} />
+              )}
+          </ListContainer>
+        </ListWrapper>
+        : null}
       {stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {
           return (
