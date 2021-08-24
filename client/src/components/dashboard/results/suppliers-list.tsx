@@ -7,16 +7,22 @@ import { ListContainer } from './results-styled-components/results-list-containe
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
 import { calculateDistance } from '../../../services/distance';
+import { useEffect } from 'react';
 
 
 export const SuppliersLists: React.FunctionComponent = () => {
 
   const { stateSupplier } = useContext(supplierContext)
-  const { stateUser } = useContext(userContext)
   const [supplTypesArray] = useState(['Fruits', 'Vegetables', 'Dairy'])
 
-  const userLat = stateUser.restaurants![0].rest_lat;
-  const userLon = stateUser.restaurants![0].rest_lng
+  const { stateUser } = useContext(userContext)
+  const [userLat, setUserLat] = useState<number>(0)
+  const [userLon, setUserLon] = useState<number>(0)
+
+  useEffect(() => {
+    setUserLat(stateUser.restaurants![0].rest_lat)
+    setUserLon(stateUser.restaurants![0].rest_lng)
+  }, [])
 
   function supplierLoop(value: string, suppliers: supplierTypes[]): any {
 

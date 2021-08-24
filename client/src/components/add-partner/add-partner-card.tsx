@@ -15,7 +15,7 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
     <>
       {restaurantCheck(result) ?
         <AddCardContainer>
-          <Link to={`/restaurant/${result.id}`} style={{ textDecoration: 'none' }} >
+          <Link to={`/restaurant/${result.id}`} style={{ textDecoration: 'none', width: '100%' }}  >
             <img className="img" src={result.rest_picture} />
             <div className="name">{result.rest_name}</div>
             <div className="foodtype">
@@ -26,14 +26,14 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
         </AddCardContainer >
         :
         <AddCardContainer>
-          <Link to={`/supplier/${result.id}`} style={{ textDecoration: 'none' }} >
+          <Link to={`/supplier/${result.id}`} style={{ textDecoration: 'none', width: '100%' }} >
             <img className="img" src={result.sup_picture} />
             <div className="name">{result.sup_name}</div>
             <div className="foodtype">
               {result.Productions.length && result.Productions[0].Product.product_type}
             </div>
           </Link>
-          <HomePageButton>Add</HomePageButton>
+          <HomePageButton className='addBtn'>Add</HomePageButton>
         </AddCardContainer>
       }
     </>
