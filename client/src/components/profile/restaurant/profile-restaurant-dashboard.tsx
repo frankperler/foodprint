@@ -10,8 +10,15 @@ import { useParams } from 'react-router'
 import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
+import { LoadSpinner } from '../../LoadSpinner'
 
-export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
+
+type Props = {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const ProfileRestaurantDashboard = ({loading, setLoading}: Props): JSX.Element => {
 
   const [restItem, setRestItem] = useState<restaurantTypes>(
     {
@@ -43,6 +50,7 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
     getRestaurantById(params.id)
       .then((restaurant) => {
         setRestItem(restaurant)
+        setLoading(false)
       })
       .catch(error => {
         console.log(error)
@@ -51,6 +59,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
 
 
   return (
+    <div>
+    { loading ? <LoadSpinner></LoadSpinner> :
     <ProfileRestaurantGridContainer>
       <RestoCover src={restItem.rest_picture} />
       <InfoArea>
@@ -70,5 +80,8 @@ export const ProfileRestaurantDashboard: React.FunctionComponent = () => {
         <SuppliersList restaurant={restItem} />
       </ProfileDetails>
     </ProfileRestaurantGridContainer >
+    
+    }
+  </div>
   )
 }
