@@ -6,6 +6,10 @@ export const supplierReducers = (supplierState: supplierTypes[], action: supplie
   switch (action.type) {
     case 'FETCH_ALL_SUPPLIER':
       return [...action.payload]
+      break;
+    case 'FETCH_FILTERED_SUPPLIER':
+      return action.payload
+      break;
     default: return supplierState
   }
 }

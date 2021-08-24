@@ -23,9 +23,19 @@ export async function filterRestaurantsByCategories(eco_score?: number, type?: s
   }
 }
 
-export async function filterSuppliersByCategories(eco_score: number, bio: boolean, food_types: string[]): Promise<supplierTypes[]> {
+export async function filterSuppliersByCategories(eco_score?: number, bio?: boolean, food_types?: string[]): Promise<supplierTypes[]> {
   try {
-    const res = await fetch(`${url}/restaurants/filterSuppliers`);
+    const res = await fetch(`${url}/restaurants/filterSuppliers`, {
+      method: 'POST',
+      body: JSON.stringify({
+        eco_score,
+        bio, // CAREFUL!!!! Not sure if this should be stringified <<<<<--------------
+        food_types
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
     return await res.json();
   }
   catch (e) {
