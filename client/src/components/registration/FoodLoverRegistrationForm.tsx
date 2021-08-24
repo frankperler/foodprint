@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useReducer } from 'react';
+import { Dispatch, SetStateAction, useReducer, useContext } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
 import { RegisterNameInput, CredentialInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
@@ -8,7 +8,10 @@ import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { registerUser } from '../../services/RegisterService';
 import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
-import { registeredUserTypes } from '../../types/user-types';
+import { userContext } from '../../contexts/user-context';
+import { registeredUserTypes, userTypes } from '../../types/user-types';
+import { logIn } from '../../services/LoginService';
+import { UserSelectProperty } from '@material-ui/styles/node_modules/csstype';
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -39,6 +42,7 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
+  const { stateUser, dispatchUser } = useContext(userContext);
   const history = useHistory()
 
   const onSubmit = async (data: FoodLoverRegisterForm) => {
@@ -52,9 +56,11 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
       password: data['password'],
     }
     await registerUser(formData)
-      .then((userData: registeredUserTypes) => {
+      .then(async (registeredUserData: registeredUserTypes) => {
         setIsAuth(true)
-        dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
+        dispatchRegistrationUser({ type: 'REGISTER', payload: registeredUserData })
+        await logIn({email: formData.email, password: formData.password})
+          .then((userData: userTypes) => dispatchUser({type: 'LOGIN', payload: userData }))
       })
     reset();
     history.push("/");

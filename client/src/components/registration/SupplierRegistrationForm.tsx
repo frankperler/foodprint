@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useReducer } from 'react';
+import { Dispatch, SetStateAction, useReducer, useContext } from 'react';
 import { FormWrapper } from './registration-styled-components/FormRegister.style';
 import { RegisterNameInput, CredentialInput, AddressTwoInput, AddressTwoWrapper, EstablishmentInput, Label } from './registration-styled-components/FormRegister.style';
 import { RegisterButton } from './registration-styled-components/FormRegister.style';
@@ -9,6 +9,11 @@ import * as yup from 'yup';
 import { registerUser } from '../../services/RegisterService';
 import { registrationReducers, registrationState } from '../../reducers/registration-reducers';
 import { registrationFormUserTypes, registeredUserTypes } from '../../types/user-types';
+import { useHistory } from 'react-router-dom';
+import { logIn } from '../../services/LoginService';
+import { userContext } from '../../contexts/user-context';
+import { userTypes } from '../../types';
+
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -51,6 +56,8 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
+  const { stateUser, dispatchUser } = useContext(userContext);
+  const history = useHistory()
 
 
   const onSubmit = async (data: SupplierRegisterForm) => {
@@ -74,12 +81,15 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
     }
 
     await registerUser(formData)
-      .then((userData: registeredUserTypes) => {
+      .then(async (userData: registeredUserTypes) => {
         setIsAuth(true)
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
+        await logIn({email: formData.email, password: formData.password})
+          .then((userData: userTypes) => dispatchUser({type: 'LOGIN', payload: userData }))
       })
 
     reset();
+    history.push("/");
   };
 
   return (
