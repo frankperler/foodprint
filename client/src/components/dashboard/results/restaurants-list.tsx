@@ -6,7 +6,6 @@ import { RestaurantCard } from './restaurants-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
-import { suppliers } from '../../../mock';
 
 export const RestaurantsLists: React.FunctionComponent = () => {
 
@@ -18,7 +17,8 @@ export const RestaurantsLists: React.FunctionComponent = () => {
 
   return (
     <>
-      {stateUser.user.user_type =="supplier" && stateUser.suppliers && stateUser.suppliers[0].Restaurants?
+      {stateUser.user.user_type =="supplier" && stateUser.suppliers && stateUser.suppliers[0].Restaurants
+      && stateUser.suppliers[0].Restaurants.length?
       <ListWrapper key={"myList"}>
       <ListTitle>
         My Restaurants
