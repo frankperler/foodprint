@@ -83,8 +83,8 @@ export const RestaurantRegistrationForm: React.FunctionComponent<Props> = ({ set
         setIsAuth(true)
         console.log("user data from restaurant registration: ", userData);
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
-        await logIn({email: formData.email, password: formData.password})
-          .then((userData: userTypes) => dispatchUser({type: 'LOGIN', payload: userData }))
+        await logIn({ email: formData.email, password: formData.password })
+          .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
       })
 
     reset();

@@ -73,8 +73,6 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     getAllRestaurants().then((restaurants) => dispatchRestaurant({ type: 'FETCH_ALL_RESTAURANT', payload: restaurants })).then(() => setLoading(false));
   }, [])
 
-  // on submit
-
   return (
     <supplierContext.Provider value={{ stateSupplier, dispatchSupplier }}>
       <restaurantContext.Provider value={{ stateRestaurant, dispatchRestaurant }}>

@@ -84,10 +84,9 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
       .then(async (userData: registeredUserTypes) => {
         setIsAuth(true)
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
-        await logIn({email: formData.email, password: formData.password})
-          .then((userData: userTypes) => dispatchUser({type: 'LOGIN', payload: userData }))
+        await logIn({ email: formData.email, password: formData.password })
+          .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
       })
-
     reset();
     history.push("/");
   };
