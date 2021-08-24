@@ -55,7 +55,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />
       <InfoArea>
-       <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
+        <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
         <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
         <Website>Visit website</Website>
         <h4>{supplierItem.sup_address}</h4>
