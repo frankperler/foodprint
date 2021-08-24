@@ -12,8 +12,6 @@ import MenuListComposition from './togglemenu'
 import { MenuList } from '@material-ui/core'
 import CustomizedMenus from './togglemenu'
 
-
-
 const customStyles = {
   content: {
     top: '50%',

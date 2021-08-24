@@ -2,12 +2,12 @@
 import { restaurantTypes, supplierTypes } from "../types";
 const url = 'http://localhost:3001';
 
-export async function findRestaurantsByName (name?: string): Promise<restaurantTypes[]> {
+export async function findRestaurantsByName(name?: string): Promise<restaurantTypes[]> {
   try {
     const res = await fetch(`${url}/search/searchRestaurantsByName`, {
       method: 'POST',
       body: JSON.stringify({
-        name
+        "rest_name": name
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export async function findRestaurantsByName (name?: string): Promise<restaurantT
 }
 
 
-export async function findRestaurantsByCity (city?: string): Promise<restaurantTypes[]> {
+export async function findRestaurantsByCity(city?: string): Promise<restaurantTypes[]> {
   try {
     const res = await fetch(`${url}/search/searchRestaurantsByCity`, {
       method: 'POST',
@@ -42,12 +42,12 @@ export async function findRestaurantsByCity (city?: string): Promise<restaurantT
 }
 
 
-export async function findSuppliersByName (name?: string): Promise<supplierTypes[]> {
+export async function findSuppliersByName(name?: string): Promise<supplierTypes[]> {
   try {
     const res = await fetch(`${url}/search/searchSuppliersByName`, {
       method: 'POST',
       body: JSON.stringify({
-        name
+        "sup_name": name
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export async function findSuppliersByName (name?: string): Promise<supplierTypes
 }
 
 
-export async function findSuppliersByCity (city?: string): Promise<supplierTypes[]> {
+export async function findSuppliersByCity(city?: string): Promise<supplierTypes[]> {
   try {
     const res = await fetch(`${url}/search/searchSuppliersByCity`, {
       method: 'POST',

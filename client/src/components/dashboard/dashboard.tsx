@@ -30,8 +30,6 @@ import { filterRestaurantsByCategories, filterSuppliersByCategories } from '../.
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
-
-import './dashboard.css'
 import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
@@ -138,7 +136,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
                       filteredElements={filteredElements}
                     >
                     </FilteredResults>
-                  : 
+                    :
                     ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                       <RestaurantsLists /> :
                       <SuppliersLists />

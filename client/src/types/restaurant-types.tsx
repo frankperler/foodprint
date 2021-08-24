@@ -21,3 +21,7 @@ export type restaurantTypes = {
   UserId: number,
   Suppliers?: supplierTypes[]
 }
+
+export const restaurantCheck = (val: restaurantTypes | supplierTypes): val is restaurantTypes => {
+  return (val as restaurantTypes).rest_name !== undefined
+}

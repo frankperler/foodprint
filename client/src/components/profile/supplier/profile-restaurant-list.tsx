@@ -4,19 +4,21 @@ import { RestaurantCard } from './profile-restaurant-card';
 import { AddCircle } from '@material-ui/icons';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { supplierTypes } from '../../../types';
+import { Link } from 'react-router-dom'
 
 interface Props {
   supplier: supplierTypes
 }
-
 export const RestaurantList: React.FunctionComponent<Props> = ({ supplier }: Props) => {
 
   return (
     <SupplierContainer>
       <ButtonWrap>
-        <AddSupplier>
-          <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4>Add restaurant</h4>
-        </AddSupplier>
+        <Link to="/add" style={{ textDecoration: 'none' }}>
+          <AddSupplier>
+            <AddCircle fontSize="large" style={{ display: 'inline-block' }} /> <h4>Add restaurant</h4>
+          </AddSupplier>
+        </Link>
       </ButtonWrap>
       <ProfileHeader>Who I'm selling to...</ProfileHeader>
       <RestoListContainer>

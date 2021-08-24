@@ -25,10 +25,10 @@ export const SupplTopList: React.FunctionComponent = () => {
           </TopTitle>
           <ListContainer>
             {stateSupplier.sort((a, b) => (b.sup_eco_score) - (a.sup_eco_score)).slice(0, 3).map((supplier: supplierTypes) => (
-              < SupplTopCard 
-                      supplier={supplier} 
-                      distance={calculateDistance(supplier, userLat, userLon)}
-                      key={supplier.id} />
+              < SupplTopCard
+                supplier={supplier}
+                distance={calculateDistance(supplier, userLat, userLon)}
+                key={supplier.id} />
             )
             )}
           </ListContainer>
