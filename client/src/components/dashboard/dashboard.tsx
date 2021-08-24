@@ -62,6 +62,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
 
   async function logme (state: filterTypes) { 
+    console.log('STATE', state)
     const result = await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
     dispatchRestaurant({ type: 'FETCH_FILTERED_RESTAURANT', payload: result});
   }
@@ -109,14 +110,12 @@ export const Dashboard: React.FunctionComponent<Props> = ({ userType, loading, s
                 </FilterArea>
               }
               <div className="overflow">
-
                 <ResultsArea>
                   {((userType === 'Food lover') || (userType === 'Supplier')) ?
                     <RestaurantsLists /> :
                     <SuppliersLists />
                   }
                 </ResultsArea>
-
               </div>
               <TopArea>
                 {((userType === 'Food lover') || (userType === 'Supplier')) ?
