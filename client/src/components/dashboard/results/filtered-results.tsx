@@ -22,7 +22,7 @@ export const FilteredResults: React.FunctionComponent = () => {
           {`Eco: ${stateFilter?.ecoScore}+`}
         </ListTitle>
         <ListTitle>
-          {`${stateFilter?.restaurantType?.join(', ')}, ${stateFilter?.mealType?.join(', ')}`}
+          Filtered Results
         </ListTitle>
         <ListContainer>
           {
