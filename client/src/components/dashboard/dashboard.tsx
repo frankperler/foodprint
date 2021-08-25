@@ -66,6 +66,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
+  const [inputTyped, setInputTyped] = useState(false)
   const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
   const {stateSearchBar} = useContext(searchBarContext)
 
@@ -84,8 +85,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
 
   useEffect(() => {
     // console.log('stateSearchBar', stateSearchBar)
-    if (stateSearchBar.city.length > 3) {
-      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setFilterClicked(true));
+    if (stateSearchBar.city.length > 2) {
+      setInputTyped(true)
+      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)) // .then(() => setFilterClicked(true));
 
     }
   }, [stateSearchBar])
@@ -142,7 +144,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               }
               <div className="overflow">
                 <ResultsArea>
-                  {filterClicked ?
+                  {(filterClicked || inputTyped) ?
                     <FilteredResults
                       filteredElements={filteredElements}
                     >
