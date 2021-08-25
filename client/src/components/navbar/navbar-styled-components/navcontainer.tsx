@@ -6,7 +6,7 @@ export const Navcontainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  margin: auto;
+  margin: auto auto 4em auto;
   width: 75vw;
   height: 4rem;
 `

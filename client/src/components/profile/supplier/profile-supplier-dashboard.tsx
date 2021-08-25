@@ -11,7 +11,24 @@ import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 
-export const ProfileSupplierDashboard: React.FunctionComponent = () => {
+import { css } from "@emotion/react";
+import PuffLoader from "react-spinners/PuffLoader";
+
+
+
+type Props = {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const spinnerStyle = css`
+display: block;
+margin: 0 auto;
+color: #36D7B7;
+transform: translateY(20%);
+`;
+
+export const ProfileSupplierDashboard = ({loading, setLoading}: Props): JSX.Element => {
 
   const [supplierItem, setSupplierItem] = useState<supplierTypes>(
     {
@@ -63,6 +80,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
         setSupplierItem(supplier)
         setRoundedEcoScore(Math.round(supplier.sup_eco_score / 0.5) * 0.5)
         setGreenTechObj(JSON.parse(supplier.sup_greenTech[0]))
+        setLoading(false);
       })
       .catch(error => {
         console.log(error)
@@ -70,6 +88,9 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
   }, [])
 
   return (
+    <>
+    { 
+      loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />
       <InfoArea>
@@ -86,5 +107,7 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
         <RestaurantList supplier={supplierItem} />
       </ProfileDetails>
     </ProfileSupplierGridContainer>
+  }
+  </>
   )
 }

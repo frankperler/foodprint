@@ -33,6 +33,7 @@ import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
 import './dashboard.css'
+import { LoadSpinner } from '../LoadSpinner'
 
 export const ButtonStyles = styled.div`
   display: flex;
