@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { EditDescription, ProfileHeader, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
-import FormLabel from '@material-ui/core/FormLabel';
+import { EditDescription, ProfileHeader, TechnologySourceGrid, TextDetails, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -81,7 +80,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
       </TechnologyRibbons>
       <TechChoiceGrid>
         {isEditing ?
-          <EnergySourceGrid>
+          <TechnologySourceGrid>
             <FormControl component="fieldset">
               <div>
                 <EnergyTypeForm>
@@ -132,58 +131,14 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
               </div>
               <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
             </FormControl>
-          </EnergySourceGrid>
+          </TechnologySourceGrid>
           :
           <EnergySourceGrid>
-            <FormControl>
-              <div>
-                <EnergyTypeForm>
-                  <h4>Main source of energy</h4>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Solar"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label='Wind'
-                    />
-                    <FormControlLabel label="Natural gas"
-                      disabled control={<GreenCheckbox />}
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electricity (renewable)"
-                    />
-                  </FormGroup>
-                </EnergyTypeForm>
-                <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Biofuel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Gasoline"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Diesel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electric"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Hybrid"
-                    />
-                  </FormGroup>
-                </VehicleTypeForm>
-              </div>
-            </FormControl>
+            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
+              return <h3 style={{ color: 'black' }}>{energy}</h3>
+            })}</TextDetails>
+
+            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

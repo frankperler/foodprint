@@ -69,8 +69,6 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
       })
   }, [])
 
-
-
   return (
     <ProfileSupplierGridContainer>
       <RestoCover src={supplierItem.sup_picture} />

@@ -56,9 +56,35 @@ export const InfoArea = styled("div") <{ gridArea?: string }>`
   padding: 1rem;
 `
 
-export const TextDetails = styled("h4")`
-  font-size: 1rem;
+export const TextDetails = styled("h4") <{ fontColor?: string }>`
+  font-size: 1.2rem;
   font-weight: normal;
+  color: ${(props) => props.fontColor};
+`
+
+export const Table = styled("table")`
+  color: #818181;
+  width: 90%;
+  margin-left: 4rem;
+`
+
+export const TableRow = styled("tr")`
+  font-size: large;
+`
+
+export const TableHeader = styled.th <{ textAlign?: string }>`
+  color: #FF686B;
+  text-align: ${(props) => props.textAlign ? props.textAlign : "center"};
+`
+
+export const TableData = styled.td<{
+  textColor?: string,
+  textAlign?: string,
+  fontWeight?: string,
+}>` 
+  color: ${(props) => props.textColor};
+  text-align: ${(props) => props.textAlign ? props.textAlign : "center"};
+  font-weight: ${(props) => props.fontWeight ? props.fontWeight : "normal"};
 `
 
 export const ProfileName = styled("h2") <{ fontColor?: string }>`
@@ -135,21 +161,20 @@ export const TechChoiceGrid = styled.div`
   width: 80%;
 `
 
-export const EnergySourceGrid = styled.div`
+export const TechnologySourceGrid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
   align-items: flex-start;
 `
 
-export const AddHeader = styled.h4`
-    display: inline-block;
-  `
+export const EnergySourceGrid = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content:space-around;
+`
 
-export const CheckBoxForm = styled.form`
-  width: 32rem;
-
-  `
 export const VehicleTypeForm = styled.div`
     margin-top: 1.8rem;
     margin-bottom: 1rem;
@@ -299,7 +324,3 @@ export const ProductsContainer = styled.div`
   width: 100%;
 `
 
-export const TableHeader = styled.th`
-  margin: 2rem 1rem;
-  text-align:left;
-`
