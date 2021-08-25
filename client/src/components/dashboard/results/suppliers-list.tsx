@@ -45,7 +45,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
 
   return (
     <>
-      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers ?
+      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers && stateUser.restaurants[0].Suppliers.length ?
         <ListWrapper key={"myList"}>
           <ListTitle>
             My Suppliers

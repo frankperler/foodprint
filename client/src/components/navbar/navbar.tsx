@@ -77,7 +77,6 @@ export const Navbar: React.FunctionComponent<Props> = ({ isAuth, setIsAuth }: Pr
           </HomeButtonFlex> :
           <div>
             <CustomizedMenus
-              stateUser={stateUser}
               clickLogOut={clickLogOut}
             ></CustomizedMenus>
           </div>}

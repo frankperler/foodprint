@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'https://source.unsplash.com/IQVFVH0ajag?1600x900'
     },
     sup_greenTech: {
-      type: DataTypes.ARRAY() , // CAREFUL HERE
+      type: DataTypes.ARRAY(DataTypes.JSON), // CAREFUL HERE
       allowNull: true,
       defaultValue: [{
         "Plastic_Free": true,
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       }]
     },
     sup_energy: {
-      type: DataTypes.ARRAY(DataTypes.STRING) ,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
       defaultValue: [
         'Solar-powered'

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withStyles, createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
@@ -9,6 +9,7 @@ import LogoutIcon from '@material-ui/icons/Logout';
 import AccountBoxRoundedIcon from '@material-ui/icons/AccountBoxRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { userTypes } from '../../types';
+import { userContext } from '../../contexts/user-context';
 
 import Avatar from '@material-ui/core/Avatar';
 
@@ -33,7 +34,6 @@ const StyledMenu = withStyles({
 ));
 
 type Props = {
-  stateUser: userTypes;
   clickLogOut: () => void
 }
 
@@ -51,7 +51,7 @@ const StyledMenuItem = withStyles((theme) => ({
 const UserButton = withStyles((theme: Theme) => ({
   root: {
     color: theme.palette.common.white,
-    backgroundColor:'#FF686B',
+    backgroundColor: '#FF686B',
     '&:hover': {
       backgroundColor: '#FF686B',
     },
@@ -82,17 +82,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function CustomizedMenus({stateUser, clickLogOut}: Props): JSX.Element {
-  
+export default function CustomizedMenus({ clickLogOut }: Props): JSX.Element {
+
   const classes = useStyles();
-  
+  const { stateUser, dispatchUser } = useContext(userContext);
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
-  
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -100,27 +99,27 @@ export default function CustomizedMenus({stateUser, clickLogOut}: Props): JSX.El
 
   return (
     <div>
-    {stateUser.user.user_picture ? 
-    <div onClick={handleClick} style={{display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer"}}>
-        <Avatar
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        className={classes.medium}
-        style={{display: "inline-block", marginRight: "0.5em"}}
-        src={stateUser.user.user_picture} />
-        {stateUser.user.user_first_name + " " + stateUser.user.user_last_name}
-        <ExpandMoreIcon fontSize="large"></ExpandMoreIcon>
+      {stateUser.user.user_picture ?
+        <div onClick={handleClick} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}>
+          <Avatar
+            aria-controls="customized-menu"
+            aria-haspopup="true"
+            className={classes.medium}
+            style={{ display: "inline-block", marginRight: "0.5em" }}
+            src={stateUser.user.user_picture} />
+          {stateUser.user.user_first_name + " " + stateUser.user.user_last_name}
+          <ExpandMoreIcon fontSize="large"></ExpandMoreIcon>
         </div>
-        : 
-      <UserButton
-      aria-controls="customized-menu"
-      aria-haspopup="true"
-      variant="contained"
-      color="primary"
-      onClick={handleClick}
-      >
-        <span>{stateUser.user.user_first_name + " " + stateUser.user.user_last_name}</span>
-      </UserButton>
+        :
+        <UserButton
+          aria-controls="customized-menu"
+          aria-haspopup="true"
+          variant="contained"
+          color="primary"
+          onClick={handleClick}
+        >
+          <span>{stateUser.user.user_first_name + " " + stateUser.user.user_last_name}</span>
+        </UserButton>
       }
       <StyledMenu
         id="customized-menu"
@@ -128,7 +127,7 @@ export default function CustomizedMenus({stateUser, clickLogOut}: Props): JSX.El
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        style={{marginTop: "0.35em", marginLeft: "1.6em"}}
+        style={{ marginTop: "0.35em", marginLeft: "1.6em" }}
       >
         <StyledMenuItem>
           <ListItemIcon>
