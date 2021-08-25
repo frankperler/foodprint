@@ -45,8 +45,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
 
   return (
     <>
-      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers
-        && stateUser.restaurants[0].Suppliers.length ?
+      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers ?
         <ListWrapper key={"myList"}>
           <ListTitle>
             My Suppliers
@@ -58,12 +57,13 @@ export const SuppliersLists: React.FunctionComponent = () => {
                   supplier={supplier}
                   distance={calculateDistance(supplier, userLat, userLon)}
                   key={supplier.id}
-                  product={supplier.Productions[0].Product.product_name} />
+                  product={supplier.Productions ? supplier.Productions[0].Product.product_type : "Production not displayed"}
+                />
               }
               )}
           </ListContainer>
         </ListWrapper>
-        : null}
+        : <div></div>}
       {
         stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {

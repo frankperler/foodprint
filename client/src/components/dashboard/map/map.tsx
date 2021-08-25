@@ -26,7 +26,7 @@ export const Map: React.FunctionComponent = () => {
     height: "100%",
     latitude: 52.518900,
     longitude: 13.409730,
-    zoom: 11
+    zoom: 9.5
   });
 
   return (
