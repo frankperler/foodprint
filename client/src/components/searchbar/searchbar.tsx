@@ -9,6 +9,9 @@ export const Searchbar: React.FunctionComponent = () => {
   const {stateSearchBar, dispatchSearchBar} = useContext(searchBarContext)
   const handleChange = (e: { target: { value: string; } }) => {
     dispatchSearchBar({type: 'city-change', payload: e.target.value});
+    // if (stateSearchBar.city.length === 0) {
+
+    // }
   }
 
   return (

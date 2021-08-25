@@ -33,7 +33,7 @@ import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
 import './dashboard.css'
-import { findRestaurantsByCity } from '../../services/SearchService'
+import { findRestaurantsByCity, findSuppliersByCity } from '../../services/SearchService'
 
 
 export const ButtonStyles = styled.div`
@@ -69,6 +69,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [inputTyped, setInputTyped] = useState(false)
   const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
   const {stateSearchBar} = useContext(searchBarContext)
+  const [toggleFiltering, setToggleFiltering] = useState(false)
 
   async function clickToFilter(state: filterTypes) {
     const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
@@ -83,12 +84,18 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     setLoading(false);
   }
 
+  // if (stateSearchBar.city.length > 2) {
+  //   setToggleFiltering(true)
+  //   // setInputTyped(true)
+  // }
+  
+
+
   useEffect(() => {
     // console.log('stateSearchBar', stateSearchBar)
     if (stateSearchBar.city.length > 2) {
       setInputTyped(true)
-      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)) // .then(() => setFilterClicked(true));
-
+      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)) //.then(() => setFilterClicked(true));
     }
   }, [stateSearchBar])
 

@@ -67,7 +67,7 @@ export async function findSuppliersByCity(city?: string): Promise<supplierTypes[
     const res = await fetch(`${url}/search/searchSuppliersByCity`, {
       method: 'POST',
       body: JSON.stringify({
-        "sup_city": city
+        "sup_address": city
       }),
       headers: {
         'Content-Type': 'application/json',
