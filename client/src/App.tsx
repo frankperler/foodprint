@@ -63,7 +63,9 @@ export const App: React.FunctionComponent = () => {
             isAuth={isAuth}
             setIsAuth={setIsAuth}
             />
-            <ProfileSupplierDashboard />
+            <ProfileSupplierDashboard 
+              loading={loading}
+              setLoading={setLoading}/>
             </div> :
             stateUser.user.user_type === 'restaurant'?
             <div>

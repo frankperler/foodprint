@@ -16,8 +16,6 @@ import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useContext } from 'react';
 
-export const ProfileSupplierDashboard: React.FunctionComponent = () => {
-
 
 type Props = {
   loading: boolean;
@@ -79,11 +77,16 @@ export const ProfileSupplierDashboard = ({loading, setLoading}: Props): JSX.Elem
   const params: { id: string } = useParams()
   let supplierId = 'no id';
 
+  function isUserOwner() : boolean {
+    if(params.id) return false
+    else return true
+  }
+
   useEffect(() => {
     
     if (params.id) supplierId = params.id
     else supplierId = (stateUser.suppliers![0].id).toString();
-    getSupplierById(params.id)
+    getSupplierById(supplierId)
       .then((supplier) => {
         setSupplierItem(supplier)
         setRoundedEcoScore(Math.round(supplier.sup_eco_score / 0.5) * 0.5)
@@ -108,11 +111,11 @@ export const ProfileSupplierDashboard = ({loading, setLoading}: Props): JSX.Elem
         <TextDetails>{supplierItem.sup_address}</TextDetails>
         <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
       </InfoArea>
-      <SupplierDescription supplier={supplierItem} />
+      <SupplierDescription supplier={supplierItem} isOwner={isUserOwner()}/>
       <ProfileDetails>
-        <Technology supplier={supplierItem} greenTechObj={greenTechObj} />
+        <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isUserOwner()} />
         <ProductsList supplier={supplierItem} />
-        <RestaurantList supplier={supplierItem} />
+        <RestaurantList supplier={supplierItem} isOwner={isUserOwner()}/>
       </ProfileDetails>
     </ProfileSupplierGridContainer>
   }
