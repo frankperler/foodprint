@@ -23,7 +23,7 @@ export const App: React.FunctionComponent = () => {
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
   const [loading, setLoading] = useState(true);
-
+  const [isOwner, setIsOwner] = useState(false)
   //to persist state on refresh
   useEffect(() => {
     dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!) });
@@ -59,7 +59,6 @@ export const App: React.FunctionComponent = () => {
               setUserType={setUserType}
               isAuth={isAuth}
               setIsAuth={setIsAuth}
-
             />
           </Route>
           <Route path='/profile' exact>
@@ -71,7 +70,10 @@ export const App: React.FunctionComponent = () => {
                 />
                 <ProfileSupplierDashboard
                   loading={loading}
-                  setLoading={setLoading} />
+                  setLoading={setLoading}
+                  isOwner={isOwner}
+                  setIsOwner={setIsOwner}
+                />
               </div> :
               stateUser.user.user_type === 'restaurant' ?
                 <div>
@@ -81,7 +83,10 @@ export const App: React.FunctionComponent = () => {
                   />
                   <ProfileRestaurantDashboard
                     loading={loading}
-                    setLoading={setLoading} />
+                    setLoading={setLoading}
+                    isOwner={isOwner}
+                    setIsOwner={setIsOwner}
+                  />
                 </div> :
                 <ThankYouPage />
             }
@@ -106,7 +111,10 @@ export const App: React.FunctionComponent = () => {
             />
             <ProfileSupplierDashboard
               loading={loading}
-              setLoading={setLoading} />
+              setLoading={setLoading}
+              isOwner={isOwner}
+              setIsOwner={setIsOwner}
+            />
           </Route>
 
           <Route path='/restaurant/:id'>
@@ -117,6 +125,8 @@ export const App: React.FunctionComponent = () => {
             <ProfileRestaurantDashboard
               loading={loading}
               setLoading={setLoading}
+              isOwner={isOwner}
+              setIsOwner={setIsOwner}
             />
           </Route>
         </Switch>

@@ -33,7 +33,7 @@ interface Props {
     "Organic": boolean,
     "Water_Recycling": boolean,
   },
-  isOwner: () => boolean
+  isOwner: boolean
 }
 
 

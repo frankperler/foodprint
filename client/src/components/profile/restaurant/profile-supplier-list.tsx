@@ -7,7 +7,7 @@ import { restaurantTypes, supplierTypes } from '../../../types';
 
 type Props = {
   restaurant: restaurantTypes;
-  isOwner: () => boolean
+  isOwner: boolean;
 }
 
 export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant, isOwner }: Props) => {

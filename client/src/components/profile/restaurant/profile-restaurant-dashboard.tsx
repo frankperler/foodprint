@@ -18,6 +18,8 @@ import { userContext } from '../../../contexts/user-context';
 type Props = {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isOwner: boolean;
+  setIsOwner: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const spinnerStyle = css`
@@ -27,7 +29,7 @@ color: #36D7B7;
 transform: translateY(20%);
 `;
 
-export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
+export const ProfileRestaurantDashboard = ({ loading, setLoading, isOwner, setIsOwner }: Props): JSX.Element => {
 
   const { stateUser } = useContext(userContext);
   const [restItem, setRestItem] = useState<restaurantTypes>(
@@ -57,14 +59,19 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   const params: { id: string } = useParams()
   let restaurantId = 'no id';
 
-  function isUserOwner(): boolean {
-    if (params.id) return false
-    else return true
-  }
+  // function isUserOwner(): boolean {
+  //   if (params.id) return false
+  //   else return true
+  // }
 
   useEffect(() => {
-    if (params.id) restaurantId = params.id
-    else restaurantId = (stateUser.restaurants![0].id).toString();
+    if (params.id) {
+      restaurantId = params.id
+      setIsOwner(false)
+    } else {
+      restaurantId = (stateUser.restaurants![0].id).toString();
+      setIsOwner(true)
+    }
     setLoading(true)
     getRestaurantById(restaurantId) // CAREFUL
       .then((restaurant) => {
@@ -93,9 +100,9 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             )}
             </TextDetails>
           </InfoArea>
-          <RestaurantDescription restaurant={restItem} isOwner={isUserOwner} />
+          <RestaurantDescription restaurant={restItem} isOwner={isOwner} />
           <ProfileDetails>
-            <SuppliersList restaurant={restItem} isOwner={isUserOwner} />
+            <SuppliersList restaurant={restItem} isOwner={isOwner} />
           </ProfileDetails>
         </ProfileRestaurantGridContainer >
       }

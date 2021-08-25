@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   supplier: supplierTypes,
-  isOwner: () => boolean
+  isOwner: boolean
 }
 export const RestaurantList: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
 

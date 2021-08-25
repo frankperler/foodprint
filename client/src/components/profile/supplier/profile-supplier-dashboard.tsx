@@ -19,6 +19,8 @@ import { useContext } from 'react';
 type Props = {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isOwner: boolean;
+  setIsOwner: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const spinnerStyle = css`
@@ -28,7 +30,7 @@ color: #36D7B7;
 transform: translateY(20%);
 `;
 
-export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.Element => {
+export const ProfileSupplierDashboard = ({ loading, setLoading, isOwner, setIsOwner }: Props): JSX.Element => {
 
   const { stateUser } = useContext(userContext);
   const [supplierItem, setSupplierItem] = useState<supplierTypes>(
@@ -76,15 +78,20 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
   const params: { id: string } = useParams()
   let supplierId = 'no id';
 
-  function isUserOwner(): boolean {
-    if (params.id) return false
-    else return true
-  }
+  // function isUserOwner(): boolean {
+  //   if (params.id) return false
+  //   else return true
+  // }
 
   useEffect(() => {
     setLoading(true)
-    if (params.id) supplierId = params.id
-    else supplierId = (stateUser.suppliers![0].id).toString();
+    if (params.id) {
+      supplierId = params.id
+      setIsOwner(false)
+    } else {
+      supplierId = (stateUser.suppliers![0].id).toString();
+      setIsOwner(true)
+    }
     getSupplierById(supplierId)
       .then((supplier) => {
         setSupplierItem(supplier)
@@ -110,11 +117,11 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
               <TextDetails>{supplierItem.sup_address}</TextDetails>
               <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
             </InfoArea>
-            <SupplierDescription supplier={supplierItem} isOwner={isUserOwner} />
+            <SupplierDescription supplier={supplierItem} isOwner={isOwner} />
             <ProfileDetails>
-              <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isUserOwner} />
+              <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isOwner} />
               <ProductsList supplier={supplierItem} />
-              <RestaurantList supplier={supplierItem} isOwner={isUserOwner} />
+              <RestaurantList supplier={supplierItem} isOwner={isOwner} />
             </ProfileDetails>
           </ProfileSupplierGridContainer>
       }

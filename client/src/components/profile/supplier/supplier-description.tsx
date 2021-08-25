@@ -7,7 +7,7 @@ import { supplierTypes } from '../../../types';
 
 interface Props {
   supplier: supplierTypes,
-  isOwner: () => boolean
+  isOwner: boolean
 }
 
 export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {

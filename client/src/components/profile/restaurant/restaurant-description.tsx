@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 interface Props {
   restaurant: restaurantTypes;
-  isOwner: () => boolean;
+  isOwner: boolean;
 }
 
 export const RestaurantDescription: React.FunctionComponent<Props> = ({ restaurant, isOwner }: Props) => {
