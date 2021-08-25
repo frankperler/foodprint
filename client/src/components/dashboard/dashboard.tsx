@@ -83,29 +83,28 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     setFilterClicked(false);
     setLoading(false);
   }
-
-  // if (stateSearchBar.city.length > 2) {
-  //   setToggleFiltering(true)
-  //   // setInputTyped(true)
-  // }
   
 
   const allFiltered: any = [] // CAREFUL!!!!!!!
 
   useEffect(() => {
-    // console.log('stateSearchBar', stateSearchBar)
-
     if (stateSearchBar.city.length > 2) {
       setInputTyped(true)
       if (stateUser.user.user_type === 'food lover' || stateUser.user.user_type === 'supplier') {
-        findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results))//setFilteredElements(results)) //.then(() => setFilterClicked(true));
-        console.log('ALL FILTERED: ', allFiltered)
+        setLoading(true)
+        findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
+        
+          // console.log('ALL FILTERED: ', allFiltered)
         // findRestaurantsByName(stateSearchBar.city).then((nameResults) => allFiltered.concat(nameResults))
         // setFilteredElements(allFiltered)
       }
       else {
-        findSuppliersByCity(stateSearchBar.city) .then((results) => setFilteredElements(results)) //.then(() => setFilterClicked(true));
+        setLoading(true)
+        findSuppliersByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
       }
+    }
+    else {
+      setInputTyped(false)
     }
   }, [stateSearchBar])
 
@@ -162,10 +161,9 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               <div className="overflow">
                 <ResultsArea>
                   {(filterClicked || inputTyped) ?
-                    <FilteredResults
+                    <FilteredResults 
                       filteredElements={filteredElements}
-                    >
-                    </FilteredResults>
+                    />
                     :
                     ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                       <RestaurantsLists /> :

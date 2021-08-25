@@ -49,8 +49,8 @@ exports.searchSuppliersByCity = async (req, res) => {
   try {
     const suppliers = await db.Supplier.findAll({
       where: {
-        sup_city: {
-          [Op.like]: `%${req.body.sup_city}%`
+        sup_address: {
+          [Op.like]: `%${req.body.sup_address}%`
         }
       },
       include: {
@@ -64,7 +64,8 @@ exports.searchSuppliersByCity = async (req, res) => {
   }
   catch (e) {
     console.log(e);
-    res.status = 500;
+    res.status(500);
+    res.send(e);
   }
 }
 

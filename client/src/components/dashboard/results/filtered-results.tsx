@@ -16,7 +16,6 @@ export const FilteredResults: React.FunctionComponent<Props> = ({ filteredElemen
     return (element as restaurantTypes).rest_name !== undefined
   }
 
-  console.log(filteredElements)
 
   const filteredResults = () => {
     if (filteredElements.length) {
@@ -31,7 +30,7 @@ export const FilteredResults: React.FunctionComponent<Props> = ({ filteredElemen
         })
       }
     } else {
-      return <h1>No results found</h1>
+      return <h1 style={{marginLeft: '2rem'}}>No results found</h1>
     }
   }
 
