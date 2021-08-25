@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { InfoArea, ProfileName } from '../profile-styled-components/profile.style';
 import { Website, ProfileSupplierGridContainer, RestoCover } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
@@ -10,10 +10,12 @@ import { supplierTypes } from '../../../types';
 import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
+import { userContext } from '../../../contexts/user-context'
+
 
 export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
-
+  const { stateUser } = useContext(userContext);
   const [supplierItem, setSupplierItem] = useState<supplierTypes>(
     {
       id: 0,
@@ -38,8 +40,12 @@ export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
   const [roundedEcoScore, setRoundedEcoScore] = useState(0)
   const params: { id: string } = useParams()
+  let supplierId = 'no id';
 
   useEffect(() => {
+    
+    if (params.id) supplierId = params.id
+    else supplierId = (stateUser.suppliers![0].id).toString();
     getSupplierById(params.id)
       .then((supplier) => {
         setSupplierItem(supplier)

@@ -6,7 +6,7 @@ import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
-import { calculateDistance } from '../../../services/distance';
+import { calculateDistance } from '../../../tools/distance'
 import { useEffect } from 'react';
 
 
@@ -64,7 +64,7 @@ export const SuppliersLists: React.FunctionComponent = () => {
               )}
           </ListContainer>
         </ListWrapper>
-        : null}
+        : <div></div>}
       {
         stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {

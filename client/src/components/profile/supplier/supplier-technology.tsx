@@ -23,10 +23,11 @@ const GreenCheckbox = withStyles({
 
 
 interface Props {
-  supplier: supplierTypes
+  supplier: supplierTypes,
+  isOwner: boolean
 }
 
-export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) => {
+export const Technology: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -102,7 +103,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
+                  <h4>The majority of our vehicles are...</h4>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -156,7 +157,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
+                  <h4>The majority of our vehicles are...</h4>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       disabled control={<GreenCheckbox />}

@@ -32,7 +32,7 @@ export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier }
           <EditIcon></EditIcon>
         }
       </EditDescription>
-      <ProfileHeader>Description</ProfileHeader>
+      <ProfileHeader>About us</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>
           <EditTextArea onChange={handleInputChange}>{supplier.sup_description}</EditTextArea>

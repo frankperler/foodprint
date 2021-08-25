@@ -31,7 +31,8 @@ const StyledMenu = withStyles({
 
 type Props = {
   stateUser: userTypes;
-  clickLogOut: () => void
+  clickLogOut: () => void;
+  goToProfile: () => void;
 }
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -55,7 +56,7 @@ const UserButton = withStyles((theme: Theme) => ({
   },
 }))(Button);
 
-export default function CustomizedMenus({stateUser, clickLogOut}: Props): JSX.Element {
+export default function CustomizedMenus({stateUser, clickLogOut, goToProfile}: Props): JSX.Element {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -88,7 +89,7 @@ export default function CustomizedMenus({stateUser, clickLogOut}: Props): JSX.El
           <ListItemIcon>
             <AccountBoxRoundedIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText primary="Profile" onClick={goToProfile} />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>

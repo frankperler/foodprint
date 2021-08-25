@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext} from 'react'
 import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
@@ -11,7 +11,7 @@ import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
 import { LoadSpinner } from '../../LoadSpinner'
-
+import { userContext } from '../../../contexts/user-context'
 
 type Props = {
   loading: boolean;
@@ -20,6 +20,7 @@ type Props = {
 
 export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
 
+  const { stateUser } = useContext(userContext);
   const [restItem, setRestItem] = useState<restaurantTypes>(
     {
       id: 0,
@@ -45,9 +46,18 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   )
 
   const params: { id: string } = useParams()
+  let restaurantId = 'no id';
+
+  function isUserOwner() : boolean {
+    if(params.id) return false
+    else return true
+  }
 
   useEffect(() => {
-    getRestaurantById(params.id)
+    console.log("params in restaurant profile---", params)
+    if (params.id) restaurantId = params.id
+    else restaurantId = (stateUser.restaurants![0].id).toString();
+    getRestaurantById(restaurantId)
       .then((restaurant) => {
         setRestItem(restaurant)
         setLoading(false)
@@ -67,17 +77,20 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <RestEcoRating restaurant={restItem}></RestEcoRating>
             <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
             <RestStarRating restaurant={restItem} />
-            <Website href={restItem.rest_website}>Visit website</Website>
+            <Website href={restItem.rest_website}>Visit our website</Website>
             <h4>{restItem.rest_address}</h4>
             <h4>{restItem.rest_phone_number}</h4>
-            <h4>{restItem.opening_hours.map(day =>
-              <Day>{day}<br /></Day>
-            )}
-            </h4>
+            {restItem.opening_hours? 
+              <h4>{restItem.opening_hours.map(day =>
+                <Day>{day}<br /></Day>
+              )}
+              </h4>  
+            : <div></div>}
+            
           </InfoArea>
-          <RestaurantDescription restaurant={restItem} />
+          <RestaurantDescription restaurant={restItem} isOwner={isUserOwner()} />
           <ProfileDetails>
-            <SuppliersList restaurant={restItem} />
+            <SuppliersList restaurant={restItem} isOwner={isUserOwner()} />
           </ProfileDetails>
         </ProfileRestaurantGridContainer >
       }
