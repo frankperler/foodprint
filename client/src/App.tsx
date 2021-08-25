@@ -11,10 +11,14 @@ import { ContainerThirdPartyRequestPartner } from './components/add-partner/thir
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
 import { useEffect } from 'react'
+import { searchBarContext } from './contexts/filters-contexts'
+import { searchBarReducers, searchBarState } from './reducers/filters-reducers'
+
 
 export const App: React.FunctionComponent = () => {
 
   const [stateUser, dispatchUser] = useReducer(userLoginReducers, userLoginState)
+  const [stateSearchBar, dispatchSearchBar] = useReducer(searchBarReducers, searchBarState)
   const [userType, setUserType] = useState("Food lover")
   const [isAuth, setIsAuth] = useState(false)
   const [loading, setLoading] = useState(true);
@@ -39,12 +43,14 @@ export const App: React.FunctionComponent = () => {
               isAuth={isAuth}
               setIsAuth={setIsAuth}
             />
-            <Searchbar />
-            <Dashboard
-              isAuth={isAuth}
-              loading={loading}
-              setLoading={setLoading}
-            />
+            <searchBarContext.Provider value={{stateSearchBar, dispatchSearchBar}} >
+              <Searchbar />
+              <Dashboard
+                isAuth={isAuth}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            </searchBarContext.Provider>
           </Route>
           <Route path='/register' exact>
             <RegistrationContainer

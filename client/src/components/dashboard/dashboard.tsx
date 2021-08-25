@@ -18,7 +18,7 @@ import { FilteredResults } from './results/filtered-results'
 import { TopArea } from './top-choices/top-choices-styled-components/top-area'
 import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
-import { filterContext } from '../../contexts/filters-contexts'
+import { filterContext, searchBarContext } from '../../contexts/filters-contexts'
 import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
 import { restaurantContext } from '../../contexts/restaurants-contexts'
 import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
@@ -33,6 +33,8 @@ import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
 import './dashboard.css'
+import { findRestaurantsByCity } from '../../services/SearchService'
+
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -65,6 +67,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
   const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
+  const {stateSearchBar} = useContext(searchBarContext)
 
   async function clickToFilter(state: filterTypes) {
     const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
@@ -78,6 +81,14 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     setFilterClicked(false);
     setLoading(false);
   }
+
+  useEffect(() => {
+    // console.log('stateSearchBar', stateSearchBar)
+    if (stateSearchBar.city.length > 3) {
+      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setFilterClicked(true));
+
+    }
+  }, [stateSearchBar])
 
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));

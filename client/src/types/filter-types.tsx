@@ -28,3 +28,13 @@ export type filterActionBool = {
 }
 
 export type filterAction = filterActionNumber | filterActionArray | filterActionBool
+
+
+export type searchBarTypes = {
+  city: string  /* | number | readonly string[] | undefined */
+}
+
+export type searchBarAction = {
+  type: 'city-change',
+  payload: string
+}

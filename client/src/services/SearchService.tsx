@@ -27,7 +27,7 @@ export async function findRestaurantsByCity(city?: string): Promise<restaurantTy
     const res = await fetch(`${url}/search/searchRestaurantsByCity`, {
       method: 'POST',
       body: JSON.stringify({
-        city
+        "rest_city": city
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export async function findSuppliersByCity(city?: string): Promise<supplierTypes[
     const res = await fetch(`${url}/search/searchSuppliersByCity`, {
       method: 'POST',
       body: JSON.stringify({
-        city
+        "sup_city": city
       }),
       headers: {
         'Content-Type': 'application/json',
