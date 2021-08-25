@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
+import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day, TextDetails } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
@@ -57,7 +57,6 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
       })
   }, [])
 
-
   return (
     <div>
       {loading ? <LoadSpinner></LoadSpinner> :
@@ -68,12 +67,12 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
             <RestStarRating restaurant={restItem} />
             <Website href={restItem.rest_website}>Visit website</Website>
-            <h4>{restItem.rest_address}</h4>
-            <h4>{restItem.rest_phone_number}</h4>
-            <h4>{restItem.opening_hours.map(day =>
+            <TextDetails>{restItem.rest_address}</TextDetails>
+            <TextDetails>{restItem.rest_phone_number}</TextDetails>
+            <TextDetails>{restItem.opening_hours.map(day =>
               <Day>{day}<br /></Day>
             )}
-            </h4>
+            </TextDetails>
           </InfoArea>
           <RestaurantDescription restaurant={restItem} />
           <ProfileDetails>
