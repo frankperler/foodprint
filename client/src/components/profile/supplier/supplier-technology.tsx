@@ -33,9 +33,9 @@ interface Props {
     "Organic": boolean,
     "Water_Recycling": boolean,
   },
-  isOwner: boolean
+  isOwner: () => boolean
 }
- 
+
 
 export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj, isOwner }: Props) => {
 
@@ -69,14 +69,14 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
 
   return (
     <TechnologyContainer>
-      {!isOwner?  <div></div> :
-      <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        {isEditing ?
-          <CancelButton>Cancel</CancelButton>
-          :
-          <EditIcon></EditIcon>
-        }
-      </EditDescription>
+      {!isOwner ? <div></div> :
+        <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+          {isEditing ?
+            <CancelButton>Cancel</CancelButton>
+            :
+            <EditIcon></EditIcon>
+          }
+        </EditDescription>
       }
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>

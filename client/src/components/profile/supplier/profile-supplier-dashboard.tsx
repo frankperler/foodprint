@@ -76,13 +76,13 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
   const params: { id: string } = useParams()
   let supplierId = 'no id';
 
-  function isUserOwner() : boolean {
-    if(params.id) return false
+  function isUserOwner(): boolean {
+    if (params.id) return false
     else return true
   }
 
   useEffect(() => {
-    setLoading(true)  
+    setLoading(true)
     if (params.id) supplierId = params.id
     else supplierId = (stateUser.suppliers![0].id).toString();
     getSupplierById(supplierId)
@@ -99,25 +99,25 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
 
   return (
     <>
-    { 
-      loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
-    <ProfileSupplierGridContainer>
-      <RestoCover src={supplierItem.sup_picture} />
-      <InfoArea>
-        <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
-        <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
-        <Website>Visit website</Website>
-        <TextDetails>{supplierItem.sup_address}</TextDetails>
-        <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
-      </InfoArea>
-      <SupplierDescription supplier={supplierItem} isOwner={isUserOwner()}/>
-      <ProfileDetails>
-        <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isUserOwner()} />
-        <ProductsList supplier={supplierItem} />
-        <RestaurantList supplier={supplierItem} isOwner={isUserOwner()}/>
-      </ProfileDetails>
-    </ProfileSupplierGridContainer>
-  }
-  </>
+      {
+        loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
+          <ProfileSupplierGridContainer>
+            <RestoCover src={supplierItem.sup_picture} />
+            <InfoArea>
+              <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
+              <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
+              <Website>Visit website</Website>
+              <TextDetails>{supplierItem.sup_address}</TextDetails>
+              <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
+            </InfoArea>
+            <SupplierDescription supplier={supplierItem} isOwner={isUserOwner} />
+            <ProfileDetails>
+              <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isUserOwner} />
+              <ProductsList supplier={supplierItem} />
+              <RestaurantList supplier={supplierItem} isOwner={isUserOwner} />
+            </ProfileDetails>
+          </ProfileSupplierGridContainer>
+      }
+    </>
   )
 }

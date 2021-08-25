@@ -12,7 +12,7 @@ import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
-import {userContext } from '../../../contexts/user-context';
+import { userContext } from '../../../contexts/user-context';
 
 
 type Props = {
@@ -57,8 +57,8 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   const params: { id: string } = useParams()
   let restaurantId = 'no id';
 
-  function isUserOwner() : boolean {
-    if(params.id) return false
+  function isUserOwner(): boolean {
+    if (params.id) return false
     else return true
   }
 
@@ -66,7 +66,7 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
     if (params.id) restaurantId = params.id
     else restaurantId = (stateUser.restaurants![0].id).toString();
     setLoading(true)
-    getRestaurantById(params.id)
+    getRestaurantById(restaurantId) // CAREFUL
       .then((restaurant) => {
         setRestItem(restaurant)
         setLoading(false)
@@ -93,9 +93,9 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             )}
             </TextDetails>
           </InfoArea>
-          <RestaurantDescription restaurant={restItem} isOwner={isUserOwner()} />
+          <RestaurantDescription restaurant={restItem} isOwner={isUserOwner} />
           <ProfileDetails>
-            <SuppliersList restaurant={restItem} isOwner={isUserOwner()} />
+            <SuppliersList restaurant={restItem} isOwner={isUserOwner} />
           </ProfileDetails>
         </ProfileRestaurantGridContainer >
       }

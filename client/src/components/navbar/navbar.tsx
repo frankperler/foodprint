@@ -44,16 +44,16 @@ export const Navbar: React.FunctionComponent<Props> = ({ isAuth, setIsAuth }: Pr
 
   // const [openRegistration, setOpenRegistration] = useState<boolean>(false);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
-  const history  = useHistory();
+  const history = useHistory();
 
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
   const goToProfile = () => {
     isUserAuthorized(stateUser.token).then((response) => {
-      console.log("token from goToProfile---", stateUser.token)
-      console.log("goToProfile response----", response)
-      if(response === "Authorized to see profile") {
+      // console.log("token from goToProfile---", stateUser.token)
+      // console.log("goToProfile response----", response)
+      if (response === "Authorized to see profile") {
         history.push("/profile");
       }
     })

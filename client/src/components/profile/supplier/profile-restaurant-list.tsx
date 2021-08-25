@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   supplier: supplierTypes,
-  isOwner: boolean
+  isOwner: () => boolean
 }
 export const RestaurantList: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
 
   return (
     <SupplierContainer>
-      {!isOwner?  <div></div> :
+      {!isOwner ? <div></div> :
         <ButtonWrap>
           <Link to="/add" style={{ textDecoration: 'none' }}>
             <AddSupplier>

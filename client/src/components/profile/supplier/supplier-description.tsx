@@ -7,7 +7,7 @@ import { supplierTypes } from '../../../types';
 
 interface Props {
   supplier: supplierTypes,
-  isOwner: boolean
+  isOwner: () => boolean
 }
 
 export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
@@ -26,7 +26,7 @@ export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier, 
 
   return (
     <DescriptionCard>
-      {!isOwner?  <div></div> :
+      {!isOwner ? <div></div> :
         <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
           {isEditing ?
             <CancelButton>Cancel</CancelButton>

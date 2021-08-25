@@ -7,17 +7,17 @@ import { restaurantTypes, supplierTypes } from '../../../types';
 
 type Props = {
   restaurant: restaurantTypes;
-  isOwner: boolean
+  isOwner: () => boolean
 }
 
 export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant, isOwner }: Props) => {
 
   return (
     <SupplierContainer>
-      {!isOwner?  <div></div> :
+      {!isOwner ? <div></div> :
         <ButtonWrap>
           <Link to="/add" style={{ textDecoration: 'none' }}>
-            <AddSupplier style={{color: "#84DCC6"}}>
+            <AddSupplier style={{ color: "#84DCC6" }}>
               <AddCircle fontSize="large" />
               <h4>Add supplier</h4>
             </AddSupplier>

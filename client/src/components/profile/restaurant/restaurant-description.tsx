@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 interface Props {
   restaurant: restaurantTypes;
-  isOwner: boolean;
+  isOwner: () => boolean;
 }
 
 export const RestaurantDescription: React.FunctionComponent<Props> = ({ restaurant, isOwner }: Props) => {
@@ -23,18 +23,18 @@ export const RestaurantDescription: React.FunctionComponent<Props> = ({ restaura
     e.preventDefault();
     setDescriptionValue(descriptionValue);
   }
-  
+
   return (
     <DescriptionCard>
-       
-    {!isOwner?  <div></div> :
-      <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        {isEditing ? 
-          <CancelButton>Cancel</CancelButton>
-          :
-          <EditIcon></EditIcon>
-        }
-       </EditDescription>
+
+      {!isOwner ? <div></div> :
+        <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+          {isEditing ?
+            <CancelButton>Cancel</CancelButton>
+            :
+            <EditIcon></EditIcon>
+          }
+        </EditDescription>
       }
       <ProfileHeader>About us</ProfileHeader>
       <DescriptionText>
