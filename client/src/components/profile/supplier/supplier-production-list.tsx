@@ -1,9 +1,9 @@
 import React from 'react';
 import { supplierTypes } from '../../../types';
-import { ProductsContainer, ProfileHeader, TableHeader } from '../profile-styled-components/profile.style';
+import { ProductsContainer, ProfileHeader, TableHeader, Table, TableRow, TableData } from '../profile-styled-components/profile.style';
 
 interface Props {
-  supplier: supplierTypes
+  supplier: supplierTypes;
 }
 
 export const ProductsList: React.FunctionComponent<Props> = ({ supplier }: Props) => {
@@ -11,24 +11,25 @@ export const ProductsList: React.FunctionComponent<Props> = ({ supplier }: Props
   return (
     <ProductsContainer>
       <ProfileHeader>Our main products</ProfileHeader>
-      <table style={{ width: "80%", marginLeft: "9rem" }}>
-        <tr style={{ fontSize: "large", marginLeft: "3rem" }}>
-          <TableHeader>Product <br />(type)</TableHeader>
-          <TableHeader>Production <br />(tonnes)</TableHeader>
-          <TableHeader>gCO2e <br />(per 100g of product)</TableHeader>
-          <TableHeader>Production <br />(tonnes of CO2e)</TableHeader>
-        </tr>
+      <Table>
+        <TableRow>
+          <TableHeader textAlign="center">Product</TableHeader>
+          <TableHeader>Production (tonnes)</TableHeader>
+          <TableHeader>gCO2e (per 100g of product)</TableHeader>
+          <TableHeader>Production (tonnes of CO2e)</TableHeader>
+        </TableRow>
         {supplier.Productions.map((production) => {
           return (
-            <tr>
-              <td align="left">{production.Product.product_name}</td>
-              <td align="left">{production.production_amount}</td>
-              <td align="left">{production.Product.product_CO2}</td>
-              <td align="left">{production.production_CO2 / 1000}</td>
-            </tr>
+            <TableRow>
+              <TableData textAlign="center" textColor="black" fontWeight="bold">{production.Product.product_name}</TableData>
+              <TableData >{production.production_amount}</TableData>
+              <TableData>{production.Product.product_CO2}</TableData>
+              <TableData>{production.production_CO2 / 1000}</TableData>
+            </TableRow>
           )
         })}
-      </table>
+      </Table>
     </ProductsContainer >
   )
 }
+
