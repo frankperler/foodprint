@@ -1,17 +1,17 @@
 import { registerAction } from "../actions/actions";
 import { registeredUserTypes } from "../types/user-types";
 
-
-export const registrationReducers = (state: registeredUserTypes, action: registerAction) : registeredUserTypes => {
-  switch(action.type) {
+export const registrationReducers = (state: registeredUserTypes, action: registerAction): registeredUserTypes => {
+  switch (action.type) {
     case 'REGISTER':
-      return {...state,
+      return {
+        ...state,
         user: action.payload.user,
         newRestaurant: action.payload?.newRestaurant || null,
         newSupplier: action.payload?.newSupplier || null,
       }
-  default:
-    return state
+    default:
+      return state
   }
 }
 

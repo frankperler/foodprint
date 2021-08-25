@@ -49,7 +49,7 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
               {result.rest_types.length && result.rest_types[0]}
             </div>
           </Link>
-          <HomePageButton onClick={() => handleClickRestaurant(result.rest_name, stateUser.suppliers![0].id)} className='addBtn'>Add</HomePageButton>
+          <HomePageButton onClick={() => handleClickRestaurant(result.rest_name, stateUser.suppliers![0].id)} className='addBtn' style={{backgroundColor: "#84DCC6"}}>Add</HomePageButton>
         </AddCardContainer >
         :
         <AddCardContainer>
