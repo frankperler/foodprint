@@ -20,7 +20,8 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
 
   const handleClickSupplier = async (sup_name: string, id: number) => {
     try {
-      await claimSupplier(sup_name, id)
+      console.log("stateUser token from claimSupplier click---", stateUser.token )
+      await claimSupplier(sup_name, id, stateUser.token)
         .then(() => { history.push('/thankyou') })
     } catch (error) {
       console.log(error)
@@ -29,9 +30,13 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
 
   const handleClickRestaurant = async (rest_name: string, id: number) => {
     try {
-      await claimRestaurant(rest_name, id)
-        .then(() => { history.push('/thankyou') })
+      console.log("stateUser token from claimSupplier click---", stateUser.token )
+      console.log('supplier id---', id)
+      console.log('restaurant name---', rest_name)
 
+      await claimRestaurant(rest_name, id, stateUser.token)
+        .then(() => { history.push('/thankyou') })
+ 
     } catch (error) {
       console.log(error)
     }

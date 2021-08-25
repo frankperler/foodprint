@@ -10,10 +10,13 @@ import { supplierTypes } from '../../../types';
 import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
+import { userContext } from '../../../contexts/user-context'
 
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
+import { useContext } from 'react';
 
+export const ProfileSupplierDashboard: React.FunctionComponent = () => {
 
 
 type Props = {
@@ -30,6 +33,7 @@ transform: translateY(20%);
 
 export const ProfileSupplierDashboard = ({loading, setLoading}: Props): JSX.Element => {
 
+  const { stateUser } = useContext(userContext);
   const [supplierItem, setSupplierItem] = useState<supplierTypes>(
     {
       id: 0,
@@ -73,8 +77,12 @@ export const ProfileSupplierDashboard = ({loading, setLoading}: Props): JSX.Elem
     "Water_Recycling": false,
   })
   const params: { id: string } = useParams()
+  let supplierId = 'no id';
 
   useEffect(() => {
+    
+    if (params.id) supplierId = params.id
+    else supplierId = (stateUser.suppliers![0].id).toString();
     getSupplierById(params.id)
       .then((supplier) => {
         setSupplierItem(supplier)

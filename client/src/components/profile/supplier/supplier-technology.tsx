@@ -23,6 +23,7 @@ const GreenCheckbox = withStyles({
 
 interface Props {
   supplier: supplierTypes,
+<<<<<<< HEAD
   greenTechObj: {
     "Plastic_Free": boolean,
     "Biodynamic": boolean,
@@ -36,6 +37,12 @@ interface Props {
 }
 
 export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj }: Props) => {
+=======
+  isOwner: boolean
+}
+
+export const Technology: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
+>>>>>>> auth6
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -104,7 +111,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
+                  <h4>The majority of our vehicles are...</h4>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -134,11 +141,64 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           </TechnologySourceGrid>
           :
           <EnergySourceGrid>
+<<<<<<< HEAD
             <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
               return <h3 style={{ color: 'black' }}>{energy}</h3>
             })}</TextDetails>
 
             <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
+=======
+            <FormControl>
+              <div>
+                <EnergyTypeForm>
+                  <h4>Main source of energy</h4>
+                  <FormLabel component="legend">Select up to two</FormLabel>
+                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Solar"
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label='Wind'
+                    />
+                    <FormControlLabel label="Natural gas"
+                      disabled control={<GreenCheckbox />}
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Electricity (renewable)"
+                    />
+                  </FormGroup>
+                </EnergyTypeForm>
+                <VehicleTypeForm>
+                  <h4>The majority of our vehicles are...</h4>
+                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Biofuel"
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Gasoline"
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Diesel"
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Electric"
+                    />
+                    <FormControlLabel
+                      disabled control={<GreenCheckbox />}
+                      label="Hybrid"
+                    />
+                  </FormGroup>
+                </VehicleTypeForm>
+              </div>
+            </FormControl>
+>>>>>>> auth6
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

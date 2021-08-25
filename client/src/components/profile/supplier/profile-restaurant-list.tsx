@@ -20,7 +20,7 @@ export const RestaurantList: React.FunctionComponent<Props> = ({ supplier }: Pro
           </AddSupplier>
         </Link>
       </ButtonWrap>
-      <ProfileHeader>Who I'm selling to...</ProfileHeader>
+      <ProfileHeader>Who we're selling to...</ProfileHeader>
       <RestoListContainer>
         {supplier.Restaurants && supplier.Restaurants.map((restaurant: restaurantTypes) => {
           return (
