@@ -14,6 +14,7 @@ export const SearchButton = styled.button`
   color: white;
   font-size: 18px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   margin-left: 1.6rem;
 `
@@ -22,7 +23,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 2rem auto;
+  background-color: white;
+  width: 85%;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
 `
 
 export const Header = styled.h1`

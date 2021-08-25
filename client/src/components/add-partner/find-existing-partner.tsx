@@ -16,7 +16,7 @@ export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Ele
   return (
     <>
       <Wrapper>
-        <Header>Search for your partner details below...</Header>
+        <Header style={{marginBottom: "1.4em"}}>Search for your partner details below...</Header>
         <Searchbar
           stateUser={stateUser}
           searchResults={searchResults}
