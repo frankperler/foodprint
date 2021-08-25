@@ -63,10 +63,8 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   }
 
   useEffect(() => {
-    console.log("params in restaurant profile---", params)
-    if (params.id) restaurantId = params.id
-    else restaurantId = (stateUser.restaurants![0].id).toString();
-    getRestaurantById(restaurantId)
+    setLoading(true)
+    getRestaurantById(params.id)
       .then((restaurant) => {
         setRestItem(restaurant)
         setLoading(false)
@@ -88,7 +86,7 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <Website href={restItem.rest_website}>Visit website</Website>
             <TextDetails>{restItem.rest_address}</TextDetails>
             <TextDetails>{restItem.rest_phone_number}</TextDetails>
-            <TextDetails>{restItem.opening_hours.map(day =>
+            <TextDetails>{restItem.opening_hours && restItem.opening_hours.map(day =>
               <Day>{day}<br /></Day>
             )}
             </TextDetails>

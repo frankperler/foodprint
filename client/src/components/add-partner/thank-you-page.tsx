@@ -9,7 +9,7 @@ export const ThankYouPage = (): JSX.Element => {
     <ContainerWrapper>
       <Header>Thank you for adding your partner!</Header>
       <Link to='/' style={{ textDecoration: 'none' }}>
-        <InviteButton>Back to Homepage!</InviteButton>
+        <InviteButton>Return to home</InviteButton>
       </Link>
     </ContainerWrapper>
   )

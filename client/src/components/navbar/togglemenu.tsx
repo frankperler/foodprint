@@ -109,7 +109,7 @@ export default function CustomizedMenus({stateUser, clickLogOut, goToProfile}: P
         className={classes.medium}
         style={{display: "inline-block", marginRight: "0.5em"}}
         src={stateUser.user.user_picture} />
-        {stateUser.user.user_first_name}{stateUser.user.user_last_name}
+        {stateUser.user.user_first_name + " " + stateUser.user.user_last_name}
         <ExpandMoreIcon fontSize="large"></ExpandMoreIcon>
         </div>
         : 
@@ -120,7 +120,7 @@ export default function CustomizedMenus({stateUser, clickLogOut, goToProfile}: P
       color="primary"
       onClick={handleClick}
       >
-        {stateUser.user.user_first_name} {stateUser.user.user_last_name}
+        <span>{stateUser.user.user_first_name + " " + stateUser.user.user_last_name}</span>
       </UserButton>
       }
       <StyledMenu
