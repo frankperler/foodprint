@@ -23,36 +23,48 @@ const GreenCheckbox = withStyles({
 
 
 interface Props {
-  supplier: supplierTypes
+  supplier: supplierTypes,
+  greenTechObj: {
+    "Plastic_Free": boolean,
+    "Biodynamic": boolean,
+    "Biofuels": boolean,
+    "No_Growth_Hormones": boolean,
+    "No_Pesticides": boolean,
+    "Non_GMO": boolean,
+    "Organic": boolean,
+    "Water_Recycling": boolean,
+  }
 }
 
-export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) => {
+export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
-  // function loopGreenTech(obj: {
-  //   "Plastic_Free": boolean,
-  //   "Biodynamic": boolean,
-  //   "Biofuels": boolean,
-  //   "No_Growth_Hormones": boolean,
-  //   "No_Pesticides": boolean,
-  //   "Non_GMO": boolean,
-  //   "Organic": boolean,
-  //   "Water_Recycling": boolean,
-  // }) {
-  //   for (const key in obj) {
-  //     console.log(`${key}: ${obj[key]}`);
-  // if (key === "Plastic_Free" && obj[key] === true) return <img src="/images/noplastic_s.svg" />
-  // else if (key === "Biodynamic" && obj[key] === true) return <img src="/images/biodynamic_s.svg" />
-  // else if (key === "Biofuels" && obj[key] === true) return <img src="/images/biofuel_s.svg" />
-  // else if (key === "No_Growth_Hormones" && obj[key] === true) return <img src="/images/nogrowthhormone_s.svg" />
-  // else if (key === "No_Pesticides" && obj[key] === true) return <img src="/images/nopesticide_s.svg" />
-  // else if (key === "Non_GMO" && obj[key] === true) return <img src="/images/nongmo_s.svg" />
-  // else if (key === "Organic" && obj[key] === true) return <img src="/images/organic_s.svg" />
-  // else if (key === "Water_Recycling" && obj[key] === true) return <img src="/images/savewater_s.svg" />
-  // else return
-  //   }
-  // }
+  function loopGreenTech(obj: {
+    "Plastic_Free": boolean,
+    "Biodynamic": boolean,
+    "Biofuels": boolean,
+    "No_Growth_Hormones": boolean,
+    "No_Pesticides": boolean,
+    "Non_GMO": boolean,
+    "Organic": boolean,
+    "Water_Recycling": boolean,
+  }): any {
+    const result = []
+    for (const key in obj) {
+      if (key === "Plastic_Free" && obj[key] === true) result.push("/images/noplastic_s.svg")
+      if (key === "Biodynamic" && obj[key] === true) result.push("/images/biodynamic_s.svg")
+      if (key === "Biofuels" && obj[key] === true) result.push("/images/biofuel_s.svg")
+      if (key === "No_Growth_Hormones" && obj[key] === true) result.push("/images/nogrowthhormone_s.svg")
+      if (key === "No_Pesticides" && obj[key] === true) result.push("/images/nopesticide_s.svg")
+      if (key === "Non_GMO" && obj[key] === true) result.push("/images/nongmo_s.svg")
+      if (key === "Organic" && obj[key] === true) result.push("/images/organic_s.svg")
+      if (key === "Water_Recycling" && obj[key] === true) result.push("/images/savewater_s.svg")
+    }
+    return result.map((img) => {
+      return <img src={img} />
+    })
+  }
 
   return (
     <TechnologyContainer>
@@ -65,15 +77,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
       </EditDescription>
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
-        <img src="/images/noplastic_s.svg" />
-        <img src="/images/biodynamic_s.svg" />
-        <img src="/images/biofuel_s.svg" />
-        <img src="/images/nogrowthhormone_s.svg" />
-        <img src="/images/nopesticide_s.svg" />
-        <img src="/images/nongmo_s.svg" />
-        <img src="/images/organic_s.svg" />
-        <img src="/images/savewater_s.svg" />
-        {/* {loopGreenTech(JSON.parse(supplier.sup_greenTech[0]))} */}
+        {supplier && loopGreenTech(greenTechObj)}
       </TechnologyRibbons>
       <TechChoiceGrid>
         {isEditing ?
@@ -82,7 +86,6 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
               <div>
                 <EnergyTypeForm>
                   <h4>Main source of energy</h4>
-                  <FormLabel component="legend">Select up to two</FormLabel>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -136,7 +139,6 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
               <div>
                 <EnergyTypeForm>
                   <h4>Main source of energy</h4>
-                  <FormLabel component="legend">Select up to two</FormLabel>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       disabled control={<GreenCheckbox />}

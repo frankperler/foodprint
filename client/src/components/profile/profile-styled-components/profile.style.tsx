@@ -23,7 +23,6 @@ export const ProfileDetails = styled.section`
   display: none;
   }
 `
-
 export const ProfileRestaurantGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -41,7 +40,7 @@ export const ProfileRestaurantGridContainer = styled("div")`
 export const ProfileSupplierGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 35% 65%;
   grid-template-areas:
     "photo list"
     "details suppliers"
@@ -282,12 +281,10 @@ export const SupplierListContainer = styled.div`
 
 export const RestoListContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  margin: 4rem auto;
 `
 
 export const TechnologyRibbons = styled.div`
