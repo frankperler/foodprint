@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import { userContext } from '../../contexts/user-context';
 import { Wrapper, Header } from './add-partner-styled-components/add-functionality-styles';
 import { Searchbar } from './add-searchbar';
@@ -12,6 +13,12 @@ export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Ele
 
   const { stateUser } = useContext(userContext)
   const [searchResults, setSearchResults] = useState<restaurantTypes[] | supplierTypes[]>([])
+  const [matches, setMatches] = useState<boolean>(false)
+  const [submitted, setSubmitted] = useState<boolean>(false)
+
+  useEffect(() => {
+    searchResults.length > 0 ? setMatches(true) : setMatches(false);
+  }, [searchResults])
 
   return (
     <>
@@ -21,8 +28,12 @@ export const ContainerFindExistingPartner: React.FunctionComponent = (): JSX.Ele
           stateUser={stateUser}
           searchResults={searchResults}
           setSearchResults={setSearchResults}
+          matches={matches}
+          setMatches={setMatches}
+          submitted={submitted}
+          setSubmitted={setSubmitted}
         />
-        {searchResults.length === 0 ?
+        {matches === false && submitted === true ?
           <MatchListContainer>
             <h2>We're sorry your search did not match any results...</h2>
             <Link to="/invite" style={{ textDecoration: 'none' }}>

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const SearchInput = styled.input`
-  border: 1px solid #FF686B;
+  border: 2px solid #FF686B;
+  border-radius: 4px;
   width: 28rem;
   font-size: 16px;
   display: block;
@@ -85,9 +86,10 @@ export const InviteButton = styled.button`
   width: 20rem;
   height: auto;
   font-size: 18px;
-  border: 1px solid #FF686B;
+  border: 1px solid #84DCC6;
+  border-radius: 4px;
   color: white;
-  background-color: #FF686B;
+  background-color: #84DCC6;
   cursor: pointer;
   text-align: center;
   margin-top: 0.8em;
