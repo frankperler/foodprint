@@ -92,6 +92,7 @@ export const InviteButton = styled.button`
 export const ContainerWrapper = styled.section`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 `
 
@@ -104,7 +105,6 @@ export const AddCardContainer = styled("div")`
   margin: 2rem;
   justify-content: space-between;
   overflow: hidden;
-  /* box-shadow: 0.05rem 0.05rem lightgray; */
   background-color: white;
   border-radius: 7px;
 
@@ -112,6 +112,10 @@ export const AddCardContainer = styled("div")`
     opacity: 0.6;
     height: 8rem;
     width: 15rem;
+  }
+      
+  .img:hover {
+    opacity: 1;
   }
 
   .name {
@@ -135,4 +139,9 @@ export const AddCardContainer = styled("div")`
   .addBtn {
     width: 15rem;
   }
+
+
+
+  
+
 `

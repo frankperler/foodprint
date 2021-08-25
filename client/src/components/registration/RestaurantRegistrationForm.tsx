@@ -55,7 +55,7 @@ export const RestaurantRegistrationForm: React.FunctionComponent<Props> = ({ set
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
-  const { stateUser, dispatchUser } = useContext(userContext);
+  const { dispatchUser } = useContext(userContext);
   const history = useHistory()
 
   const onSubmit = async (data: RestaurantRegisterForm) => {
@@ -81,7 +81,6 @@ export const RestaurantRegistrationForm: React.FunctionComponent<Props> = ({ set
     await registerUser(formData)
       .then(async (userData: registeredUserTypes) => {
         setIsAuth(true)
-        console.log("user data from restaurant registration: ", userData);
         dispatchRegistrationUser({ type: 'REGISTER', payload: userData })
         await logIn({ email: formData.email, password: formData.password })
           .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))

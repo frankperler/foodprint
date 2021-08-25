@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
+import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day, TextDetails } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
@@ -10,13 +10,21 @@ import { useParams } from 'react-router'
 import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
-import { LoadSpinner } from '../../LoadSpinner'
+import { css } from "@emotion/react";
+import PuffLoader from "react-spinners/PuffLoader";
 
 
 type Props = {
   loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const spinnerStyle = css`
+display: block;
+margin: 0 auto;
+color: #36D7B7;
+transform: translateY(20%);
+`;
 
 export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
 
@@ -57,10 +65,9 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
       })
   }, [])
 
-
   return (
     <div>
-      {loading ? <LoadSpinner></LoadSpinner> :
+      {loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
         <ProfileRestaurantGridContainer>
           <RestoCover src={restItem.rest_picture} />
           <InfoArea>
@@ -68,12 +75,12 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
             <RestStarRating restaurant={restItem} />
             <Website href={restItem.rest_website}>Visit website</Website>
-            <h4>{restItem.rest_address}</h4>
-            <h4>{restItem.rest_phone_number}</h4>
-            <h4>{restItem.opening_hours.map(day =>
+            <TextDetails>{restItem.rest_address}</TextDetails>
+            <TextDetails>{restItem.rest_phone_number}</TextDetails>
+            <TextDetails>{restItem.opening_hours.map(day =>
               <Day>{day}<br /></Day>
             )}
-            </h4>
+            </TextDetails>
           </InfoArea>
           <RestaurantDescription restaurant={restItem} />
           <ProfileDetails>

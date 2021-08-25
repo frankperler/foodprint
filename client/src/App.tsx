@@ -10,6 +10,7 @@ import { ContainerFindExistingPartner } from './components/add-partner/find-exis
 import { ContainerThirdPartyRequestPartner } from './components/add-partner/third-party-request'
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
+import { ThankYouPage } from './components/add-partner/thank-you-page'
 import { useEffect } from 'react'
 import { searchBarContext } from './contexts/filters-contexts'
 import { searchBarReducers, searchBarState } from './reducers/filters-reducers'
@@ -25,7 +26,7 @@ export const App: React.FunctionComponent = () => {
 
   //to persist state on refresh
   useEffect(() => {
-    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!)});
+    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!) });
     setIsAuth(JSON.parse(window.localStorage.getItem('is-auth')!))
   }, []);
 
@@ -58,6 +59,7 @@ export const App: React.FunctionComponent = () => {
               setUserType={setUserType}
               isAuth={isAuth}
               setIsAuth={setIsAuth}
+
             />
           </Route>
 
@@ -69,12 +71,18 @@ export const App: React.FunctionComponent = () => {
             <ContainerThirdPartyRequestPartner />
           </Route>
 
+          <Route path='/thankyou' exact>
+            <ThankYouPage />
+          </Route>
+
           <Route path='/supplier/:id'>
             <Navbar
               isAuth={isAuth}
               setIsAuth={setIsAuth}
             />
-            <ProfileSupplierDashboard />
+            <ProfileSupplierDashboard 
+              loading={loading}
+              setLoading={setLoading}/>
           </Route>
 
           <Route path='/restaurant/:id'>

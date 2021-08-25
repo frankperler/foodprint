@@ -6,7 +6,9 @@ export const RestoCover = styled.img`
   border-radius: 30px;
   display: block;
   padding: 1rem;
-  width: 90%;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  width: 80%;
   height: 90%;
 `
 export const ProfileDetails = styled.section`
@@ -19,13 +21,12 @@ export const ProfileDetails = styled.section`
 
   &::-webkit-scrollbar {
   display: none;
-  }  
+  }
 `
-
 export const ProfileRestaurantGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 35% 65%;
   grid-template-areas:
     "photo list"
     "details suppliers"
@@ -39,7 +40,7 @@ export const ProfileRestaurantGridContainer = styled("div")`
 export const ProfileSupplierGridContainer = styled("div")`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 35% 65%;
   grid-template-areas:
     "photo list"
     "details suppliers"
@@ -53,6 +54,37 @@ export const ProfileSupplierGridContainer = styled("div")`
 export const InfoArea = styled("div") <{ gridArea?: string }>`
   grid-area: details;
   padding: 1rem;
+`
+
+export const TextDetails = styled("h4") <{ fontColor?: string }>`
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: ${(props) => props.fontColor};
+`
+
+export const Table = styled("table")`
+  color: #818181;
+  width: 90%;
+  margin-left: 4rem;
+`
+
+export const TableRow = styled("tr")`
+  font-size: large;
+`
+
+export const TableHeader = styled.th <{ textAlign?: string }>`
+  color: #FF686B;
+  text-align: ${(props) => props.textAlign ? props.textAlign : "center"};
+`
+
+export const TableData = styled.td<{
+  textColor?: string,
+  textAlign?: string,
+  fontWeight?: string,
+}>` 
+  color: ${(props) => props.textColor};
+  text-align: ${(props) => props.textAlign ? props.textAlign : "center"};
+  font-weight: ${(props) => props.fontWeight ? props.fontWeight : "normal"};
 `
 
 export const ProfileName = styled("h2") <{ fontColor?: string }>`
@@ -74,10 +106,11 @@ export const Day = styled.span`
 `
 
 export const DescriptionCard = styled.div`
-  margin: 1rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
   width: 90%;
-  height: 90%;
+  margin-top: 1rem;
+  height: 80%;
+  padding: 1rem;
   border-radius: 30px;
 `
 export const EditDescription = styled.div`
@@ -128,21 +161,20 @@ export const TechChoiceGrid = styled.div`
   width: 80%;
 `
 
-export const EnergySourceGrid = styled.div`
+export const TechnologySourceGrid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
   align-items: flex-start;
 `
 
-export const AddHeader = styled.h4`
-    display: inline-block;
-  `
+export const EnergySourceGrid = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content:space-around;
+`
 
-export const CheckBoxForm = styled.form`
-  width: 32rem;
-
-  `
 export const VehicleTypeForm = styled.div`
     margin-top: 1.8rem;
     margin-bottom: 1rem;
@@ -274,12 +306,10 @@ export const SupplierListContainer = styled.div`
 
 export const RestoListContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  margin: 4rem auto;
 `
 
 export const TechnologyRibbons = styled.div`
@@ -292,13 +322,5 @@ export const TechnologyRibbons = styled.div`
 export const ProductsContainer = styled.div`
   margin: 2rem auto;
   width: 100%;
-<<<<<<< HEAD
-=======
 `
 
-export const TableHeader = styled.th`
-  margin: 2rem 1rem;
-  text-align:left;
-
->>>>>>> 626698d3ac5ffa4940add51c47fbe716f6c3899d
-`

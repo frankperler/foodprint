@@ -33,8 +33,8 @@ import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
 import './dashboard.css'
-import { findRestaurantsByCity, findSuppliersByCity } from '../../services/SearchService'
-
+import { findRestaurantsByCity, findRestaurantsByName, findSuppliersByCity } from '../../services/SearchService'
+import { LoadSpinner } from '../LoadSpinner'
 
 export const ButtonStyles = styled.div`
   display: flex;
@@ -90,12 +90,22 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   // }
   
 
+  const allFiltered: any = [] // CAREFUL!!!!!!!
 
   useEffect(() => {
     // console.log('stateSearchBar', stateSearchBar)
+
     if (stateSearchBar.city.length > 2) {
       setInputTyped(true)
-      findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)) //.then(() => setFilterClicked(true));
+      if (stateUser.user.user_type === 'food lover' || stateUser.user.user_type === 'supplier') {
+        findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results))//setFilteredElements(results)) //.then(() => setFilterClicked(true));
+        console.log('ALL FILTERED: ', allFiltered)
+        // findRestaurantsByName(stateSearchBar.city).then((nameResults) => allFiltered.concat(nameResults))
+        // setFilteredElements(allFiltered)
+      }
+      else {
+        findSuppliersByCity(stateSearchBar.city) .then((results) => setFilteredElements(results)) //.then(() => setFilterClicked(true));
+      }
     }
   }, [stateSearchBar])
 
