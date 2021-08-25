@@ -18,7 +18,7 @@ import { FilteredResults } from './results/filtered-results'
 import { TopArea } from './top-choices/top-choices-styled-components/top-area'
 import { RestTopList } from './top-choices/restaurants-top-list'
 import { filterReducers, filterState } from '../../reducers/filters-reducers'
-import { filterContext } from '../../contexts/filters-contexts'
+import { filterContext, searchBarContext } from '../../contexts/filters-contexts'
 import { restaurantReducers, restaurantState } from '../../reducers/restaurants-reducers'
 import { restaurantContext } from '../../contexts/restaurants-contexts'
 import { supplierReducers, supplierState } from '../../reducers/suppliers-reducers';
@@ -33,6 +33,7 @@ import { userContext } from '../../contexts/user-context'
 import { filterTypes } from '../../types/filter-types'
 import { restaurantTypes, supplierTypes } from '../../types'
 import './dashboard.css'
+import { findRestaurantsByCity, findRestaurantsByName, findSuppliersByCity } from '../../services/SearchService'
 import { LoadSpinner } from '../LoadSpinner'
 
 export const ButtonStyles = styled.div`
@@ -65,7 +66,10 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [stateSupplier, dispatchSupplier] = useReducer(supplierReducers, supplierState)
   const [stateFilter, dispatchFilter] = useReducer(filterReducers, filterState)
   const [filterClicked, setFilterClicked] = useState(false)
+  const [inputTyped, setInputTyped] = useState(false)
   const [filteredElements, setFilteredElements] = useState<restaurantTypes[] | supplierTypes[]>([])
+  const {stateSearchBar} = useContext(searchBarContext)
+  const [toggleFiltering, setToggleFiltering] = useState(false)
 
   async function clickToFilter(state: filterTypes) {
     const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
@@ -79,6 +83,30 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
     setFilterClicked(false);
     setLoading(false);
   }
+  
+
+  const allFiltered: any = [] // CAREFUL!!!!!!!
+
+  useEffect(() => {
+    if (stateSearchBar.city.length > 2) {
+      setInputTyped(true)
+      if (stateUser.user.user_type === 'food lover' || stateUser.user.user_type === 'supplier') {
+        setLoading(true)
+        findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
+        
+          // console.log('ALL FILTERED: ', allFiltered)
+        // findRestaurantsByName(stateSearchBar.city).then((nameResults) => allFiltered.concat(nameResults))
+        // setFilteredElements(allFiltered)
+      }
+      else {
+        setLoading(true)
+        findSuppliersByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
+      }
+    }
+    else {
+      setInputTyped(false)
+    }
+  }, [stateSearchBar])
 
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));
@@ -132,11 +160,10 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
               }
               <div className="overflow">
                 <ResultsArea>
-                  {filterClicked ?
-                    <FilteredResults
+                  {(filterClicked || inputTyped) ?
+                    <FilteredResults 
                       filteredElements={filteredElements}
-                    >
-                    </FilteredResults>
+                    />
                     :
                     ((stateUser.user.user_type === 'food lover') || (stateUser.user.user_type === 'supplier')) ?
                       <RestaurantsLists /> :
