@@ -53,6 +53,7 @@ export const App: React.FunctionComponent = () => {
               setUserType={setUserType}
               isAuth={isAuth}
               setIsAuth={setIsAuth}
+
             />
           </Route>
 
@@ -73,7 +74,9 @@ export const App: React.FunctionComponent = () => {
               isAuth={isAuth}
               setIsAuth={setIsAuth}
             />
-            <ProfileSupplierDashboard />
+            <ProfileSupplierDashboard 
+              loading={loading}
+              setLoading={setLoading}/>
           </Route>
 
           <Route path='/restaurant/:id'>
