@@ -11,12 +11,9 @@ import { useParams } from 'react-router';
 import { getSupplierById } from '../../../services/SupplierService';
 import { SupplierEcoRating } from '../../dashboard/results/suppliers-eco-rating';
 import { userContext } from '../../../contexts/user-context'
-
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useContext } from 'react';
-
-
 
 
 type Props = {
@@ -79,9 +76,16 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
   const params: { id: string } = useParams()
   let supplierId = 'no id';
 
+  function isUserOwner() : boolean {
+    if(params.id) return false
+    else return true
+  }
+
   useEffect(() => {
-    setLoading(true)
-    getSupplierById(params.id)
+    setLoading(true)  
+    if (params.id) supplierId = params.id
+    else supplierId = (stateUser.suppliers![0].id).toString();
+    getSupplierById(supplierId)
       .then((supplier) => {
         setSupplierItem(supplier)
         setRoundedEcoScore(Math.round(supplier.sup_eco_score / 0.5) * 0.5)
@@ -95,25 +99,25 @@ export const ProfileSupplierDashboard = ({ loading, setLoading }: Props): JSX.El
 
   return (
     <>
-      {
-        loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
-          <ProfileSupplierGridContainer>
-            <RestoCover src={supplierItem.sup_picture} />
-            <InfoArea>
-              <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
-              <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
-              <Website>Visit website</Website>
-              <TextDetails>{supplierItem.sup_address}</TextDetails>
-              <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
-            </InfoArea>
-            <SupplierDescription supplier={supplierItem} />
-            <ProfileDetails>
-              <Technology supplier={supplierItem} greenTechObj={greenTechObj} />
-              <ProductsList supplier={supplierItem} />
-              <RestaurantList supplier={supplierItem} />
-            </ProfileDetails>
-          </ProfileSupplierGridContainer>
-      }
-    </>
+    { 
+      loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
+    <ProfileSupplierGridContainer>
+      <RestoCover src={supplierItem.sup_picture} />
+      <InfoArea>
+        <SupplierEcoRating supplier={supplierItem}></SupplierEcoRating>
+        <ProfileName fontColor="#FF686B">{supplierItem.sup_name}</ProfileName>
+        <Website>Visit website</Website>
+        <TextDetails>{supplierItem.sup_address}</TextDetails>
+        <TextDetails>{supplierItem.sup_phone_number}</TextDetails>
+      </InfoArea>
+      <SupplierDescription supplier={supplierItem} isOwner={isUserOwner()}/>
+      <ProfileDetails>
+        <Technology supplier={supplierItem} greenTechObj={greenTechObj} isOwner={isUserOwner()} />
+        <ProductsList supplier={supplierItem} />
+        <RestaurantList supplier={supplierItem} isOwner={isUserOwner()}/>
+      </ProfileDetails>
+    </ProfileSupplierGridContainer>
+  }
+  </>
   )
 }

@@ -14,14 +14,16 @@ export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant, isOw
 
   return (
     <SupplierContainer>
-      <ButtonWrap>
-        <Link to="/add" style={{ textDecoration: 'none' }}>
-          <AddSupplier style={{color: "#84DCC6"}}>
-            <AddCircle fontSize="large" />
-            <h4>Add supplier</h4>
-          </AddSupplier>
-        </Link>
-      </ButtonWrap>
+      {!isOwner?  <div></div> :
+        <ButtonWrap>
+          <Link to="/add" style={{ textDecoration: 'none' }}>
+            <AddSupplier style={{color: "#84DCC6"}}>
+              <AddCircle fontSize="large" />
+              <h4>Add supplier</h4>
+            </AddSupplier>
+          </Link>
+        </ButtonWrap>
+      }
       <ProfileHeader>Who we get our food from...</ProfileHeader>
       <SupplierListContainer>
         {restaurant.Suppliers && restaurant.Suppliers.map((supplier: supplierTypes) => {

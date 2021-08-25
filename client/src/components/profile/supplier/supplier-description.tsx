@@ -6,10 +6,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import { supplierTypes } from '../../../types';
 
 interface Props {
-  supplier: supplierTypes
+  supplier: supplierTypes,
+  isOwner: boolean
 }
 
-export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier }: Props) => {
+export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier, isOwner }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState<string>()
@@ -25,13 +26,15 @@ export const SupplierDescription: React.FunctionComponent<Props> = ({ supplier }
 
   return (
     <DescriptionCard>
-      <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        {isEditing ?
-          <CancelButton>Cancel</CancelButton>
-          :
-          <EditIcon></EditIcon>
-        }
-      </EditDescription>
+      {!isOwner?  <div></div> :
+        <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+          {isEditing ?
+            <CancelButton>Cancel</CancelButton>
+            :
+            <EditIcon></EditIcon>
+          }
+        </EditDescription>
+      }
       <ProfileHeader>About us</ProfileHeader>
       <DescriptionText>
         {isEditing ? <form onSubmit={() => handleUpdate}>

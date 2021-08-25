@@ -32,10 +32,12 @@ interface Props {
     "Non_GMO": boolean,
     "Organic": boolean,
     "Water_Recycling": boolean,
-  }
+  },
+  isOwner: boolean
 }
+ 
 
-export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj }: Props) => {
+export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj, isOwner }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -67,6 +69,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
 
   return (
     <TechnologyContainer>
+      {!isOwner?  <div></div> :
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
         {isEditing ?
           <CancelButton>Cancel</CancelButton>
@@ -74,6 +77,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           <EditIcon></EditIcon>
         }
       </EditDescription>
+      }
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
         {supplier && loopGreenTech(greenTechObj)}
@@ -134,75 +138,11 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           </TechnologySourceGrid>
           :
           <EnergySourceGrid>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
-=======
-            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy ? supplier.sup_energy.map((energy) => {
->>>>>>> 2051897e4a94cc79049d5a5dbb7d75c3f47b9a71
               return <h3 style={{ color: 'black' }}>{energy}</h3>
-            }) :
-              <h3 style={{ color: 'black' }}>Solar</h3>
-            }
-            </TextDetails>
+            })}</TextDetails>
 
-<<<<<<< HEAD
             <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
-=======
-            <FormControl>
-              <div>
-                <EnergyTypeForm>
-                  <h4>Main source of energy</h4>
-                  <FormLabel component="legend">Select up to two</FormLabel>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Solar"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label='Wind'
-                    />
-                    <FormControlLabel label="Natural gas"
-                      disabled control={<GreenCheckbox />}
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electricity (renewable)"
-                    />
-                  </FormGroup>
-                </EnergyTypeForm>
-                <VehicleTypeForm>
-                  <h4>The majority of our vehicles are...</h4>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Biofuel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Gasoline"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Diesel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electric"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Hybrid"
-                    />
-                  </FormGroup>
-                </VehicleTypeForm>
-              </div>
-            </FormControl>
->>>>>>> auth6
-=======
-            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles ? supplier.sup_vehicles : "Fuel"}</h3></TextDetails>
->>>>>>> 2051897e4a94cc79049d5a5dbb7d75c3f47b9a71
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

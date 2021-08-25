@@ -63,6 +63,8 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   }
 
   useEffect(() => {
+    if (params.id) restaurantId = params.id
+    else restaurantId = (stateUser.restaurants![0].id).toString();
     setLoading(true)
     getRestaurantById(params.id)
       .then((restaurant) => {
