@@ -54,7 +54,6 @@ export const SuppliersLists: React.FunctionComponent = () => {
           <ListContainer>
             {
               stateUser.restaurants[0].Suppliers.map((supplier: supplierTypes) => {
-
                 < SupplierCard
                   supplier={supplier}
                   distance={calculateDistance(supplier, userLat, userLon)}
