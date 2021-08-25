@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const SearchInput = styled.input`
-  border: 1px solid #FF686B;
+  border: 2px solid #FF686B;
+  border-radius: 4px;
   width: 28rem;
   font-size: 16px;
   display: block;
@@ -14,6 +15,7 @@ export const SearchButton = styled.button`
   color: white;
   font-size: 18px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   margin-left: 1.6rem;
 `
@@ -22,7 +24,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 2rem auto;
+  background-color: white;
+  width: 85%;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
 `
 
 export const Header = styled.h1`
@@ -80,9 +86,10 @@ export const InviteButton = styled.button`
   width: 20rem;
   height: auto;
   font-size: 18px;
-  border: 1px solid #FF686B;
+  border: 1px solid #84DCC6;
+  border-radius: 4px;
   color: white;
-  background-color: #FF686B;
+  background-color: #84DCC6;
   cursor: pointer;
   text-align: center;
   margin-top: 0.8em;
