@@ -24,7 +24,7 @@ export async function getSupplierById(id: string): Promise<supplierTypes> {
 }
 
 
-export async function claimRestaurant(rest_name: string, sup_id: number): Promise<supplierTypes> {
+export async function claimRestaurant(rest_name: string, sup_id: number, token: string): Promise<supplierTypes> {
   try {
     const res = await fetch(`${url}/suppliers/claimRestaurant`, {
       method: 'POST',
@@ -33,7 +33,8 @@ export async function claimRestaurant(rest_name: string, sup_id: number): Promis
         sup_id
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       }
     })
     return await res.json()
@@ -43,15 +44,3 @@ export async function claimRestaurant(rest_name: string, sup_id: number): Promis
     return e;
   }
 }
-
-// export function searchSuppliersByCity(city: string) {
-//   searchByCity(city, '/search/searchSuppliersByCity')
-// }
-
-// export function filterSuppliers(request: { eco_score: string; bio: boolean; food_types: string[] }) {
-//   filter(request, '/restaurants/filterSuppliers')
-// }
-
-// export function claimRestaurant(request: { rest_name: string, sup_id: number }) {
-//   claim(request, '/suppliers/claimRestaurant');
-// }

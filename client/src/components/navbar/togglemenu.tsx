@@ -35,6 +35,7 @@ const StyledMenu = withStyles({
 
 type Props = {
   clickLogOut: () => void
+  goToProfile: () => void;
 }
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -82,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function CustomizedMenus({ clickLogOut }: Props): JSX.Element {
+export default function CustomizedMenus({ clickLogOut, goToProfile }: Props): JSX.Element {
 
   const classes = useStyles();
   const { stateUser, dispatchUser } = useContext(userContext);
@@ -133,7 +134,7 @@ export default function CustomizedMenus({ clickLogOut }: Props): JSX.Element {
           <ListItemIcon>
             <AccountBoxRoundedIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText primary="Profile" onClick={goToProfile} />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>

@@ -32,10 +32,12 @@ interface Props {
     "Non_GMO": boolean,
     "Organic": boolean,
     "Water_Recycling": boolean,
-  }
+  },
+  isOwner: boolean
 }
+ 
 
-export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj }: Props) => {
+export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj, isOwner }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -67,6 +69,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
 
   return (
     <TechnologyContainer>
+      {!isOwner?  <div></div> :
       <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
         {isEditing ?
           <CancelButton>Cancel</CancelButton>
@@ -74,6 +77,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           <EditIcon></EditIcon>
         }
       </EditDescription>
+      }
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
         {supplier && loopGreenTech(greenTechObj)}
@@ -104,7 +108,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
+                  <h4>The majority of our vehicles are...</h4>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -134,14 +138,11 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           </TechnologySourceGrid>
           :
           <EnergySourceGrid>
-            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy ? supplier.sup_energy.map((energy) => {
+            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
               return <h3 style={{ color: 'black' }}>{energy}</h3>
-            }) :
-              <h3 style={{ color: 'black' }}>Solar</h3>
-            }
-            </TextDetails>
+            })}</TextDetails>
 
-            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles ? supplier.sup_vehicles : "Fuel"}</h3></TextDetails>
+            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day, TextDetails } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
@@ -12,6 +12,7 @@ import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
 import { css } from "@emotion/react";
 import PuffLoader from "react-spinners/PuffLoader";
+import {userContext } from '../../../contexts/user-context';
 
 
 type Props = {
@@ -28,6 +29,7 @@ transform: translateY(20%);
 
 export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
 
+  const { stateUser } = useContext(userContext);
   const [restItem, setRestItem] = useState<restaurantTypes>(
     {
       id: 0,
@@ -53,8 +55,16 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   )
 
   const params: { id: string } = useParams()
+  let restaurantId = 'no id';
+
+  function isUserOwner() : boolean {
+    if(params.id) return false
+    else return true
+  }
 
   useEffect(() => {
+    if (params.id) restaurantId = params.id
+    else restaurantId = (stateUser.restaurants![0].id).toString();
     setLoading(true)
     getRestaurantById(params.id)
       .then((restaurant) => {
@@ -83,9 +93,9 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             )}
             </TextDetails>
           </InfoArea>
-          <RestaurantDescription restaurant={restItem} />
+          <RestaurantDescription restaurant={restItem} isOwner={isUserOwner()} />
           <ProfileDetails>
-            <SuppliersList restaurant={restItem} />
+            <SuppliersList restaurant={restItem} isOwner={isUserOwner()} />
           </ProfileDetails>
         </ProfileRestaurantGridContainer >
       }

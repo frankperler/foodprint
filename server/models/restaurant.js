@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     place_id: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "no id"
+      defaultValue: "no place id provided"
     },
     rest_name: {
       type: DataTypes.STRING,
@@ -66,23 +66,27 @@ module.exports = (sequelize, DataTypes) => {
     rest_rating: {
       type: DataTypes.FLOAT,
       allowNull: true,
-
+      defaultValue: 2.5,
     },
     rest_website: { // 2nd request
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: 'http://www.google.com'
     },
     rest_eco_score: { // mocked
       type: DataTypes.FLOAT,
       allowNull: true,
+      defaultValue: 3.0,
     },
     rest_description: { // mocked
       type: DataTypes.TEXT,
       allowNull: true,
+      defaultValue: 'This restaurant has not provided a description yet...',
     },
     rest_picture: { // mocked
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: 'https://source.unsplash.com/4f4YZfDMLeU?1600x900'
     }
   })
 

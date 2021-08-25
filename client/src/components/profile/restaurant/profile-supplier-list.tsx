@@ -6,21 +6,24 @@ import { Link } from 'react-router-dom';
 import { restaurantTypes, supplierTypes } from '../../../types';
 
 type Props = {
-  restaurant: restaurantTypes
+  restaurant: restaurantTypes;
+  isOwner: boolean
 }
 
-export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant }: Props) => {
+export const SuppliersList: React.FunctionComponent<Props> = ({ restaurant, isOwner }: Props) => {
 
   return (
     <SupplierContainer>
-      <ButtonWrap>
-        <Link to="/add" style={{ textDecoration: 'none' }}>
-          <AddSupplier style={{color: "#84DCC6"}}>
-            <AddCircle fontSize="large" />
-            <h4>Add supplier</h4>
-          </AddSupplier>
-        </Link>
-      </ButtonWrap>
+      {!isOwner?  <div></div> :
+        <ButtonWrap>
+          <Link to="/add" style={{ textDecoration: 'none' }}>
+            <AddSupplier style={{color: "#84DCC6"}}>
+              <AddCircle fontSize="large" />
+              <h4>Add supplier</h4>
+            </AddSupplier>
+          </Link>
+        </ButtonWrap>
+      }
       <ProfileHeader>Who we get our food from...</ProfileHeader>
       <SupplierListContainer>
         {restaurant.Suppliers && restaurant.Suppliers.map((supplier: supplierTypes) => {

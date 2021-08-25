@@ -62,7 +62,32 @@ export const App: React.FunctionComponent = () => {
 
             />
           </Route>
+          <Route path='/profile' exact>
+            {stateUser.user.user_type === 'supplier'? 
+            <div>
+            <Navbar
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+            />
+            <ProfileSupplierDashboard 
+              loading={loading}
+              setLoading={setLoading}/>
+            </div> :
+            stateUser.user.user_type === 'restaurant'?
+            <div>
+            <Navbar
+            isAuth={isAuth}
+            setIsAuth={setIsAuth}
+            />
+            <ProfileRestaurantDashboard
+              loading={loading}
+              setLoading={setLoading}/>
+              </div>:
+            // create foodlover's profile??? just using thank you page for now
+            <ThankYouPage />
+            }
 
+          </Route>
           <Route path='/add' exact>
             <ContainerFindExistingPartner />
           </Route>
