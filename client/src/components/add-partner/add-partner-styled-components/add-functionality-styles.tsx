@@ -96,11 +96,39 @@ export const InviteButton = styled.button`
   margin-bottom: 14em;
 `
 
+export const ReturnHomeButton = styled.button`
+ display: block;
+  padding: 0.8em;
+  width: 20rem;
+  height: auto;
+  font-size: 18px;
+  border: 1px solid #84DCC6;
+  border-radius: 4px;
+  color: white;
+  background-color: #84DCC6;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 0.8em;
+  margin-bottom: 4em;
+`
+
 export const ContainerWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`
+
+export const ThankYouWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  transform: translateY(40%);
+  height: auto;
+  width: 75%;
+  margin: 0 auto;
 `
 
 export const AddCardContainer = styled("div")`
