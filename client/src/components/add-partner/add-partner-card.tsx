@@ -14,14 +14,13 @@ interface Props {
 }
 
 export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) => {
-
   const history = useHistory()
-  const { stateUser } = useContext(userContext);
+  const { stateUser, dispatchUser } = useContext(userContext);
 
   const handleClickSupplier = async (sup_name: string, id: number) => {
     try {
-      console.log("stateUser token from claimSupplier click---", stateUser.token )
       await claimSupplier(sup_name, id, stateUser.token)
+        .then((result) => dispatchUser({ type: 'CLAIM-SUPPLIER', payload: result }))
         .then(() => { history.push('/thankyou') })
     } catch (error) {
       console.log(error)
@@ -30,13 +29,10 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
 
   const handleClickRestaurant = async (rest_name: string, id: number) => {
     try {
-      console.log("stateUser token from claimSupplier click---", stateUser.token )
-      console.log('supplier id---', id)
-      console.log('restaurant name---', rest_name)
-
       await claimRestaurant(rest_name, id, stateUser.token)
+        .then((result) => dispatchUser({ type: 'CLAIM-RESTAURANT', payload: result }))
         .then(() => { history.push('/thankyou') })
- 
+
     } catch (error) {
       console.log(error)
     }
@@ -48,13 +44,12 @@ export const PartnerCard: React.FunctionComponent<Props> = ({ result }: Props) =
         <AddCardContainer>
           <Link to={`/restaurant/${result.id}`} style={{ textDecoration: 'none', width: '100%' }}  >
             <img className="img" src={result.rest_picture} />
-
             <div className="name">{result.rest_name}</div>
             <div className="foodtype">
               {result.rest_types.length && result.rest_types[0]}
             </div>
           </Link>
-          <HomePageButton onClick={() => handleClickRestaurant(result.rest_name, stateUser.suppliers![0].id)} className='addBtn' style={{backgroundColor: "#84DCC6"}}>Add</HomePageButton>
+          <HomePageButton onClick={() => handleClickRestaurant(result.rest_name, stateUser.suppliers![0].id)} className='addBtn' style={{ backgroundColor: "#84DCC6" }}>Add</HomePageButton>
         </AddCardContainer >
         :
         <AddCardContainer>

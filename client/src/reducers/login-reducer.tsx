@@ -1,7 +1,7 @@
 import { userTypes } from "../types/index";
-import { userLoginAction, userLogoutAction } from "../actions/actions";
+import { userLoginAction, userLogoutAction, addRestaurantAction, addSupplierAction } from "../actions/actions";
 
-export type reducerAction = userLoginAction | userLogoutAction;
+export type reducerAction = userLoginAction | userLogoutAction | addRestaurantAction | addSupplierAction
 
 export const userLoginReducers = (state: userTypes, action: reducerAction): userTypes => {
   switch (action.type) {
@@ -18,6 +18,16 @@ export const userLoginReducers = (state: userTypes, action: reducerAction): user
       return {
         ...state,
         ...userLoginState
+      }
+    case 'CLAIM-SUPPLIER':
+      return {
+        ...state,
+        restaurants: [action.payload]
+      }
+    case 'CLAIM-RESTAURANT':
+      return {
+        ...state,
+        suppliers: [action.payload]
       }
     default:
       return userLoginState;

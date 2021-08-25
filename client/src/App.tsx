@@ -14,6 +14,7 @@ import { ThankYouPage } from './components/add-partner/thank-you-page'
 import { useEffect } from 'react'
 import { searchBarContext } from './contexts/filters-contexts'
 import { searchBarReducers, searchBarState } from './reducers/filters-reducers'
+import { claimReducers } from './reducers/add-partner-reducer'
 
 
 export const App: React.FunctionComponent = () => {
@@ -21,9 +22,10 @@ export const App: React.FunctionComponent = () => {
   const [stateUser, dispatchUser] = useReducer(userLoginReducers, userLoginState)
   const [stateSearchBar, dispatchSearchBar] = useReducer(searchBarReducers, searchBarState)
   const [userType, setUserType] = useState("Food lover")
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isOwner, setIsOwner] = useState(false)
+  const [isOwner, setIsOwner] = useState(false);
+
   //to persist state on refresh
   useEffect(() => {
     dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!) });
