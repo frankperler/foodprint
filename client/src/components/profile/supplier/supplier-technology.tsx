@@ -134,11 +134,14 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTech
           </TechnologySourceGrid>
           :
           <EnergySourceGrid>
-            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
+            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy ? supplier.sup_energy.map((energy) => {
               return <h3 style={{ color: 'black' }}>{energy}</h3>
-            })}</TextDetails>
+            }) :
+              <h3 style={{ color: 'black' }}>Solar</h3>
+            }
+            </TextDetails>
 
-            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
+            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles ? supplier.sup_vehicles : "Fuel"}</h3></TextDetails>
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

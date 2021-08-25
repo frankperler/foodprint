@@ -55,6 +55,7 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   const params: { id: string } = useParams()
 
   useEffect(() => {
+    setLoading(true)
     getRestaurantById(params.id)
       .then((restaurant) => {
         setRestItem(restaurant)
@@ -77,7 +78,7 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <Website href={restItem.rest_website}>Visit website</Website>
             <TextDetails>{restItem.rest_address}</TextDetails>
             <TextDetails>{restItem.rest_phone_number}</TextDetails>
-            <TextDetails>{restItem.opening_hours.map(day =>
+            <TextDetails>{restItem.opening_hours && restItem.opening_hours.map(day =>
               <Day>{day}<br /></Day>
             )}
             </TextDetails>

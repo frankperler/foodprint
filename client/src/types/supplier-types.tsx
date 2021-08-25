@@ -17,6 +17,6 @@ export type supplierTypes = {
   sup_energy: string[],
   sup_vehicles: string,
   UserId: number,
-  Restaurants?: restaurantTypes[],
+  Restaurants: restaurantTypes[],
   Productions: productionTypes[]
 }
