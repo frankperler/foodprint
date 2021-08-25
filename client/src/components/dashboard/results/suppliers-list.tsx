@@ -6,7 +6,7 @@ import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
-import { calculateDistance } from '../../../services/distance';
+import { calculateDistance } from '../../../tools/distance'
 import { useEffect } from 'react';
 
 
@@ -45,31 +45,30 @@ export const SuppliersLists: React.FunctionComponent = () => {
 
   return (
     <>
-      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers
-        && stateUser.restaurants[0].Suppliers.length ?
-        <ListWrapper key={"myList"}>
+      {stateUser.user.user_type == "restaurant" && stateUser.restaurants && stateUser.restaurants[0].Suppliers && stateUser.restaurants[0].Suppliers.length ?
+        <ListWrapper key={"myList"} flexDir="column">
           <ListTitle>
             My Suppliers
           </ListTitle>
           <ListContainer>
             {
               stateUser.restaurants[0].Suppliers.map((supplier: supplierTypes) => {
-
-                < SupplierCard
+                return < SupplierCard
                   supplier={supplier}
                   distance={calculateDistance(supplier, userLat, userLon)}
                   key={supplier.id}
-                  product={supplier.Productions[0].Product.product_name} />
+                  product={supplier.Productions ? supplier.Productions[0].Product.product_type : "Production not displayed"}
+                />
               }
               )}
           </ListContainer>
         </ListWrapper>
-        : null}
+        : <div></div>}
       {
         stateSupplier.length > 0 &&
         supplTypesArray.map((value: string) => {
           return (
-            <ListWrapper key={value}>
+            <ListWrapper key={value} flexDir="column">
               <ListTitle>
                 {value}
               </ListTitle>

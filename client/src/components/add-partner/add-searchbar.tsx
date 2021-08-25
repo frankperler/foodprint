@@ -8,9 +8,13 @@ interface Props {
   stateUser: userTypes
   searchResults: restaurantTypes[] | supplierTypes[]
   setSearchResults: Dispatch<SetStateAction<restaurantTypes[] | supplierTypes[]>>,
+  matches: boolean,
+  setMatches: React.Dispatch<React.SetStateAction<boolean>>
+  submitted: boolean,
+  setSubmitted: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, searchResults, setSearchResults }: Props): JSX.Element => {
+export const Searchbar: React.FunctionComponent<Props> = ({ setSubmitted, stateUser, searchResults, setSearchResults, matches, setMatches }: Props): JSX.Element => {
 
   const [searchValue, setSearchValue] = useState<string>("")
 
@@ -19,9 +23,11 @@ export const Searchbar: React.FunctionComponent<Props> = ({ stateUser, searchRes
       if (stateUser.user.user_type === 'restaurant') {
         await findSuppliersByName(searchValue)
           .then((suppliers) => { setSearchResults(suppliers) })
+          .then(() => setSubmitted(true))
       } else if (stateUser.user.user_type === 'supplier') {
         await findRestaurantsByName(searchValue)
           .then((restaurants) => setSearchResults(restaurants))
+          .then(() => setSubmitted(true))
       } else {
         console.log("You are not a restaurant or a supplier")
       }

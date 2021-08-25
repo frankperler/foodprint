@@ -1,4 +1,4 @@
-import { filterTypes, filterAction } from '../types/filter-types'
+import { filterTypes, filterAction, searchBarTypes, searchBarAction } from '../types/filter-types'
 
 export const filterState: filterTypes = {
   ecoScore: 0,
@@ -56,4 +56,18 @@ export const filterReducers = (state: filterTypes, action: filterAction): filter
   }
 
   return state
+}
+
+
+export const searchBarState: searchBarTypes = {
+  city: ""
+}
+
+export const searchBarReducers = (state: searchBarTypes, action: searchBarAction) => {
+  switch(action.type) {
+    case 'city-change':
+      return {
+        city: action.payload
+      }
+  }
 }

@@ -56,7 +56,7 @@ export const SupplierRegistrationForm: React.FunctionComponent<Props> = ({ setIs
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
-  const { stateUser, dispatchUser } = useContext(userContext);
+  const { dispatchUser } = useContext(userContext);
   const history = useHistory()
 
 

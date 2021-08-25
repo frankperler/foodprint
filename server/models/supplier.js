@@ -26,30 +26,48 @@ module.exports = (sequelize, DataTypes) => {
     sup_website: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: 'http://www.google.com',
     },
     sup_eco_score: {
       type: DataTypes.FLOAT,
       allowNull: true,
+      defaultValue: 3.0,
     },
     sup_description: {
       type: DataTypes.TEXT,
       allowNull: true,
+      defaultValue: 'You have not provided a description yet...'
     },
     sup_picture: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: 'https://source.unsplash.com/IQVFVH0ajag?1600x900'
     },
     sup_greenTech: {
-      type: DataTypes.ARRAY(DataTypes.STRING) ,
+      type: DataTypes.ARRAY(DataTypes.JSON), // CAREFUL HERE
       allowNull: true,
+      defaultValue: [{
+        "Plastic_Free": true,
+        "Organic": true,
+        "Water_Recycling": true,
+        "Biofuels": true,
+        "No_Pesticides": true,
+        "Biodynamic": true,
+        "Non_GMO": true,
+        "No_Growth_Hormones": true,
+      }]
     },
     sup_energy: {
-      type: DataTypes.ARRAY(DataTypes.STRING) ,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
+      defaultValue: [
+        'Solar-powered'
+      ]
     },
     sup_vehicles: {
       type: DataTypes.TEXT,
       allowNull: true,
+      dafaultValue: 'Diesel'
     }
   })
 

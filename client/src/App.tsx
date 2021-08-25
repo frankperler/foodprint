@@ -10,18 +10,25 @@ import { ContainerFindExistingPartner } from './components/add-partner/find-exis
 import { ContainerThirdPartyRequestPartner } from './components/add-partner/third-party-request'
 import { userContext } from './contexts/user-context'
 import { userLoginReducers, userLoginState } from './reducers/login-reducer';
+import { ThankYouPage } from './components/add-partner/thank-you-page'
 import { useEffect } from 'react'
+import { searchBarContext } from './contexts/filters-contexts'
+import { searchBarReducers, searchBarState } from './reducers/filters-reducers'
+import { claimReducers } from './reducers/add-partner-reducer'
+
 
 export const App: React.FunctionComponent = () => {
 
   const [stateUser, dispatchUser] = useReducer(userLoginReducers, userLoginState)
+  const [stateSearchBar, dispatchSearchBar] = useReducer(searchBarReducers, searchBarState)
   const [userType, setUserType] = useState("Food lover")
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isOwner, setIsOwner] = useState(false);
 
   //to persist state on refresh
   useEffect(() => {
-    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!)});
+    dispatchUser({ type: 'LOGIN', payload: JSON.parse(window.localStorage.getItem('user-state')!) });
     setIsAuth(JSON.parse(window.localStorage.getItem('is-auth')!))
   }, []);
 
@@ -39,12 +46,14 @@ export const App: React.FunctionComponent = () => {
               isAuth={isAuth}
               setIsAuth={setIsAuth}
             />
-            <Searchbar />
-            <Dashboard
-              isAuth={isAuth}
-              loading={loading}
-              setLoading={setLoading}
-            />
+            <searchBarContext.Provider value={{ stateSearchBar, dispatchSearchBar }} >
+              <Searchbar />
+              <Dashboard
+                isAuth={isAuth}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            </searchBarContext.Provider>
           </Route>
           <Route path='/register' exact>
             <RegistrationContainer
@@ -54,7 +63,37 @@ export const App: React.FunctionComponent = () => {
               setIsAuth={setIsAuth}
             />
           </Route>
+          <Route path='/profile' exact>
+            {stateUser.user.user_type === 'supplier' ?
+              <div>
+                <Navbar
+                  isAuth={isAuth}
+                  setIsAuth={setIsAuth}
+                />
+                <ProfileSupplierDashboard
+                  loading={loading}
+                  setLoading={setLoading}
+                  isOwner={isOwner}
+                  setIsOwner={setIsOwner}
+                />
+              </div> :
+              stateUser.user.user_type === 'restaurant' ?
+                <div>
+                  <Navbar
+                    isAuth={isAuth}
+                    setIsAuth={setIsAuth}
+                  />
+                  <ProfileRestaurantDashboard
+                    loading={loading}
+                    setLoading={setLoading}
+                    isOwner={isOwner}
+                    setIsOwner={setIsOwner}
+                  />
+                </div> :
+                <ThankYouPage />
+            }
 
+          </Route>
           <Route path='/add' exact>
             <ContainerFindExistingPartner />
           </Route>
@@ -63,12 +102,21 @@ export const App: React.FunctionComponent = () => {
             <ContainerThirdPartyRequestPartner />
           </Route>
 
+          <Route path='/thankyou' exact>
+            <ThankYouPage />
+          </Route>
+
           <Route path='/supplier/:id'>
             <Navbar
               isAuth={isAuth}
               setIsAuth={setIsAuth}
             />
-            <ProfileSupplierDashboard />
+            <ProfileSupplierDashboard
+              loading={loading}
+              setLoading={setLoading}
+              isOwner={isOwner}
+              setIsOwner={setIsOwner}
+            />
           </Route>
 
           <Route path='/restaurant/:id'>
@@ -79,6 +127,8 @@ export const App: React.FunctionComponent = () => {
             <ProfileRestaurantDashboard
               loading={loading}
               setLoading={setLoading}
+              isOwner={isOwner}
+              setIsOwner={setIsOwner}
             />
           </Route>
         </Switch>

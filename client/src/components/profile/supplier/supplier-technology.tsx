@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { EditDescription, ProfileHeader, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
-import FormLabel from '@material-ui/core/FormLabel';
+import { EditDescription, ProfileHeader, TechnologySourceGrid, TextDetails, EnergySourceGrid, TechChoiceGrid, TechnologyContainer, TechnologyRibbons, VehicleTypeForm, UpdateChangesButton, EnergyTypeForm, CancelButton } from '../profile-styled-components/profile.style';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -23,66 +22,73 @@ const GreenCheckbox = withStyles({
 
 
 interface Props {
-  supplier: supplierTypes
+  supplier: supplierTypes,
+  greenTechObj: {
+    "Plastic_Free": boolean,
+    "Biodynamic": boolean,
+    "Biofuels": boolean,
+    "No_Growth_Hormones": boolean,
+    "No_Pesticides": boolean,
+    "Non_GMO": boolean,
+    "Organic": boolean,
+    "Water_Recycling": boolean,
+  },
+  isOwner: boolean
 }
 
-export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) => {
+
+export const Technology: React.FunctionComponent<Props> = ({ supplier, greenTechObj, isOwner }: Props) => {
 
   const [isEditing, setIsEditing] = useState(false)
 
-  // function loopGreenTech(obj: {
-  //   "Plastic_Free": boolean,
-  //   "Biodynamic": boolean,
-  //   "Biofuels": boolean,
-  //   "No_Growth_Hormones": boolean,
-  //   "No_Pesticides": boolean,
-  //   "Non_GMO": boolean,
-  //   "Organic": boolean,
-  //   "Water_Recycling": boolean,
-  // }) {
-  //   for (const key in obj) {
-  //     console.log(`${key}: ${obj[key]}`);
-  // if (key === "Plastic_Free" && obj[key] === true) return <img src="/images/noplastic_s.svg" />
-  // else if (key === "Biodynamic" && obj[key] === true) return <img src="/images/biodynamic_s.svg" />
-  // else if (key === "Biofuels" && obj[key] === true) return <img src="/images/biofuel_s.svg" />
-  // else if (key === "No_Growth_Hormones" && obj[key] === true) return <img src="/images/nogrowthhormone_s.svg" />
-  // else if (key === "No_Pesticides" && obj[key] === true) return <img src="/images/nopesticide_s.svg" />
-  // else if (key === "Non_GMO" && obj[key] === true) return <img src="/images/nongmo_s.svg" />
-  // else if (key === "Organic" && obj[key] === true) return <img src="/images/organic_s.svg" />
-  // else if (key === "Water_Recycling" && obj[key] === true) return <img src="/images/savewater_s.svg" />
-  // else return
-  //   }
-  // }
+  function loopGreenTech(obj: {
+    "Plastic_Free": boolean,
+    "Biodynamic": boolean,
+    "Biofuels": boolean,
+    "No_Growth_Hormones": boolean,
+    "No_Pesticides": boolean,
+    "Non_GMO": boolean,
+    "Organic": boolean,
+    "Water_Recycling": boolean,
+  }): any {
+    const result = []
+    for (const key in obj) {
+      if (key === "Plastic_Free" && obj[key] === true) result.push("/images/noplastic_s.svg")
+      if (key === "Biodynamic" && obj[key] === true) result.push("/images/biodynamic_s.svg")
+      if (key === "Biofuels" && obj[key] === true) result.push("/images/biofuel_s.svg")
+      if (key === "No_Growth_Hormones" && obj[key] === true) result.push("/images/nogrowthhormone_s.svg")
+      if (key === "No_Pesticides" && obj[key] === true) result.push("/images/nopesticide_s.svg")
+      if (key === "Non_GMO" && obj[key] === true) result.push("/images/nongmo_s.svg")
+      if (key === "Organic" && obj[key] === true) result.push("/images/organic_s.svg")
+      if (key === "Water_Recycling" && obj[key] === true) result.push("/images/savewater_s.svg")
+    }
+    return result.map((img) => {
+      return <img src={img} />
+    })
+  }
 
   return (
     <TechnologyContainer>
-      <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
-        {isEditing ?
-          <CancelButton>Cancel</CancelButton>
-          :
-          <EditIcon></EditIcon>
-        }
-      </EditDescription>
+      {!isOwner ? <div></div> :
+        <EditDescription onClick={() => !isEditing ? setIsEditing(true) : setIsEditing(false)}>
+          {isEditing ?
+            <CancelButton>Cancel</CancelButton>
+            :
+            <EditIcon></EditIcon>
+          }
+        </EditDescription>
+      }
       <ProfileHeader>Our technology...</ProfileHeader>
       <TechnologyRibbons>
-        <img src="/images/noplastic_s.svg" />
-        <img src="/images/biodynamic_s.svg" />
-        <img src="/images/biofuel_s.svg" />
-        <img src="/images/nogrowthhormone_s.svg" />
-        <img src="/images/nopesticide_s.svg" />
-        <img src="/images/nongmo_s.svg" />
-        <img src="/images/organic_s.svg" />
-        <img src="/images/savewater_s.svg" />
-        {/* {loopGreenTech(JSON.parse(supplier.sup_greenTech[0]))} */}
+        {supplier && loopGreenTech(greenTechObj)}
       </TechnologyRibbons>
       <TechChoiceGrid>
         {isEditing ?
-          <EnergySourceGrid>
+          <TechnologySourceGrid>
             <FormControl component="fieldset">
               <div>
                 <EnergyTypeForm>
                   <h4>Main source of energy</h4>
-                  <FormLabel component="legend">Select up to two</FormLabel>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -102,7 +108,7 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
                   </FormGroup>
                 </EnergyTypeForm>
                 <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
+                  <h4>The majority of our vehicles are...</h4>
                   <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
                     <FormControlLabel
                       control={<GreenCheckbox />}
@@ -129,59 +135,14 @@ export const Technology: React.FunctionComponent<Props> = ({ supplier }: Props) 
               </div>
               <UpdateChangesButton type="submit">Update changes</UpdateChangesButton>
             </FormControl>
-          </EnergySourceGrid>
+          </TechnologySourceGrid>
           :
           <EnergySourceGrid>
-            <FormControl>
-              <div>
-                <EnergyTypeForm>
-                  <h4>Main source of energy</h4>
-                  <FormLabel component="legend">Select up to two</FormLabel>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Solar"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label='Wind'
-                    />
-                    <FormControlLabel label="Natural gas"
-                      disabled control={<GreenCheckbox />}
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electricity (renewable)"
-                    />
-                  </FormGroup>
-                </EnergyTypeForm>
-                <VehicleTypeForm>
-                  <h4>The majority of my vehicles are...</h4>
-                  <FormGroup style={{ display: 'flex', flexDirection: 'row' }}>
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Biofuel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Gasoline"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Diesel"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Electric"
-                    />
-                    <FormControlLabel
-                      disabled control={<GreenCheckbox />}
-                      label="Hybrid"
-                    />
-                  </FormGroup>
-                </VehicleTypeForm>
-              </div>
-            </FormControl>
+            <TextDetails fontColor="darkgrey">My main source of energy is {supplier.sup_energy.map((energy) => {
+              return <h3 style={{ color: 'black' }}>{energy}</h3>
+            })}</TextDetails>
+
+            <TextDetails fontColor="darkgrey">The majority of my vehicles are using <h3 style={{ color: 'black' }}>{supplier.sup_vehicles}</h3></TextDetails>
           </EnergySourceGrid>
         }
       </TechChoiceGrid>

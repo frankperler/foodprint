@@ -27,3 +27,15 @@ export type registerAction = {
   payload: registeredUserTypes
 }
 
+export type addSupplierAction = {
+  type: 'CLAIM-SUPPLIER',
+  payload: restaurantTypes
+
+}
+
+export type addRestaurantAction = {
+  type: 'CLAIM-RESTAURANT',
+  payload: supplierTypes
+}
+
+

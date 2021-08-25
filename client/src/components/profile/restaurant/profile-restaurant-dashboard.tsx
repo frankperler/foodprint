@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day } from '../profile-styled-components/profile.style'
+import React, { useState, useContext } from 'react'
+import { ProfileRestaurantGridContainer, RestoCover, ProfileName, Day, TextDetails } from '../profile-styled-components/profile.style'
 import { ProfileDetails } from '../profile-styled-components/profile.style'
 import { RestaurantDescription } from './restaurant-description'
 import { SuppliersList } from './profile-supplier-list'
@@ -10,16 +10,28 @@ import { useParams } from 'react-router'
 import { getRestaurantById } from '../../../services/RestaurantService'
 import { restaurantTypes } from '../../../types/restaurant-types'
 import { RestEcoRating } from '../../dashboard/results/restaurants-eco-rating'
-import { LoadSpinner } from '../../LoadSpinner'
+import { css } from "@emotion/react";
+import PuffLoader from "react-spinners/PuffLoader";
+import { userContext } from '../../../contexts/user-context';
 
 
 type Props = {
   loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isOwner: boolean;
+  setIsOwner: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.Element => {
+const spinnerStyle = css`
+display: block;
+margin: 0 auto;
+color: #36D7B7;
+transform: translateY(20%);
+`;
 
+export const ProfileRestaurantDashboard = ({ loading, setLoading, isOwner, setIsOwner }: Props): JSX.Element => {
+
+  const { stateUser } = useContext(userContext);
   const [restItem, setRestItem] = useState<restaurantTypes>(
     {
       id: 0,
@@ -45,9 +57,23 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
   )
 
   const params: { id: string } = useParams()
+  let restaurantId = 'no id';
+
+  // function isUserOwner(): boolean {
+  //   if (params.id) return false
+  //   else return true
+  // }
 
   useEffect(() => {
-    getRestaurantById(params.id)
+    if (params.id) {
+      restaurantId = params.id
+      setIsOwner(false)
+    } else {
+      restaurantId = (stateUser.restaurants![0].id).toString();
+      setIsOwner(true)
+    }
+    setLoading(true)
+    getRestaurantById(restaurantId) // CAREFUL
       .then((restaurant) => {
         setRestItem(restaurant)
         setLoading(false)
@@ -57,10 +83,9 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
       })
   }, [])
 
-
   return (
     <div>
-      {loading ? <LoadSpinner></LoadSpinner> :
+      {loading ? <PuffLoader css={spinnerStyle} size="400px" color="#36D7B7"></PuffLoader> :
         <ProfileRestaurantGridContainer>
           <RestoCover src={restItem.rest_picture} />
           <InfoArea>
@@ -68,16 +93,16 @@ export const ProfileRestaurantDashboard = ({ loading, setLoading }: Props): JSX.
             <ProfileName fontColor="#FF686B">{restItem.rest_name}</ProfileName>
             <RestStarRating restaurant={restItem} />
             <Website href={restItem.rest_website}>Visit website</Website>
-            <h4>{restItem.rest_address}</h4>
-            <h4>{restItem.rest_phone_number}</h4>
-            <h4>{restItem.opening_hours.map(day =>
+            <TextDetails>{restItem.rest_address}</TextDetails>
+            <TextDetails>{restItem.rest_phone_number}</TextDetails>
+            <TextDetails>{restItem.opening_hours && restItem.opening_hours.map(day =>
               <Day>{day}<br /></Day>
             )}
-            </h4>
+            </TextDetails>
           </InfoArea>
-          <RestaurantDescription restaurant={restItem} />
+          <RestaurantDescription restaurant={restItem} isOwner={isOwner} />
           <ProfileDetails>
-            <SuppliersList restaurant={restItem} />
+            <SuppliersList restaurant={restItem} isOwner={isOwner} />
           </ProfileDetails>
         </ProfileRestaurantGridContainer >
       }

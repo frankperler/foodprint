@@ -11,7 +11,6 @@ import { registrationReducers, registrationState } from '../../reducers/registra
 import { userContext } from '../../contexts/user-context';
 import { registeredUserTypes, userTypes } from '../../types/user-types';
 import { logIn } from '../../services/LoginService';
-import { UserSelectProperty } from '@material-ui/styles/node_modules/csstype';
 
 const schema = yup.object().shape({
   user_first_name: yup.string().required('required'),
@@ -42,7 +41,7 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
   })
 
   const [stateRegistrationUser, dispatchRegistrationUser] = useReducer(registrationReducers, registrationState)
-  const { stateUser, dispatchUser } = useContext(userContext);
+  const { dispatchUser } = useContext(userContext);
   const history = useHistory()
 
   const onSubmit = async (data: FoodLoverRegisterForm) => {
@@ -59,8 +58,8 @@ export const FoodLoverRegistrationForm: React.FunctionComponent<Props> = ({ setI
       .then(async (registeredUserData: registeredUserTypes) => {
         setIsAuth(true)
         dispatchRegistrationUser({ type: 'REGISTER', payload: registeredUserData })
-        await logIn({email: formData.email, password: formData.password})
-          .then((userData: userTypes) => dispatchUser({type: 'LOGIN', payload: userData }))
+        await logIn({ email: formData.email, password: formData.password })
+          .then((userData: userTypes) => dispatchUser({ type: 'LOGIN', payload: userData }))
       })
     reset();
     history.push("/");

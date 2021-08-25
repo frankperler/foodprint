@@ -5,7 +5,7 @@ import { supplierTypes } from '../../../types/supplier-types';
 import { ListContainer } from '../results/results-styled-components/results-list-container';
 import { SupplTopCard } from './suppliers-top-cards';
 import { TopTitle } from './top-choices-styled-components/top-title';
-import { calculateDistance } from '../../../services/distance';
+import { calculateDistance } from '../../../tools/distance';
 
 
 export const SupplTopList: React.FunctionComponent = () => {
