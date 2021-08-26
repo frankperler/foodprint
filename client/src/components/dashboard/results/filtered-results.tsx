@@ -1,3 +1,5 @@
+import { useState, useContext, useEffect } from 'react';
+import { userContext } from '../../../contexts/user-context';
 import { restaurantTypes } from '../../../types/restaurant-types';
 import { supplierTypes } from '../../../types/supplier-types';
 import { RestaurantCard } from './restaurants-card';
@@ -5,7 +7,7 @@ import { SupplierCard } from './suppliers-card';
 import { ListContainer } from './results-styled-components/results-list-container';
 import { ListTitle } from './results-styled-components/results-title';
 import { ListWrapper } from './results-styled-components/results-list-wrapper';
-
+import { calculateDistance } from '../../../tools/distance'
 interface Props {
   filteredElements: restaurantTypes[] | supplierTypes[]
 }
@@ -15,7 +17,6 @@ export const FilteredResults: React.FunctionComponent<Props> = ({ filteredElemen
   const isRestaurant = (element: restaurantTypes | supplierTypes): element is restaurantTypes => {
     return (element as restaurantTypes).rest_name !== undefined
   }
-
 
   const filteredResults = () => {
     if (filteredElements.length) {

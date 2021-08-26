@@ -72,9 +72,17 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
   const [toggleFiltering, setToggleFiltering] = useState(false)
 
   async function clickToFilter(state: filterTypes) {
-    const result = state.bio ? await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType) : await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType)
-    setFilteredElements(result)
-    setFilterClicked(true);
+    if (stateUser.user.user_type === 'restaurant') {
+      await filterSuppliersByCategories(state.ecoScore, state.bio, state.foodType).then((result) => {
+        setFilteredElements(result)
+        setFilterClicked(true);
+      })
+    } else {
+      await filterRestaurantsByCategories(state.ecoScore, state.restaurantType, state.mealType).then((result) => {
+        setFilteredElements(result)
+        setFilterClicked(true);
+      })
+    }
   }
 
   async function clickToRemoveFilters() {
@@ -93,7 +101,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
         setLoading(true)
         findRestaurantsByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
       }
-      else {
+      else if (stateUser.user.user_type === 'restaurant') {
         setLoading(true)
         findSuppliersByCity(stateSearchBar.city).then((results) => setFilteredElements(results)).then(() => setLoading(false))
       }
@@ -102,6 +110,7 @@ export const Dashboard: React.FunctionComponent<Props> = ({ loading, setLoading 
       setInputTyped(false)
     }
   }, [stateSearchBar])
+
 
   useEffect(() => {
     getAllSuppliers().then((suppliers) => dispatchSupplier({ type: 'FETCH_ALL_SUPPLIER', payload: suppliers })).then(() => setLoading(false));

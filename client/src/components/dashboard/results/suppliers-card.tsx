@@ -10,17 +10,17 @@ interface Props {
   distance?: number
 }
 
-export const SupplierCard: React.FunctionComponent<Props> = ({ ...Props }: Props) => {
+export const SupplierCard: React.FunctionComponent<Props> = ({ supplier, product, distance }: Props) => {
 
   return (
     <CardContainer>
-      <ResultsCardStyles backgroundImg={Props.supplier.sup_picture} />
-      <Link to={`/supplier/${Props.supplier.id}`} style={{ textDecoration: 'none', width: '100%' }} >
-        <div className="name">{Props.supplier.sup_name}</div>
-        <SupplierEcoRating supplier={Props.supplier} />
+      <ResultsCardStyles backgroundImg={supplier.sup_picture} />
+      <Link to={`/supplier/${supplier.id}`} style={{ textDecoration: 'none', width: '100%' }} >
+        <div className="name">{supplier.sup_name}</div>
+        <SupplierEcoRating supplier={supplier} />
         <div className="bottom-card-section">
-          <div className="foodtype">{Props.product}</div>
-          <div className="distance">{`${Math.round((Props.distance)! / 1000)} km away`}</div>
+          <div className="foodtype">{product}</div>
+          {distance && <div className="distance">{`${Math.round((distance)! / 1000)} km away`}</div>}
         </div>
       </Link>
     </CardContainer>
