@@ -30,13 +30,13 @@ export const FilteredResults: React.FunctionComponent<Props> = ({ filteredElemen
         })
       }
     } else {
-      return <h1 style={{marginLeft: '2rem'}}>No results found</h1>
+      return <h1 style={{ marginLeft: '2rem' }}>No results found</h1>
     }
   }
 
   return (
     <>
-      <ListWrapper key={'theFilteredList'}>
+      <ListWrapper key={'theFilteredList'} flexDir="column">
         <ListTitle>
           Filtered Results
         </ListTitle>
@@ -46,7 +46,4 @@ export const FilteredResults: React.FunctionComponent<Props> = ({ filteredElemen
       </ListWrapper>
     </>
   )
-
-
-
 }

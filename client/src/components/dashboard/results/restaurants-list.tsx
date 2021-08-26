@@ -15,7 +15,7 @@ export const RestaurantsLists: React.FunctionComponent = () => {
   const [restTypesArray] = useState(['Bio', 'Vegetarian', 'Café'])
 
   // console.log("user's restaurants num1:", stateUser.suppliers[0].Restaurants.rest_name)
-  useEffect( () => {
+  useEffect(() => {
     console.log('userState changed --- ', stateUser)
   }, [stateUser])
 

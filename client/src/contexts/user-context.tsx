@@ -1,5 +1,5 @@
 import React from "react";
-import { userLoginState, reducerAction } from "../reducers/login-reducer";
+import { userLoginState, reducerAction } from "../reducers/user-reducer";
 import { userTypes } from "../types";
 
 export const userContext = React.createContext<{

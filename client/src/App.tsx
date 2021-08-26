@@ -9,13 +9,11 @@ import { ProfileRestaurantDashboard } from './components/profile/restaurant/prof
 import { ContainerFindExistingPartner } from './components/add-partner/find-existing-partner'
 import { ContainerThirdPartyRequestPartner } from './components/add-partner/third-party-request'
 import { userContext } from './contexts/user-context'
-import { userLoginReducers, userLoginState } from './reducers/login-reducer';
+import { userLoginReducers, userLoginState } from './reducers/user-reducer';
 import { ThankYouPage } from './components/add-partner/thank-you-page'
 import { useEffect } from 'react'
 import { searchBarContext } from './contexts/filters-contexts'
 import { searchBarReducers, searchBarState } from './reducers/filters-reducers'
-import { claimReducers } from './reducers/add-partner-reducer'
-
 
 export const App: React.FunctionComponent = () => {
 

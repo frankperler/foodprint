@@ -103,6 +103,18 @@ export const ContainerWrapper = styled.section`
   flex-direction: column;
 `
 
+export const ThankYouWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  transform: translateY(40%);
+  height: auto;
+  width: 75%;
+  margin: 0 auto;
+`
+
 export const AddCardContainer = styled("div")`
   width: 15rem;
   height: 15rem;

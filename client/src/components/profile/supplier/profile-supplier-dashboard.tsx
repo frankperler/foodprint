@@ -78,11 +78,6 @@ export const ProfileSupplierDashboard = ({ loading, setLoading, isOwner, setIsOw
   const params: { id: string } = useParams()
   let supplierId = 'no id';
 
-  // function isUserOwner(): boolean {
-  //   if (params.id) return false
-  //   else return true
-  // }
-
   useEffect(() => {
     setLoading(true)
     if (params.id) {
