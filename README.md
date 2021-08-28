@@ -23,5 +23,5 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
  
  * Frank Perler - [GitHub](https://github.com/frankperler) - [LinkedIn](https://www.linkedin.com/in/frank-perler/)
  * Andrés Olivé - [GitHub](https://github.com/andresolive) - [LinkedIn](https://www.linkedin.com/in/andresolivez/)
- * Giulia Consonni  - ([GitHub](https://github.com/frankperler) - [LinkedIn](https://www.linkedin.com/in/gconsonni/)
+ * Giulia Consonni  - [GitHub](https://github.com/frankperler) - [LinkedIn](https://www.linkedin.com/in/gconsonni/)
  * Aaron Zomback - [GitHub](https://github.com/aaronzomback) - [LinkedIn](https://www.linkedin.com/in/aaron-zomback/)
