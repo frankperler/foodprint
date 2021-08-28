@@ -9,7 +9,7 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 ## Getting started
 
 Except for the regular suspects - git, Node, npm, etc - you need these things to run the Foodprint app. Follow the instructions supplied below them or on their links before you continue with *Installation*.
-* Mapbox. Get API from [here](https://www.mapbox.com/)
+* Mapbox. Get API [here](https://www.mapbox.com/)
 * Google Places API. Get API key [here](https://cloud.google.com/maps-platform/places)
 * PostgreSQL local database, including the psql CLI. Download and install from [here](https://www.postgresql.org/) 
 
