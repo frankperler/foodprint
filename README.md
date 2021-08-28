@@ -32,8 +32,8 @@ Except for the regular suspects - git, Node, npm, etc - you need these things to
 5. For a better experience, you might want to populate your DB with mock data. To do so follow these steps:
       * In the server folder, find the "mock_data" folder
       * Open your psql CLI, paste and run the entire content of _Logins_.sql, _Users_.sql, _Products_.sql.
-      * in server/index.js uncomment line 9 ("const populate = ...") and restart the server. Comment it back out.
-      * do the same for line 10.
+      * In server/index.js uncomment line 9 ("const populate = ...") and restart the server. Comment it back out.
+      * Do the same for line 10.
 
 5. In the client folder, run ````npm start```` to start the development server.
  
