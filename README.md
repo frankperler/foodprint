@@ -38,6 +38,7 @@ Except for the regular suspects - git, Node, npm, etc - you need these things to
 5. In the client folder, run ````npm start```` to start the development server.
  
  ## Tech Stack
+ [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/), [PostgreSQL](https://www.postgresql.org/), [Sequelize](https://sequelize.org/), [Express](https://expressjs.com/).
  
  ## Developers
  
