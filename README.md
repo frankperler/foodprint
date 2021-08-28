@@ -6,10 +6,11 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 
 ## Screenshots
 
-![Group 11](https://user-images.githubusercontent.com/63470294/131219138-e058217a-d9b9-4e8d-ba1b-4d7c4a342636.png)
-![Group 12](https://user-images.githubusercontent.com/63470294/131219140-043ebea9-5595-4d1f-8971-cf925436dc9e.png)
-![Group 10](https://user-images.githubusercontent.com/63470294/131219088-67ac7acd-608c-4dc4-b738-b4d3d1147cd6.png)
-![Group 13](https://user-images.githubusercontent.com/63470294/131219153-1dfa1ef8-7b16-4f13-bbd6-bd101ee8d59c.png)
+![image (3)](https://user-images.githubusercontent.com/63470294/131219757-43c0c3d5-fa2d-4baf-a90c-30b2fc8e7011.png)
+![image (2)](https://user-images.githubusercontent.com/63470294/131219764-8ba7c65f-57b3-4128-af27-7dac5213adfa.png)
+![image (1)](https://user-images.githubusercontent.com/63470294/131219767-301947be-50c7-44db-80e8-6661d89b5756.png)
+![image](https://user-images.githubusercontent.com/63470294/131219770-e9ac4bbc-78a1-403a-90d2-25fb82392d0c.png)
+
 
 ## Getting started
 
