@@ -18,7 +18,7 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 
 2. Install dependencies, by running ````npm install```` both in the client and the server folder
 
-3. Add API keys as listed in the .env-example file.
+3. Add API keys as listed in the .env.example file.
 
 4. Start the server by running ````nodemon```` in the server folder.
 
