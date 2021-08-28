@@ -21,6 +21,6 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
  
  ## Developers
  * Aaron Zomback - [GitHub] - [LinkedIn]
- * * Andrés Olivé
+ * Andrés Olivé
  * Frank Perler 
  * Giulia Consonni
