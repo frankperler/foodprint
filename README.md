@@ -11,7 +11,8 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 Except for the regular suspects - git, Node, npm, etc - you need these things to run the Foodprint app. Follow the instructions supplied below them or on their links before you continue with *Installation*.
 * Map stuff? Frankkkkk enter it here. Get API from [here](...)
 * Google Places API. Get API key [here](https://cloud.google.com/maps-platform/places)
-* PostgreSQL local database. Download and install from [here](https://www.postgresql.org/) 
+* PostgreSQL local database, including the psql CLI. Download and install from [here](https://www.postgresql.org/) 
+
 
 ## Installation
 1. Clone this repo and enter!
@@ -26,6 +27,13 @@ Except for the regular suspects - git, Node, npm, etc - you need these things to
 3. Add API keys as listed in the .env.example file.
 
 4. Start the server by running ````nodemon```` in the server folder.
+5. Create a database called "foodprint_dev" with PostgreSQL.
+
+5. For a better experience, you might want to populate your DB with mock data. To do so follow these steps:
+      * In the server folder, find the "mock_data" folder
+      * Open your psql CLI, paste and run the entire content of _Logins_.sql, _Users_.sql, _Products_.sql.
+      * in server/index.js uncomment line 9 ("const populate = ...") and restart the server. Comment it back out.
+      * do the same for line 10.
 
 5. In the client folder, run ````npm start```` to start the development server.
  
