@@ -6,6 +6,11 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 
 ## Screenshots
 
+![Group 10](https://user-images.githubusercontent.com/63470294/131219088-67ac7acd-608c-4dc4-b738-b4d3d1147cd6.png)
+![Uploading Group 11.png…]()
+![Uploading Group 12.png…]()
+
+
 ## Getting started
 
 Except for the regular suspects - git, Node, npm, etc - you need these things to run the Foodprint app. Follow the instructions supplied below them or on their links before you continue with *Installation*.
