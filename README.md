@@ -11,11 +11,18 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 ## Installation
 1. Clone this repo and enter!
 
-2. Install dependencies.
+   ```bash
+   git clone https://github.com/frankperler/foodprint.git
+   cd foodprint
+   ```
 
-  npm install
-  
- etc
+2. Install dependencies, by running ````npm install```` both in the client and the server folder
+
+3. Add API keys as listed in the .env-example file.
+
+4. Start the server by running ````nodemon```` in the server folder.
+
+5. In the client folder, run ````npm start```` to start the development server.
  
  ## Tech Stack
  
