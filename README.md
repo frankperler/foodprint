@@ -20,7 +20,7 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
  ## Tech Stack
  
  ## Developers
- * Frank Perler - [GitHub] https://github.com/frankperler - [LinkedIn] https://www.linkedin.com/in/frank-perler/
- * Andrés Olivé - [GitHub] https://github.com/andresolive - [LinkedIn] https://www.linkedin.com/in/andresolivez/
- * Giulia Consonni  - [GitHub] https://github.com/frankperler - [LinkedIn] https://www.linkedin.com/in/gconsonni/
- * Aaron Zomback - [GitHub] https://github.com/aaronzomback - [LinkedIn] https://www.linkedin.com/in/aaron-zomback/
+ * Frank Perler - [GitHub] 8https://github.com/frankperler) - [LinkedIn] (https://www.linkedin.com/in/frank-perler/)
+ * Andrés Olivé - [GitHub] (https://github.com/andresolive) - [LinkedIn] (https://www.linkedin.com/in/andresolivez/)
+ * Giulia Consonni  - ([GitHub] https://github.com/frankperler) - [LinkedIn] (https://www.linkedin.com/in/gconsonni/)
+ * Aaron Zomback - [GitHub] (https://github.com/aaronzomback) - [LinkedIn] (https://www.linkedin.com/in/aaron-zomback/)
