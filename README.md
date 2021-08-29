@@ -8,7 +8,7 @@ Restaurant users are also part of the equation, since by joining Foodprint, they
 <br/><br/>
 
 ## Screenshots
-<br/>
+
 ![image (3)](https://user-images.githubusercontent.com/63470294/131219757-43c0c3d5-fa2d-4baf-a90c-30b2fc8e7011.png)
 <br/><br/>
 ![image (2)](https://user-images.githubusercontent.com/63470294/131219764-8ba7c65f-57b3-4128-af27-7dac5213adfa.png)
