@@ -1,6 +1,4 @@
 
-# Foodprint
-
 ![foodprint header github](https://user-images.githubusercontent.com/25979741/131253076-245fc632-d8f4-4eda-9072-40f9422e6766.png)
 
 Foodprint is a platform where farmers/suppliers and restaurants find each other, and form more sustainable, direct local partnerships. 
